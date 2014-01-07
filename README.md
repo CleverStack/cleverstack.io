@@ -30,16 +30,6 @@ This repository contains the source for http://cleverstack.io website. Should yo
 
 
 
-### Troublshooting
-
-Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
-
-There is more detailed information on how to run Bootstrap locally in thier [README](https://github.com/twbs/bootstrap/blob/master/README.md).
-
-Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
-
-
-
 ### Contributing
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
@@ -49,6 +39,15 @@ More over, if your pull request contains JavaScript patches or features, you mus
 Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 **Important:** Once a pull request has been merged, you will need to push the content of the `_gh_pages` folder to this repository: https://github.com/CleverStack/cleverstack.github.io then GitHub will auto generate the docs at cleverstack.github.io.
+
+
+### Troubleshooting
+
+Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
+
+There is more detailed information on how to run Bootstrap locally in thier [README](https://github.com/twbs/bootstrap/blob/master/README.md).
+
+Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
 
 
 ### Community
