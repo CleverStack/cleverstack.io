@@ -63,12 +63,14 @@ Keep track of development and community news.
 
 ### Authors
 
-**[Sam Deering](http://github.com/sdeering)**
+**[Sam Deering](http://github.com/sdeering)** @sdeering
+
+Authors please add your name if you make changes to the docs.
 
 
 ### Contributors
 
-Please add your name if you make changes to the docs.
+Contributors please add your name if you make changes to the docs.
 
 
 
