@@ -2,7 +2,8 @@
 
 Cleverstack.io website.
 
-## Documentation built using Bootstrap, Jekyll and Grunt.
+## Built using Bootstrap, Jekyll and Grunt.
+
 
 ### Running documentation locally
 

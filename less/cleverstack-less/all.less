@@ -55,16 +55,80 @@
 }
 
 
-.seeds-list a {
+.seeds-list {
 
-    display: inline-block;
-    border: 1px solid #FFF;
-    padding: 20px;
+    margin-bottom: 30px;
 
-    &:hover {
+    a {
 
-        border: 1px solid #DDD;
-        .border-radius(12px);
+        display: inline-block;
+        border: 1px solid #FFF;
+        padding: 20px;
+
+        &:hover, &.active {
+
+            border: 1px solid #DDD;
+            .border-radius(12px);
+
+        }
+    }
+
+}
+
+.technologies {
+
+    &.seed1 {
+
+        a {
+            &.seed2, &.seed3 {
+                display: none;
+            }
+            &.seed1 {
+                display: inline-block;
+            }
+        }
+
+    }
+
+    &.seed2 {
+
+        a {
+            &.seed1, &.seed3 {
+                display: none;
+            }
+            &.seed2 {
+                display: inline-block;
+            }
+        }
+    }
+
+    &.seed3 {
+
+        a {
+            &.seed1, &.seed2 {
+                display: none;
+            }
+            &.seed3 {
+                display: inline-block;
+            }
+        }
+
+    }
+
+    a {
+
+        img {
+
+            border: 1px solid #FFF;
+
+            &:hover, &.active {
+
+                border: 1px solid #DDD;
+                .border-radius(12px);
+
+            }
+
+        }
 
     }
 

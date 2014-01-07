@@ -1,3 +1,45 @@
+
+
+
+!function ($) {
+
+  // Code snippet for showing technologies for seeds
+  $(function () {
+
+    var $techs = $('.technologies'),
+        $seedEls = $('.seeds-list a'),
+        i = 1,
+        inv = 3000;
+
+    function startLoop(i, inv) {
+      window.tsInv = setInterval(function() {
+          $seedEls.removeClass('active').eq(i-1).addClass('active');
+          $techs.removeClass('seed1 seed2 seed3').addClass('seed'+i);
+          i = (i == 3) ? 1 : i+1;
+      }, inv);
+    }
+    // startLoop();
+
+    function showSeedTechs(i) {
+      $seedEls.removeClass('active').eq(i-1).addClass('active');
+      $techs.removeClass('seed1 seed2 seed3').addClass('seed'+i);
+    }
+
+    //on hover
+    $seedEls.on('click', function(e) {
+      // clearInterval(window.tsInv);
+      e.preventDefault();
+      var id = $(this).attr('id');
+      showSeedTechs(id.replace('seed',''));
+    });
+
+  });
+
+}(jQuery);
+
+
+
+
 // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++

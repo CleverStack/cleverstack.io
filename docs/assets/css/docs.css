@@ -96,7 +96,7 @@ body {
   box-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
 .bs-docs-nav .navbar-collapse {
-  border-color: #463265;
+  border-color: #000;
 }
 .bs-docs-nav .navbar-brand {
   color: #fff;
@@ -113,12 +113,12 @@ body {
   background-color: #463265;
 }
 .bs-docs-nav .navbar-header .navbar-toggle {
-  border-color: #563d7c;
+  border-color: #FF942B;
 }
 .bs-docs-nav .navbar-header .navbar-toggle:hover,
 .bs-docs-nav .navbar-header .navbar-toggle:focus {
-  background-color: #463265;
-  border-color: #463265;
+  background-color: #FF942B;
+  border-color: #FF942B;
 }
 
 
@@ -465,7 +465,7 @@ body {
 
 /* First level of nav */
 .bs-sidenav {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px;
   padding-top:    10px;
   padding-bottom: 10px;
