@@ -45,6 +45,7 @@ lead: "An overview of CleverStack, how to download and use and more."
     <div class="page-header">
       <h1 id="structure">Directory Structure</h1>
     </div>
+
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod.</p>
@@ -74,31 +75,73 @@ bootstrap/
     └── glyphicons-halflings-regular.woff
 {% endhighlight %}
 
-    <h3 id="structure-back-end">Back-end</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2 id="structure-back-end">Back-end (NodeJS)</h2><br>
+        <p>At clevertech we needed to be able to create smarter, smaller, easier to manage, re-usable chunks (modules) of code 
+            that was modular as possible without sacrificing code quality, development time or developer sanity.</p>
+
+        <p>Our Appliation and Module system's has been designed, architected and implemented from the ground up to be as modular as possible while still being easy and friendly to use, to accomplish all of this we needed all of the functionality, testing, resources and dependencies (etc) to be inside each module.</p><br>
+
+        <p>What this mean's is the more you install modules, more and more functionality will be added to your application, as each module defines and loads all of its dependencies using NPM there is no reason to clutter your applications main package.json file with every dependency.</p>
+
+        <h3>Application Structure</h3>
 
 {% highlight bash %}
-bootstrap/
-├── css/
-│   ├── bootstrap.css
-│   ├── bootstrap.min.css
-│   ├── bootstrap-theme.css
-│   └── bootstrap-theme.min.css
-├── js/
-│   ├── bootstrap.js
-│   └── bootstrap.min.js
-└── fonts/
-    ├── glyphicons-halflings-regular.eot
-    ├── glyphicons-halflings-regular.svg
-    ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff
+project_folder/
+├── config/
+├── lib/
+├── modules/
+├── tests/
+│   ├── integration
+│   └── unit
+├── app.js
+├── Gruntfile.js
+├── index.js
+└── package.json
 {% endhighlight %}
 
+        <h3>Important files and folders</h3>
+
+            <h4>config/</h4>
+            <ul>
+                <li>global.json: This allows you to define the Global (default) application settings for all environments.</li>
+                <li>local.json: This allows you to define the Applications config for the "local" environment. (presuming your NODE_ENV=local, or you have not set it.)</li>
+                <li>$NODE_ENV.json: This allows you to define whatever environment names make sense for your application, which will be merged with the global.json from the application's /config/ directory, the default.json (and/or global.json) from each module and $NODE_ENV.json from each module's config folder.</li>
+            </ul>
+
+            <h4>lib/</h4>
+            <ul>
+                <li>This folder contains the core of the Cleverstack Node Seed.</li>
+                <li>You can place global Classes, Controllers, Utils (etc) in the lib/$resource_name folder and it will be available via require('classes').$resource_name.</li>
+            </ul>
+
+            <h4>modules/</h4>
+            <ul>
+                <li>This is where all of the Cleverstack modules will be installed into your application.</li>
+                <li>You can also add custom modules inside this folder, or even NPM modules ~ it really is that modular.</li>
+            </ul>
+
+            <h4>app.js</h4>
+            <ul>
+                <li>The main entry point of a clustered Application.</li>
+                <li>If the background-tasks module is installed and enabled, this will setup the background task process.</li>
+            </ul>
+
+            <h4>Gruntfile.js</h4>
+            <ul>
+                <li>Defines the Applications global (main) gruntConfig.</li>
+                <li>Registers the Applications included Grunt tasks.</li>
+            </ul>
+
+            <h4>index.js</h4>
+            <ul>
+                <li>Use this script to spawn a single processed Application, useful for debugging with node-inspector. (Note: You will need to manually set your NODE_PATH for this script to work.)</li>
+            </ul>
+
+            <h4>package.json</h4>
+            <ul>
+                <li>Defines the Application and it's NPM dependencies.</li>
+                <li>Defines the modules that are enabled, using the bundledDependencies[] array. (This also let's NPM know that these dependencies are local and not on the NPM Registry)</li>
+            </ul>
   </div>
 
   <!-- Modules
@@ -128,6 +171,74 @@ bootstrap/
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     {% highlight bash %}$ clever install module login{% endhighlight %}
+
+    <h3 id="modules-backend-directory-structure">Backend Module Directory Structure</h3>
+{% highlight bash %}
+example-module/
+├── bin/
+├── classes/
+│   └── ExampleClass.json
+├── config/
+│   └── default.json (or global.json)
+├── controllers/
+│   └── ExampleController.js
+├── exceptions/
+│   └── ExampleException.js
+├── models/
+│   └── orm/
+│   │   └── ExampleModel.js
+│   └── odm/
+│       └── ExampleModel.js
+├── schema/
+│   └── seedData.json
+├── services/
+│   └── ExampleService.js
+├── tasks/
+│   └── ExampleTask.js
+├── tests/
+│   └── integration/
+│   │   └── test.api.example.js
+│   └── unit/
+│       └── test.controllers.ExampleController.js
+├── utils/
+│   └── ExampleUtil.js
+├── Gruntfile.js
+├── module.js
+└── package.json
+{% endhighlight %}
+
+        <h3>Module's important files and folders</h3><br>
+            <h4>config/</h4>
+            <ul>
+                <li>global.json: This allows you to define the Global (default) modules settings for all environments which will be merged in with the config files from your applications /config/ directory.</li>
+                <li>$NODE_ENV.json: This allows you to specify environmentally named json config files inside each module, as well as in the root applications /config/ folder for ultimate flexibility. These environment based configs will be merged in the same way as the main applications environment configuration files.</li>
+            </ul>
+
+            <h4>tests/</h4>
+            <ul>
+                <li>Two folders for testing, integration/ and unit/</li>
+                <li>This allows each module to define it's own tests for the functionality (code) that is provided within each module.</li>
+            </ul>
+
+            <h4>package.json</h4>
+            <ul>
+                <li>Defines the modules NPM dependencies.</li>
+                <li>Modules can actually be an NPM Module.</li>
+            </ul>
+
+            <h4>Gruntfile.js</h4>
+            <ul>
+                <li>Allow you to deepmerge the modules gruntConfig with the applications gruntConfig.</li>
+                <li>Allow you to register tasks, load grunt tasks and anything else you want. </li>
+            </ul>
+
+            <h4>module.js</h4>
+            <ul>
+                <li>Note: This presumes you have { "main": "module.js" } in your modules package.json, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
+                <li>Exports ModuleClass instance which is imported by the moduleLoader.</li>
+                <li>Has lifecycle hooks for every situation, like loading, routing, shutdown etc.</li>
+            </ul>
+        <br><br>
 
   </div>
 
