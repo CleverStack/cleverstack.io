@@ -3,6 +3,19 @@
 
 !function ($) {
 
+  //bootstrap scrolling fix
+  //https://github.com/twbs/bootstrap/issues/3316
+  $(function () {
+
+    var offset = 80;
+    $('.bs-sidenav li a').click(function(event) {
+        event.preventDefault();
+        $($(this).attr('href'))[0].scrollIntoView();
+        scrollBy(0, -offset);
+    });
+
+  });
+
   // Code snippet for showing technologies for seeds
   $(function () {
 

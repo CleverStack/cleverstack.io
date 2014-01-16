@@ -342,6 +342,18 @@
   background: #313131 url(/assets/img/bgs/bg-grey-squares.png) repeat;
   color: #FFF;
 }
+.bs-docs-section h1,
+.bs-docs-section .h1,
+.bs-docs-section h2,
+.bs-docs-section .h2,
+.bs-docs-section h3 .h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.bs-docs-section h3,
+.bs-docs-section .h3 {
+  margin-top: 35px;
+}
 /* Github-Ribbon
 -------------------------------------------------- */
 .github-ribbon {
