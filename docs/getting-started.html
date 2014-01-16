@@ -59,11 +59,11 @@ lead: "An overview of CleverStack, how to install, configure, use and extend."
     <h3 id="frontend-structure">Application Structure</h3>
 
 {% highlight bash %}
-angular/
+front-end/
 ├── app/              # angular app source files
 │   └── modules/      # cleverstack app front-end modules
 ├── scripts/          # app scripts and binaries
-├── test/             # app tests
+├── tests/            # app tests
 ├── Gruntfile.js      # app grunt tasks
 ├── bower.json        # app js dependencies
 └── package.json      # app npm dependencies
@@ -124,13 +124,13 @@ angular/
           <li>Databases supported: mySQL, Portgres or MongoDB</li>
           <li>Modules for ORM and ODM (SQL & noSQL)</li>
           <li>NodeJS Background Tasks Module</li>
-          <li>Unit & Integration Testing with Mocha</li>
+          <li>Unit & E2E Testing with Mocha</li>
         </ul>
 
         <h3 id="backend-structure">Application Structure</h3>
 
 {% highlight bash %}
-node/
+back-end/
 ├── config/           # node app configs
 ├── lib/              # node app source files
 ├── modules/          # cleverstack app back-end modules
@@ -204,21 +204,21 @@ node/
 
     <p>Searching for modules you would run:</p>
 {% highlight bash %}
-$ clever search modules 'login'     # search for modules containing 'login'
-$ clever list modules             # list all available modules
+$ clever search 'login'     # search for modules containing 'login'
+$ clever list               # list all available modules
 {% endhighlight %}
 
     <h3 id="modules-adding">Adding modules</h3>
     <p>Adding modules from your CleverStack project can be done using the CLI.</p>
 
     <p>To add a module you would run:</p>
-    {% highlight bash %}$ clever install module login{% endhighlight %}
+    {% highlight bash %}$ clever install login{% endhighlight %}
 
     <h3 id="modules-removing">Removing modules</h3>
     <p>Rremoving modules from your CleverStack project can be done using the CLI.</p>
 
     <p>To remove a module you would run:</p>
-    {% highlight bash %}$ clever remove module login{% endhighlight %}
+    {% highlight bash %}$ clever remove login{% endhighlight %}
 
     <h3 id="modules-frontend-structure">Front-end Module Directory Structure</h3>
     <p>This is a typical front-end (angular) module structure.</p>
@@ -294,31 +294,19 @@ example-module/
 example-module/
 ├── bin/                              # module scripts & binaries
 ├── classes/                          # module classes
-│   └── ExampleClass.json
 ├── config/                           # module specific configs and setting overides
-│   └── default.json (or global.json)
 ├── controllers/                      # module controllers
-│   └── ExampleController.js
 ├── exceptions/                       # custom exception handlers
-│   └── ExampleException.js
 ├── models/
 │   └── orm/                          # your mySQL table relationships & data models
-│   │   └── ExampleModel.js
 │   └── odm/                          # your MongoDB table relationships & data models
-│       └── ExampleModel.js
 ├── schema/                           # seed data is used to populate your database tables
-│   └── seedData.json
 ├── services/                         # module services
-│   └── ExampleService.js
 ├── tasks/                            # module background tasks
-│   └── ExampleTask.js
 ├── tests/
-│   └── integration/                  # module end to end tests
-│   │   └── test.api.example.js
+│   └── e2e/                          # module end to end tests
 │   └── unit/                         # module unit tests
-│       └── test.controllers.ExampleController.js
 ├── utils/                            # module utils
-│   └── ExampleUtil.js
 ├── Gruntfile.js                      # module grunt tasks
 ├── module.js                         # main module class
 └── package.json                      # module npm dependencies
@@ -333,7 +321,7 @@ example-module/
 
             <h4>tests/</h4>
             <ul>
-                <li>Two folders for testing, integration/ and unit/</li>
+                <li>Two folders for testing, e2e/ and unit/</li>
                 <li>This allows each module to define it's own tests for the functionality (code) that is provided within each module.</li>
             </ul>
 
@@ -361,7 +349,7 @@ example-module/
       <ol>
         <li>
           <p>Run the following command:</p>
-          {% highlight bash %}$ clever new module my-module{% endhighlight %}
+          {% highlight bash %}$ clever new my-module{% endhighlight %}
           <p>This will then install and setup a new skeleton module for you.</p>
       </ol>
 
@@ -377,18 +365,18 @@ example-module/
 
     <h3 id="testing-unit">Running Unit Tests</h3>
     <p>To run the unit tests for your app and modules, from the front-end/back-end root directory run:</p>
-    {% highlight bash %}$ clever test:unit{% endhighlight %}
+    {% highlight bash %}$ clever test unit{% endhighlight %}
     <p>Or simply use the alias:</p>
     {% highlight bash %}$ clever test{% endhighlight %}
 
     <h3 id="testing-e2e">Running E2E Tests</h3>
     <p>To run the end-to-end tests for your app and modules, from the front-end/back-end root directory run:</p>
-    {% highlight bash %}$ clever test:e2e{% endhighlight %}
+    {% highlight bash %}$ clever test e2e{% endhighlight %}
 
 
     <h3 id="testing-coverage">Code Coverage Reports</h3>
     <p>To generate a code coverage report for your unit tests, from the front-end directory run:</p>
-    {% highlight bash %}$ clever test:coverage{% endhighlight %}
+    {% highlight bash %}$ clever test coverage{% endhighlight %}
     <p>Your browser should open the following URL:</p>
     {% highlight bash %}$ http://localhost:5555{% endhighlight %}
     <p>Then select your report from the list.</p>
