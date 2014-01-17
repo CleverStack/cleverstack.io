@@ -22,7 +22,7 @@
 
     /*background-color: #1F1F1F;*/
     position: fixed;
-    top: 0;
+    top: 50px;
     right: 0;
     z-index: 9999;
     display: block;
@@ -31,7 +31,7 @@
 
     .user-select(none);
     /*.rotate(45deg);*/
-    /*.transition(all, 2s, ease-out);*/
+    .transition(all, 2s, ease-out);
 
 /*    -moz-box-shadow: 0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;
     -webkit-box-shadow: 0 0 0 1px #1d212e inset,0 0 2px 1px #fff inset,0 0 1em #888;
@@ -59,6 +59,12 @@
     }
 }
 
+/*@media (max-width: 1400px) {
+  .github-ribbon {
+     .rotate(-45deg);
+  }
+}
+*/
 @media (max-width: 480px) {
   .github-ribbon {
     display: none;
