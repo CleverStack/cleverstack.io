@@ -7783,6 +7783,7 @@ h = {
 window.List = List;
 window.ListJsHelpers = h;
 })(window);
+
 /*global $, List */
 'use strict';
 List.prototype.plugins.paging = function(locals, options) {
@@ -7929,7 +7930,7 @@ List.prototype.plugins.paging = function(locals, options) {
               'stars',
               'keywords'
           ],
-          page: 8,
+          page: 10,
           indexAsync: true,
           plugins: [[
               'paging', {
@@ -7977,6 +7978,28 @@ List.prototype.plugins.paging = function(locals, options) {
 
           $('.table thead').toggle(list.matchingItems.length !== 0);
           $('#search-notfound').toggle(list.matchingItems.length === 0);
+      });
+
+      // dynamic checkbox filters with listjs
+      $('.checkbox input').on('change', function(e) {
+        var cbs = [];
+        $('.checkbox input').each(function(i) {
+          cbs.push({name:this.name,checked:this.checked});
+        });
+        console.dir(cbs);
+
+        list.filter(function(item) {
+          var show = false;
+          $(cbs).each(function(i, v) {
+            if ((!(item.values().keywords.indexOf(v.name) == -1)) && v.checked) {
+              show = true;
+            }
+
+          });
+          return show;
+        });
+        list.update();
+        $('.search').attr('placeholder','Search in '+list.matchingItems.length+' modules...');
       });
 
     }

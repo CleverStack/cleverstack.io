@@ -20,7 +20,19 @@ slug: modules
     <script type="text/template" id="modules-template">
         <table class="table span12">
             <caption class="text-left">
-                <input style="display:none" class="search form-control input-medium search-query" type="search" placeholder="Search in <%= modules.length %> modules..." autofocus>
+                <form class="form-inline" role="form">
+                    <input style="display:none" class="search form-control input-medium search-query" type="search" placeholder="Search in <%= modules.length %> modules..." autofocus>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" checked="checked" name="frontend"> Front-end
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" checked="checked" name="backend"> Back-end
+                        </label>
+                    </div>
+                </div>
             </caption>
             <thead>
                 <tr>
@@ -35,7 +47,7 @@ slug: modules
             </thead>
             <tbody class="list">
                 <% _.each(modules, function (el) { %>
-                    <tr>
+                    <tr data-keywords="<%- el.keywords %>">
                         <td class="name"><a title="<%- el.description %>" href="<%- el.website %>" target="_blank"><%- el.name %></a></td>
                         <td class="description" title="<%- el.description %>"><p><%- el.description %></p></td>
                         <td class="owner"><%- el.owner %></td>
