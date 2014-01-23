@@ -30,7 +30,7 @@
               'stars',
               'keywords'
           ],
-          page: 5,
+          page: 8,
           indexAsync: true,
           plugins: [[
               'paging', {

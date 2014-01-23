@@ -7929,7 +7929,7 @@ List.prototype.plugins.paging = function(locals, options) {
               'stars',
               'keywords'
           ],
-          page: 5,
+          page: 8,
           indexAsync: true,
           plugins: [[
               'paging', {
