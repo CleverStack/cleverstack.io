@@ -4,8 +4,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="{{ site.baseurl }}dist/js/bootstrap.min.js"></script>
 
-<script src="{{ site.baseurl }}assets/js/holder.js"></script>
+<!-- <script src="{{ site.baseurl }}assets/js/holder.js"></script> -->
+<!-- <script src="{{ site.baseurl }}dist/js/application.min.js"></script> -->
 <script src="{{ site.baseurl }}assets/js/application.js"></script>
+
+{% if page.slug == "modules" %}
+<!-- <script src="{{ site.baseurl }}dist/js/modules.min.js"></script> -->
+<script src="{{ site.baseurl }}dist/js/modules.js"></script>
+{% endif %}
 
 {% if page.slug == "customize" %}
 <script src="{{ site.baseurl }}assets/js/raw-files.js"></script>

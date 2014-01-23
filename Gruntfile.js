@@ -62,7 +62,7 @@ module.exports = function (grunt) {
         src: ['js/tests/unit/*.js']
       },
       assets: {
-        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
+        src: ['docs/assets/js/modules.js', 'docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       }
     },
 
@@ -98,6 +98,16 @@ module.exports = function (grunt) {
           'js/affix.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
+      },
+      modules: {
+        src: [
+          'docs/assets/js/vendor/jquery.timeago.js',
+          'docs/assets/js/vendor/lodash.js',
+          'docs/assets/js/vendor/list.js',
+          'docs/assets/js/vendor/list.paging.js',
+          'docs/assets/js/modules.js'
+        ],
+        dest: 'docs/dist/js/modules.js'
       }
     },
 
@@ -128,6 +138,13 @@ module.exports = function (grunt) {
           'docs/assets/js/customizer.js'
         ],
         dest: 'docs/assets/js/customize.js'
+      },
+      modules: {
+        options: {
+          report: 'min'
+        },
+        src: ['<%= concat.modules.dest %>'],
+        dest: 'docs/dist/js/modules.min.js'
       }
     },
 
@@ -156,6 +173,18 @@ module.exports = function (grunt) {
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
         }
       },
+      compileApp: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'application.css.map',
+          sourceMapFilename: 'dist/css/application.css.map'
+        },
+        files: {
+          'docs/dist/css/application.css': 'less/cleverstack-less/cleverstack.less'
+        }
+      },
       minify: {
         options: {
           cleancss: true,
@@ -163,7 +192,8 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
+          'dist/css/application.min.css': 'docs/dist/css/application.css'
         }
       }
     },
@@ -263,6 +293,10 @@ module.exports = function (grunt) {
       less: {
         files: 'less/**/*.less',
         tasks: ['less','copy:docs']
+      },
+      modules: {
+        files: 'docs/assets/js/modules.js',
+        tasks: ['concat:modules','uglify:modules']
       }
     },
 
