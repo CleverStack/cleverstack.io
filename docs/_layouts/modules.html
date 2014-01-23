@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include header.html %}
+  </head>
+  <body class="bs-docs-home">
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <div class="github-ribbon">
+       <a href="https://github.com/cleverstack/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <!-- Docs master nav -->
+    {% include nav-main.html %}
+
+    <!-- Page content of course! -->
+    {{ content }}
+
+    <footer class="container text-center fixed" role="contentinfo">
+      <p>Cleverstack.io is developed by <a href="http://clevertech.biz">Clevertech</a>. 2014 Cleverstack.io All Rights Reserved.</p>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    {% include footer.html %}
+
+  </body>
+</html>

@@ -1,0 +1,66 @@
+---
+layout: modules
+title: CleverStack Modules
+slug: modules
+---
+
+<div id="module-page-wrapper" class="container">
+
+
+    <h1>CleverStack Modules</h1>
+    <p>Search below for modules which can be installed to use with CleverStack.</p>
+
+    <section class="main">
+        <div id="loading">
+            <p>Loading modules...</p>
+        </div>
+        <div id="modules" class="row modules"></div>
+    </section>
+
+    <script type="text/template" id="modules-template">
+        <table class="table span12">
+            <caption class="text-left">
+                <input style="display:none" class="search form-control input-medium search-query" type="search" placeholder="Search in <%= modules.length %> modules..." autofocus>
+            </caption>
+            <thead>
+                <tr>
+                    <th class="sort" data-sort="name">Name</th>
+                    <th class="sort" data-sort="description">Description</th>
+                    <th class="sort" data-sort="owner">Owner</th>
+                    <th class="sort desc" data-sort="created">Created</th>
+                    <th class="sort desc" data-sort="updated">Updated</th>
+                    <th class="sort desc" data-sort="forks">Forks</th>
+                    <th class="sort desc" data-sort="stars">Stars</th>
+                </tr>
+            </thead>
+            <tbody class="list">
+                <% _.each(modules, function (el) { %>
+                    <tr>
+                        <td class="name"><a title="<%- el.description %>" href="<%- el.website %>" target="_blank"><%- el.name %></a></td>
+                        <td class="description" title="<%- el.description %>"><p><%- el.description %></p></td>
+                        <td class="owner"><%- el.owner %></td>
+                        <td class="created"><time datetime="<%- el.created %>"><%- el.created %></time></td>
+                        <td class="updated"><time datetime="<%- el.updated %>"><%- el.updated %></time></td>
+                        <td class="forks"><%- el.forks %></td>
+                        <td class="stars"><%- el.stars %></td>
+                        <td class="keywords hidden"><%- _.isArray(el.keywords) ? el.keywords.join(' ') : '' %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <div class="clearfix"></div>
+
+          <ul class="pagination paging">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">»</a></li>
+          </ul>
+
+        <div class="message hide row" id="search-notfound">No matching modules found.</div>
+    </script>​
+
+</div>

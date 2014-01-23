@@ -1,0 +1,22 @@
+[
+    {
+        "name": "clever-background-tasks",
+        "description": "NodeJS Background Tasks Module for CleverStack.",
+        "website": "https: //github.com/CleverStack/clever-background-tasks",
+        "owner": "Clevertech",
+        "forks": "5",
+        "stars": "3",
+        "created": "2014-01-11T10:04:03Z",
+        "updated": "2014-01-09T13:52:43Z"
+    },
+    {
+        "name": "clever-orm",
+        "description": "Clevertech ORM (SQL) Module for CleverStack.",
+        "website": "https://github.com/CleverStack/clever-orm",
+        "owner": "Clevertech",
+        "forks": "4",
+        "stars": "1",
+        "created": "2014-01-15T10:04:03Z",
+        "updated": "2014-01-09T13:52:43Z"
+    }
+]
