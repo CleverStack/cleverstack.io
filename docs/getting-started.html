@@ -370,15 +370,34 @@ example-module/
     {% highlight bash %}$ clever test{% endhighlight %}
 
     <h3 id="testing-e2e">Running E2E Tests</h3>
-    <p>To setup your environment for e2e testing with Protractor run the following command. This will install Selenium Server (WebDriver), ChromeDriver & PhantomJS based on your OS.</p>
+    <p>To setup your environment for e2e testing with Protractor run the following command. This will install Selenium Server (WebDriver), ChromeDriver & PhantomJS based on your OS. If you wish to run selenium server in a seperate terminal then use Webdriver Manager (see below).</p>
 {% highlight bash %}
 $ cd frontend
 $ npm run-script setup-protractor
 {% endhighlight %}
 
+    <h2>Using Webdriver Manager</h2>
+    <p>Webdriver Manager comes shipped with protractor and installs selenium server & chrome driver for you. Selenium server can then run in a seperate terminal so when you run your e2e tests it doesn't need to boot up (saving heaps of time when running your e2e tests!). To set this up do the following:</p>
+{% highlight bash %}
+npm install -g protractor
+webdriver-manager update
+webdriver-manager start
+{% endhighlight %}
+
+    <p>Your selenium server should be running in this terminal.</p>
+    <p>Finally update your e2e test config file located: my-app/frontend/test-e2e.conf.js</p>
+{% highlight bash %}
+// uncomment this line:
+seleniumAddress: 'http://localhost:4444/wd/hub',
+
+// comment these lines:
+seleniumServerJar: ''
+seleniumPort: ''
+chromeDriver: ''
+{% endhighlight %}
+
     <p>To run the end-to-end tests for your app and modules, from the front-end/back-end root directory run:</p>
     {% highlight bash %}$ clever test e2e{% endhighlight %}
-
 
     <h3 id="testing-coverage">Code Coverage Reports</h3>
     <p>To generate a code coverage report for your unit tests, from the front-end directory run:</p>
