@@ -1,0 +1,238 @@
+@import "partials/_mixins";
+
+html {
+  //font-size: 16px;
+  //line-height: 1.5625em;
+}
+
+// set-up the body font-size / line-height
+body {
+  margin-top: 0px + @doc-line-height;
+  font-size: 0px + @doc-font-size;
+  font-family: 'nerislight', Arial, sans-serif;
+
+  padding: 0;
+  margin: 0;
+}
+
+
+.navbar-inverse {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.container .nav.navbar-nav{
+  margin-right: 15px
+}
+.navbar-collapse.nav-highlight{
+  background-color: #222222;
+  margin-top: 0;
+}
+
+#logo{
+  display: block;
+  float: left;
+  text-indent: -9999px;
+  //.at2x('/assets/img/icons/logosmall.png', 123px, 108px);
+  background-image: url('/assets/img/icons/logosmall.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  .background-size(contain);
+  width: 60px;
+  height: 68px;
+  padding: 0;
+  margin: 0;
+  @media screen and (min-width: 765px) {
+   background-image: url('/assets/img/icons/logosmall@2x.png');
+   width: 108px;
+   height: 123px;
+ }
+ @media screen and (min-width: 992px) {
+   background-image: url('/assets/img/icons/logobig.png');
+   width: 108px;
+   height: 123px;
+ }
+ @media
+ only screen and (-webkit-min-device-pixel-ratio: 2),
+ only screen and (-moz-min-device-pixel-ratio: 2),
+ only screen and (-o-min-device-pixel-ratio: 2/1),
+ only screen and (min-device-pixel-ratio: 2),
+ only screen and (min-resolution: 2dppx){
+  background: url('/assets/img/icons/logobig.png') no-repeat 0 0 !important;
+  background-size: 100% !important;
+  //width: 60px;
+  //height: 68px;
+}
+/*
+@media only screen and (min-device-width: 320px) and (max-device-width: 640px) {
+   border: 1px solid white;
+}
+  @media screen and (max-width: 360px) {
+
+  background-image: url('/assets/img/icons/logosmall.png');
+   height: 68px;
+  width: 60px;
+  //border: 1px solid white;
+  }
+@media screen and (min-width: 765px) {
+  background-image: url('/assets/img/icons/logo.png');
+   height: 123px;
+  width: 108px;
+}
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+   border: 3px solid red;
+}
+*/
+
+/*
+@media
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 1.5dppx) {
+   background-image: url('/assets/img/icons/logobig.png');
+   background-size: 108px 140px;
+   height: 140px;
+  width: 108px;
+   border: 1px solid blue;
+}
+*/
+
+
+}
+@media (min-width: 992px) {
+  .masthead, .cover-container {
+    //padding-top: 120px;
+  }
+}
+
+
+.inner.cover{
+  position: relative;
+  @media screen and (min-width: 765px) {
+   //padding-top: 110px;
+ }
+
+
+}
+
+.projectname{
+ font-family: 'nerissemibold', Arial, sans-serif;
+ text-indent: -99999px;
+ margin: 0 auto;
+ display: block;
+ //.at2x('/assets/img/icons/io@1x.png', 684px, 123px);
+ background-image: url('/assets/img/icons/iosmall.png');
+ background-repeat: no-repeat;
+ background-position: center top;
+
+ .background-size(contain);
+ width: 224px;
+ height: 41px;
+
+  //border: 1px solid green;
+
+
+  @media screen and (min-width: 765px) {
+    background-image: url('/assets/img/icons/io@1x.png');
+    width: 684px;
+    height: 123px;
+  }
+  @media screen and (min-width: 992px) {
+   background-image: url('/assets/img/icons/io@2x.png');
+   width: 684px;
+   height: 123px;
+ }
+
+   @media
+   only screen and (-webkit-min-device-pixel-ratio: 2),
+   only screen and (-moz-min-device-pixel-ratio: 2),
+   only screen and (-o-min-device-pixel-ratio: 2/1),
+   only screen and (min-device-pixel-ratio: 2),
+   only screen and (min-resolution: 2dppx){
+    background: url('/assets/img/icons/io@2x.png') no-repeat 0 0 !important;
+    background-size: 100% !important;
+    //width: 224px;
+    //height: 41px;
+  }
+
+/*
+ @media screen and (min-width: 765px){
+  background-image: url('/assets/img/icons/io@1x.png');
+  height: 123px;
+  width: 684px;
+  border: 1px solid red;
+}
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    background-image: url('/assets/img/icons/io@2x.png');
+    background-size: 684px 123px;
+    height: 123px;
+    width: 684px;
+  }
+  */
+}
+.masthead {
+  @media screen and (max-width: 360px) {
+    margin-bottom: 10px;
+  }
+}
+
+a {
+  color: #fff;
+  &:focus, &:hover {
+    color: #fff;
+  }
+}
+
+
+.big-btn{
+ line-height: 1.5em;
+ .bigbtn(3px, 1px,  2.5em, 1.3em, @orange, 10px);
+ @media screen and (max-width: 360px) {
+  margin-top: 15px;
+   // padding: 10px;
+ }
+
+ @media screen and (min-width: 765px) {
+  padding: 5px 30px 10px 30px;
+  &:first-of-type{
+    margin-right: 10px;
+  }
+}
+
+}
+
+
+.legal{
+  @media screen and (max-width: 360px) {
+    font-size: .813em;
+    line-height: 1.1em;
+  }
+}
+
+
+ul.cs-docs-social-buttons {
+  height: 36px;
+  margin: 0;
+  overflow: hidden;
+
+
+  li {
+    display: inline-block;
+    line-height: 1;
+    padding: 5px 0;
+  }
+}
+
+
+

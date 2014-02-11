@@ -1,0 +1,30 @@
+// retina.less
+// A helper mixin for applying high-resolution background images (http://www.retinajs.com)
+
+@highdpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+
+.width(@img) {
+  @width: ~`function(imguri){var img=new Image(); img.src = imguri; return img.width }(@{img})`;
+    width: @width;
+}
+.height(@img) {
+  @height: ~`function(imguri){var img=new Image(); img.src = imguri; return img.height }(@{img})`;
+    height: @height;
+}
+
+
+.at2x(@path, @w: auto, @h: auto) {
+	background-image: url(@path);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	display: block;
+	@at2x_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
+	//.width(@path);
+    //.height(@path);
+
+	@media @highdpi {
+		background-image: url("@{at2x_path}");
+		background-size: @w @h;
+	}
+}

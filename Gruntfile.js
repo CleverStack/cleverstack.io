@@ -73,6 +73,7 @@ module.exports = function (grunt) {
       src: [
         'dist/css/bootstrap.css',
         'dist/css/bootstrap-theme.css',
+        'dist/css/main_theme.css',
         'docs/assets/css/docs.css'
       ]
     },
@@ -108,6 +109,18 @@ module.exports = function (grunt) {
           'docs/assets/js/modules.js'
         ],
         dest: 'docs/dist/js/modules.js'
+      },
+      fitvids: {
+        src: [
+          'docs/assets/js/jquery.fitvids.js'
+        ],
+        dest: 'docs/dist/js/jquery.fitvids.js'
+      },
+      main: {
+        src: [
+          'docs/assets/js/main.js'
+        ],
+        dest: 'docs/dist/js/main.js'
       }
     },
 
@@ -173,6 +186,54 @@ module.exports = function (grunt) {
           'dist/css/<%= pkg.name %>-theme.css': 'less/theme.less'
         }
       },
+      compileMainTheme: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'main_theme.css.map',
+          sourceMapFilename: 'dist/css/main_theme.css.map'
+        },
+        files: {
+          'docs/dist/css/main_theme.css': 'less/cleverstack-less/main_theme.less'
+        }
+      },
+      compileMainScreen: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'main_screen.css.map',
+          sourceMapFilename: 'dist/css/main_screen.css.map'
+        },
+        files: {
+          'docs/dist/css/main_screen.css': 'less/cleverstack-less/main_screen.less'
+        }
+      },
+      compileMainBusiness: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'main_business.css.map',
+          sourceMapFilename: 'dist/css/main_business.css.map'
+        },
+        files: {
+          'docs/dist/css/main_business.css': 'less/cleverstack-less/main_business.less'
+        }
+      },
+      compileMainDeveloper: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'main_developer.css.map',
+          sourceMapFilename: 'dist/css/main_developer.css.map'
+        },
+        files: {
+          'docs/dist/css/main_developer.css': 'less/cleverstack-less/main_developer.less'
+        }
+      },
       compileApp: {
         options: {
           strictMath: true,
@@ -193,6 +254,10 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
           'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css',
+          'dist/css/main_theme.min.css': 'docs/dist/css/main_theme.css',
+          'dist/css/main_screen.min.css': 'docs/dist/css/main_screen.css',
+          'dist/css/main_business.min.css': 'docs/dist/css/main_business.css',
+          'dist/css/main_developer.min.css': 'docs/dist/css/main_developer.css',
           'dist/css/application.min.css': 'docs/dist/css/application.css'
         }
       }
