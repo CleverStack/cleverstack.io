@@ -298,7 +298,7 @@ html {
   text-align: center;
 }
 .who {
-  font-family: 'Sacramento', cursive;
+  font-family: 'Lato';
   font-size: 2em;
   color: #ff9833;
   margin: 15px auto 10px;
@@ -314,11 +314,12 @@ html {
     font-size: 3em;
     line-height: 1.5em;
     margin: 15px auto 10px;
+    word-spacing: 0.2em;
   }
 }
 @media screen and (min-width: 1200px) {
   .who {
-    font-size: 4.688em;
+    font-size: 3.5em;
     margin: 40px auto 50px;
   }
 }
