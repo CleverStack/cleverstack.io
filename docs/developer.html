@@ -10,7 +10,7 @@ title: A modular way to create your Angular &amp; Node web apps
       <div class="row">
         <header class="projectname">Cleverstack.io </header>
         <div class="description">A modular way to create your <b>Angular</b> &amp; <b>Node</b> web apps</div>
-        <a href="https://github.com/CleverStack/cleverstack-cli" class="big-btn">Fork it on GitHub</a>
+        <a href="https://github.com/CleverStack/cleverstack-cli" id="fork-github" class="big-btn">Fork it on GitHub</a>
       </div>
     </div>
 
@@ -20,7 +20,22 @@ title: A modular way to create your Angular &amp; Node web apps
       <div class="question who">An introduction to Cleverstack</div>
 
       <div class="video">
-        <iframe width="560" height="420" src="//www.youtube.com/embed/h2-kSRrHHGo" frameborder="0" allowfullscreen></iframe>
+        <div id="player"></div>
+<script>
+var player;  function onYouTubePlayerAPIReady() {  player = new YT.Player('player', {  height: '420',  width: '640',  videoId: 'h2-kSRrHHGo',  events: {  'onReady': onPlayerReady,  'onStateChange': onPlayerStateChange  }  });  }
+function onPlayerReady(event) {
+// event.target.playVideo();
+}
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING)  {
+    ga('send', 'event', 'Introduction Video', 'click', 'Play');
+  }
+
+  if (event.data == YT.PlayerState.ENDED)  {
+    ga('send', 'event', 'Introduction Video', 'click', 'Watch to End');
+  }
+}
+</script>
       </div>
 
     </div>
@@ -41,7 +56,7 @@ title: A modular way to create your Angular &amp; Node web apps
               <li><a href="http://bower.io/" class="icon4">bower</a></li>
               <li><a href="http://requirejs.org/" class="icon5">requires</a></li>
             </ul>
-            <a href="/getting-started" class="big-btn">Get Started</a>
+            <a href="/getting-started" data-name="Angular" class="get-started big-btn">Get Started</a>
 
           </div>
         </div>
@@ -72,7 +87,7 @@ title: A modular way to create your Angular &amp; Node web apps
                 <li><a href="http://angularjs.org/" class="icon7">Angular</a></li>
                 <li><a href="https://github.com/clevertech/clever-controller" class="icon8">Controller</a></li>
               </ul>
-              <a href="/getting-started" class="big-btn">Get Started</a>
+              <a href="/getting-started" data-name="Cleverstack" class="get-started big-btn">Get Started</a>
 
             </div>
           </div>
@@ -95,7 +110,7 @@ title: A modular way to create your Angular &amp; Node web apps
                 <li><a href="http://nodejs.org/" class="icon2">npm</a></li>
                 <li><a href="http://gruntjs.com/" class="icon3">grunt</a></li>
               </ul>
-              <a href="/getting-started" class="big-btn">Get Started</a>
+              <a href="/getting-started" data-name="Node" class="get-started big-btn">Get Started</a>
 
             </div>
           </div>
