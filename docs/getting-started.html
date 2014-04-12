@@ -226,20 +226,20 @@ $ clever list                # list all available modules
 {% highlight bash %}
 example-module/
 ├── scripts/                          # module angular scripts
-│   └── controllers/
-│   └── directives/
-│   └── services/
+│   ├── controllers/
+│   ├── directives/
+│   ├── services/
 │   └── resources/
 ├── styles/                           # module styles (optional)
 ├── img/                              # module images (optional)
 ├── fonts/                            # module fonts (optional)
 ├── views/                            # module ngTemplates
 ├── tests/                            # module tests
-│   └── unit/
+│   ├── unit/
 │   └── e2e/
 ├── main.js                           # module requirejs scripts
 ├── module.js                         # angular main module
-└── bower.json                        # module js dependencies
+├── bower.json                        # module js dependencies
 ├── Gruntfile.js                      # module grunt tasks
 └── package.json                      # module npm dependencies
 {% endhighlight %}
@@ -298,13 +298,13 @@ example-module/
 ├── controllers/                      # module controllers
 ├── exceptions/                       # custom exception handlers
 ├── models/
-│   └── orm/                          # your mySQL table relationships & data models
+│   ├── orm/                          # your mySQL table relationships & data models
 │   └── odm/                          # your MongoDB table relationships & data models
 ├── schema/                           # seed data is used to populate your database tables
 ├── services/                         # module services
 ├── tasks/                            # module background tasks
 ├── tests/
-│   └── e2e/                          # module end to end tests
+│   ├── e2e/                          # module end to end tests
 │   └── unit/                         # module unit tests
 ├── utils/                            # module utils
 ├── Gruntfile.js                      # module grunt tasks
