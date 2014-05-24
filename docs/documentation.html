@@ -2,7 +2,7 @@
 layout: default
 title: Documentation
 slug: documentation
-lead: "Indepth guide's to CleverStack covering installation, configuration, usage and extending."
+lead: "Indepth guides to CleverStack covering installation, configuration, usage and extending."
 ---
 
   <!-- Overview
@@ -11,9 +11,9 @@ lead: "Indepth guide's to CleverStack covering installation, configuration, usag
     <div class="page-header">
       <h1 id="overview">Overview</h1>
     </div>
-    <p class="lead">Developers all over the world for years have strived to be able to create smarter, smaller, easier to manage, re-usable chunks of code that are as modular as possible without sacrificing code quality, development time and/or developer sanity.</p>
+    <p class="lead">Developers all over the world for years have striven to be able to create smarter, smaller, easier to manage, re-usable chunks of code that are as modular as possible without sacrificing code quality, development time and/or developer sanity.</p>
 
-    <p>Our Appliation Core and Module system has been designed, architected and implemented from the ground up to be as modular as possible while still being easy and friendly to use. We believe that we have accomplished this with the lead of <a href="https://github.com/pilsy">Richard Gustin</a> and an experienced <a href="/about/#team">group of people</a>, We are able to define all of the functionality, testing, resources, dependencies (etc) inside of Module's, which makes CleverStack one of the most Modular Frameworks on the Planet.</p>
+    <p>Our Application Core and Module system has been designed, architected and implemented from the ground up to be as modular as possible while still being easy and friendly to use. We believe that we have accomplished this with the lead of <a href="https://github.com/pilsy">Richard Gustin</a> and an experienced <a href="/about/#team">group of people</a>, We are able to define all of the functionality, testing, resources, dependencies (etc) inside of Module's, which makes CleverStack one of the most Modular Frameworks on the Planet.</p>
 
     <p>What this mean's for you is, you are able to define smaller more specific modules that are reusable and easy to copy, update and modify between many projects. If your module is useful we would suggest submitting it to CleverStack through NPM or Bower (depending on which seed you are using) as this allows others to take advantage of your brilliant work and provides the Open Source Community to help grow your module in our EcoSystem into a widely used part of CleverStack for projects all over the world. (including your own)</p>
 
@@ -47,7 +47,7 @@ lead: "Indepth guide's to CleverStack covering installation, configuration, usag
 
       <h4 id="cli-prerequisites-bower">Bower</h4>
       <p>
-        <a href="http://bower.io/">Bower</a> is a package manager for the web made by Twitter. It offers a generic, unopinionated solution to the problem of front-end package management, while exposing the package dependency model via an API that can be consumed by a more opinionated build stack. There are no system wide dependencies, no dependencies are shared between different apps, and the dependency tree is flat.
+        <a href="http://bower.io/">Bower</a> is a package manager for the web made by Twitter. It offers a generic, unopinionated solution to the problem of front-end package management, while exposing the package dependency model via an API that can be consumed by a more opinionated build stack. There are no system wide dependencies, no dependencies are shared between different Applications, and the dependency tree is flat.
       </p>
   {% highlight bash %}# install bower using npm
   $ npm i -g bower {% endhighlight %}<br>
@@ -100,7 +100,7 @@ $ npm i -g grunt-cli {% endhighlight %}
 
     <div style="padding-left: 20px;">
       <h4 id="cli-modules-core">Core Modules</h4>
-      <p>We currently have a handful of important Offical CleverStack modules available which we try to list here as frequently as possible, however we reccommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list.</p><br>
+      <p>We currently have a handful of important Official CleverStack modules available which we try to list here as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list.</p><br>
       
       <div style="padding-left: 30px;">
         <h5 id="cli-modules-core-orm"><a href="https://github.com/CleverStack/clever-orm">Object Relational Mapper (ORM)</a></h5>
@@ -110,12 +110,12 @@ $ npm i -g grunt-cli {% endhighlight %}
         <p>This module deeply integrates <a href="http://mongoosejs.com/">MongooseJS</a> into CleverStack, to provide an out of the box Object Document Mapper, which is a primarily MongoDB based <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> solution to storing data.</p><br>
 
         <h5 id="cli-modules-core-background-tasks"><a href="https://github.com/CleverStack/clever-background-tasks">Background Tasks</a></h5>
-        <p>This module allows you to define tasks that will be run in the background a seperate dedicated process, by providing master-slave locking this module also allows you to never have to use CRON files ever again; Simply define your task as masterOnly and it will only run on the Master server ensuring its execution does not overlap (even in an elastic cloud configuration with hundreds of servers).</p>
+        <p>This module allows you to define tasks that will be run in the background a separate dedicated process, by providing master-slave locking this module also allows you to never have to use CRON files ever again; Simply define your task as masterOnly and it will only run on the Master server ensuring its execution does not overlap (even in an elastic cloud configuration with hundreds of servers).</p>
 
         <p>While NodeJS is designed around being non blocking it is still very possible for any line of code to block any other code running until that line has finished executing, this means that processing CPU intensive operations cannot be done inside any of the Processes that are responding to HTTP Requests (otherwise the user will get no response, because its busy doing some CPU Intensive Operation).</p><br>
 
         <h5 id="cli-modules-core-auth"><a href="https://github.com/CleverStack/clever-auth">Authentication</a></h5>
-        <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, Linkedin, Twitter and Facebook social signup &amp; signin. (Both the frontend and backend have this module available for installation).</p><br>
+        <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, LinkedIn, Twitter and Facebook social signup &amp; signin. (Both the Frontend and Backend have this module available for installation).</p><br>
 
       </div>
 
@@ -215,7 +215,7 @@ $ bower search cleverstack-module
       <li>Modular NPM Coding Structure</li>
       <li>Grunt Server with Live Restart</li>
       <li>Databases supported: mySQL, Postgres or MongoDB</li>
-      <li>Offical Modules for ORM (clever-orm) and ODM (clever-odm) (SQL &amp; noSQL) out of the box</li>
+      <li>Official Modules for ORM (clever-orm) and ODM (clever-odm) (SQL &amp; noSQL) out of the box</li>
       <li>Clustering support out of the box that is highly configurable and customizable</li>
       <li>NodeJS Background Tasks Module which allows CPU intensive (blocking) operations to take place in separate processes thus allowing your HTTP Web Server Processes to continue serving HTTP Requests</li>
       <li>Unit &amp; E2E (Integration) Testing with Mocha</li>
@@ -345,7 +345,7 @@ var config = require( 'config' );
 example-module/
 ├── bin/                              # module scripts & binaries
 ├── classes/                          # module classes
-├── config/                           # module specific configs and setting overides
+├── config/                           # module specific configs and setting overrides
 ├── controllers/                      # module controllers
 ├── exceptions/                       # custom exception handlers
 ├── models/
@@ -498,7 +498,7 @@ module.exports = new Module( '<moduleName>', injector );
       <li>Modular NPM Based Coding Structure</li>
       <li>Unit Testing with Karma &amp; Code Coverage Reports</li>
       <li>E2E Testing with Angular Protractor and Grunt</li>
-      <li>Optimised Production Build Process</li>
+      <li>Optimized Production Build Process</li>
     </ul>
 
     <!-- Structure
@@ -694,14 +694,14 @@ example-module/
     {% highlight bash %}$ clever test{% endhighlight %}
 
     <h3 id="testing-e2e">Running E2E Tests</h3>
-    <p>To setup your environment for e2e testing with Protractor run the following command. This will install Selenium Server (WebDriver), ChromeDriver & PhantomJS based on your OS. If you wish to run selenium server in a seperate terminal then use Webdriver Manager (see below).</p>
+    <p>To setup your environment for e2e testing with Protractor run the following command. This will install Selenium Server (WebDriver), ChromeDriver & PhantomJS based on your OS. If you wish to run selenium server in a separate terminal then use Webdriver Manager (see below).</p>
 {% highlight bash %}
-$ cd frontend
+$ cd Frontend
 $ npm run-script setup-protractor
 {% endhighlight %}
 
     <h3>Using Webdriver Manager</h3>
-    <p>Webdriver Manager comes shipped with protractor and installs selenium server & chrome driver for you. Selenium server can then run in a seperate terminal so when you run your e2e tests it doesn't need to boot up (saving heaps of time when running your e2e tests!). To set this up do the following:</p>
+    <p>Webdriver Manager comes shipped with protractor and installs selenium server & chrome driver for you. Selenium server can then run in a separate terminal so when you run your e2e tests it doesn't need to boot up (saving heaps of time when running your e2e tests!). To set this up do the following:</p>
 {% highlight bash %}
 npm install -g protractor
 webdriver-manager update
@@ -709,7 +709,7 @@ webdriver-manager start
 {% endhighlight %}
 
     <p>Your selenium server should be running in this terminal.</p>
-    <p>Finally update your e2e test config file located: my-app/frontend/test-e2e.conf.js</p>
+    <p>Finally update your e2e test config file located: my-app/Frontend/test-e2e.conf.js</p>
 {% highlight bash %}
 // uncomment this line:
 seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -762,7 +762,7 @@ chromeDriver: ''
 
     <p class="lead">We will document any "gotchas" here along with any important open GitHub issues. Please <a href="https://github.com/CleverStack/cleverstack/issues">open an issue</a> if you see a bug.</p></p>
     <ul>
-      <li>EMFILE error on Mac: By default some macs have a ulimit of 256 which limits the number of opem files each process can have, when using "clever init my-app" you will need to raise your ulimit by running "ulimit -n 1024" in your console. You will need to run that in your console before running the init command unless you define that setting gloally in your mac.</li>
+      <li>EMFILE error on Mac: By default some macs have a ulimit of 256 which limits the number of open files each process can have, when using "clever init my-app" you will need to raise your ulimit by running "ulimit -n 1024" in your console. You will need to run that in your console before running the init command unless you define that setting globally in your mac.</li>
     </ul>
   </div>
 
