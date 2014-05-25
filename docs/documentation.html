@@ -11,14 +11,11 @@ lead: "Indepth guides to CleverStack covering installation, configuration, usage
     <div class="page-header">
       <h1 id="overview">Overview</h1>
     </div>
-    <p class="lead">Developers all over the world for years have striven to be able to create smarter, smaller, easier to manage, re-usable chunks of code that are as modular as possible without sacrificing code quality, development time and/or developer sanity.</p>
+    <p class="lead">Developers all over the world for years have been striving to be able to create smarter, smaller, easier to manage, faster to develop, re-usable chunks of code that are as modular as possible without sacrificing code quality or developer sanity.</p>
 
-    <p>Our Application Core and Module system has been designed, architected and implemented from the ground up to be as modular as possible while still being easy and friendly to use. We believe that we have accomplished this with the lead of <a href="https://github.com/pilsy">Richard Gustin</a> and an experienced <a href="/about/#team">group of people</a>, We are able to define all of the functionality, testing, resources, dependencies (etc) inside of Module's, which makes CleverStack one of the most Modular Frameworks on the Planet.</p>
+    <p>CleverStack set out to accomplish this and create the worlds first Modular Full Stack JS Framework, with the Architecture designed by <a href="https://github.com/pilsy">Richard Gustin</a> and his role as Lead working with a <a href="/about/#team">group of highly skilled developers</a> we believe that we accomplished this task.</p>
 
-    <p>What this mean's for you is, you are able to define smaller more specific modules that are reusable and easy to copy, update and modify between many projects. If your module is useful we would suggest submitting it to CleverStack through NPM or Bower (depending on which seed you are using) as this allows others to take advantage of your brilliant work and provides the Open Source Community to help grow your module in our EcoSystem into a widely used part of CleverStack for projects all over the world. (including your own)</p>
-
-    <p>The Outcome of all this modularity is the more you install modules, more functionality will be added to your application rapidly, and as each module defines and loads it's own dependencies using NPM there is no reason to clutter your applications main package.json file with the dependencies that each of your modules require.</p>
-
+    <p>What this mean's for you is, you are able to create smaller, more specific modules that are extremely powerful, completely self contained and can be used between many projects. If you believe your module is useful you can publish your module to the CleverStack EcoSystem through NPM (Backend) or Bower (Frontend).</p>
   </div>
 
   <!-- CLI
@@ -32,12 +29,12 @@ lead: "Indepth guides to CleverStack covering installation, configuration, usage
     <!-- Overview
     ================================================== -->
     <h3 id="cli-overview">Overview</h3>
-    <p>Our Command Line Interface was designed around our Modular system to create an Open Source EcoSystem, so that applications could take advantage of modules are that are created both by our Core team and the Open Source Community.</p>
+    <p>Our Command Line Interface was designed using our Modular Architecture, so that applications could take advantage of modules are that are created by our Core team, and for modules created and published to our Open Source EcoSystem by anyone in the Open Source Community.</p>
 
     <!-- Prerequisites
     ================================================== -->
     <h3 id="cli-prerequisites">Prerequisites</h3>
-    <p>The CLI has a few packages it depends on that cannot be defined inside of it's package.json, you have to install these before attempting to install the CLI.</p><br>
+    <p>The CLI has a few packages it depends on that cannot be defined inside of it's package.json, you have to install these before you can install or use the Command Line Interface.</p><br>
 
     <div style="padding-left: 20px;">
       <h4 id="cli-prerequisites-node">Node and it's package manager, NPM.</h4>
@@ -49,8 +46,10 @@ lead: "Indepth guides to CleverStack covering installation, configuration, usage
       <p>
         <a href="http://bower.io/">Bower</a> is a package manager for the web made by Twitter. It offers a generic, unopinionated solution to the problem of front-end package management, while exposing the package dependency model via an API that can be consumed by a more opinionated build stack. There are no system wide dependencies, no dependencies are shared between different Applications, and the dependency tree is flat.
       </p>
-  {% highlight bash %}# install bower using npm
-  $ npm i -g bower {% endhighlight %}<br>
+{% highlight bash %}
+# install bower using npm
+$ npm i -g bower
+{% endhighlight %}<br>
 
       <h4 id="cli-prerequisites-grunt">Grunt</h4>
       <p>
@@ -63,7 +62,7 @@ $ npm i -g grunt-cli {% endhighlight %}
     <!-- Installation
     ================================================== -->
     <h3 id="cli-installation">Installation</h3>
-    <p>Setup is made easy using NPM, to install the CleverStack Command Line Interface (CLI).</p>
+    <p>Install the CleverStack Command Line Interface (CLI).</p>
     {% highlight bash %}$ npm install -g cleverstack-cli{% endhighlight %}
 
     <p><strong>Important:</strong> Linux or Mac users may need to run this command using "sudo"</p>
@@ -96,26 +95,30 @@ $ npm i -g grunt-cli {% endhighlight %}
     <!-- Modules
     ================================================== -->
     <h3 id="cli-modules">Modules</h3>
-    <p>All functionality in your application is defined in small chunks of code called modules, because we take advantage of NPM &amp; Bower for our package management it mean's that you can already use the thousands of packages already available as Modules for your CleverStack powered Applications.</p><br>
+    <p>All functionality except what is in the CleverStack Core must be defined inside of modules, because we take advantage of NPM &amp; Bower for our package management it mean's that you can use the thousands of already available packages as Modules for your CleverStack powered Applications.</p><br>
 
     <div style="padding-left: 20px;">
-      <h4 id="cli-modules-core">Core Modules</h4>
-      <p>We currently have a handful of important Official CleverStack modules available which we try to list here as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list.</p><br>
+      <h4 id="cli-modules-official">Official Modules</h4>
+      <p>We currently have a handful of important Official CleverStack modules available which we list here and update as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list of modules.</p><br>
       
       <div style="padding-left: 30px;">
-        <h5 id="cli-modules-core-orm"><a href="https://github.com/CleverStack/clever-orm">Object Relational Mapper (ORM)</a></h5>
-        <p>This module deeply integrates <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> into CleverStack, to provide an out of the box <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapper</a> which is widely accepted, widely used, full featured and mature SQL Solution for CleverStack.</p><br>
+        <h5 id="cli-modules-official-orm"><a href="https://github.com/CleverStack/clever-orm">Object Relational Mapper (ORM)</a></h5>
+        <p>This module deeply integrates <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> into CleverStack, to provide an out of the box <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapper</a> which is widely accepted, widely used, full featured and mature SQL Solution for CleverStack.</p>
+        {% highlight javascript %}$ clever install clever-orm{% endhighlight %}<br>
 
-        <h5 id="cli-modules-core-odm"><a href="https://github.com/CleverStack/clever-odm">Object Document Mapper (ODM)</a></h5>
-        <p>This module deeply integrates <a href="http://mongoosejs.com/">MongooseJS</a> into CleverStack, to provide an out of the box Object Document Mapper, which is a primarily MongoDB based <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> solution to storing data.</p><br>
+        <h5 id="cli-modules-official-odm"><a href="https://github.com/CleverStack/clever-odm">Object Document Mapper (ODM)</a></h5>
+        <p>This module deeply integrates <a href="http://mongoosejs.com/">MongooseJS</a> into CleverStack, to provide an out of the box Object Document Mapper, which is a primarily MongoDB based <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> solution to storing data.</p>
+        {% highlight javascript %}$ clever install clever-odm{% endhighlight %}<br>
 
-        <h5 id="cli-modules-core-background-tasks"><a href="https://github.com/CleverStack/clever-background-tasks">Background Tasks</a></h5>
+        <h5 id="cli-modules-official-background-tasks"><a href="https://github.com/CleverStack/clever-background-tasks">Background Tasks</a></h5>
         <p>This module allows you to define tasks that will be run in the background a separate dedicated process, by providing master-slave locking this module also allows you to never have to use CRON files ever again; Simply define your task as masterOnly and it will only run on the Master server ensuring its execution does not overlap (even in an elastic cloud configuration with hundreds of servers).</p>
 
-        <p>While NodeJS is designed around being non blocking it is still very possible for any line of code to block any other code running until that line has finished executing, this means that processing CPU intensive operations cannot be done inside any of the Processes that are responding to HTTP Requests (otherwise the user will get no response, because its busy doing some CPU Intensive Operation).</p><br>
+        <p>While NodeJS is designed around being non blocking it is still very possible for any line of code to block any other code running until that line has finished executing, this means that processing CPU intensive operations cannot be done inside any of the Processes that are responding to HTTP Requests (otherwise the user will get no response, because its busy doing some CPU Intensive Operation).</p>
+        {% highlight javascript %}$ clever install clever-background-tasks{% endhighlight %}<br>
 
-        <h5 id="cli-modules-core-auth"><a href="https://github.com/CleverStack/clever-auth">Authentication</a></h5>
-        <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, LinkedIn, Twitter and Facebook social signup &amp; signin. (Both the Frontend and Backend have this module available for installation).</p><br>
+        <h5 id="cli-modules-official-auth"><a href="https://github.com/CleverStack/clever-auth">Authentication</a></h5>
+        <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, LinkedIn, Twitter and Facebook social signup &amp; signin. (Both the Frontend and Backend have this module available for installation).</p>
+        {% highlight javascript %}$ clever install clever-auth{% endhighlight %}<br>
 
       </div>
 
@@ -673,7 +676,7 @@ example-module/
 
     <!-- Contributing
     ================================================== -->
-    <h3 id="backend-contributing">Contributing</h3>
+    <h3 id="frontend-contributing">Contributing</h3>
     <p>Firstly please read our <a href="https://github.com/clevertech/cleverstack-angular-seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/clevertech/cleverstack-angular-seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
 
 
