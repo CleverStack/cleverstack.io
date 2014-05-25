@@ -342,6 +342,9 @@ var config = require( 'config' );
     <p>These are the most important part of your application, where all your functionality and testing is defined.</p><br>
 
     <div style="padding-left: 20px;">
+
+      <!-- Modules structure
+      ================================================== -->
       <h4 id="backend-modules-structure">Structure</h4>
         <p>This is a typical back-end (node) module structure.</p>
 {% highlight bash %}
@@ -419,6 +422,8 @@ module.exports = new Module( '<moduleName>', injector );
         </ul>
       </div><br>
 
+      <!-- Modules configuration
+      ================================================== -->
       <h4 id="backend-modules-configuration">Configuration</h4>
       <p>You can easily define the modules configuration with these files</p>
       <h5 id="backend-modules-config-default">config/default.json</h5>
@@ -442,7 +447,29 @@ module.exports = new Module( '<moduleName>', injector );
     "another": "as well"
   }
 }
-{% endhighlight %}
+{% endhighlight %}<br>
+
+      <!-- Modules configuration
+      ================================================== -->
+      <h4 id="backend-modules-magic">Magic Modules</h4>
+      <p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_ENV.</p>
+      {% highlight bash %}$ export NODE_ENV=./lib/:./modules/{% endhighlight %}
+
+      <p>This gives us the ability to load things, like this</p>
+      {% highlight javascript %}$ require( 'controllers' ).ExampleController {% endhighlight %}
+
+      <h5>Here is the complete list of Magic Modules</h5>
+      <ul>
+        <li>classes</li>
+        <li>config</li>
+        <li>controllers</li>
+        <li>exceptions</li>
+        <li>models</li>
+        <li>seedData</li>
+        <li>services</li>
+        <li>tasks</li>
+        <li>utils</li>
+      </ul>
 
       <!-- <h4>Creating Modules</h4>
       <p></p><br>
@@ -574,6 +601,9 @@ front-end/
     <p>These are the most important part of your application, where all your functionality and testing is defined.</p><br>
 
     <div style="padding-left: 20px;">
+
+      <!-- Modules structure
+      ================================================== -->
       <h4 id="frontend-modules-structure">Structure</h4>
             <p>This is a typical front-end (angular) module structure.</p>
 {% highlight bash %}
