@@ -98,6 +98,9 @@ $ npm i -g grunt-cli {% endhighlight %}
     <p>All functionality except what is in the CleverStack Core must be defined inside of modules, because we take advantage of NPM &amp; Bower for our package management it mean's that you can use the thousands of already available packages as Modules for your CleverStack powered Applications.</p><br>
 
     <div style="padding-left: 20px;">
+
+      <!-- Official Modules
+      ================================================== -->
       <h4 id="cli-modules-official">Official Modules</h4>
       <p>We currently have a handful of important Official CleverStack modules available which we list here and update as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list of modules.</p><br>
       
@@ -119,7 +122,19 @@ $ npm i -g grunt-cli {% endhighlight %}
         <h5 id="cli-modules-official-auth"><a href="https://github.com/CleverStack/clever-auth">Authentication</a></h5>
         <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, LinkedIn, Twitter and Facebook social signup &amp; signin. (Both the Frontend and Backend have this module available for installation).</p>
         {% highlight javascript %}$ clever install clever-auth{% endhighlight %}<br>
+      </div>
 
+      <!-- Core Modules
+      ================================================== -->
+      <h4 id="cli-modules-core">Core Modules</h4>
+      <p>This is a list of modules that are used in the Core of CleverStack, you do not need to install these (as they are by default). However these modules are designed to work with anything, so if you want to use these components in something other than CleverStack you have that option.</p><br>
+      
+      <div style="padding-left: 30px;">
+        <h5 id="cli-modules-core-controller"><a href="https://github.com/clevertech/clever-controller">Controller</a></h5>
+        <p>This module provides Lightning-fast flexible Controller's for CleverStack, the main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.</p><br>
+
+        <h5 id="cli-modules-core-di"><a href="https://github.com/CleverStack/clever-injector">Dependency Injector (DI)</a></h5>
+        <p>This module provides Dependency Injection for CleverStack, it is non blocking, Lightning-fast, easy to use and flexible.</p><br>
       </div>
 
       <!-- Using Modules
@@ -452,13 +467,13 @@ module.exports = new Module( '<moduleName>', injector );
       <!-- Modules configuration
       ================================================== -->
       <h4 id="backend-modules-magic">Magic Modules</h4>
-      <p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_ENV.</p>
-      {% highlight bash %}$ export NODE_ENV=./lib/:./modules/{% endhighlight %}
+      <p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_PATH.</p>
+      {% highlight bash %}$ export NODE_PATH=./lib/:./modules/{% endhighlight %}
 
-      <p>This gives us the ability to load things, like this</p>
+      <p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
       {% highlight javascript %}$ require( 'controllers' ).ExampleController {% endhighlight %}
 
-      <h5>Here is the complete list of Magic Modules</h5>
+      <h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
       <ul>
         <li>classes</li>
         <li>config</li>
@@ -484,6 +499,11 @@ module.exports = new Module( '<moduleName>', injector );
     <p>This is a guide to creating all the key components you will need in your modules.</p><br>
 
     <div style="padding-left: 20px;">
+
+      <!-- Dependency Injection
+      ================================================== -->
+      <h4 id="backend-usage-di">Dependency Injection</h4>
+      <p>Coming soon, we are working hard on this section.</p><br>
 
       <!-- Routing
       ================================================== -->
