@@ -263,7 +263,7 @@ back-end/
 
       <h5>/config</h5>
       <ul>
-          <li>This is where you to define all your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.
+          <li>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.
       </ul>
 
       <h5>/lib</h5>
@@ -504,7 +504,7 @@ module.exports = new Module( '<moduleName>', injector );
 module.exports = function( SomeDependency ) {
   // SomeDependency is loaded and injected into this function for you
 }
-{% endhighlight %}
+{% endhighlight %}<br>
 
       <!-- Routing
       ================================================== -->
@@ -513,11 +513,20 @@ module.exports = function( SomeDependency ) {
 {% highlight javascript %}
 // modules/backend-example-module/routes.js
 module.exports = function( app, ExampleController ) {
+
+  // Restful and Action based routing
   app.all( '/example/:action/:id?', ExampleController.attach() );
   app.all( '/example/?:action?', ExampleController.attach() );
+
+  // Middleware routing
+  app.use( ExampleController.someMiddleware );
+
 }
 {% endhighlight %}
       <p><strong>Note:</strong> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
+      <p><strong>Note:</strong> We use ExpressJS as our main web service, so be sure to checkout how to use <a href="http://expressjs.com/api.html#app.VERB">ExpressJS Routes</a></p>
+
+      
       <br>
 
       <!-- Classes
@@ -710,17 +719,18 @@ module.exports = function( sequelize, ORMExampleModel ) {
       <!-- Testing
       ================================================== -->
       <h4 id="backend-modules-testing">Testing</h4>
+      <p>Modules contain their testing resources, here are the two types you can use</p><br>
 
       <h5>Unit Tests</h5>
-      <p>The only required code you need to place in your file is</p>
-      {% highlight javascript %}var testEnv = require ( 'utils' ).testEnv();{% endhighlight %}
+      <p>To get the application setup you will need this code in your file to get things going</p>
+      {% highlight javascript %}var testEnv = require ( 'utils' ).testEnv();{% endhighlight %}<br>
 
-      <p>An example</p>
+      <p>Here is an in-depth example of how to write a unit test</p>
 {% highlight javascript %}
 // Bootstrap the testing environmen
-var testEnv = require ( 'utils' ).testEnv();
+var testEnv = require( 'utils' ).testEnv();
  
-var expect = require ( 'chai' ).expect
+var expect = require( 'chai' ).expect
   , Service;
  
 describe( 'controllers.ExampleController', function() {
