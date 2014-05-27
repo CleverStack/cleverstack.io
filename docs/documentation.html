@@ -364,24 +364,25 @@ var config = require( 'config' );
         <p>This is a typical back-end (node) module structure.</p>
 {% highlight bash %}
 example-module/
-├── bin/                              # module scripts & binaries
-├── classes/                          # module classes
-├── config/                           # module specific configs and setting overrides
-├── controllers/                      # module controllers
-├── exceptions/                       # custom exception handlers
+├── bin/                  # module scripts & binaries
+├── classes/              # module classes
+├── config/               # module specific configs and setting overrides
+├── controllers/          # module controllers
+├── exceptions/           # custom exception handlers
 ├── models/
-│   ├── orm/                          # your mySQL table relationships & data models
-│   └── odm/                          # your MongoDB table relationships & data models
-├── schema/                           # seed data is used to populate your database tables
-├── services/                         # module services
-├── tasks/                            # module background tasks (only when module is installed)
+│   ├── orm/              # your mySQL table relationships & data models
+│   └── odm/              # your MongoDB table relationships & data models
+├── schema/               # seed data is used to populate your database tables
+├── services/             # module services
+├── tasks/                # module background tasks (only when module is installed)
 ├── tests/
-│   ├── e2e/                          # module end to end tests
-│   └── unit/                         # module unit tests
-├── utils/                            # module utils
-├── Gruntfile.js                      # module grunt tasks
-├── module.js                         # main module class
-└── package.json                      # module npm dependencies
+│   ├── e2e/              # module end to end tests
+│   └── unit/             # module unit tests
+├── utils/                # module utils
+├── Gruntfile.js          # module grunt tasks
+├── module.js             # main module class
+├── package.json          # module npm dependencies
+└── routes.js             # module routes
 {% endhighlight %}<br>
       <div style="padding-left: 30px;">
         <h4>Important files and folders</h5>
@@ -434,6 +435,11 @@ module.exports = new Module( '<moduleName>', injector );
             <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules package.json, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
             <li><strong>Important:</strong> Must export ModuleClass instance which is imported by the moduleLoader.</li>
             <li><strong>Note:</strong> Has lifecycle hooks for every situation, like loading, routing, shutdown etc.</li>
+        </ul>
+
+        <h5>routes.js</h5>
+        <ul>
+            <li>This is where you define what routes your module will handle.</li>
         </ul>
       </div><br>
 
@@ -503,22 +509,76 @@ module.exports = new Module( '<moduleName>', injector );
       <!-- Dependency Injection
       ================================================== -->
       <h4 id="backend-usage-di">Dependency Injection</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>CleverStack Controllers, Services, Routes, Models and Tests are loaded and all of their dependencies are loaded and injected automatically using the <a href="https://github.com/cleverstack/clever-injector">CleverStack Dependency Injection</a> module.</p>
+
+      <p>When resources/files are loaded using the injector will automatically load and inject any of it's dependencies in a recursive manner.</p><br>
 
       <!-- Routing
       ================================================== -->
       <h4 id="backend-usage-routing">Routing</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you should attach your controller</p>
+{% highlight javascript %}
+// modules/backend-example-module/routes.js
+module.exports = function( app, ExampleController ) {
+    app.all( '/example/:action/:id?', ExampleController.attach() );
+    app.all( '/example/?:action?', ExampleController.attach() );
+}
+{% endhighlight %}
+      <p><strong>Note:</strong> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
+      <br>
 
       <!-- Classes
       ================================================== -->
       <h4 id="backend-usage-classes">Classes</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
+
+      <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
+
+      <p>Here is an example of creating a class and using the proxy function</p>
+{% highlight javascript %}
+var Class = require( 'uberclass' );
+
+module.exports = Class.extend({
+  files: null,
+
+  init: function() {
+    this.files = [];
+    this.getFiles( __dirname );
+  },
+
+  getFiles: function( dir ) {
+    fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
+  },
+
+  // The dir variable has been curried into this function by getFiles()
+  handleGetFiles: function( dir, err, files ) {
+    if ( !err ) {
+      this.files = files;
+    } else {
+      console.error( err );
+    }
+  }
+});
+{% endhighlight %}<br>
+
+
+      <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
+      <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
+      <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/clevertech/cleverstack-node-seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
 
       <!-- Controllers
       ================================================== -->
       <h4 id="backend-usage-controllers">Controllers</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>Coming soon, we are working hard on this section.</p>
+{% highlight javascript %}
+// modules/backend-example-module/controllers/ExampleController.js
+module.exports = function( Controller, ExampleService, UserService ) {
+    return Controller.extend(
+    {
+        // ...
+    });
+};
+{% endhighlight %}<br>
 
       <!-- Models
       ================================================== -->
@@ -528,11 +588,6 @@ module.exports = new Module( '<moduleName>', injector );
       <!-- Services
       ================================================== -->
       <h4 id="backend-usage-services">Services</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
-
-      <!-- Tasks
-      ================================================== -->
-      <h4 id="backend-usage-tasks">Tasks</h4>
       <p>Coming soon, we are working hard on this section.</p><br>
 
     </div>
