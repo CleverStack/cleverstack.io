@@ -875,6 +875,35 @@ describe( '/example', function() {
     <h3 id="backend-troubleshooting">Troubleshooting</h3>
     <p>If you have any problems (including errors, exceptions and even general usage) with the NodeJS Backend which is called the Node Seed.</p>
     <ul>
+      <li>Because we use the <a href="https://www.npmjs.org/package/debug">debug</a> npm module, set an environment variable called DEBUG.</li>
+{% highlight bash %}
+// There are more, if you want to debug a file look for its debug definition and add it in here
+$ export DEBUG=moduleLoader,ModuleClass,ORM
+
+// Run the server
+$ clever serve
+Running "nodemon:web" (nodemon) task
+[nodemon] v1.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node app.js`
+  moduleLoader Loading modules... +0ms
+  moduleLoader Loading the clever-orm module +4ms
+  MagicModule Creating magic module for classes +0ms
+  MagicModule Loading ModuleClass into classes magic module... +1ms
+  ORM Opening connection to database +0ms
+  moduleLoader Loading the backend-example-module module +271ms
+  ORM Loading model ExampleModel from backend-example-module/models/orm/ExampleModel.js +25ms
+  MagicModule Creating magic module for services +306ms
+  MagicModule Loading BaseService into services magic module... +1ms
+  MagicModule Loading Controller into classes magic module... +14ms
+  moduleLoader modulesLoaded (hook) for module clever-orm +68ms
+  ORM Defining model assocations +58ms
+  moduleLoader Initializing the clever-orm modules routes. +116ms
+  moduleLoader Initializing the backend-example-module modules routes. +0ms
+Starting server on port 8080 in LOCAL mode
+{% endhighlight %}
+
       <li>Check the Github <a href="https://github.com/clevertech/cleverstack-node-seed/issues">issues page</a>.</li>
       <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
       <li>If your still having problems, please <a href="https://github.com/clevertech/cleverstack-node-seed/issues/new">raise an issue</a>.</li>
