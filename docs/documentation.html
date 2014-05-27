@@ -505,17 +505,11 @@ module.exports = function( SomeDependency ) {
   // SomeDependency is loaded and injected into this function for you
 }
 {% endhighlight %}
-      <!-- <h4>Creating Modules</h4>
-      <p></p><br>
 
-      <h4>Publishing Modules</h4>
-      <p></p><br> -->
-    </div><br>
-
-    <!-- Routing
-    ================================================== -->
-    <h3 id="backend-routing">Routing</h3>
-    <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you should attach your controller</p>
+      <!-- Routing
+      ================================================== -->
+      <h4 id="backend-modules-routing">Routing</h4>
+      <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you should attach your controller</p>
 {% highlight javascript %}
 // modules/backend-example-module/routes.js
 module.exports = function( app, ExampleController ) {
@@ -523,17 +517,17 @@ module.exports = function( app, ExampleController ) {
   app.all( '/example/?:action?', ExampleController.attach() );
 }
 {% endhighlight %}
-    <p><strong>Note:</strong> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
-    <br>
+      <p><strong>Note:</strong> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
+      <br>
 
-    <!-- Classes
-    ================================================== -->
-    <h3 id="backend-classes">Classes</h3>
-    <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
+      <!-- Classes
+      ================================================== -->
+      <h4 id="backend-modules-classes">Classes</h4>
+      <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
 
-    <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
+      <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
 
-    <p>Here is an example of creating a class and using the proxy function</p>
+      <p>Here is an example of creating a class and using the proxy function</p>
 {% highlight javascript %}
 var Class = require( 'uberclass' );
 
@@ -561,20 +555,20 @@ handleGetFiles: function( dir, err, files ) {
 {% endhighlight %}<br>
 
 
-    <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
-    <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
-    <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/clevertech/cleverstack-node-seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
+      <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
+      <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
+      <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/clevertech/cleverstack-node-seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
 
-    <!-- Controllers
-    ================================================== -->
-    <h3 id="backend-controllers">Controllers</h3>
-    <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
+      <!-- Controllers
+      ================================================== -->
+      <h4 id="backend-modules-controllers">Controllers</h4>
+      <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
 
-    <p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
+      <p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
 
-    <p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
+      <p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
 
-    <p>Here is an example that covers all of the many features of Controller</p>
+      <p>Here is an example that covers all of the many features of Controller</p>
 {% highlight javascript %}
 // modules/backend-example-module/controllers/ExampleController.js
 module.exports = ExampleController = function() {
@@ -639,10 +633,10 @@ module.exports = ExampleController = function() {
 };
 {% endhighlight %}<br>
 
-    <!-- Models
-    ================================================== -->
-    <h3 id="backend-models">Models</h3>
-    <p>Models are stored in either the models/orm or models/odm folder depending on what type of model they are, and apart from a function to wrap the definition to take advantage of our DI they are exactly the same as you would define them using either <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> (ORM) or <a href="http://mongoosejs.com/">MongooseJS</a> (ODM).</p>
+      <!-- Models
+      ================================================== -->
+      <h4 id="backend-modules-models">Models</h4>
+      <p>Models are stored in either the models/orm or models/odm folder depending on what type of model they are, and apart from a function to wrap the definition to take advantage of our DI they are exactly the same as you would define them using either <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> (ORM) or <a href="http://mongoosejs.com/">MongooseJS</a> (ODM).</p>
 {% highlight javascript %}
 // models/orm/ExampleModel.js
 module.exports = function( sequelize, DataTypes ) {
@@ -670,29 +664,29 @@ module.exports = function( mongoose ) {
 };
 {% endhighlight %}<br>
 
-    <p><strong>Hint:</strong> Use the grunt db:rebase command to create your database structure</p>
-    {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
+      <p><strong>Hint:</strong> Use the grunt db:rebase command to create your database structure</p>
+      {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
 
-    <p><strong>Hint:</strong> Use the grunt db:seed command to insert your seed data into the database</p>
-    {% highlight javascript %}$ grunt db:seed {% endhighlight %}
+      <p><strong>Hint:</strong> Use the grunt db:seed command to insert your seed data into the database</p>
+      {% highlight javascript %}$ grunt db:seed {% endhighlight %}
 
-    <p><strong>Hint:</strong> Both of the above db commands can be run together using one command</p>
-    {% highlight javascript %}$ grunt db {% endhighlight %}
+      <p><strong>Hint:</strong> Both of the above db commands can be run together using one command</p>
+      {% highlight javascript %}$ grunt db {% endhighlight %}
 
-    <br>
+      <br>
 
-    <p><strong>Important:</strong> You should not load models using require(), they must be loaded using the injector</p>
-    <p><strong>Note:</strong> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
-    <br>
+      <p><strong>Important:</strong> You should not load models using require(), they must be loaded using the injector</p>
+      <p><strong>Note:</strong> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
+      <br>
 
-    <!-- Services
-    ================================================== -->
-    <h3 id="backend-services">Services</h3>
-    <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
+      <!-- Services
+      ================================================== -->
+      <h4 id="backend-modules-services">Services</h4>
+      <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
 
-    <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
+      <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
 
-    <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Static of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
+      <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Static of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
 {% highlight javascript %}
 var Q = require('q')
   , BaseService = require( 'services' ).BaseService
@@ -713,15 +707,15 @@ module.exports = function( sequelize, ORMExampleModel ) {
 
 {% endhighlight %}<br>
 
-    <!-- Testing
-    ================================================== -->
-    <h3 id="backend-testing">Testing</h3><br>
+      <!-- Testing
+      ================================================== -->
+      <h4 id="backend-modules-testing">Testing</h4>
 
-    <h4>Unit Tests</h4>
-    <p>The only required code you need to place in your file is</p>
-    {% highlight javascript %}var testEnv = require ( 'utils' ).testEnv();{% endhighlight %}
+      <h5>Unit Tests</h5>
+      <p>The only required code you need to place in your file is</p>
+      {% highlight javascript %}var testEnv = require ( 'utils' ).testEnv();{% endhighlight %}
 
-    <p>An example</p>
+      <p>An example</p>
 {% highlight javascript %}
 // Bootstrap the testing environmen
 var testEnv = require ( 'utils' ).testEnv();
@@ -755,25 +749,6 @@ describe( 'controllers.ExampleController', function() {
             .fail( done );
         });
     });
- 
- 
-    describe( '.postAction()', function() {
-        it( 'should call .send() with valid status', function( done ) {
-            ctrl.send = function( data ) {
-                Service.findAll()
-                    .then( function( examples ) {
-                        examples.should.have.length( 2 );
-                        examples[ 1 ].name.should.equal( 'Example 2' );
-                        done();
-                    })
-                    .fail( done );
-            };
-            ctrl.req.body = {
-                name: 'Example 2'
-            };
-            ctrl.postAction();
-        });
-    });
 
     describe( '.getAction()', function() {
         it( 'should call .send() with valid status', function( done ) {
@@ -789,9 +764,9 @@ describe( 'controllers.ExampleController', function() {
 });
 {% endhighlight %}<br>
 
-    <h4>Integration / e2e Tests</h4>
+      <h5>Integration / e2e Tests</h5>
 
-    <p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
+      <p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
 {% highlight javascript %}
 var expect = require ( 'chai' ).expect
   , request = require ( 'supertest' )
@@ -816,6 +791,7 @@ describe( '/example', function() {
     });
 });
 {% endhighlight %}
+    </div><br>
 
     <!-- Troubleshooting
     ================================================== -->
