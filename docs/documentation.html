@@ -368,13 +368,13 @@ example-module/
 ├── classes/              # module classes
 ├── config/               # module specific configs and setting overrides
 ├── controllers/          # module controllers
-├── exceptions/           # custom exception handlers
+├── exceptions/           # module custom exceptions
 ├── models/
-│   ├── orm/              # your mySQL table relationships & data models
-│   └── odm/              # your MongoDB table relationships & data models
-├── schema/               # seed data is used to populate your database tables
+│   ├── orm/              # your ORM based models (SQL)
+│   └── odm/              # your ODM based models (NoSQL)
+├── schema/               # your schema is stored in here
+│   └── seedData.json/    # seed data is used to populate your database tables
 ├── services/             # module services
-├── tasks/                # module background tasks (only when module is installed)
 ├── tests/
 │   ├── e2e/              # module end to end tests
 │   └── unit/             # module unit tests
@@ -434,6 +434,7 @@ module.exports = new Module( '<moduleName>', injector );
 {% endhighlight %}
             <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules package.json, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
             <li><strong>Important:</strong> Must export ModuleClass instance which is imported by the moduleLoader.</li>
+            <br>
             <li><strong>Note:</strong> Has lifecycle hooks for every situation, like loading, routing, shutdown etc.</li>
         </ul>
 
@@ -442,6 +443,72 @@ module.exports = new Module( '<moduleName>', injector );
             <li>This is where you define what routes your module will handle.</li>
         </ul>
       </div><br>
+
+
+      <!-- Module hooks
+      ================================================== -->
+      <h4 id="backend-modules-hooks">Hooks</h4>
+      <p>Your 'module.js' file has some lifecycle hooks that you can use to perform operations at certain times during the applications lifecycle, the hooks are fired in the order they are listed here on each module.</p><br>
+
+      <p>Example of using a hook:<p>
+{% highlight javascript %}
+var Module = ModuleClass.extend({
+    preInit: function( ) {
+        console.log( 'preInit hook, init is about to be called' );
+    }
+});
+{% endhighlight %}<br>
+
+      <p><strong>Important:</strong> Modules hooks are applied to each module in the order you have them listed in your package.json bundledDependencies[].</p><br>
+
+      <h5 id="backend-modules-hooks-presetup">preSetup</h5>
+      <ul>
+        <li>This hook is fired inside the main constructor function setup() how it is called before any setup has actually taken place.</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-preresources">preResources</h5>
+      <ul>
+        <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-configure-app">configureApp</h5>
+      <ul>
+        <li>This hook allows you to modify the express app from within a module, without the need to make those changes in the index.js file located at backend/index.js</li><br>
+        <li><strong>Important:</strong> this function is injected with app &amp; express as arguments in the constructors setup() function.</li>
+      </ul>
+{% highlight javascript %}
+var Module = ModuleClass.extend({
+    configureApp: function ( app, express ) {
+        app.use( express.cookieParser() );
+    }
+});
+{% endhighlight %}
+
+      <h5 id="backend-modules-hooks-preinit">preInit</h5>
+      <ul>
+        <li>This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().</li>
+        <li><strong>Important:</strong> This is the last place to hook into until after init.</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-init">init</h5>
+      <ul>
+        <li>While this is not a hook, you are able to implement this function which forms the final step in the constructor, meaning it can take advantage of the Optimizing Compiler.</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-modulesloaded">modulesLoaded</h5>
+      <ul>
+        <li>This hook is fired after all modules are loaded (for each module).</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-preroute">preRoute</h5>
+      <ul>
+        <li>This hook is fired just before your routes are attached.</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-preshutdown">preShutdown</h5>
+      <ul>
+        <li>This hook is fired just before the application shuts down, allowing you to perform any cleanup related tasks.</li>
+      </ul><br>
 
       <!-- Modules configuration
       ================================================== -->
