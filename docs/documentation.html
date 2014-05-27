@@ -583,24 +583,83 @@ module.exports = function( Controller, ExampleService, UserService ) {
       <!-- Models
       ================================================== -->
       <h4 id="backend-usage-models">Models</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>Models are stored in either the models/orm or models/odm folder depending on what type of model they are, and apart from a function to wrap the definition to take advantage of our DI they are exactly the same as you would define them using either <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> (ORM) or <a href="http://mongoosejs.com/">MongooseJS</a> (ODM).</p>
+{% highlight javascript %}
+// models/orm/ExampleModel.js
+module.exports = function( sequelize, DataTypes ) {
+    return sequelize.define("Example", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        }
+    });
+};
+
+// models/odm/ExampleModel.js
+module.exports = function( mongoose ) {
+    var ModelSchema = new mongoose.Schema({
+        name: String
+    });
+ 
+    return mongoose.model('ExampleModel', ModelSchema);
+};
+{% endhighlight %}<br>
+
+      <p><strong>Hint:</strong> Use the grunt db:rebase command to create your database structure</p>
+      {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
+
+      <p><strong>Hint:</strong> Use the grunt db:seed command to insert your seed data into the database</p>
+      {% highlight javascript %}$ grunt db:seed {% endhighlight %}
+
+      <p><strong>Hint:</strong> Both of the above db commands can be run together using one command</p>
+      {% highlight javascript %}$ grunt db {% endhighlight %}
+
+      <br>
+
+      <p><strong>Important:</strong> You should not load models using require(), they must be loaded using the injector</p>
+      <p><strong>Note:</strong> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
+      <br>
 
       <!-- Services
       ================================================== -->
       <h4 id="backend-usage-services">Services</h4>
-      <p>Coming soon, we are working hard on this section.</p><br>
+      <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
+
+      <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
+
+      <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Static of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
+{% highlight javascript %}
+var Q = require('q')
+  , BaseService = require( 'services' ).BaseService
+  , ExampleService;
+ 
+ExampleService = BaseService.extend({
+ 
+});
+ 
+module.exports = function( sequelize, ORMExampleModel ) {
+    if ( !ExampleService.instance ) {
+        ExampleService.instance = new ExampleService( sequelize );
+        ExampleService.Model = ORMExampleModel;
+    }
+    
+    return ExampleService.instance;
+};
+
+{% endhighlight %}<br>
 
     </div>
 
     <!-- Testing
     ================================================== -->
     <h3 id="backend-testing">Testing</h3>
-    <p>Coming soon, we are working hard on this section.</p><br>
-
-    <!-- Deployment
-    ================================================== -->
-    <h3 id="backend-deployment">Deployment</h3>
-    <p>Coming soon, we are working hard on this section.</p><br>
+    <p>Coming soon, we are working hard on this section. For now please take a look at our tests for a look at how to write tests</p><br>
 
     <!-- Troubleshooting
     ================================================== -->
