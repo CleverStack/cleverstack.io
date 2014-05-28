@@ -229,14 +229,15 @@ $ bower search cleverstack-module
     <p id="backend-overview" class="lead">CleverStack provides a fully featured NodeJS development workflow.</p>
     <p>Some highlights:</p>
     <ul>
-      <li>NodeJS Async Application Core</li>
-      <li>Modular NPM Coding Structure</li>
-      <li>Grunt Server with Live Restart</li>
-      <li>Databases supported: mySQL, Postgres or MongoDB</li>
-      <li>Official Modules for ORM (clever-orm) and ODM (clever-odm) (SQL &amp; noSQL) out of the box</li>
-      <li>Clustering support out of the box that is highly configurable and customizable</li>
-      <li>NodeJS Background Tasks Module which allows CPU intensive (blocking) operations to take place in separate processes thus allowing your HTTP Web Server Processes to continue serving HTTP Requests</li>
-      <li>Unit &amp; E2E (Integration) Testing with Mocha</li>
+      <li><a href="http://nodejs.org/">NodeJS</a> Async Non-Blocking Core.</li>
+      <li>Modular Coding Structure based on <a href="https://www.npmjs.org">NPM</a>.</li>
+      <li><a href="http://gruntjs.com/">Grunt</a> powered tasks, including Server with Live Restart using <a href="https://www.npmjs.org/package/nodemon">nodemon.</a></li>
+      <li>Databases supported: <a href="http://www.mysql.com/">MySQL</a>, <a href="http://www.postgresql.org/">PostgreSQL</a>, <a href="http://www.sqlite.org/">SQLite</a> or <a href="http://www.mongodb.org/">MongoDB</a>.</li>
+      <li>Official ORM (<a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapper</a>) Module provides an enterprise <a href="http://en.wikipedia.org/wiki/SQL">SQL</a>  based solution out of the box.</li>
+      <li>Official ODM (<a href="http://css.dzone.com/articles/era-object-document-mapping">Object Document Mapper</a>) Module provides an enterprise <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> based solution out of the box.</li>
+      <li><a href="http://nodejs.org/api/cluster.html">Clustered</a> application with high <a href="http://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> out of the box.</li>
+      <li>NodeJS <a href="https://github.com/CleverStack/clever-background-tasks">Background Tasks Module</a> which allows CPU intensive (blocking) operations to take place in separate processes, allowing your HTTP Web Server Processes to continue serving HTTP Requests.</li>
+      <li>Unit &amp; E2E (Integration) Testing with <a href="https://www.npmjs.org/package/mocha">Mocha</a> and <a href="https://www.npmjs.org/package/request">Request</a>.</li>
     </ul>
 
     <!-- Structure
@@ -245,68 +246,70 @@ $ bower search cleverstack-module
 
 {% highlight bash %}
 back-end/
-├── config/           # node app configs
-├── lib/              # node app source files
-├── modules/          # cleverstack app back-end modules
-├── tests/            # app tests
-├── Gruntfile.js      # app grunt tasks
-├── app.js            # node express app
-├── index.js          # node process management
-└── package.json      # app npm dependencies
+├── config/           # app configs
+├── lib/              # cleverstack core
+├── modules/          # backend modules
+├── tests/            # app & cleverstack core tests
+│   ├── e2e/          # end to end tests
+│   └── unit/         # unit tests
+├── Gruntfile.js      # app grunt config & tasks
+├── app.js            # node cluster app
+├── index.js          # single node http server app
+└── package.json      # npm dependencies and package information
 {% endhighlight %}<br>
     
     <!-- Important files and folders
     ================================================== -->
     <div style="padding-left: 20px;">
       <h4>Important files and folders</h4>
-      <p>Here is a list of things you need to know about the structure of the CleverStack NodeJS Backend</p><br>
+      <p>Here is a list of things you need to know about the structure of the CleverStack NodeJS Backend, called the <a href="https://github.com/clevertech/cleverstack-node-seed">Node Seed</a>.</p><br>
 
-      <h5>/config</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/config">/config</a></h5>
       <ul>
           <li>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.
       </ul>
 
-      <h5>/lib</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/lib">/lib</a></h5>
       <ul>
           <li>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</li><br>
 
           <li><strong>Important:</strong> If you do modify files in this folder, then using CleverStack CLI commands like upgrade or downgrade may remove your changes.</li>
-          <li><strong>Note:</strong> Certain folders resources (files) are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
+          <li><strong>Note:</strong> Certain folders files are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
       </ul>
 
-      <h5>/modules</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/modules">/modules</a></h5>
       <ul>
           <li>This is where all of the Cleverstack modules will be installed into your application.</li>
           <li>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</li><br>
-          <li><strong>Note:</strong> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need add/change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
+          <li><strong>Note:</strong> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need to add and change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
       </ul>
 
-      <h5>/app.js</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/app.js">/app.js</a></h5>
       <ul>
           <li>The main entry point of a "Clustered" Application, in most cases you will not need to modify this file.</li><br>
-          <li><strong>Note:</strong> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
+          <li><strong>Important:</strong> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
       </ul>
 
-      <h5>/Gruntfile.js</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/Gruntfile.js">/Gruntfile.js</a></h5>
       <ul>
           <li>Defines the Applications global (main) gruntConfig.</li>
           <li>Registers the Applications included Grunt tasks.</li><br>
           <li><strong>Note:</strong> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
       </ul>
 
-      <h5>/index.js</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/index.js">/index.js</a></h5>
       <ul>
           <li>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</li>
           <li>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attached to the process by using --debug-brk.</li><br>
           <li><strong>Note:</strong> To run this file on its own you will need to manually set your NODE_PATH for this script to work.</li>
       </ul>
 
-      <h5>/package.json</h5>
+      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/package.json">/package.json</a></h5>
       <ul>
           <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
-          <li><strong>Important:</strong> This is where you define which Modules are enabled, using the bundledDependencies[] array.</li>
-          <li><strong>Note:</strong> By adding modules into the bundledDependencies[] array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
-          <li><strong>Note:</strong> The order in which you place modules inside your bundledDependencies[] array will be the loading order of the modules.</li>
+          <li><strong>Important:</strong> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+          <li><strong>Note:</strong> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+          <li><strong>Note:</strong> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
       </ul>
     </div>
 
@@ -317,7 +320,7 @@ back-end/
 
     <p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
     <ol>
-      <li>/config/global.json<br>
+      <li><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/config/global.json">/config/global.json</a><br>
         <ul>
           <li>Define the global configuration for your application here.</li><br>
           <li><strong>Note:</strong> This file is required, and is the place for any GLOBAL configuration</li>
@@ -325,13 +328,13 @@ back-end/
       </li><br>
       <li>/modules/&lt;module&gt;/config/default.json
         <ul>
-          <li>Every modules /config/default.json file will be loaded in the order specified in the bundledDependencies[] array in your package.json</li><br>
+          <li>Every modules /config/default.json file will be loaded in the order specified in the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in your package.json</li><br>
           <li>See <a href="#backend-modules-config-default">&lt;module&gt;/config/default.json</a> for more information</li>
         </ul>
       </li><br>
       <li>/modules/&lt;module&gt;/config/global.json
         <ul>
-          <li>Every modules /config/global.json file will be loaded in the order specified in the bundledDependencies[] array in your package.json</li><br>
+          <li>Every modules /config/global.json file will be loaded in the order specified in the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in your package.json</li><br>
           <li>See <a href="#backend-modules-config-global">&lt;module&gt;/config/global.json</a> for more information</li>
         </ul>
       </li><br>
@@ -346,7 +349,7 @@ back-end/
       </li>
     </ol><br>
 
-    <h4>Accessing your config anywhere in your applications code</h4>
+    <h4>Accessing your config using the 'config' magic module.</h4>
 {% highlight javascript %}
 var config = require( 'config' );
 {% endhighlight %}
@@ -354,7 +357,7 @@ var config = require( 'config' );
     <!-- Modules
     ================================================== -->
     <h3 id="backend-modules">Modules</h3>
-    <p>These are the most important part of your application, where all your functionality and testing is defined.</p><br>
+    <p>These are the most important part of your application, where all your functionality, dependencies andtesting is defined.</p><br>
 
     <div style="padding-left: 20px;">
 
@@ -432,7 +435,7 @@ var Module = ModuleClass.extend({
 
 module.exports = new Module( '<moduleName>', injector );
 {% endhighlight %}
-            <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules package.json, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
+            <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
             <li><strong>Important:</strong> Must export ModuleClass instance which is imported by the moduleLoader.</li>
             <br>
             <li><strong>Note:</strong> Has lifecycle hooks for every situation, like loading, routing, shutdown etc.</li>
@@ -459,7 +462,7 @@ var Module = ModuleClass.extend({
 });
 {% endhighlight %}<br>
 
-      <p><strong>Important:</strong> Modules hooks are applied to each module in the order you have them listed in your package.json bundledDependencies[].</p><br>
+      <p><strong>Important:</strong> Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p><br>
 
       <h5 id="backend-modules-hooks-presetup">preSetup</h5>
       <ul>
@@ -558,6 +561,8 @@ var Module = ModuleClass.extend({
         <li>tasks</li>
         <li>utils</li>
       </ul><br>
+
+      <p><strong>Important:</strong> You only need to set your NODE_PATH when you are running index.js, not the main servers or commands.</p><br>
 
       <!-- Modules Dependency Injection
       ================================================== -->
@@ -991,7 +996,7 @@ front-end/
       <h5>package.json</h5>
       <ul>
         <li>Defines the Application information, scripts and it's NPM dependencies like any normal NPM Module.</li>
-        <li>Defines the modules that are enabled, using the bundledDependencies[] array. (This also let's NPM know that these dependencies are local and not on the NPM Registry)</li>
+        <li>Defines the modules that are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array. (This also let's NPM know that these dependencies are local and not on the NPM Registry)</li>
       </ul>
     </div>
 
@@ -1070,9 +1075,9 @@ example-module/
         <h5>package.json</h5>
         <ul>
             <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
-            <li><strong>Important:</strong> This is where you define which Modules are enabled, using the bundledDependencies[] array.</li>
-            <li><strong>Note:</strong> By adding modules into the bundledDependencies[] array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
-            <li><strong>Note:</strong> The order in which you place modules inside your bundledDependencies[] array will be the loading order of the modules.</li>
+            <li><strong>Important:</strong> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+            <li><strong>Note:</strong> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+            <li><strong>Note:</strong> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
         </ul>
 
         <h5>Gruntfile.js</h5>
