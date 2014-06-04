@@ -262,14 +262,14 @@ back-end/
     ================================================== -->
     <div style="padding-left: 20px;">
       <h4>Important files and folders</h4>
-      <p>Here is a list of things you need to know about the structure of the CleverStack NodeJS Backend, called the <a href="https://github.com/clevertech/cleverstack-node-seed">Node Seed</a>.</p><br>
+      <p>Here is a list of things you need to know about the structure of the CleverStack NodeJS Backend, called the <a href="https://github.com/CleverStack/Node-Seed">Node Seed</a>.</p><br>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/config">/config</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/config">/config</a></h5>
       <ul>
           <li>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/lib">/lib</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/lib">/lib</a></h5>
       <ul>
           <li>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</li><br>
 
@@ -277,34 +277,34 @@ back-end/
           <li><strong>Note:</strong> Certain folders files are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/modules">/modules</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/modules">/modules</a></h5>
       <ul>
           <li>This is where all of the Cleverstack modules will be installed into your application.</li>
           <li>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</li><br>
           <li><strong>Note:</strong> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need to add and change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/app.js">/app.js</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">/app.js</a></h5>
       <ul>
           <li>The main entry point of a "Clustered" Application, in most cases you will not need to modify this file.</li><br>
           <li><strong>Important:</strong> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/Gruntfile.js">/Gruntfile.js</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js">/Gruntfile.js</a></h5>
       <ul>
           <li>Defines the Applications global (main) gruntConfig.</li>
           <li>Registers the Applications included Grunt tasks.</li><br>
           <li><strong>Note:</strong> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/index.js">/index.js</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">/index.js</a></h5>
       <ul>
           <li>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</li>
           <li>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attached to the process by using --debug-brk.</li><br>
           <li><strong>Note:</strong> To run this file on its own you will need to manually set your NODE_PATH for this script to work.</li>
       </ul>
 
-      <h5><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/package.json">/package.json</a></h5>
+      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">/package.json</a></h5>
       <ul>
           <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
           <li><strong>Important:</strong> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
@@ -320,7 +320,7 @@ back-end/
 
     <p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
     <ol>
-      <li><a href="https://github.com/clevertech/cleverstack-node-seed/tree/master/config/global.json">/config/global.json</a><br>
+      <li><a href="https://github.com/CleverStack/Node-Seed/tree/master/config/global.json">/config/global.json</a><br>
         <ul>
           <li>Define the global configuration for your application here.</li><br>
           <li><strong>Note:</strong> This file is required, and is the place for any GLOBAL configuration</li>
@@ -469,9 +469,15 @@ var Module = ModuleClass.extend({
         <li>This hook is fired inside the main constructor function setup() how it is called before any setup has actually taken place.</li>
       </ul>
 
-      <h5 id="backend-modules-hooks-preresources">preResources</h5>
+      <h5 id="backend-modules-hooks-preinit">preInit</h5>
       <ul>
-        <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
+        <li>This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().</li>
+        <li><strong>Important:</strong> This is the last place to hook into until after init.</li>
+      </ul>
+
+      <h5 id="backend-modules-hooks-init">init</h5>
+      <ul>
+        <li>While this is not a hook, you are able to implement this function which forms the final step in the constructor, meaning it can take advantage of the Optimizing Compiler.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-configure-app">configureApp</h5>
@@ -487,15 +493,9 @@ var Module = ModuleClass.extend({
 });
 {% endhighlight %}
 
-      <h5 id="backend-modules-hooks-preinit">preInit</h5>
+      <h5 id="backend-modules-hooks-preresources">preResources</h5>
       <ul>
-        <li>This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().</li>
-        <li><strong>Important:</strong> This is the last place to hook into until after init.</li>
-      </ul>
-
-      <h5 id="backend-modules-hooks-init">init</h5>
-      <ul>
-        <li>While this is not a hook, you are able to implement this function which forms the final step in the constructor, meaning it can take advantage of the Optimizing Compiler.</li>
+        <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
       </ul>
 
       <h5 id="backend-modules-hooks-modulesloaded">modulesLoaded</h5>
@@ -638,7 +638,7 @@ handleGetFiles: function( dir, err, files ) {
 
       <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
       <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
-      <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/clevertech/cleverstack-node-seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
+      <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
 
       <!-- Controllers
       ================================================== -->
@@ -909,15 +909,15 @@ Running "nodemon:web" (nodemon) task
 Starting server on port 8080 in LOCAL mode
 {% endhighlight %}
 
-      <li>Check the Github <a href="https://github.com/clevertech/cleverstack-node-seed/issues">issues page</a>.</li>
+      <li>Check the Github <a href="https://github.com/CleverStack/Node-Seed/issues">issues page</a>.</li>
       <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
-      <li>If your still having problems, please <a href="https://github.com/clevertech/cleverstack-node-seed/issues/new">raise an issue</a>.</li>
+      <li>If your still having problems, please <a href="https://github.com/CleverStack/Node-Seed/issues/new">raise an issue</a>.</li>
     </ul>
 
     <!-- Contributing
     ================================================== -->
     <h3 id="backend-contributing">Contributing</h3>
-    <p>Firstly please read our <a href="https://github.com/clevertech/cleverstack-node-seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/clevertech/cleverstack-node-seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
+    <p>Firstly please read our <a href="https://github.com/CleverStack/Node-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Node-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
   </div>
 
 
@@ -1110,15 +1110,15 @@ example-module/
     <h3 id="frontend-troubleshooting">Troubleshooting</h3>
     <p>If you have any problems (including errors, exceptions and even general usage) with the AngularJS Frontend which is called the Angular Seed.</p>
     <ul>
-      <li>Check the Github <a href="https://github.com/clevertech/cleverstack-angular-seed/issues">issues page</a>.</li>
+      <li>Check the Github <a href="https://github.com/CleverStack/Angular-Seed/issues">issues page</a>.</li>
       <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
-      <li>If your still having problems, please <a href="https://github.com/clevertech/cleverstack-angular-seed/issues/new">raise an issue</a>.</li>
+      <li>If your still having problems, please <a href="https://github.com/CleverStack/Angular-Seed/issues/new">raise an issue</a>.</li>
     </ul>
 
     <!-- Contributing
     ================================================== -->
     <h3 id="frontend-contributing">Contributing</h3>
-    <p>Firstly please read our <a href="https://github.com/clevertech/cleverstack-angular-seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/clevertech/cleverstack-angular-seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
+    <p>Firstly please read our <a href="https://github.com/CleverStack/Angular-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Angular-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
 
 
   </div>
