@@ -427,18 +427,18 @@ example-module/
         <ul>
 {% highlight javascript %}
 // Example module.js
-var Module = ModuleClass.extend({
+var Module = require( 'classes' ).Module;
+
+module.exports = Module.extend({
     preSetup: function() {
         console.log( 'Hello, this module is about to be setup by the moduleLoader' )
     }
 });
-
-module.exports = new Module( '<moduleName>', injector );
 {% endhighlight %}
             <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
-            <li><strong>Important:</strong> Must export ModuleClass instance which is imported by the moduleLoader.</li>
+            <li><strong>Important:</strong> Must export a Module Class which will be imported by the moduleLoader.</li>
             <br>
-            <li><strong>Note:</strong> Has lifecycle hooks for every situation, like loading, routing, shutdown etc.</li>
+            <li><strong>Note:</strong> Has lifecycle <a href="#backend-modules-hooks">hooks</a> for every situation, like loading, routing, shutdown etc.</li>
         </ul>
 
         <h5>routes.js</h5>
@@ -455,7 +455,9 @@ module.exports = new Module( '<moduleName>', injector );
 
       <p>Example of using a hook:<p>
 {% highlight javascript %}
-var Module = ModuleClass.extend({
+var Module = require( 'classes' ).Module;
+
+module.exports = Module.extend({
     preInit: function( ) {
         console.log( 'preInit hook, init is about to be called' );
     }
@@ -483,12 +485,16 @@ var Module = ModuleClass.extend({
       <h5 id="backend-modules-hooks-configure-app">configureApp</h5>
       <ul>
         <li>This hook allows you to modify the express app from within a module, without the need to make those changes in the index.js file located at backend/index.js</li><br>
+        <li><strong>Important:</strong> you must emit "appConfigured", until you do the moduleLoader will wait.</li>
         <li><strong>Important:</strong> this function is injected with app &amp; express as arguments in the constructors setup() function.</li>
       </ul>
 {% highlight javascript %}
-var Module = ModuleClass.extend({
+var Module = require( 'classes' ).Module;
+
+module.exports = Module.extend({
     configureApp: function ( app, express ) {
         app.use( express.cookieParser() );
+        this.emit( 'appConfigured' );
     }
 });
 {% endhighlight %}
@@ -496,11 +502,13 @@ var Module = ModuleClass.extend({
       <h5 id="backend-modules-hooks-preresources">preResources</h5>
       <ul>
         <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
+        <li><strong>Important:</strong> you must emit "resourcesReady", until you do the moduleLoader will wait.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-modulesloaded">modulesLoaded</h5>
       <ul>
         <li>This hook is fired after all modules are loaded (for each module).</li>
+        <li><strong>Important:</strong> you must emit "ready", until you do the moduleLoader will wait.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-preroute">preRoute</h5>
@@ -533,7 +541,7 @@ var Module = ModuleClass.extend({
       <p><strong>Important:</strong> Each of these JSON config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your &lt;module&gt;.</p>
 {% highlight json %}
 {
-  "moduleName": {
+  "module-name": {
     "config": "here",
     "another": "as well"
   }
@@ -551,6 +559,7 @@ var Module = ModuleClass.extend({
 
       <h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
       <ul>
+        <li>injector</li>
         <li>classes</li>
         <li>config</li>
         <li>controllers</li>
@@ -581,7 +590,7 @@ module.exports = function( SomeDependency ) {
       <!-- Routing
       ================================================== -->
       <h4 id="backend-modules-routing">Routing</h4>
-      <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you should attach your controller</p>
+      <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you can attach your controller. (Except for Controllers which have autoRoute enabled, those controllers have these routes automatically attached)</p>
 {% highlight javascript %}
 // modules/backend-example-module/routes.js
 module.exports = function( app, ExampleController ) {
@@ -608,30 +617,33 @@ module.exports = function( app, ExampleController ) {
 
       <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
 
-      <p>Here is an example of creating a class and using the proxy function</p>
+      <p><strong>Note:</strong> Every Class including Model, Service &amp; Controller is an EventEmitter automatically.</p>
+
+      <p>Here is an example of creating a class and using the proxy function as well as emitting events.</p>
 {% highlight javascript %}
-var Class = require( 'uberclass' );
+var Class = require( 'classes' ).Class;
 
 module.exports = Class.extend({
-files: null,
+  files: null,
 
-init: function() {
-  this.files = [];
-  this.getFiles( __dirname );
-},
+  init: function() {
+    this.files = [];
+    this.getFiles( __dirname );
+    this.emit( 'init' );
+  },
 
-getFiles: function( dir ) {
-  fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
-},
+  getFiles: function( dir ) {
+    fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
+  },
 
-// The dir variable has been curried into this function by getFiles()
-handleGetFiles: function( dir, err, files ) {
-  if ( !err ) {
-    this.files = files;
-  } else {
-    console.error( err );
+  // The dir variable has been curried into this function by getFiles()
+  handleGetFiles: function( dir, err, files ) {
+    if ( !err ) {
+      this.files = files;
+    } else {
+      console.error( err );
+    }
   }
-}
 });
 {% endhighlight %}<br>
 
@@ -652,10 +664,17 @@ handleGetFiles: function( dir, err, files ) {
       <p>Here is an example that covers all of the many features of Controller</p>
 {% highlight javascript %}
 // modules/backend-example-module/controllers/ExampleController.js
-module.exports = ExampleController = function() {
+module.exports = ExampleController = function( ExampleService ) {
     return Controller.extend(
     /** Static **/
     {
+      // Autorouting can either be "false", "true" (default) or an array containing the names of
+      // middleware that you want to be run before entering your controller
+      autoRouting: [ 'someMiddleware' ],
+
+      // Service can be set to any Service Class to allow for automatic CRUD
+      service: ExampleService,
+
       // Controller allows you to define middleware in the Static section of your controller,
       // as this is Static and not an instance, req, res and next are passed in as arguments
       someMiddleware: function( req, res, next ) {
@@ -717,31 +736,34 @@ module.exports = ExampleController = function() {
       <!-- Models
       ================================================== -->
       <h4 id="backend-modules-models">Models</h4>
-      <p>Models are stored in either the models/orm or models/odm folder depending on what type of model they are, and apart from a function to wrap the definition to take advantage of our DI they are exactly the same as you would define them using either <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> (ORM) or <a href="http://mongoosejs.com/">MongooseJS</a> (ODM).</p>
+      <p>To make life easy and our modules as flexible as possible we have written our own Model Schema definition system, this allows you to write a Single model that will work with both ORM and ODM with a single line change!</p>
 {% highlight javascript %}
-// models/orm/ExampleModel.js
-module.exports = function( sequelize, DataTypes ) {
-    return sequelize.define("Example", {
+// models/ExampleModel.js
+module.exports = function( Model ) {
+    return Model.extend(
+    {
+        timeStampable: true,
+        softDeletable: true,
+        type: 'ORM'
+    },
+    {
         id: {
-            type: DataTypes.INTEGER,
+            type: Number,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+        name: String,
+        someDate: Date,
+        someFloat: Float,
+        uniqueAndRequiredEmail: {
+            type: String,
+            required: true,
+            unique: true,
+            validate: {
+                email: true
+            }
         }
     });
-};
-
-// models/odm/ExampleModel.js
-module.exports = function( mongoose ) {
-    var ModelSchema = new mongoose.Schema({
-        name: String
-    });
- 
-    return mongoose.model('ExampleModel', ModelSchema);
 };
 {% endhighlight %}<br>
 
@@ -769,23 +791,11 @@ module.exports = function( mongoose ) {
 
       <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Static of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
 {% highlight javascript %}
-var Q = require('q')
-  , BaseService = require( 'services' ).BaseService
-  , ExampleService;
- 
-ExampleService = BaseService.extend({
- 
-});
- 
-module.exports = function( sequelize, ORMExampleModel ) {
-    if ( !ExampleService.instance ) {
-        ExampleService.instance = new ExampleService( sequelize );
-        ExampleService.Model = ORMExampleModel;
-    }
-    
-    return ExampleService.instance;
+module.exports = function ( Service, ExampleModel ) {
+    return Service.extend({
+        model: ExampleModel
+    });
 };
-
 {% endhighlight %}<br>
 
       <!-- Testing
@@ -794,55 +804,183 @@ module.exports = function( sequelize, ORMExampleModel ) {
       <p>Modules contain their testing resources, here are the two types you can use</p><br>
 
       <h5>Unit Tests</h5>
-      <p>To get the application setup you will need this code in your file to get things going</p>
-      {% highlight javascript %}var testEnv = require ( 'utils' ).testEnv();{% endhighlight %}<br>
 
       <p>Here is an in-depth example of how to write a unit test</p>
 {% highlight javascript %}
-// Bootstrap the testing environmen
-var testEnv = require( 'utils' ).testEnv();
- 
-var expect = require( 'chai' ).expect
-  , Service;
- 
-describe( 'controllers.ExampleController', function() {
-    var ctrl;
- 
-    beforeEach( function( done ) {
-        testEnv( function( ExampleController, ExampleService ) {
-            var req = {
-                params: { action: 'fakeAction' },
-                method: 'GET',
-                query: {}
-            };
-            var res = {
-                json: function() {}
-            };
-            var next = function() {};
-            ctrl = new ExampleController( req, res, next );
- 
-            Service = ExampleService;
-            Service.create({
-                name: 'Example 1'
-            })
-            .then( function( examples ) {
-                done();
-            })
-            .fail( done );
-        });
+var expect      = require( 'chai' ).expect
+  , async       = require( 'async' )
+  , sinon       = require( 'sinon' )
+  , underscore  = require( 'underscore' )
+  , path        = require( 'path' )
+  , util        = require( 'util' )
+  , injector    = require( 'injector' )
+  , models      = [ { name: 'Example 1' } ]
+  , ExampleController;
+
+describe ( 'ExampleController', function () {
+
+    before( function( done ) {
+        ExampleController = injector.getInstance( 'backendExampleModule' ).controllers.ExampleController;
+        done();
     });
 
-    describe( '.getAction()', function() {
-        it( 'should call .send() with valid status', function( done ) {
-            ctrl.req.params.id = 1;
-            ctrl.send = function( data ) {
-                data.id.should.equal( 1 );
-                data.name.should.equal( 'Example 1' );
-                done();
-            };
-            ctrl.getAction();
+    function fakeRequest( req ) {
+        req.method  = req.method || 'GET';
+        req.uri     = req.uri || '/example';
+        req.query   = req.query || {};
+        req.body    = req.body || {};
+        req.params  = req.params || {};
+
+        return req;
+    };
+
+    function fakeResponse( cb ) {
+        return {
+            json: function( code, message ) {
+                setTimeout( function() {
+                    cb( code, JSON.parse( JSON.stringify( message ) ) )                    
+                }, 10 );
+            },
+
+            send: function( code, message ) {
+                setTimeout( function() {
+                    cb( code, message )
+                }, 10 );
+            }
+        };
+    };
+
+    it( 'Should create a new example model instance and save it in the database', function( done ) {
+        var ctrl = null
+          , model = models[ 0 ];
+
+        var req = fakeRequest({
+            method: 'POST',
+            body: underscore.extend( {}, model )
         });
+
+        var res = fakeResponse( function( code, result ) {
+            expect( code ).to.equal( 200 );
+            expect( result ).to.be.an( 'object' );
+            expect( ctrl.action ).to.equal( 'postAction' );
+
+            expect( result ).to.have.property( 'id' );
+            expect( result ).to.have.property( 'name', model.name );
+            expect( result ).to.have.property( 'createdAt' );
+            expect( result ).to.have.property( 'updatedAt' );
+            
+            model.id = result.id;
+            model.createdAt = result.createdAt;
+            model.updatedAt = result.updatedAt;
+            model.deletedAt = null;
+
+            done();
+        });
+
+        this.timeout( 10000 );
+        var ctrl = ExampleController.callback( 'newInstance' )( req, res );
     });
+
+    it( 'Should list the example model instances', function( done ) {
+        var ctrl  = null
+          , model = models[ 0 ];
+
+        var req = fakeRequest({});
+        var res = fakeResponse( function( code, result ) {
+            expect( code ).to.equal( 200 );
+            expect( result ).to.be.an( 'array' );
+            expect( ctrl.action ).to.equal( 'listAction' );
+            expect( result.length ).to.not.equal( 0 );
+
+            var lastModel = result[ result.length - 1 ];
+            expect( lastModel ).to.have.property( 'id' );
+            expect( lastModel ).to.have.property( 'name' );
+            expect( lastModel ).to.have.property( 'createdAt' );
+            expect( lastModel ).to.have.property( 'updatedAt' );
+            expect( lastModel ).to.have.property( 'deletedAt' );
+
+            expect( lastModel.name ).to.eql( model.name );
+
+            done();
+        });
+
+        this.timeout( 10000 );
+        var ctrl = ExampleController.callback( 'newInstance' )( req, res );
+    });
+
+    it( 'Should be able to list an example by id', function( done ) {
+        var ctrl  = null
+          , model = models[ 0 ];
+
+        var req = fakeRequest({
+            uri: '/example',
+            params: {
+                id: model.id
+            }
+        });
+        var res = fakeResponse( function( code, result ) {
+            expect( code ).to.equal( 200 );
+            expect( result ).to.be.an( 'object' );
+            expect( ctrl.action ).to.equal( 'getAction' );
+            expect( result ).to.eql( model );
+
+            done();
+        });
+
+        this.timeout( 10000 );
+        var ctrl = ExampleController.callback( 'newInstance' )( req, res );
+    });
+
+    it( 'Should be able to update an example model instance', function( done ) {
+        var ctrl = null
+          , model = models[ 0 ];
+
+        model.name = 'Example 1 Updated';
+
+        var req = fakeRequest({
+            method: 'POST',
+            body: underscore.extend( {}, model )
+        });
+
+        var res = fakeResponse( function( code, result ) {
+            expect( code ).to.equal( 200 );
+            expect( result ).to.be.an( 'object' );
+            expect( ctrl.action ).to.equal( 'putAction' );
+
+            expect( result ).to.have.property( 'updatedAt' );
+            model.updatedAt = result.updatedAt;
+
+            expect( result ).to.eql( model );
+
+            done();
+        });
+
+        this.timeout( 10000 );
+        var ctrl = ExampleController.callback( 'newInstance' )( req, res );
+    });
+
+    it( 'Should be able to delete an example model instance', function( done ) {
+        var ctrl  = null
+          , model = models[ 0 ];
+
+        var req = fakeRequest({
+            uri: '/example/' + model.id,
+            params: {
+                id: model.id
+            },
+            method: 'DELETE'
+        });
+        var res = fakeResponse( function( code, result ) {
+            expect( code ).to.equal( 200 );
+            expect( result ).to.eql({});
+
+            done();
+        });
+
+        this.timeout( 10000 );
+        var ctrl = ExampleController.callback( 'newInstance' )( req, res );
+    });
+
 });
 {% endhighlight %}<br>
 
