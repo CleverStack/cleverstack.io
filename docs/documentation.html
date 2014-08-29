@@ -1158,9 +1158,9 @@ module.exports = function( Model ) {
         <!-- Common Arguments
         ================================================== -->
         <h4 id="backend-models-finder-methods-common-arguments">Common Arguments</h4>
-        <p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p>
+        <p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p><br>
 
-        <h5>idOrFindOptions</h5>
+        <h6>idOrFindOptions</h6>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
@@ -1204,6 +1204,26 @@ module.exports = function( Model ) {
           </tr>
           </tbody>
         </table><br>
+
+        <h5>queryOptions</h5>
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th style="width: 100px;">Name</th>
+              <th style="width: 70px;">Type/s</th>
+              <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>transaction<br>
+                <span class="label label-warning">Optional</span>
+              </td>
+              <td>Object</td>
+              <td>Any current transaction to be used with the database query</td>
+          </tr>
+          </tbody>
+        </table><br><br>
 
 
         <!-- find
