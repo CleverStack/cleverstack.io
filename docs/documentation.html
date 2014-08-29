@@ -65,7 +65,7 @@ $ npm i -g grunt-cli {% endhighlight %}
     <p>Install the CleverStack Command Line Interface (CLI).</p>
     {% highlight bash %}$ npm install -g cleverstack-cli{% endhighlight %}
 
-    <p><strong>Important:</strong> Linux or Mac users may need to run this command using "sudo"</p>
+    <p><span class="label label-danger">Important</span> Linux or Mac users may need to run this command using "sudo"</p>
       {% highlight bash %}$ sudo npm install -g cleverstack-cli{% endhighlight %}
 
     <!-- Commands
@@ -103,7 +103,7 @@ $ npm i -g grunt-cli {% endhighlight %}
       ================================================== -->
       <h4 id="cli-modules-official">Official Modules</h4>
       <p>We currently have a handful of important Official CleverStack modules available which we list here and update as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list of modules.</p><br>
-      
+
       <div style="padding-left: 30px;">
         <h5 id="cli-modules-official-orm"><a href="https://github.com/CleverStack/clever-orm">Object Relational Mapper (ORM)</a></h5>
         <p>This module deeply integrates <a href="https://github.com/sequelize/sequelize">SequelizeJS</a> into CleverStack, to provide an out of the box <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapper</a> which is widely accepted, widely used, full featured and mature SQL Solution for CleverStack.</p>
@@ -128,7 +128,7 @@ $ npm i -g grunt-cli {% endhighlight %}
       ================================================== -->
       <h4 id="cli-modules-core">Core Modules</h4>
       <p>This is a list of modules that are used in the Core of CleverStack, you do not need to install these (as they are by default). However these modules are designed to work with anything, so if you want to use these components in something other than CleverStack you have that option.</p><br>
-      
+
       <div style="padding-left: 30px;">
         <h5 id="cli-modules-core-controller"><a href="https://github.com/clevertech/clever-controller">Controller</a></h5>
         <p>This module provides Lightning-fast flexible Controller's for CleverStack, the main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.</p><br>
@@ -154,7 +154,7 @@ $ npm i -g grunt-cli {% endhighlight %}
       <h5 id="cli-modules-downgrading">Downgrading</h5>
       {% highlight bash %}$ clever downgrade clever-auth{% endhighlight %}
 
-      <p><strong>Note:</strong> You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p><br>
+      <p><span class="label label-info">Note</span> You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p><br>
 
       <!-- Finding Modules
       ================================================== -->
@@ -258,7 +258,7 @@ back-end/
 ├── index.js          # single node http server app
 └── package.json      # npm dependencies and package information
 {% endhighlight %}<br>
-    
+
     <!-- Important files and folders
     ================================================== -->
     <div style="padding-left: 20px;">
@@ -274,43 +274,43 @@ back-end/
       <ul>
           <li>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</li><br>
 
-          <li><strong>Important:</strong> If you do modify files in this folder, then using CleverStack CLI commands like upgrade or downgrade may remove your changes.</li>
-          <li><strong>Note:</strong> Certain folders files are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
+          <li><span class="label label-danger">Important</span> If you do modify files in this folder, then using CleverStack CLI commands like upgrade or downgrade may remove your changes.</li>
+          <li><span class="label label-info">Note</span> Certain folders files are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
       </ul>
 
       <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/modules">/modules</a></h5>
       <ul>
           <li>This is where all of the Cleverstack modules will be installed into your application.</li>
           <li>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</li><br>
-          <li><strong>Note:</strong> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need to add and change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
+          <li><span class="label label-info">Note</span> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need to add and change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
       </ul>
 
       <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">/app.js</a></h5>
       <ul>
           <li>The main entry point of a "Clustered" Application, in most cases you will not need to modify this file.</li><br>
-          <li><strong>Important:</strong> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
+          <li><span class="label label-danger">Important</span> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
       </ul>
 
       <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js">/Gruntfile.js</a></h5>
       <ul>
           <li>Defines the Applications global (main) gruntConfig.</li>
           <li>Registers the Applications included Grunt tasks.</li><br>
-          <li><strong>Note:</strong> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
+          <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
       </ul>
 
       <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">/index.js</a></h5>
       <ul>
           <li>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</li>
           <li>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attached to the process by using --debug-brk.</li><br>
-          <li><strong>Note:</strong> To run this file on its own you will need to manually set your NODE_PATH for this script to work.</li>
+          <li><span class="label label-info">Note</span> To run this file on its own you will need to manually set your NODE_PATH for this script to work.</li>
       </ul>
 
       <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">/package.json</a></h5>
       <ul>
           <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
-          <li><strong>Important:</strong> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
-          <li><strong>Note:</strong> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
-          <li><strong>Note:</strong> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
+          <li><span class="label label-danger">Important</span> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+          <li><span class="label label-info">Note</span> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+          <li><span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
       </ul>
     </div>
 
@@ -324,7 +324,7 @@ back-end/
       <li><a href="https://github.com/CleverStack/Node-Seed/tree/master/config/global.json">/config/global.json</a><br>
         <ul>
           <li>Define the global configuration for your application here.</li><br>
-          <li><strong>Note:</strong> This file is required, and is the place for any GLOBAL configuration</li>
+          <li><span class="label label-info">Note</span> This file is required, and is the place for any GLOBAL configuration</li>
         </ul>
       </li><br>
       <li>/modules/&lt;module&gt;/config/default.json
@@ -342,9 +342,9 @@ back-end/
       <li>/config/&lt;NODE_ENV&gt;.json <strong>(environment specific configuration)</strong>
         <ul>
           <li>This allows you to modify or extend the configuration for each environment, regardless of what name you give an environment.</li><br>
-          <li><strong>Important:</strong> To take advantage of an environment based configuration file, you need to set an Environment Variable called NODE_ENV to the name you called your environment. (We use NODE_ENV=local for local development)</li>
-          <li><strong>Note:</strong> the default environment names are, LOCAL, DEV, STAG and PROD.</li>
-          <li><strong>Note:</strong> this configuration file is used to provide the default GLOBAL config for each module.</li>
+          <li><span class="label label-danger">Important</span> To take advantage of an environment based configuration file, you need to set an Environment Variable called NODE_ENV to the name you called your environment. (We use NODE_ENV=local for local development)</li>
+          <li><span class="label label-info">Note</span> the default environment names are, LOCAL, DEV, STAG and PROD.</li>
+          <li><span class="label label-info">Note</span> this configuration file is used to provide the default GLOBAL config for each module.</li>
           <li><strong>This file is not required.</strong></li>
         </ul>
       </li>
@@ -396,7 +396,7 @@ example-module/
           <li>Like the applications config folder this module config folder allows you to provide configuration on a per module basis.</li>
           <li><a href="#backend-modules-config-default">&lt;module&gt;/config/default.json</a></li>
           <li><a href="#backend-modules-config-global">&lt;module&gt;/config/global.json</a></li><br>
-          <li><strong>Important:</strong> Every module's json config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your &lt;module&gt;.</li>
+          <li><span class="label label-danger">Important</span> Every module's json config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your &lt;module&gt;.</li>
 {% highlight json %}
 {
   "moduleName": {
@@ -436,10 +436,10 @@ module.exports = Module.extend({
     }
 });
 {% endhighlight %}
-            <li><strong>Important:</strong> This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
-            <li><strong>Important:</strong> Must export a Module Class which will be imported by the moduleLoader.</li>
+            <li><span class="label label-danger">Important</span> This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
+            <li><span class="label label-danger">Important</span> Must export a Module Class which will be imported by the moduleLoader.</li>
             <br>
-            <li><strong>Note:</strong> Has lifecycle <a href="#backend-modules-hooks">hooks</a> for every situation, like loading, routing, shutdown etc.</li>
+            <li><span class="label label-info">Note</span> Has lifecycle <a href="#backend-modules-hooks">hooks</a> for every situation, like loading, routing, shutdown etc.</li>
         </ul>
 
         <h5>routes.js</h5>
@@ -465,7 +465,7 @@ module.exports = Module.extend({
 });
 {% endhighlight %}<br>
 
-      <p><strong>Important:</strong> Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p><br>
+      <p><span class="label label-danger">Important</span> Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p><br>
 
       <h5 id="backend-modules-hooks-presetup">preSetup</h5>
       <ul>
@@ -475,7 +475,7 @@ module.exports = Module.extend({
       <h5 id="backend-modules-hooks-preinit">preInit</h5>
       <ul>
         <li>This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().</li>
-        <li><strong>Important:</strong> This is the last place to hook into until after init.</li>
+        <li><span class="label label-danger">Important</span> This is the last place to hook into until after init.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-init">init</h5>
@@ -486,8 +486,8 @@ module.exports = Module.extend({
       <h5 id="backend-modules-hooks-configure-app">configureApp</h5>
       <ul>
         <li>This hook allows you to modify the express app from within a module, without the need to make those changes in the index.js file located at backend/index.js</li><br>
-        <li><strong>Important:</strong> you must emit "appConfigured", until you do the moduleLoader will wait.</li>
-        <li><strong>Important:</strong> this function is injected with app &amp; express as arguments in the constructors setup() function.</li>
+        <li><span class="label label-danger">Important</span> you must emit "appConfigured", until you do the moduleLoader will wait.</li>
+        <li><span class="label label-danger">Important</span> this function is injected with app &amp; express as arguments in the constructors setup() function.</li>
       </ul>
 {% highlight javascript %}
 var Module = require( 'classes' ).Module;
@@ -503,13 +503,13 @@ module.exports = Module.extend({
       <h5 id="backend-modules-hooks-preresources">preResources</h5>
       <ul>
         <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
-        <li><strong>Important:</strong> you must emit "resourcesReady", until you do the moduleLoader will wait.</li>
+        <li><span class="label label-danger">Important</span> you must emit "resourcesReady", until you do the moduleLoader will wait.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-modulesloaded">modulesLoaded</h5>
       <ul>
         <li>This hook is fired after all modules are loaded (for each module).</li>
-        <li><strong>Important:</strong> you must emit "ready", until you do the moduleLoader will wait.</li>
+        <li><span class="label label-danger">Important</span> you must emit "ready", until you do the moduleLoader will wait.</li>
       </ul>
 
       <h5 id="backend-modules-hooks-preroute">preRoute</h5>
@@ -528,18 +528,18 @@ module.exports = Module.extend({
       <p>You can easily define the modules configuration with these files</p>
       <h5 id="backend-modules-config-default">config/default.json</h5>
       <ul>
-        <li><strong>Note:</strong> This file is used mainly to define the basic structure of configuration for each module, primarily used to "prevent cannot access variable of undefined" errors where code relies on the structure of the configuration object.</li>
+        <li><span class="label label-info">Note</span> This file is used mainly to define the basic structure of configuration for each module, primarily used to "prevent cannot access variable of undefined" errors where code relies on the structure of the configuration object.</li>
         <li><strong>This file is not required.</strong></li>
       </ul>
 
       <h5 id="backend-modules-config-global">config/global.json</h5>
       <ul>
         <li>This file is used to define the GLOBAL settings for this module</li><br>
-        <li><strong>Note:</strong> this configuration file is used to provide the default GLOBAL config for each module.</li>
+        <li><span class="label label-info">Note</span> this configuration file is used to provide the default GLOBAL config for each module.</li>
         <li><strong>This file is not required.</strong></li>
       </ul><br>
 
-      <p><strong>Important:</strong> Each of these JSON config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your &lt;module&gt;.</p>
+      <p><span class="label label-danger">Important</span> Each of these JSON config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your &lt;module&gt;.</p>
 {% highlight json %}
 {
   "module-name": {
@@ -554,6 +554,8 @@ module.exports = Module.extend({
       <h4 id="backend-modules-magic">Magic Modules</h4>
       <p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_PATH.</p>
       {% highlight bash %}$ export NODE_PATH=./lib/:./modules/{% endhighlight %}
+
+      <p><span class="label label-danger">Important</span> You only need to set your NODE_PATH when you are running index.js, not the main servers or commands.</p><br>
 
       <p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
       {% highlight javascript %}$ require( 'controllers' ).ExampleController {% endhighlight %}
@@ -571,8 +573,6 @@ module.exports = Module.extend({
         <li>tasks</li>
         <li>utils</li>
       </ul><br>
-
-      <p><strong>Important:</strong> You only need to set your NODE_PATH when you are running index.js, not the main servers or commands.</p><br>
 
       <!-- Modules Dependency Injection
       ================================================== -->
@@ -605,199 +605,47 @@ module.exports = function( app, ExampleController ) {
 
 }
 {% endhighlight %}
-      <p><strong>Note:</strong> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
-      <p><strong>Note:</strong> We use ExpressJS as our main web service, so be sure to checkout how to use <a href="http://expressjs.com/api.html#app.VERB">ExpressJS Routes</a></p>
+      <p><span class="label label-info">Note</span> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
+      <p><span class="label label-info">Note</span> We use ExpressJS as our main web service, so be sure to checkout how to use <a href="http://expressjs.com/api.html#app.VERB">ExpressJS Routes</a></p><br/>
 
-      
-      <br>
+      <h5>Automatic Routing ( Class.autoRouting )</h5>
+      <ul>
+        <li>Ability to turn on or off autoRouting (true or array for ON, false for OFF)</li>
+        <li>Array notation allows (Connect or any other) Middleware to be attached to the routes that are autoRouted</li>
+        <li>Route naming: Ability to either define your own route (name), or have it automatically generated based on the filename of your controller! (ExampleController would have a route name of /example and /examples in a RESTful fashion )</li>
+      </ul>
 
-      <!-- Classes
-      ================================================== -->
-      <h4 id="backend-modules-classes">Classes</h4>
-      <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
-
-      <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
-
-      <p><strong>Note:</strong> Every Class including Model, Service &amp; Controller is an EventEmitter automatically.</p>
-
-      <p>Here is an example of creating a class and using the proxy function as well as emitting events.</p>
+      Examples:
 {% highlight javascript %}
-var Class = require( 'classes' ).Class;
+{
+    // ...
 
-module.exports = Class.extend({
-  files: null,
+    autoRouting: [
+        // As a String (only available for methods on the controllers Class, either inherited or defined)
+        'middlewareFromThisController',
 
-  init: function() {
-    this.files = [];
-    this.getFiles( __dirname );
-    this.emit( 'init' );
-  },
+        // Any function
+        function definedFunction( req, res, next ) {
+            // any function (from any file) that takes these three arguments can be attached
+        },
 
-  getFiles: function( dir ) {
-    fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
-  },
+        // CleverStack example
+        PermissionController.requiresPermission({
+            all: 'Example.$action', // optional: ability to define rules based on action (Example.post for POST, etc)
+            postAction: false       // optional: ability to define overrides per action (Overrides must include 'Action')
+        })
+    ],
 
-  // The dir variable has been curried into this function by getFiles()
-  handleGetFiles: function( dir, err, files ) {
-    if ( !err ) {
-      this.files = files;
-    } else {
-      console.error( err );
+    middlewareFromThisController: function( req, res, next ) {
+        // Attached inside of autoRouting array
+        next();
     }
-  }
-});
-{% endhighlight %}<br>
 
-
-      <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
-      <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
-      <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
-
-      <!-- Controllers
-      ================================================== -->
-      <h4 id="backend-modules-controllers">Controllers</h4>
-      <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
-
-      <p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
-
-      <p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
-
-      <p>Here is an example that covers all of the many features of Controller</p>
-{% highlight javascript %}
-// modules/backend-example-module/controllers/ExampleController.js
-module.exports = ExampleController = function( ExampleService ) {
-    return Controller.extend(
-    /** Static **/
-    {
-      // Autorouting can either be "false", "true" (default) or an array containing the names of
-      // middleware that you want to be run before entering your controller
-      autoRouting: [ 'someMiddleware' ],
-
-      // Service can be set to any Service Class to allow for automatic CRUD
-      service: ExampleService,
-
-      // Controller allows you to define middleware in the Static section of your controller,
-      // as this is Static and not an instance, req, res and next are passed in as arguments
-      someMiddleware: function( req, res, next ) {
-          res.send({
-              message: 'Hi from middleware!'
-          });
-      }
-    },
-    /** Prototype **/
-    {
-        // Restful action for POST '/example'
-        postAction: function() {
-            this.send({
-                status: 'Created record!',
-                youPosted: this.req.body
-            });
-        },
-
-        // Restful action for GET '/example' when no id is specified
-        listAction: function() {
-            this.send({
-                status: 'Sending you the list of examples.',
-                query: this.req.query
-            });
-        },
-
-        // Restful action for GET '/example/1' where 1 is the id of the example you want to get
-        getAction: function() {
-            this.send({
-                status: 'sending you record with id of ' + this.req.params.id
-            });
-        },
-
-        // Restful action for PUT '/example/1' where 1 is the id of the example your updating
-        putAction: function() {
-            this.send({
-                status: 'updated record with id ' + this.req.params.id,
-                youPosted: this.req.body
-            });
-        },
-
-        // Restful action for DELETE '/example/1' where 1 is the id of the example you want to delete
-        deleteAction: function() {
-            this.send({
-                status: 'deleted record with id ' + this.req.params.id
-            });
-        },
-
-        // Action that returns JSON, available from route '/example/hello'
-        helloAction: function() {
-            this.send({
-                message: 'Hi there'
-            })
-        }
-    });
-};
-{% endhighlight %}<br>
-
-      <!-- Models
-      ================================================== -->
-      <h4 id="backend-modules-models">Models</h4>
-      <p>To make life easy and our modules as flexible as possible we have written our own Model Schema definition system, this allows you to write a Single model that will work with both ORM and ODM with a single line change!</p>
-{% highlight javascript %}
-// models/ExampleModel.js
-module.exports = function( Model ) {
-    return Model.extend(
-    {
-        timeStampable: true,
-        softDeletable: true,
-        type: 'ORM'
-    },
-    {
-        id: {
-            type: Number,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        name: String,
-        someDate: Date,
-        someFloat: Float,
-        uniqueAndRequiredEmail: {
-            type: String,
-            required: true,
-            unique: true,
-            validate: {
-                email: true
-            }
-        }
-    });
-};
-{% endhighlight %}<br>
-
-      <p><strong>Hint:</strong> Use the grunt db:rebase command to create your database structure</p>
-      {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
-
-      <p><strong>Hint:</strong> Use the grunt db:seed command to insert your seed data into the database</p>
-      {% highlight javascript %}$ grunt db:seed {% endhighlight %}
-
-      <p><strong>Hint:</strong> Both of the above db commands can be run together using one command</p>
-      {% highlight javascript %}$ grunt db {% endhighlight %}
+    // ...
+}
+{% endhighlight %}
 
       <br>
-
-      <p><strong>Important:</strong> You should not load models using require(), they must be loaded using the injector</p>
-      <p><strong>Note:</strong> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
-      <br>
-
-      <!-- Services
-      ================================================== -->
-      <h4 id="backend-modules-services">Services</h4>
-      <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
-
-      <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
-
-      <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Static of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
-{% highlight javascript %}
-module.exports = function ( Service, ExampleModel ) {
-    return Service.extend({
-        model: ExampleModel
-    });
-};
-{% endhighlight %}<br>
 
       <!-- Testing
       ================================================== -->
@@ -839,7 +687,7 @@ describe ( 'ExampleController', function () {
         return {
             json: function( code, message ) {
                 setTimeout( function() {
-                    cb( code, JSON.parse( JSON.stringify( message ) ) )                    
+                    cb( code, JSON.parse( JSON.stringify( message ) ) )
                 }, 10 );
             },
 
@@ -869,7 +717,7 @@ describe ( 'ExampleController', function () {
             expect( result ).to.have.property( 'name', model.name );
             expect( result ).to.have.property( 'createdAt' );
             expect( result ).to.have.property( 'updatedAt' );
-            
+
             model.id = result.id;
             model.createdAt = result.createdAt;
             model.updatedAt = result.updatedAt;
@@ -1014,6 +862,604 @@ describe( '/example', function() {
 {% endhighlight %}
     </div><br>
 
+
+    <!-- Classes
+    ================================================== -->
+    <h3 id="backend-classes">Classes</h3>
+    <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
+
+    <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
+
+    <p><span class="label label-info">Note</span> Every Class including Model, Service &amp; Controller is an EventEmitter automatically.</p>
+
+    <p>Here is an example of creating a class and using the proxy function as well as emitting events.</p>
+{% highlight javascript %}
+var Class = require( 'classes' ).Class;
+
+module.exports = Class.extend({
+  files: null,
+
+  init: function() {
+    this.files = [];
+    this.getFiles( __dirname );
+    this.emit( 'init' );
+  },
+
+  getFiles: function( dir ) {
+    fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
+  },
+
+  // The dir variable has been curried into this function by getFiles()
+  handleGetFiles: function( dir, err, files ) {
+    if ( !err ) {
+      this.files = files;
+    } else {
+      console.error( err );
+    }
+  }
+});
+{% endhighlight %}<br>
+
+
+    <p><strong>Tip:</strong> Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look.</p>
+    <p><strong>Tip:</strong> Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
+    <p><strong>Tip:</strong> Take a look at our <a href="https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p><br>
+
+    <!-- Controllers
+    ================================================== -->
+    <h3 id="backend-controllers">Controllers</h3>
+    <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
+
+    <p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
+
+    <p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
+
+    <p>Here is an example that covers all of the many features of Controller</p>
+{% highlight javascript %}
+// modules/backend-example-module/controllers/ExampleController.js
+module.exports = ExampleController = function( ExampleService ) {
+    return Controller.extend(
+    /** Class **/
+    {
+      // Autorouting can either be "false", "true" (default) or an array containing the names of
+      // middleware that you want to be run before entering your controller
+      autoRouting: [ 'someMiddleware' ],
+
+      // Service can be set to any Service Class to allow for automatic CRUD
+      service: ExampleService,
+
+      // Controller allows you to define middleware in the Class section of your controller,
+      // as this is Class and not an instance, req, res and next are passed in as arguments
+      someMiddleware: function( req, res, next ) {
+          res.send({
+              message: 'Hi from middleware!'
+          });
+      }
+    },
+    /** Prototype **/
+    {
+        // Restful action for POST '/example'
+        postAction: function() {
+            this.send({
+                status: 'Created record!',
+                youPosted: this.req.body
+            });
+        },
+
+        // Restful action for GET '/example' when no id is specified
+        listAction: function() {
+            this.send({
+                status: 'Sending you the list of examples.',
+                query: this.req.query
+            });
+        },
+
+        // Restful action for GET '/example/1' where 1 is the id of the example you want to get
+        getAction: function() {
+            this.send({
+                status: 'sending you record with id of ' + this.req.params.id
+            });
+        },
+
+        // Restful action for PUT '/example/1' where 1 is the id of the example your updating
+        putAction: function() {
+            this.send({
+                status: 'updated record with id ' + this.req.params.id,
+                youPosted: this.req.body
+            });
+        },
+
+        // Restful action for DELETE '/example/1' where 1 is the id of the example you want to delete
+        deleteAction: function() {
+            this.send({
+                status: 'deleted record with id ' + this.req.params.id
+            });
+        },
+
+        // Action that returns JSON, available from route '/example/hello'
+        helloAction: function() {
+            this.send({
+                message: 'Hi there'
+            })
+        }
+    });
+};
+{% endhighlight %}<br>
+
+    <!-- Services
+    ================================================== -->
+    <h3 id="backend-services">Services</h3>
+    <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
+
+    <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
+
+    <p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Class of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
+{% highlight javascript %}
+module.exports = function ( Service, ExampleModel ) {
+    return Service.extend({
+        model: ExampleModel
+    });
+};
+{% endhighlight %}<br>
+
+    <!-- Models
+    ================================================== -->
+    <h3 id="backend-models">Models</h3>
+    <p>Built into CleverStack's core is a world class NodeJS Object Relational Mapper (ORM) and NodeJS Object Document Mapper (ODM) system, this allow's you to define a SINGLE definition of a model that works for both ORM and ODM drivers regardless of what SQL or No-SQL Database you choose!</p>
+
+    <p><span class="label label-info">Note</span> Behind the scenes we use existing ORM (SequelizeJS) &amp; ODM (MongooseJS) libraries for the eventual persistence of data, this gives us the features, maturity, support and stability of those libraries while still being able to define a SINGLE model definition regardless of what database allowing your code to be flexible and pain free.</p>
+
+    <br>
+    <div style="padding-left: 30px;">
+
+      <!-- Overview
+      ================================================== -->
+      <h4 id="backend-models-overview">Overview</h4>
+      <p>To make life easy and our modules as flexible as possible we have written our own Model Schema definition system, this allows you to write a Single model that will work with both ORM and ODM with a single line change!</p><br>
+
+
+      <!-- Basic Structure
+      ================================================== -->
+      <h4 id="backend-models-definition-structure">Basic Structure</h4>
+      <p>Example: Basic definition structure of a Model</p>
+{% highlight javascript %}
+module.exports = function( Model ) {
+  return Model.extend(
+  /* @Class */
+  {
+      // Options ...
+  },
+  /* @Prototype */
+  {
+      // Model Schema (Fields) ...
+  });
+};
+{% endhighlight %}
+<p><span class="label label-danger">Important</span> Each of the keys inside of the <code>@Prototype</code> is a "Schema Field".</p>
+<br>
+
+
+      <!-- Class Options
+      ================================================== -->
+      <h4 id="backend-models-class-options">Class Options</h4>
+      <p>Model options can be defined inside the Models Static object when using Model.extend( StaticObject, PrototypeObject ) to create a model.</p>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px;">Property</th>
+            <th style="width: 115px;">Type/s</th>
+            <th style="width: 50px;">Default</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>'ORM'</td>
+            <td><code>'ORM'</code> or <code>'ODM'</code>, for data persistence with clever-orm and clever-odm modules respectively.</td>
+        </tr>
+        <tr>
+            <td>dbName</td>
+            <td>boolean | string</td>
+            <td>false</td>
+            <td>Optionally define the database table name for a model.</td>
+        </tr>
+        <tr>
+            <td>freezeDbName</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>By default table (ORM) and collection (ODM) names are pluralized, if you don't want this behaviour set freezeDbName to <code>true</code></td>
+        </tr>
+        <tr>
+            <td>underscored</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>By default column names are camelCasedLikeThis, if you prefer underscores set this to <code>true</code></td>
+        </tr>
+        <tr>
+            <td>engine</td>
+            <td>boolean | string</td>
+            <td>false</td>
+            <td>Allows you to specifically override the database storage engine for a model. <br>
+              <span class="label label-danger">ORM ONLY</span>
+            </td>
+        </tr>
+        <tr>
+            <td>charset</td>
+            <td>boolean | string</td>
+            <td>false</td>
+            <td>Allows you to specifically override the database storage charset for a model. <br>
+              <span class="label label-danger">ORM ONLY</span>
+            </td>
+        </tr>
+        <tr>
+            <td>comment</td>
+            <td>boolean | string</td>
+            <td>false</td>
+            <td>Allows you to specifically override the database table comment for a model. <br>
+              <span class="label label-danger">ORM ONLY</span>
+            </td>
+        </tr>
+        <tr>
+            <td>collate</td>
+            <td>boolean | string</td>
+            <td>false</td>
+            <td>Allows you to specifically set the database table collation for a model. <br>
+              <span class="label label-danger">ORM ONLY</span>
+            </td>
+        </tr>
+        <tr>
+            <td>softDeleteable</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Allows you to specifically set the database table collation for a model. <br>
+              <span class="label label-info">Behaviour</span>
+            </td>
+        </tr>
+        <tr>
+            <td>deletedAt</td>
+            <td>string</td>
+            <td>'createdAt'</td>
+            <td>Allows you to set the column name to be used with the softDeleteable behaviour and deletion of models.</td>
+        </tr>
+        <tr>
+            <td>timeStampable</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Enables timestamping of models on persistence (creating, updating) <br>
+              <span class="label label-info">Behaviour</span>
+            </td>
+        </tr>
+        <tr>
+            <td>createdAt</td>
+            <td>string</td>
+            <td>'createdAt'</td>
+            <td>Allows you to set the column name to be used with the timeStampable behaviour and creation of models.</td>
+        </tr>
+        <tr>
+            <td>updatedAt</td>
+            <td>string</td>
+            <td>'updatedAt'</td>
+            <td>Allows you to set the column name to be used with the timeStampable behaviour and updating models.</td>
+        </tr>
+        </tbody>
+      </table>
+      <br>
+
+      <!-- Finder Methods
+      ================================================== -->
+      <h4 id="backend-models-finder-methods">Finder Methods</h4>
+      <p>Models in CleverStack provide easy to use finders and helpful methods to create, update and delete model instances</p><br>
+
+      <div style="padding-left: 30px;">
+
+        <!-- Common Arguments
+        ================================================== -->
+        <h4 id="backend-models-finder-methods-common-arguments">Common Arguments</h4>
+        <p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p>
+
+        <h5>idOrFindOptions</h5>
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th style="width: 100px;">Name</th>
+              <th style="width: 70px;">Type/s</th>
+              <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>where<br>
+                <span class="label label-danger">Required</span>
+              </td>
+              <td>Object</td>
+              <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+                Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+{% highlight javascript %}
+{
+  where: {
+    name: 'example'
+  }
+}
+{% endhighlight %}
+              </td>
+          </tr>
+          <tr>
+              <td>include<br>
+                <span class="label label-warning">Optional</span>
+              </td>
+              <td>Object</td>
+              <td>Eager load other models that are associated to the one you are querying.<br>
+                <p>Example</p>
+{% highlight javascript %}
+{
+  include: [
+    UserModel
+  ]
+}
+{% endhighlight %}
+              </td>
+          </tr>
+          </tbody>
+        </table><br>
+
+
+        <!-- find
+        ================================================== -->
+        <h4 id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
+        <p class="lead-text">Find a single model either by id or using findOptions (smart where)</p><br>
+
+        <h5>Arguments</h5>
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th style="width: 100px;">Name</th>
+              <th style="width: 115px;">Type/s</th>
+              <th style="width: 50px;">Default</th>
+              <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>idOrFindOptions</td>
+              <td>Number | ObjectId | Object</td>
+              <td>{}</td>
+              <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+                Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+                <span class="label label-danger">Required</span>
+              </td>
+          </tr>
+          <tr>
+              <td>queryOptions</td>
+              <td>boolean | string</td>
+              <td>false</td>
+              <td>Optionally define the database table name for a model.<br>
+                <span class="label label-warning">Optional</span>
+              </td>
+          </tr>
+          </tbody>
+        </table><br>
+
+        <h5>Example</h5>
+{% highlight javascript %}
+Model
+.find( 1 )
+.then( function( model ) {
+
+})
+.catch( function( err ) {
+
+});
+
+// Using findOptions and a smart where object
+Model.find({
+  where: {
+    name: 'example'
+  }
+})
+.then( function( model ) {
+
+})
+.catch( function( err ) {
+
+});
+{% endhighlight %}
+
+
+      </div>
+
+
+      <ul>
+        <li>find( idOrFindOptions, queryOptions )</li>
+        <li>Model.Types.BIGINT</li>
+        <li>Model.Types.FLOAT</li>
+        <li>Model.Types.DECIMAL</li>
+        <li>Model.Types.TEXT</li>
+      </ul><br>
+
+      <!-- Data Types
+      ================================================== -->
+      <h4 id="backend-models-types">Data Types</h4>
+      <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
+      <ul>
+        <li>Model.Types.ENUM</li>
+        <li>Model.Types.BIGINT</li>
+        <li>Model.Types.FLOAT</li>
+        <li>Model.Types.DECIMAL</li>
+        <li>Model.Types.TEXT</li>
+      </ul><br>
+
+
+      <!-- Schema Field Definition Structure
+      ================================================== -->
+      <h4 id="backend-models-schema-field-definition">Schema Field Definition</h4>
+      <p>If you choose (or need) to define a Schema Field using the Object Notation the following options and definition structure outline how to do so correctly.</p>
+
+      <p>Options</p>
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px;">Property</th>
+            <th style="width: 115px;">Type/s</th>
+            <th style="width: 50px;">Default</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>primaryKey</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Set this field as a primary key</td>
+        </tr>
+        <tr>
+            <td>autoIncrement</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>auto increment this field, only works with Number or Int Model.Types.*</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>Type | Object</td>
+            <td></td>
+            <td>Can be a standard Type like <code>String</code> or an Object provided by Model.Types
+              <span class="label label-danger">Important</span> this field is required when you provide an object
+            </td>
+        </tr>
+        <tr>
+            <td>default</td>
+            <td>Mixed</td>
+            <td>false</td>
+            <td>Specify a default.</td>
+        </tr>
+        <tr>
+            <td>allowNull</td>
+            <td>Boolean</td>
+            <td>true</td>
+            <td>Allow this field to be set as <code>null</code>.</td>
+        </tr>
+        <tr>
+            <td>required</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Make a model field required.</td>
+        </tr>
+        <tr>
+            <td>unique</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>Make a model field unique in the database.</td>
+        </tr>
+        <tr>
+            <td>comment</td>
+            <td>Boolean | String</td>
+            <td>false</td>
+            <td>Add a comment to this field in the database.</td>
+        </tr>
+        <tr>
+            <td>validate</td>
+            <td>Object</td>
+            <td>{}</td>
+            <td>Supply an object of validators that will be used to validate the field before saving.</td>
+        </tr>
+      </table>
+
+      <p>Basic definition structure of a Schema Field:</p>
+{% highlight javascript %}
+// ...
+
+  /* @Prototype */
+  {
+    fieldName: {
+      type          : String,
+      required      : true,
+      unique        : true,
+      validate: {
+        email       : true
+      }
+    }
+  }
+
+// ...
+{% endhighlight %}<br>
+
+      <!-- Definition Example
+      ================================================== -->
+      <h4 id="backend-models-definition-example">Definition Example</h4>
+      <p>A more complete look at defining models</p>
+      <code>backend/modules/example-module/models/ExampleModel.js</code>
+
+{% highlight javascript %}
+module.exports = function( Model ) {
+  return Model.extend(
+  /* @Class */
+  {
+    type            :  'ORM',
+    timeStampable   :  true,
+    softDeletable   :  true
+  },
+  /* @Prototype */
+  {
+    id: {
+      type          : Number,
+      primaryKey    : true,
+      autoIncrement : true
+    },
+    name            : String,
+    someDate        : Date,
+    someFloat       : Float,
+    email: {
+      type          : String,
+      required      : true,
+      unique        : true,
+      validate: {
+        email       : true
+      }
+    }
+  });
+};
+{% endhighlight %}
+<br>
+
+      <!-- Supported Databases
+      ================================================== -->
+      <h4 id="backend-models-supported-databases">Supported Databases</h4>
+      <p>MySQL, MariaDB, PostgreSQL and SQLite.</p><br>
+
+      <!-- Validation
+      ================================================== -->
+      <h4 id="backend-models-validation">Validation/Validators</h4>
+      <p>CleverStack has powerful validation built into it's core</p><br>
+
+      <!-- Associations
+      ================================================== -->
+      <h4 id="backend-models-associations">Associations</h4>
+      <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
+
+      <p>Currently associations are supported by taking advantage of sequelizejs's inbuilt associations, you can do bi directional and uni directional one-to-one (hasOne, belongsTo), one-to-many (hasMany, belongsTo) and many-to-many (hasMany) assoications of models.</p><br>
+
+      <!-- Toolbelt
+      ================================================== -->
+      <h4 id="backend-models-associations">Toolbelt</h4>
+
+      <p><span class="label label-info">Hint</span> Use the grunt db:rebase command to create your database structure</p>
+      {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
+
+      <p><span class="label label-info">Hint</span> Use the grunt db:seed command to insert your seed data into the database</p>
+      {% highlight javascript %}$ grunt db:seed {% endhighlight %}
+
+      <p><span class="label label-info">Hint</span> Both of the above db commands can be run together using one command</p>
+      {% highlight javascript %}$ grunt db {% endhighlight %}
+
+      <br>
+
+      <p><span class="label label-danger">Important</span> You should not load models using require(), they must be loaded using the injector</p>
+      <p><span class="label label-danger">Important</span> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
+      <br>
+    </div>
+
     <!-- Troubleshooting
     ================================================== -->
     <h3 id="backend-troubleshooting">Troubleshooting</h3>
@@ -1125,7 +1571,7 @@ front-end/
       <ul>
         <li>Defines the Applications global (main) gruntConfig.</li>
         <li>Registers the Applications included Grunt tasks.</li>
-        <li><strong>Note:</strong> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt.</li>
+        <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt.</li>
       </ul>
 
       <h5>bower.json</h5>
@@ -1215,16 +1661,16 @@ example-module/
         <h5>package.json</h5>
         <ul>
             <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
-            <li><strong>Important:</strong> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
-            <li><strong>Note:</strong> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
-            <li><strong>Note:</strong> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
+            <li><span class="label label-danger">Important</span> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+            <li><span class="label label-info">Note</span> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+            <li><span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
         </ul>
 
         <h5>Gruntfile.js</h5>
         <ul>
             <li>Defines the Applications global (main) gruntConfig.</li>
             <li>Registers the Applications included Grunt tasks.</li><br>
-            <li><strong>Note:</strong> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
+            <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
         </ul>
       </div><br>
 
