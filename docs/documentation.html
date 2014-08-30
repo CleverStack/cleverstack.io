@@ -28,12 +28,12 @@ lead: "Indepth guides to CleverStack covering installation, configuration, usage
 
     <!-- Overview
     ================================================== -->
-    <h3 id="cli-overview">Overview</h3>
+    <h3 class="page-header" id="cli-overview">Overview</h3>
     <p>Our Command Line Interface was designed using our Modular Architecture, so that applications could take advantage of modules are that are created by our Core team, and for modules created and published to our Open Source EcoSystem by anyone in the Open Source Community.</p>
 
     <!-- Prerequisites
     ================================================== -->
-    <h3 id="cli-prerequisites">Prerequisites</h3>
+    <h3  class="page-header" id="cli-prerequisites">Prerequisites</h3>
     <p>The CLI has a few packages it depends on that cannot be defined inside of it's package.json, you have to install these before you can install or use the Command Line Interface.</p><br>
 
     <div style="padding-left: 20px;">
@@ -61,16 +61,21 @@ $ npm i -g grunt-cli {% endhighlight %}
 
     <!-- Installation
     ================================================== -->
-    <h3 id="cli-installation">Installation</h3>
+    <h3 class="page-header" id="cli-installation">Installation</h3>
     <p>Install the CleverStack Command Line Interface (CLI).</p>
     {% highlight bash %}$ npm install -g cleverstack-cli{% endhighlight %}
 
-    <p><span class="label label-danger">Important</span> Linux or Mac users may need to run this command using "sudo"</p>
-      {% highlight bash %}$ sudo npm install -g cleverstack-cli{% endhighlight %}
+    <div class="bs-callout bs-callout-danger">
+      <h4>Linux/Mac Users</h4>
+      <p>
+        You may need to run this command using "sudo", but you should note if you need to use sudo then something is wrong with your file/folder permissions
+        {% highlight bash %}$ sudo npm install -g cleverstack-cli{% endhighlight %}
+      </p>
+    </div>
 
     <!-- Commands
     ================================================== -->
-    <h3 id="cli-commands">Commands</h3>
+    <h3 class="page-header" id="cli-commands">Commands</h3>
     <p>Coming soon, we are working hard on this section.</p><br>
 
     <!-- <div style="padding-left: 20px;">
@@ -94,14 +99,14 @@ $ npm i -g grunt-cli {% endhighlight %}
 
     <!-- Modules
     ================================================== -->
-    <h3 id="cli-modules">Modules</h3>
-    <p>All functionality except what is in the CleverStack Core must be defined inside of modules, because we take advantage of NPM &amp; Bower for our package management it mean's that you can use the thousands of already available packages as Modules for your CleverStack powered Applications.</p><br>
+    <h3 class="page-header" id="cli-modules">Modules</h3>
+    <p>All functionality except what is in the CleverStack Core must be defined inside of modules, because we take advantage of NPM &amp; Bower for our package management it mean's that you can use the thousands of already available packages as Modules for your CleverStack powered Applications.</p>
 
     <div style="padding-left: 20px;">
 
       <!-- Official Modules
       ================================================== -->
-      <h4 id="cli-modules-official">Official Modules</h4>
+      <h4 class="page-header" id="cli-modules-official">Official Modules</h4>
       <p>We currently have a handful of important Official CleverStack modules available which we list here and update as frequently as possible, however we recommend visiting our <a href="/modules/?frontend=on&backend=on">Modules</a> page to get the full and upto date list of modules.</p><br>
 
       <div style="padding-left: 30px;">
@@ -121,12 +126,12 @@ $ npm i -g grunt-cli {% endhighlight %}
 
         <h5 id="cli-modules-official-auth"><a href="https://github.com/CleverStack/clever-auth">Authentication</a></h5>
         <p>This module provides you with a user model, service, migrations and all the code you need to provide a registration, login/logout, forgotten password as well as Google, LinkedIn, Twitter and Facebook social signup &amp; signin. (Both the Frontend and Backend have this module available for installation).</p>
-        {% highlight javascript %}$ clever install clever-auth{% endhighlight %}<br>
+        {% highlight javascript %}$ clever install clever-auth{% endhighlight %}
       </div>
 
       <!-- Core Modules
       ================================================== -->
-      <h4 id="cli-modules-core">Core Modules</h4>
+      <h4 class="page-header" id="cli-modules-core">Core Modules</h4>
       <p>This is a list of modules that are used in the Core of CleverStack, you do not need to install these (as they are by default). However these modules are designed to work with anything, so if you want to use these components in something other than CleverStack you have that option.</p><br>
 
       <div style="padding-left: 30px;">
@@ -134,12 +139,12 @@ $ npm i -g grunt-cli {% endhighlight %}
         <p>This module provides Lightning-fast flexible Controller's for CleverStack, the main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.</p><br>
 
         <h5 id="cli-modules-core-di"><a href="https://github.com/CleverStack/clever-injector">Dependency Injector (DI)</a></h5>
-        <p>This module provides Dependency Injection for CleverStack, it is non blocking, Lightning-fast, easy to use and flexible.</p><br>
+        <p>This module provides Dependency Injection for CleverStack, it is non blocking, Lightning-fast, easy to use and flexible.</p>
       </div>
 
       <!-- Using Modules
       ================================================== -->
-      <h4 id="cli-modules-using">Using Modules</h4>
+      <h4 class="page-header" id="cli-modules-using">Using Modules</h4>
       <p>Adding, Removing, Upgrading or Downgrading modules is the same with both the Frontend or Backend seeds. Here is some examples of working with the clever-auth module.</p>
 
       <h5 id="cli-modules-adding">Adding</h5>
@@ -154,11 +159,11 @@ $ npm i -g grunt-cli {% endhighlight %}
       <h5 id="cli-modules-downgrading">Downgrading</h5>
       {% highlight bash %}$ clever downgrade clever-auth{% endhighlight %}
 
-      <p><span class="label label-info">Note</span> You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p><br>
+      <p><span class="label label-info">Note</span> You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p>
 
       <!-- Finding Modules
       ================================================== -->
-      <h4 id="cli-modules-finding">Finding Modules</h4>
+      <h4 class="page-header" id="cli-modules-finding">Finding Modules</h4>
       <p>Finding modules is easy, here are some of the ways available</p>
 
       <ul>
@@ -177,11 +182,11 @@ $ npm search cleverstack-module
 $ bower search cleverstack-module
 {% endhighlight %}
         </li>
-      </ul><br>
+      </ul>
 
       <!-- Creating Modules
       ================================================== -->
-      <h4 id="cli-modules-creating">Creating your own Modules</h4>
+      <h4 class="page-header" id="cli-modules-creating">Creating your own Modules</h4>
       <p>You can develop your own CleverStack modules, here's how you create a module using the CleverStack CLI.</p>
       <ol>
         <li>
@@ -201,7 +206,7 @@ $ bower search cleverstack-module
 
     <!-- Troubleshooting
     ================================================== -->
-    <h3 id="cli-troubleshooting">Troubleshooting</h3>
+    <h3 class="page-header" id="cli-troubleshooting">Troubleshooting</h3>
     <p>If you have any problems (including errors, exceptions and even general usage) with the CleverStack CLI.</p>
     <ul>
       <li>Check the Github <a href="https://github.com/cleverstack/cleverstack-cli/issues">issues page</a>.</li>
@@ -212,7 +217,7 @@ $ bower search cleverstack-module
 
     <!-- Contributing
     ================================================== -->
-    <h3 id="cli-contributing">Contributing</h3>
+    <h3 class="page-header" id="cli-contributing">Contributing</h3>
     <p>Firstly please read our <a href="https://github.com/CleverStack/cleverstack-cli/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/cleverstack-cli">CleverStack CLI</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
 
   </div>
@@ -241,12 +246,14 @@ $ bower search cleverstack-module
       <li>Unit &amp; E2E (Integration) Testing with <a href="https://www.npmjs.org/package/mocha">Mocha</a> and <a href="https://www.npmjs.org/package/request">Request</a>.</li>
     </ul>
 
-    <!-- Structure
+    <!-- Important files and folders
     ================================================== -->
-    <h3 id="backend-structure">Structure</h3>
+    <h3 id="backend-structure" class="page-header">Structure</h3>
+    <p>CleverStacks Architecture has been designed to be simple and straight forward but structured, using this structure makes extending and maintaining your applications super simple.</p>
 
+    <h4 class="page-header">Overview</h4>
 {% highlight bash %}
-back-end/
+node-seed/
 ├── config/           # app configs
 ├── lib/              # cleverstack core
 ├── modules/          # backend modules
@@ -257,66 +264,92 @@ back-end/
 ├── app.js            # node cluster app
 ├── index.js          # single node http server app
 └── package.json      # npm dependencies and package information
-{% endhighlight %}<br>
+{% endhighlight %}
 
-    <!-- Important files and folders
-    ================================================== -->
-    <div style="padding-left: 20px;">
-      <h4>Important files and folders</h4>
-      <p>Here is a list of things you need to know about the structure of the CleverStack NodeJS Backend, called the <a href="https://github.com/CleverStack/Node-Seed">Node Seed</a>.</p><br>
+    <h4 class="page-header">Important files and folders</h4>
+    <dl class="dl-horizontal">
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/config">config/</a></dt>
+      <dd>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.</dd><br>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/config">/config</a></h5>
-      <ul>
-          <li>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.
-      </ul>
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/lib">lib/</a></dt>
+      <dd>
+        <p>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</p>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/lib">/lib</a></h5>
-      <ul>
-          <li>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</li><br>
+        <div class="bs-callout bs-callout-info">
+          <h4>Magic Modules</h4>
+          <p>Certain folders are magic modules and can be required in like <code>require( 'models' )</code></p>
+        </div>
 
-          <li><span class="label label-danger">Important</span> If you do modify files in this folder, then using CleverStack CLI commands like upgrade or downgrade may remove your changes.</li>
-          <li><span class="label label-info">Note</span> Certain folders files are either loaded via special functions as defined in modules and some are loaded using injector.inject()</li>
-      </ul>
+        <div class="bs-callout bs-callout-danger">
+          <h4>Modification warning</h4>
+          <p>
+            If you modify files in this folder, then it is highly likely things may not work if you do not know what you are doing. It is also important to remember that making changes in here makes it hard to upgrade or downgrade your backend without loosing your changes.
+          </p>
+        </div>
+      </dd>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/modules">/modules</a></h5>
-      <ul>
-          <li>This is where all of the Cleverstack modules will be installed into your application.</li>
-          <li>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</li><br>
-          <li><span class="label label-info">Note</span> You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility you will need to add and change some key points. (See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.)</li>
-      </ul>
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/modules">modules/</a></dt>
+      <dd>
+        <p>This is where all of the Cleverstack modules will be installed into your application.</p>
+        <p>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</p>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">/app.js</a></h5>
-      <ul>
-          <li>The main entry point of a "Clustered" Application, in most cases you will not need to modify this file.</li><br>
-          <li><span class="label label-danger">Important</span> There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</li>
-      </ul>
+        <div class="bs-callout bs-callout-info">
+          <h4>NPM Modules/Packages</h4>
+          <p>You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility of CleverStack you will need to add and change some key (but easy) points.</p>
+            <p><span class="label label-warning">Example</span> See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.</p>
+        </div>
+      </dd>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js">/Gruntfile.js</a></h5>
-      <ul>
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">app.js</a></dt>
+      <dd>
+        <p>This is the main entry point of a normal CleverStack "Clustered" Application, in most cases you will not need to modify this file.</p>
+        <div class="bs-callout bs-callout-info">
+          <h4>Module <code>app.js</code> Hook</h4>
+          <p>There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</p>
+        </div>
+      </dd>
+
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js">Gruntfile.js</a></dt>
+      <dd>
+        <ul>
           <li>Defines the Applications global (main) gruntConfig.</li>
-          <li>Registers the Applications included Grunt tasks.</li><br>
-          <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
-      </ul>
+          <li>Registers the Applications included Grunt tasks.</li>
+          <li>Provides an easy mechanism for modules to extend the gruntConfig and register/modify grunt tasks.</li>
+        </ul>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">/index.js</a></h5>
-      <ul>
-          <li>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</li>
-          <li>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attached to the process by using --debug-brk.</li><br>
-          <li><span class="label label-info">Note</span> To run this file on its own you will need to manually set your NODE_PATH for this script to work.</li>
-      </ul>
+        <div class="bs-callout bs-callout-warning">
+          <h4>Module Gruntfile's</h4>
+          <p>Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</p>
+        </div>
+      </dd>
 
-      <h5><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">/package.json</a></h5>
-      <ul>
-          <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
-          <li><span class="label label-danger">Important</span> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
-          <li><span class="label label-info">Note</span> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
-          <li><span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
-      </ul>
-    </div>
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">index.js</a></dt>
+      <dd>
+        <p>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</p>
+
+        <div class="bs-callout bs-callout-danger">
+          <h4>Debugging</h4>
+          <p>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attach to the process by using --debug-brk.</p>
+          <p><span class="label label-danger">Important</span> To run this file on its own you will need to manually set your NODE_PATH to <code>./lib/:./modules/</code> for linux and <code>./lib/;./modules/</code> for windows.</p>
+        </div>
+      </dd>
+
+      <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">package.json</a></dt>
+      <dd>
+        <p>This file defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</p>
+
+        <div class="bs-callout bs-callout-info">
+          <h4>Enabling Modules ( bundledDependencies[] )</h4>
+          <p>This is where you define which CleverStack Modules are Enabled, and what order they are loaded in by the Module Loader.</p>
+          <p>By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in the projects package.json file, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</p>
+          <span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.
+        </div>
+      </dd>
+    </dl>
 
     <!-- Configuration
     ================================================== -->
-    <h3 id="backend-configuration">Configuration</h3>
+    <h3 class="page-header" id="backend-configuration">Configuration</h3>
     <p>To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p>
 
     <p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
@@ -342,10 +375,13 @@ back-end/
       <li>/config/&lt;NODE_ENV&gt;.json <strong>(environment specific configuration)</strong>
         <ul>
           <li>This allows you to modify or extend the configuration for each environment, regardless of what name you give an environment.</li><br>
-          <li><span class="label label-danger">Important</span> To take advantage of an environment based configuration file, you need to set an Environment Variable called NODE_ENV to the name you called your environment. (We use NODE_ENV=local for local development)</li>
-          <li><span class="label label-info">Note</span> the default environment names are, LOCAL, DEV, STAG and PROD.</li>
-          <li><span class="label label-info">Note</span> this configuration file is used to provide the default GLOBAL config for each module.</li>
-          <li><strong>This file is not required.</strong></li>
+          <li><span class="label label-info">Note</span> This file is not required.</li>
+          <li><span class="label label-info">Note</span> The default environment names are, LOCAL, DEV, STAG and PROD.
+            <div class="bs-callout bs-callout-danger">
+              <h4>Environment Specific Configuration</h4>
+              <p>To take advantage of an environment based configuration file, you need to set an Environment Variable called <code>NODE_ENV</code> to the name you called your environment. (We use <code>NODE_ENV=LOCAL</code> for local development).</p>
+            </div>
+          </li>
         </ul>
       </li>
     </ol><br>
@@ -357,14 +393,14 @@ var config = require( 'config' );
 
     <!-- Modules
     ================================================== -->
-    <h3 id="backend-modules">Modules</h3>
-    <p>These are the most important part of your application, where all your functionality, dependencies andtesting is defined.</p><br>
+    <h3 class="page-header" id="backend-modules">Modules</h3>
+    <p>These are the most important part of your application, where all your functionality, dependencies andtesting is defined.</p>
 
-    <div style="padding-left: 20px;">
+    <div style="padding-left: 10px;">
 
       <!-- Modules structure
       ================================================== -->
-      <h4 id="backend-modules-structure">Structure</h4>
+      <h4 class="page-header" id="backend-modules-structure">Structure</h4>
         <p>This is a typical back-end (node) module structure.</p>
 {% highlight bash %}
 example-module/
@@ -373,9 +409,7 @@ example-module/
 ├── config/               # module specific configs and setting overrides
 ├── controllers/          # module controllers
 ├── exceptions/           # module custom exceptions
-├── models/
-│   ├── orm/              # your ORM based models (SQL)
-│   └── odm/              # your ODM based models (NoSQL)
+├── models/               # module models
 ├── schema/               # your schema is stored in here
 │   └── seedData.json/    # seed data is used to populate your database tables
 ├── services/             # module services
@@ -426,6 +460,17 @@ example-module/
 
         <h5>module.js</h5>
         <ul>
+            <li>Must export a Module Class which will be imported by the moduleLoader.</li>
+        </ul>
+        <div class="bs-callout bs-callout-info">
+          <h4>Lifecycle Hooks</h4>
+          <p>Modules have lifecycle <a href="#backend-modules-hooks">hooks</a> for every situation, like loading, routing, shutdown etc.</p>
+        </div>
+        <div class="bs-callout bs-callout-danger">
+          <h4>File name may change per module</h4>
+          <p>This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</p>
+        </div>
+        <p>Here is an example of a module.js file</p>
 {% highlight javascript %}
 // Example module.js
 var Module = require( 'classes' ).Module;
@@ -436,11 +481,6 @@ module.exports = Module.extend({
     }
 });
 {% endhighlight %}
-            <li><span class="label label-danger">Important</span> This presumes you have { "main": "module.js" } in your modules <a href="https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22">package.json</a>, otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)</li>
-            <li><span class="label label-danger">Important</span> Must export a Module Class which will be imported by the moduleLoader.</li>
-            <br>
-            <li><span class="label label-info">Note</span> Has lifecycle <a href="#backend-modules-hooks">hooks</a> for every situation, like loading, routing, shutdown etc.</li>
-        </ul>
 
         <h5>routes.js</h5>
         <ul>
@@ -451,7 +491,7 @@ module.exports = Module.extend({
 
       <!-- Module hooks
       ================================================== -->
-      <h4 id="backend-modules-hooks">Hooks</h4>
+      <h4 class="page-header" id="backend-modules-hooks">Hooks</h4>
       <p>Your 'module.js' file has some lifecycle hooks that you can use to perform operations at certain times during the applications lifecycle, the hooks are fired in the order they are listed here on each module.</p><br>
 
       <p>Example of using a hook:<p>
@@ -464,8 +504,10 @@ module.exports = Module.extend({
     }
 });
 {% endhighlight %}<br>
-
-      <p><span class="label label-danger">Important</span> Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p><br>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Hook firing order</h4>
+        <p>Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p>
+      </div>
 
       <h5 id="backend-modules-hooks-presetup">preSetup</h5>
       <ul>
@@ -524,7 +566,7 @@ module.exports = Module.extend({
 
       <!-- Modules configuration
       ================================================== -->
-      <h4 id="backend-modules-configuration">Configuration</h4>
+      <h4 class="page-header" id="backend-modules-configuration">Configuration</h4>
       <p>You can easily define the modules configuration with these files</p>
       <h5 id="backend-modules-config-default">config/default.json</h5>
       <ul>
@@ -551,7 +593,7 @@ module.exports = Module.extend({
 
       <!-- Modules configuration
       ================================================== -->
-      <h4 id="backend-modules-magic">Magic Modules</h4>
+      <h4 class="page-header" id="backend-modules-magic">Magic Modules</h4>
       <p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_PATH.</p>
       {% highlight bash %}$ export NODE_PATH=./lib/:./modules/{% endhighlight %}
 
@@ -576,7 +618,7 @@ module.exports = Module.extend({
 
       <!-- Modules Dependency Injection
       ================================================== -->
-      <h4 id="backend-modules-di">Dependency Injection</h4>
+      <h4 class="page-header" id="backend-modules-di">Dependency Injection</h4>
       <p>CleverStack Controllers, Services, Routes, Models and Tests are loaded and all of their dependencies are loaded and injected automatically using the <a href="https://github.com/cleverstack/clever-injector">CleverStack Dependency Injection</a> module.</p>
 
       <p>When resources/files are loaded using the injector it will automatically load and inject any of it's dependencies in a recursive manner.</p>
@@ -590,7 +632,7 @@ module.exports = function( SomeDependency ) {
 
       <!-- Routing
       ================================================== -->
-      <h4 id="backend-modules-routing">Routing</h4>
+      <h4 class="page-header" id="backend-modules-routing">Routing</h4>
       <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you can attach your controller. (Except for Controllers which have autoRoute enabled, those controllers have these routes automatically attached)</p>
 {% highlight javascript %}
 // modules/backend-example-module/routes.js
@@ -649,7 +691,7 @@ module.exports = function( app, ExampleController ) {
 
       <!-- Testing
       ================================================== -->
-      <h4 id="backend-modules-testing">Testing</h4>
+      <h4 class="page-header" id="backend-modules-testing">Testing</h4>
       <p>Modules contain their testing resources, here are the two types you can use</p><br>
 
       <h5>Unit Tests</h5>
@@ -833,7 +875,7 @@ describe ( 'ExampleController', function () {
 });
 {% endhighlight %}<br>
 
-      <h5>Integration / e2e Tests</h5>
+      <h5 class="page-header">Integration / e2e Tests</h5>
 
       <p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
 {% highlight javascript %}
@@ -865,7 +907,7 @@ describe( '/example', function() {
 
     <!-- Classes
     ================================================== -->
-    <h3 id="backend-classes">Classes</h3>
+    <h3 class="page-header" id="backend-classes">Classes</h3>
     <p>Every Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this mainly so we can take advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes &amp; Optimizing Compiler</a> but also for the ability to <a href="http://en.wikipedia.org/wiki/Currying">curry</a> functions using the proxy() function.</p>
 
     <p>By taking advantage of curried proxy functions you are able to keep your code easy to read and maintain by using as little nesting as possible, this also enables and encourages code (function) re-use.</p><br>
@@ -907,7 +949,7 @@ module.exports = Class.extend({
 
     <!-- Controllers
     ================================================== -->
-    <h3 id="backend-controllers">Controllers</h3>
+    <h3 class="page-header" id="backend-controllers">Controllers</h3>
     <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
 
     <p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
@@ -988,7 +1030,7 @@ module.exports = ExampleController = function( ExampleService ) {
 
     <!-- Services
     ================================================== -->
-    <h3 id="backend-services">Services</h3>
+    <h3 class="page-header" id="backend-services">Services</h3>
     <p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
 
     <p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
@@ -1004,7 +1046,7 @@ module.exports = function ( Service, ExampleModel ) {
 
     <!-- Models
     ================================================== -->
-    <h3 id="backend-models">Models</h3>
+    <h3 class="page-header" id="backend-models">Models</h3>
     <p>Built into CleverStack's core is a world class NodeJS Object Relational Mapper (ORM) and NodeJS Object Document Mapper (ODM) system, this allow's you to define a SINGLE definition of a model that works for both ORM and ODM drivers regardless of what SQL or No-SQL Database you choose!</p>
 
     <p><span class="label label-info">Note</span> Behind the scenes we use existing ORM (SequelizeJS) &amp; ODM (MongooseJS) libraries for the eventual persistence of data, this gives us the features, maturity, support and stability of those libraries while still being able to define a SINGLE model definition regardless of what database allowing your code to be flexible and pain free.</p>
@@ -1014,13 +1056,13 @@ module.exports = function ( Service, ExampleModel ) {
 
       <!-- Overview
       ================================================== -->
-      <h4 id="backend-models-overview">Overview</h4>
+      <h4 class="page-header" id="backend-models-overview">Overview</h4>
       <p>To make life easy and our modules as flexible as possible we have written our own Model Schema definition system, this allows you to write a Single model that will work with both ORM and ODM with a single line change!</p><br>
 
 
       <!-- Basic Structure
       ================================================== -->
-      <h4 id="backend-models-definition-structure">Basic Structure</h4>
+      <h4 class="page-header" id="backend-models-definition-structure">Basic Structure</h4>
       <p>Example: Basic definition structure of a Model</p>
 {% highlight javascript %}
 module.exports = function( Model ) {
@@ -1035,13 +1077,16 @@ module.exports = function( Model ) {
   });
 };
 {% endhighlight %}
-<p><span class="label label-danger">Important</span> Each of the keys inside of the <code>@Prototype</code> is a "Schema Field".</p>
+<div class="bs-callout bs-callout-warning">
+  <h4>Schema Fields</h4>
+  <p>Each of the keys inside of the <code>@Prototype</code> is a "Schema Field".</p>
+</div>
 <br>
 
 
       <!-- Class Options
       ================================================== -->
-      <h4 id="backend-models-class-options">Class Options</h4>
+      <h4 class="page-header" id="backend-models-class-options">Class Options</h4>
       <p>Model options can be defined inside the Models Static object when using Model.extend( StaticObject, PrototypeObject ) to create a model.</p>
 
       <table class="table table-bordered table-striped">
@@ -1150,7 +1195,7 @@ module.exports = function( Model ) {
 
       <!-- Finder Methods
       ================================================== -->
-      <h4 id="backend-models-finder-methods">Finder Methods</h4>
+      <h4 class="page-header" id="backend-models-finder-methods">Finder Methods</h4>
       <p>Models in CleverStack provide easy to use finders and helpful methods to create, update and delete model instances</p><br>
 
       <div style="padding-left: 30px;">
@@ -1228,7 +1273,7 @@ module.exports = function( Model ) {
 
         <!-- find
         ================================================== -->
-        <h4 id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
+        <h4 class="page-header" id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
         <p class="lead-text">Find a single model either by id or using findOptions (smart where)</p><br>
 
         <h5>Arguments</h5>
@@ -1301,7 +1346,7 @@ Model.find({
 
       <!-- Data Types
       ================================================== -->
-      <h4 id="backend-models-types">Data Types</h4>
+      <h4 class="page-header" id="backend-models-types">Data Types</h4>
       <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
       <ul>
         <li>Model.Types.ENUM</li>
@@ -1314,7 +1359,7 @@ Model.find({
 
       <!-- Schema Field Definition Structure
       ================================================== -->
-      <h4 id="backend-models-schema-field-definition">Schema Field Definition</h4>
+      <h4 class="page-header" id="backend-models-schema-field-definition">Schema Field Definition</h4>
       <p>If you choose (or need) to define a Schema Field using the Object Notation the following options and definition structure outline how to do so correctly.</p>
 
       <p>Options</p>
@@ -1407,7 +1452,7 @@ Model.find({
 
       <!-- Definition Example
       ================================================== -->
-      <h4 id="backend-models-definition-example">Definition Example</h4>
+      <h4 class="page-header" id="backend-models-definition-example">Definition Example</h4>
       <p>A more complete look at defining models</p>
       <code>backend/modules/example-module/models/ExampleModel.js</code>
 
@@ -1445,24 +1490,24 @@ module.exports = function( Model ) {
 
       <!-- Supported Databases
       ================================================== -->
-      <h4 id="backend-models-supported-databases">Supported Databases</h4>
+      <h4 class="page-header" id="backend-models-supported-databases">Supported Databases</h4>
       <p>MySQL, MariaDB, PostgreSQL and SQLite.</p><br>
 
       <!-- Validation
       ================================================== -->
-      <h4 id="backend-models-validation">Validation/Validators</h4>
+      <h4 class="page-header" id="backend-models-validation">Validation/Validators</h4>
       <p>CleverStack has powerful validation built into it's core</p><br>
 
       <!-- Associations
       ================================================== -->
-      <h4 id="backend-models-associations">Associations</h4>
+      <h4 class="page-header" id="backend-models-associations">Associations</h4>
       <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
 
       <p>Currently associations are supported by taking advantage of sequelizejs's inbuilt associations, you can do bi directional and uni directional one-to-one (hasOne, belongsTo), one-to-many (hasMany, belongsTo) and many-to-many (hasMany) assoications of models.</p><br>
 
       <!-- Toolbelt
       ================================================== -->
-      <h4 id="backend-models-associations">Toolbelt</h4>
+      <h4 class="page-header" id="backend-models-associations">Toolbelt</h4>
 
       <p><span class="label label-info">Hint</span> Use the grunt db:rebase command to create your database structure</p>
       {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
@@ -1482,7 +1527,7 @@ module.exports = function( Model ) {
 
     <!-- Troubleshooting
     ================================================== -->
-    <h3 id="backend-troubleshooting">Troubleshooting</h3>
+    <h3 class="page-header" id="backend-troubleshooting">Troubleshooting</h3>
     <p>If you have any problems (including errors, exceptions and even general usage) with the NodeJS Backend which is called the Node Seed.</p>
     <ul>
       <li>Because we use the <a href="https://www.npmjs.org/package/debug">debug</a> npm module, set an environment variable called DEBUG.</li>
@@ -1522,7 +1567,7 @@ Starting server on port 8080 in LOCAL mode
 
     <!-- Contributing
     ================================================== -->
-    <h3 id="backend-contributing">Contributing</h3>
+    <h3 class="page-header" id="backend-contributing">Contributing</h3>
     <p>Firstly please read our <a href="https://github.com/CleverStack/Node-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Node-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
   </div>
 

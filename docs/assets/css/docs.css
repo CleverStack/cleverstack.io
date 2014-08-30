@@ -568,9 +568,11 @@ body {
 
 /* Common styles for all types */
 .bs-callout {
-  margin: 20px 0;
   padding: 20px;
-  border-left: 3px solid #eee;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
 }
 .bs-callout h4 {
   margin-top: 0;
@@ -584,23 +586,33 @@ body {
 .bs-callout-danger {
   background-color: #fdf7f7;
   border-color: #eed3d7;
+  border-left-color: #d9534f;
 }
 .bs-callout-danger h4 {
   color: #b94a48;
 }
 .bs-callout-warning {
-  background-color: #faf8f0;
   border-color: #faebcc;
+  border-left-color: #f0ad4e;
+  background-color: #faf8f0;
 }
 .bs-callout-warning h4 {
-  color: #8a6d3b;
+  color: #f0ad4e;
+}
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+h4, .h4 {
+font-size: 18px;
 }
 .bs-callout-info {
   background-color: #f4f8fa;
   border-color: #bce8f1;
+  border-left-color: #5bc0de;
 }
 .bs-callout-info h4 {
-  color: #34789a;
+  color: #5bc0de;
 }
 
 
