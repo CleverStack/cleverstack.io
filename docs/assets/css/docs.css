@@ -1248,3 +1248,13 @@ font-size: 18px;
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
+ul.nav-nest-1, ul.nav-nest-2 {
+  margin-bottom: 0;
+}
+ul.nav-nest-1 li {
+  padding-left: 10px;
+}
+ul.nav-nest-1 li {
+  padding-left: 20px;
+}
