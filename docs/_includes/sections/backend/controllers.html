@@ -1,0 +1,85 @@
+<h3 class="page-header" id="backend-controllers">Controllers</h3>
+<p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
+
+<p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
+
+<p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
+
+<p>Here is an example that covers all of the many features of Controller</p>
+
+
+<h4 id="backend-controllers-options" class="page-header">Options</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-controllers-definition" class="page-header">Definition</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-controllers-actions" class="page-header">Actions</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-controllers-middleware" class="page-header">Middleware</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<!-- Routing
+================================================== -->
+<h4 id="backend-controllers-routing" class="page-header">Routing</h4>
+<p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you can attach your controller. (Except for Controllers which have autoRoute enabled, those controllers have these routes automatically attached)</p>
+{% highlight javascript %}
+// modules/backend-example-module/routes.js
+module.exports = function( app, ExampleController ) {
+
+  // Restful and Action based routing
+  app.all( '/example/:action/:id?', ExampleController.attach() );
+  app.all( '/example/?:action?', ExampleController.attach() );
+
+  // Middleware routing
+  app.use( ExampleController.someMiddleware );
+
+}
+{% endhighlight %}
+<p><span class="label label-info">Note</span> This will automatically load the ExampleController's dependencies including Services, Models and any other resources.</p>
+<p><span class="label label-info">Note</span> We use ExpressJS as our main web service, so be sure to checkout how to use <a href="http://expressjs.com/api.html#app.VERB">ExpressJS Routes</a></p><br/>
+
+<h5>Automatic Routing ( Class.autoRouting )</h5>
+<ul>
+  <li>Ability to turn on or off autoRouting (true or array for ON, false for OFF)</li>
+  <li>Array notation allows (Connect or any other) Middleware to be attached to the routes that are autoRouted</li>
+  <li>Route naming: Ability to either define your own route (name), or have it automatically generated based on the filename of your controller! (ExampleController would have a route name of /example and /examples in a RESTful fashion )</li>
+</ul>
+
+Examples:
+{% highlight javascript %}
+{
+    // ...
+
+    autoRouting: [
+        // As a String (only available for methods on the controllers Class, either inherited or defined)
+        'middlewareFromThisController',
+
+        // Any function
+        function definedFunction( req, res, next ) {
+            // any function (from any file) that takes these three arguments can be attached
+        },
+
+        // CleverStack example
+        PermissionController.requiresPermission({
+            all: 'Example.$action', // optional: ability to define rules based on action (Example.post for POST, etc)
+            postAction: false       // optional: ability to define overrides per action (Overrides must include 'Action')
+        })
+    ],
+
+    middlewareFromThisController: function( req, res, next ) {
+        // Attached inside of autoRouting array
+        next();
+    }
+
+    // ...
+}
+{% endhighlight %}
+<br>
+
+<h4 id="backend-controllers-examples" class="page-header">Examples</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-controllers-testing" class="page-header">Testing</h4>
+<p>Coming soon, we are working hard on this section.</p><br>

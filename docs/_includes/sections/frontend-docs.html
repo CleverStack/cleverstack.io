@@ -1,0 +1,202 @@
+<!-- Front-end (AngularJS)
+================================================== -->
+<div class="bs-docs-section">
+  <div class="page-header">
+    <h1 id="frontend">Front-end (AngularJS)</h1>
+  </div>
+
+  <!-- Overview
+  ================================================== -->
+  <p id="frontend-overview" class="lead">CleverStack provides a fully featured AngularJS development workflow.</p>
+  <p>Some highlights:</p>
+  <ul>
+    <li>AngularJS Application Core Integrated with RequireJS</li>
+    <li>Grunt Server with Live Reload, Bootstrap 3, LESS</li>
+    <li>JavaScript Dependency Loading with Bower</li>
+    <li>Modular NPM Based Coding Structure</li>
+    <li>Unit Testing with Karma &amp; Code Coverage Reports</li>
+    <li>E2E Testing with Angular Protractor and Grunt</li>
+    <li>Optimized Production Build Process</li>
+  </ul>
+
+  <!-- Structure
+  ================================================== -->
+  <h3 id="frontend-structure">Structure</h3>
+
+{% highlight bash %}
+front-end/
+├── app/              # angular app specific source files
+│   └── modules/      # cleverstack front-end modules
+├── scripts/          # app scripts and binaries
+├── tests/            # app tests, both unit &amp; integration
+├── Gruntfile.js      # app grunt file for modifying configuration and adding tasks
+├── bower.json        # app js dependencies
+└── package.json      # app npm dependencies
+{% endhighlight %}<br>
+
+  <!-- Important files and folders
+  ================================================== -->
+  <div style="padding-left: 20px;">
+    <h4>Important files and folders</h4>
+    <p>Here is a list of things you need to know about the structure of the CleverStack AngularJS Frontend</p><br>
+
+    <h5>app/</h5>
+    <ul>
+      <li>This folder contains the core of the Cleverstack Angular Seed.</li>
+    </ul>
+
+    <h5>app/modules/</h5>
+    <ul>
+      <li>This is where all of the Cleverstack modules will be installed into your application by our CLI.</li>
+      <li>NPM Modules that have been made to work with Cleverstack will also be placed here.</li>
+      <li>You also add custom modules inside this folder, either by creating it manually (See https://github.com/CleverStack/frontend-example-module for an example of how to create your own modules) or using the CleverStack CLI's install, generate or scaffold commands.</li>
+    </ul>
+
+    <h5>scripts/</h5>
+    <ul>
+      <li>This is where you can store your front-end scripts and binaries such as executables, JAR files or such. Examples of these might be browserstack-tunnel.sh, selenum-server.jar, chromedriver.exe, phantomjs.exe etc...</li>
+      <li>Scripts can be defined in package.json and then run with `npm run-script [name]`.</li>
+    </ul>
+
+    <h5>Gruntfile.js</h5>
+    <ul>
+      <li>Defines the Applications global (main) gruntConfig.</li>
+      <li>Registers the Applications included Grunt tasks.</li>
+      <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt.</li>
+    </ul>
+
+    <h5>bower.json</h5>
+    <ul>
+      <li>Stores the apps main bower dependencies install during setup with the CLI.</li>
+    </ul>
+
+    <h5>package.json</h5>
+    <ul>
+      <li>Defines the Application information, scripts and it's NPM dependencies like any normal NPM Module.</li>
+      <li>Defines the modules that are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array. (This also let's NPM know that these dependencies are local and not on the NPM Registry)</li>
+    </ul>
+  </div>
+
+  <!-- Configuration
+  ================================================== -->
+  <h3 id="frontend-configuration">Configuration</h3>
+  <p>Coming soon, we are working hard on this section.</p><br>
+
+
+  <!-- Modules
+  ================================================== -->
+  <h3 id="frontend-modules">Modules</h3>
+  <p>These are the most important part of your application, where all your functionality and testing is defined.</p><br>
+
+  <div style="padding-left: 20px;">
+
+    <!-- Modules structure
+    ================================================== -->
+    <h4 id="frontend-modules-structure">Structure</h4>
+          <p>This is a typical front-end (angular) module structure.</p>
+{% highlight bash %}
+example-module/
+├── scripts/                          # module angular scripts
+│   ├── controllers/
+│   ├── directives/
+│   ├── services/
+│   └── resources/
+├── styles/                           # module styles (optional)
+├── img/                              # module images (optional)
+├── fonts/                            # module fonts (optional)
+├── views/                            # module ngTemplates
+├── tests/                            # module tests
+│   ├── unit/
+│   └── e2e/
+├── main.js                           # module requirejs scripts
+├── module.js                         # angular main module
+├── bower.json                        # module js dependencies
+├── Gruntfile.js                      # module grunt tasks
+└── package.json                      # module npm dependencies
+{% endhighlight %}<br>
+
+    <div style="padding-left: 30px;">
+      <h4>Important files and folders</h5>
+
+      <h5>scripts/</h5>
+      <ul>
+          <li>This folder contains all the scripts required for the module. ie - all the modules angular controllers, directives, services and resources.</li>
+      </ul>
+
+      <h5>views/</h5>
+      <ul>
+          <li>This allows each module to define it's own views for the ngtemplates provided within each module.</li>
+      </ul>
+
+      <h5>tests/</h5>
+      <ul>
+          <li>Two folders for testing, unit/ and e2e/</li>
+          <li>This allows each module to define it's own tests for the functionality (code) that is provided within each module.</li>
+      </ul>
+
+      <h5>main.js</h5>
+      <ul>
+          <li>This is the requirejs main file, use it to specify all the javascript files you need for your module..</li>
+      </ul>
+
+      <h5>module.js</h5>
+      <ul>
+          <li>Instantiates and configures angular modules for your module.</li>
+      </ul>
+
+      <h5>bower.json</h5>
+      <ul>
+          <li>Defines the modules JavaScript dependencies.</li>
+      </ul>
+
+      <h5>package.json</h5>
+      <ul>
+          <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
+          <li><span class="label label-danger">Important</span> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+          <li><span class="label label-info">Note</span> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+          <li><span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
+      </ul>
+
+      <h5>Gruntfile.js</h5>
+      <ul>
+          <li>Defines the Applications global (main) gruntConfig.</li>
+          <li>Registers the Applications included Grunt tasks.</li><br>
+          <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
+      </ul>
+    </div><br>
+
+    <!-- <h4>Creating Modules</h4>
+    <p></p><br>
+
+    <h4>Publishing Modules</h4>
+    <p></p><br> -->
+  </div>
+
+  <!-- Usage
+  ================================================== -->
+  <h3 id="frontend-usage">Usage</h3>
+  <p>Coming soon, we are working hard on this section.</p><br>
+
+  <!-- Testing
+  ================================================== -->
+  <h3 id="frontend-testing">Testing</h3>
+  <p>Coming soon, we are working hard on this section.</p><br>
+
+  <!-- Troubleshooting
+  ================================================== -->
+  <h3 id="frontend-troubleshooting">Troubleshooting</h3>
+  <p>If you have any problems (including errors, exceptions and even general usage) with the AngularJS Frontend which is called the Angular Seed.</p>
+  <ul>
+    <li>Check the Github <a href="https://github.com/CleverStack/Angular-Seed/issues">issues page</a>.</li>
+    <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
+    <li>Get some help from the Cleverstack <a href="https://groups.google.com/forum/#!forum/clever-stack">Google Group</a></li>
+    <li>If your still having problems, please <a href="https://github.com/CleverStack/Angular-Seed/issues/new">raise an issue</a>.</li>
+  </ul>
+
+  <!-- Contributing
+  ================================================== -->
+  <h3 id="frontend-contributing">Contributing</h3>
+  <p>Firstly please read our <a href="https://github.com/CleverStack/Angular-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Angular-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
+
+
+</div>

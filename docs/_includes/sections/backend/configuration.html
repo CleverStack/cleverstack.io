@@ -1,0 +1,54 @@
+<h3 class="page-header" id="backend-configuration">Configuration<br>
+<small>Sophisticated deep-merged configuration allows ultimate flexibility between environments</small></h3>
+<p class="lead">To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p><br>
+
+<p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
+<ol>
+  <li><a href="https://github.com/CleverStack/Node-Seed/tree/master/config/global.json">/config/global.json</a>
+    <ul>
+      <li>
+        Define the global configuration for your application here.
+        <div class="bs-callout bs-callout-danger">
+          <h4>Required for configuration</h4>
+          <p>This file is required and must exist, as this is the place for any default (or GLOBAL) configuration</p>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>/modules/&lt;module&gt;/config/default.json
+    <ul>
+      <li>
+        Every modules /config/default.json file will be loaded in the order specified in the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in your package.json
+        <div class="bs-callout bs-callout-info">
+          <h4>Module's default.json</h4>
+          <p>See <a href="#backend-modules-config-default">&lt;module&gt;/config/default.json</a> for more information</p>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>/modules/&lt;module&gt;/config/global.json
+    <ul>
+      <li>
+        Every modules /config/global.json file will be loaded in the order specified in the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in your package.json
+        <div class="bs-callout bs-callout-info">
+          <h4>Module's global.json</h4>
+          <p>See <a href="#backend-modules-config-global">&lt;module&gt;/config/global.json</a> for more information</p>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>/config/&lt;NODE_ENV&gt;.json <strong>(environment specific configuration)</strong>
+    <ul>
+      <li>This allows you to modify or extend the configuration for each environment, regardless of what name you give an environment.</li>
+        <div class="bs-callout bs-callout-info">
+          <h4>Default Environment Names</h4>
+          <p>The default environment names are, LOCAL, DEV, STAG and PROD.</p>
+        </div>
+        <div class="bs-callout bs-callout-danger">
+          <h4>Environment Specific Configuration</h4>
+          <p>To take advantage of an environment based configuration file, you need to set an Environment Variable called <code>NODE_ENV</code> to the name you called your environment. (We use <code>NODE_ENV=LOCAL</code> for local development).</p>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ol>

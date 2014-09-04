@@ -1,0 +1,28 @@
+<h3 class="page-header" id="backend-services">Services</h3>
+<p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
+
+<p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
+
+<p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Class of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
+{% highlight javascript %}
+module.exports = function ( Service, ExampleModel ) {
+    return Service.extend({
+        model: ExampleModel
+    });
+};
+{% endhighlight %}
+
+<h4 id="backend-services-options" class="page-header">Options</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-services-definition" class="page-header">Definition</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-services-events" class="page-header">Events</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-services-class-methods" class="page-header">Class methods</h4>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-services-testing" class="page-header">Testing</h4>
+<p>Coming soon, we are working hard on this section.</p><br>

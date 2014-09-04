@@ -1,0 +1,200 @@
+<h3 class="page-header" id="backend-classes">
+  Classes <br/>
+  <small>Lightning-fast and flexible Class, with prototypal inheritance, static methods and much more!</small>
+</h3>
+<p class="lead">Prototypal inheritance that makes writing performant, maintainable and tested code a breeze.</p>
+
+<h5>Features</h5>
+
+<!-- Introduction
+================================================== -->
+<ul>
+  <li>Prototypal inheritance</li>
+  <li>Static inheritance</li>
+  <li>Setup and initialization methods</li>
+  <li>Easy callback (proxying/currying) creation</li>
+  <li>Lightning fast performance
+    <ol>
+      <li>Takes advantage of V8's Hidden Classes &amp; Inline Caches</li>
+      <li>Takes advantage of V8's Optimizing Compiler which generates efficient machine code to run in place of your javascript
+Clean, Efficient and Optimized code</li>
+    </ol>
+  </li>
+  <li>All Classes can emit and listen to events using EventEmitter</li>
+</ul>
+<br>
+<h4 id="backend-classes-introduction" class="page-header">Introduction</h4>
+<p>Each Module, Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this for many reasons but none as important as taking advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes, Inline Caches &amp; Optimizing Compiler</a> to allow V8 to generate efficient and performant machine code so your application is as fast as humanly possible and then some.</p>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Proxy Functions</h4>
+  <p>We strongly encourage the use of curried proxy functions, by doing so you are able to keep your code easy to read and maintain by using as little nesting as possible, this also means your code (function/s) is/are re-usable.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Currying (proxy methods)</h4>
+  <p>Read <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> on Wikipedia for an in-depth explaination of currying.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Hidden Classes</h4>
+  <p>Read <a href="http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb">Understanding Hidden Classes in V8</a> for an indepth look at what Hidden Classes are and how they work in V8.</p>
+</div>
+<div class="bs-callout bs-callout-warning">
+  <h4>Example Usage</h4>
+  <p>Take a look at our <a href="https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js">Module Loader Class</a> for an in-depth look at how to use currying to your advantage.</p>
+</div>
+<br>
+
+
+<!-- Definition
+================================================== -->
+<h4 id="backend-classes-definition" class="page-header">Definition</h4>
+{% highlight javascript %}
+// This example file exports a function that will have "Class" injected into it via the clever-injector
+module.exports = function( Class ) {
+  return Class.extend(
+  /* @Class */
+  {
+    // Static attributes or methods
+  },
+  /* @Prototype */
+  {
+    // Instance attributes or methods
+  });
+};
+{% endhighlight %}
+<div class="bs-callout bs-callout-info">
+  <h4>Extend's arguments</h4>
+  <p>You can call .extend() with only the Static/Class object instead of defining both</p>
+</div>
+<br>
+
+
+<!-- Extending
+================================================== -->
+<h4 id="backend-classes-extending" class="page-header">Extending</h4>
+<p>Every Class will provide an extend function that can be used to extend the functionality of a Class with some new functionality as provided in the Static and Prototype of the extend call.</p>
+
+<p>A good example of class extension is the Controller class (in lib folder), it extends from Class and every module/s controller/s extend from Controller.</p>
+
+<p>When you overload a method from a parent class, you can call the parents method by using <code>this._super()</code></p>
+{%highlight javascript %}
+var Monster = Class.extend(
+/* @Class */
+{
+  count: 0
+},
+/* @Prototype */
+{
+  init: function( name ) {
+
+    // saves name on the monster instance
+    this.name = name;
+
+    // sets the health
+    this.health = 10;
+
+    // increments count
+    this.Class.count++;
+  },
+  eat: function( smallChildren ){
+    this.health += smallChildren;
+  },
+  fight: function() {
+    this.health -= 2;
+  }
+});
+
+hydra = new Monster('hydra');
+dragon = new Monster('dragon');
+
+console.log(hydra.name)     // -> hydra
+console.log(Monster.count)  // -> 2
+
+hydra.eat(2);
+console.log(hydra.health);  // health = 12
+
+dragon.fight();    
+console.log(dragon.health); // health = 8
+
+var SeaMonster = Monster.extend({
+    eat : function(smallChildren)
+    {
+        this._super(smallChildren / 2);
+    },
+    fight : function()
+    {
+        this.health -= 1;
+    }
+});
+
+var lochNess = new SeaMonster('Loch Ness');
+
+lochNess.eat(4);
+console.log("Loch Ness ate. Health: " + lochNess.health); // -> 12
+
+lochNess.fight();
+console.log("Loch Ness fought. Health: " + lochNess.health); // -> 11
+{% endhighlight %}
+<br>
+
+<h4 id="backend-classes-events" class="page-header">Events</h4>
+<p>Every class by default extends Node's EventEmitter, currently there are no events defined. (but that's for your Classes to do)</p><br>
+
+<h4 id="backend-classes-examples" class="page-header">Examples</h4>
+<p>Here is an example of creating a class and using the proxy function as well as emitting events.</p>
+{% highlight javascript %}
+var Class = require( 'classes' ).Class;
+
+module.exports = Class.extend({
+  files: null,
+
+  init: function() {
+    this.files = [];
+    this.getFiles( __dirname );
+    this.emit( 'init' );
+  },
+
+  getFiles: function( dir ) {
+    fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
+  },
+
+  // The dir variable has been curried into this function by getFiles()
+  handleGetFiles: function( dir, err, files ) {
+    if ( !err ) {
+      this.files = files;
+    } else {
+      console.error( err );
+    }
+  }
+});
+{% endhighlight %}
+
+<h4 id="backend-classes-proxy" class="page-header">Proxy</h4>
+<p>Proxies are a helpful way of flattening your code, you don't need to nest or repeat yourself - structure it out into something more modular and re-usable.</p><br>
+
+{% highlight javascript %}
+var Handler = Class.extend({
+    init : function(content, headers)
+    {
+        this._headers = headers;
+        this._content = content;
+    },
+
+    /* Prototype */
+    writeHead : function(response)
+    {
+        response.writeHead(200, this._headers);
+    },
+
+    handle : function(request, response)
+    {
+        this.writeHead(response);
+        response.end(this._content);
+    }
+});
+
+var handler = new Handler('Hello World from ResponseHandler\n', { 'Content-Type': 'text/plain' });
+
+var http = require('http');
+http.createServer(handler.proxy('handle')).listen(1337, "127.0.0.1");
+{% endhighlight %}

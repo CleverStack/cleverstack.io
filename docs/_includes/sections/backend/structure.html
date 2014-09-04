@@ -1,0 +1,101 @@
+<h3 id="backend-structure" class="page-header">
+  Structure <br>
+  <small>Architecture and design implementation</small>
+</h3>
+<p class="lead">Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.</p>
+
+<h5>Folder Structure</h5>
+{% highlight bash %}
+node-seed/
+├── config/           # configuration files
+├── lib/              # cleverstack core
+├── modules/          # backend modules
+├── tests/            # global app and cleverstack core tests
+│   ├── e2e/          # end to end tests
+│   └── unit/         # unit tests
+├── Gruntfile.js      # app grunt config & tasks
+├── app.js            # node cluster app
+├── index.js          # single node http server app
+└── package.json      # npm dependencies and package information
+{% endhighlight %}
+
+<h4 class="page-header">Important files and folders</h4>
+<dl class="dl-horizontal">
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/config">config/</a></dt>
+  <dd>This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see <a href="#backend-configuration">Configuration</a> for more information.</dd><br>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/lib">lib/</a></dt>
+  <dd>
+    <p>This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Magic Modules</h4>
+      <p>Certain folders are magic modules and can be required in like <code>require( 'models' )</code></p>
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>Modification warning</h4>
+      <p>
+        If you modify files in this folder, then it is highly likely things may not work if you do not know what you are doing. It is also important to remember that making changes in here makes it hard to upgrade or downgrade your backend without loosing your changes.
+      </p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/modules">modules/</a></dt>
+  <dd>
+    <p>This is where all of the Cleverstack modules will be installed into your application.</p>
+    <p>You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>NPM Modules/Packages</h4>
+      <p>You can place any NPM module inside this directory, however to take advantage of the true power &amp; flexibility of CleverStack you will need to add and change some key (but easy) points.</p>
+        <p><span class="label label-warning">Example</span> See the <a href="https://github.com/CleverStack/backend-example-module">Backend Example Module</a> for an example of how to create a cleverstack enhanced module.</p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">app.js</a></dt>
+  <dd>
+    <p>This is the main entry point of a normal CleverStack "Clustered" Application, in most cases you will not need to modify this file.</p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Module <code>app.js</code> Hook</h4>
+      <p>There is one main hook provided in this file, if you place a file named app.js inside the bin folder of any module it will be loaded and run before the index.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)</p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js">Gruntfile.js</a></dt>
+  <dd>
+    <ul>
+      <li>Defines the Applications global (main) gruntConfig.</li>
+      <li>Registers the Applications included Grunt tasks.</li>
+      <li>Provides an easy mechanism for modules to extend the gruntConfig and register/modify grunt tasks.</li>
+    </ul>
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Module Gruntfile's</h4>
+      <p>Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">index.js</a></dt>
+  <dd>
+    <p>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</p>
+
+    <div class="bs-callout bs-callout-danger">
+      <h4>Debugging</h4>
+      <p>You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attach to the process by using --debug-brk.</p>
+      <p><span class="label label-danger">Important</span> To run this file on its own you will need to manually set your NODE_PATH to <code>./lib/:./modules/</code> for linux and <code>./lib/;./modules/</code> for windows.</p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">package.json</a></dt>
+  <dd>
+    <p>This file defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Enabling Modules ( bundledDependencies[] )</h4>
+      <p>This is where you define which CleverStack Modules are Enabled, and what order they are loaded in by the Module Loader.</p>
+      <p>By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in the projects package.json file, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</p>
+      <span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.
+    </div>
+  </dd>
+</dl>

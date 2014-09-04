@@ -1,0 +1,145 @@
+<h1 id="backend" class="page-header">CleverStack Backend</h1>
+<p class="lead">CleverStack provides a fully featured and mature NodeJS development workflow that makes it easy to develop amazing applications at an astounding pace.</p><br>
+
+<!-- Introduction
+================================================== -->
+{% include sections/backend/introduction.html %}
+
+<!-- Structure
+================================================== -->
+<br><br>{% include sections/backend/structure.html %}
+
+<!-- Configuration
+================================================== -->
+<br><br>{% include sections/backend/configuration.html %}
+
+<!-- Dependency Injection
+================================================== -->
+<br><br>{% include sections/backend/dependency-injection.html %}
+
+<!-- Classes
+================================================== -->
+<br><br>{% include sections/backend/classes.html %}
+
+<!-- Controllers
+================================================== -->
+<br><br>{% include sections/backend/controllers.html %}
+
+<!-- Services
+================================================== -->
+<br><br>{% include sections/backend/services.html %}
+
+<!-- Models
+================================================== -->
+<br><br>{% include sections/backend/models.html %}
+
+<!-- Modules
+================================================== -->
+<br><br>{% include sections/backend/modules.html %}
+
+    
+
+<!-- Modules Dependency Injection
+================================================== -->
+<h4 class="page-header" id="backend-di">Dependency Injection</h4>
+<p>CleverStack Controllers, Services, Routes, Models and Tests are loaded and all of their dependencies are loaded and injected automatically using the <a href="https://github.com/cleverstack/clever-injector">CleverStack Dependency Injection</a> module.</p>
+
+<p>When resources/files are loaded using the injector it will automatically load and inject any of it's dependencies in a recursive manner.</p>
+
+<p>Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.</p>
+{% highlight javascript %}
+module.exports = function( SomeDependency ) {
+// SomeDependency is loaded and injected into this function for you
+}
+{% endhighlight %}<br>
+
+<!-- Testing
+================================================== -->
+<h4 class="page-header" id="backend-modules-testing">Testing</h4>
+<p>Modules contain their testing resources, here are the two types you can use</p><br>
+
+<h5>Unit Tests</h5>
+
+<p>Here is an in-depth example of how to write a unit test</p>
+{% highlight javascript %}
+// Coming soon
+{% endhighlight %}<br>
+
+<h5 class="page-header">Integration / e2e Tests</h5>
+
+<p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
+{% highlight javascript %}
+// Coming soon
+{% endhighlight %}
+</div><br>
+
+
+<!-- Magic Modules
+================================================== -->
+<h3 class="page-header" id="backend-magic-modules">Magic Modules</h3>
+<p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_PATH.</p>
+{% highlight bash %}$ export NODE_PATH=./lib/:./modules/{% endhighlight %}
+
+<p><span class="label label-danger">Important</span> You only need to set your NODE_PATH when you are running index.js, not the main servers or commands.</p><br>
+
+<p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
+{% highlight javascript %}$ require( 'controllers' ).ExampleController {% endhighlight %}
+
+<h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
+<ul>
+<li>injector</li>
+<li>classes</li>
+<li>config</li>
+<li>controllers</li>
+<li>exceptions</li>
+<li>models</li>
+<li>seedData</li>
+<li>services</li>
+<li>tasks</li>
+<li>utils</li>
+</ul><br>
+
+<!-- Troubleshooting
+================================================== -->
+<h3 class="page-header" id="backend-troubleshooting">Troubleshooting</h3>
+<p>If you have any problems (including errors, exceptions and even general usage) with the NodeJS Backend which is called the Node Seed.</p>
+<ul>
+  <li>Because we use the <a href="https://www.npmjs.org/package/debug">debug</a> npm module, set an environment variable called DEBUG.</li>
+{% highlight bash %}
+// There are more, if you want to debug a file look for its debug definition and add it in here
+$ export DEBUG=moduleLoader,ModuleClass,ORM
+
+// Run the server
+$ clever serve
+Running "nodemon:web" (nodemon) task
+[nodemon] v1.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node app.js`
+moduleLoader Loading modules... +0ms
+moduleLoader Loading the clever-orm module +4ms
+MagicModule Creating magic module for classes +0ms
+MagicModule Loading ModuleClass into classes magic module... +1ms
+ORM Opening connection to database +0ms
+moduleLoader Loading the backend-example-module module +271ms
+ORM Loading model ExampleModel from backend-example-module/models/orm/ExampleModel.js +25ms
+MagicModule Creating magic module for services +306ms
+MagicModule Loading BaseService into services magic module... +1ms
+MagicModule Loading Controller into classes magic module... +14ms
+moduleLoader modulesLoaded (hook) for module clever-orm +68ms
+ORM Defining model assocations +58ms
+moduleLoader Initializing the clever-orm modules routes. +116ms
+moduleLoader Initializing the backend-example-module modules routes. +0ms
+Starting server on port 8080 in LOCAL mode
+{% endhighlight %}
+
+  <li>Check the Github <a href="https://github.com/CleverStack/Node-Seed/issues">issues page</a>.</li>
+  <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
+  <li>Get some help from the Cleverstack <a href="https://groups.google.com/forum/#!forum/clever-stack">Google Group</a></li>
+  <li>If your still having problems, please <a href="https://github.com/CleverStack/Node-Seed/issues/new">raise an issue</a>.</li>
+</ul>
+
+<!-- Contributing
+================================================== -->
+<h3 class="page-header" id="backend-contributing">Contributing</h3>
+<p>Firstly please read our <a href="https://github.com/CleverStack/Node-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Node-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>

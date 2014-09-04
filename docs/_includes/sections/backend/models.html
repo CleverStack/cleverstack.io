@@ -1,0 +1,478 @@
+<h3 class="page-header" id="backend-models">Models</h3>
+<p>Built into CleverStack's core is a world class NodeJS Object Relational Mapper (ORM) and NodeJS Object Document Mapper (ODM) system, this allow's you to define a SINGLE definition of a model that works for both ORM and ODM drivers regardless of what SQL or No-SQL Database you choose!</p>
+
+<p><span class="label label-info">Note</span> Behind the scenes we use existing ORM (SequelizeJS) &amp; ODM (MongooseJS) libraries for the eventual persistence of data, this gives us the features, maturity, support and stability of those libraries while still being able to define a SINGLE model definition regardless of what database allowing your code to be flexible and pain free.</p>
+
+<br>
+<div style="padding-left: 30px;">
+
+  <!-- Overview
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-overview">Overview</h4>
+  <p>To make life easy and our modules as flexible as possible we have written our own Model Schema definition system, this allows you to write a Single model that will work with both ORM and ODM with a single line change!</p><br>
+
+
+  <!-- Basic Structure
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-definition-structure">Basic Structure</h4>
+  <p>Example: Basic definition structure of a Model</p>
+{% highlight javascript %}
+module.exports = function( Model ) {
+return Model.extend(
+/* @Class */
+{
+  // Options ...
+},
+/* @Prototype */
+{
+  // Model Schema (Fields) ...
+});
+};
+{% endhighlight %}
+<div class="bs-callout bs-callout-warning">
+<h4>Schema Fields</h4>
+<p>Each of the keys inside of the <code>@Prototype</code> is a "Schema Field".</p>
+</div>
+<br>
+
+
+  <!-- Class Options
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-class-options">Class Options</h4>
+  <p>Model options can be defined inside the Models Static object when using Model.extend( StaticObject, PrototypeObject ) to create a model.</p>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">Property</th>
+        <th style="width: 115px;">Type/s</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type</td>
+        <td>string</td>
+        <td>'ORM'</td>
+        <td><code>'ORM'</code> or <code>'ODM'</code>, for data persistence with clever-orm and clever-odm modules respectively.</td>
+    </tr>
+    <tr>
+        <td>dbName</td>
+        <td>boolean | string</td>
+        <td>false</td>
+        <td>Optionally define the database table name for a model.</td>
+    </tr>
+    <tr>
+        <td>freezeDbName</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>By default table (ORM) and collection (ODM) names are pluralized, if you don't want this behaviour set freezeDbName to <code>true</code></td>
+    </tr>
+    <tr>
+        <td>underscored</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>By default column names are camelCasedLikeThis, if you prefer underscores set this to <code>true</code></td>
+    </tr>
+    <tr>
+        <td>engine</td>
+        <td>boolean | string</td>
+        <td>false</td>
+        <td>Allows you to specifically override the database storage engine for a model. <br>
+          <span class="label label-danger">ORM ONLY</span>
+        </td>
+    </tr>
+    <tr>
+        <td>charset</td>
+        <td>boolean | string</td>
+        <td>false</td>
+        <td>Allows you to specifically override the database storage charset for a model. <br>
+          <span class="label label-danger">ORM ONLY</span>
+        </td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>boolean | string</td>
+        <td>false</td>
+        <td>Allows you to specifically override the database table comment for a model. <br>
+          <span class="label label-danger">ORM ONLY</span>
+        </td>
+    </tr>
+    <tr>
+        <td>collate</td>
+        <td>boolean | string</td>
+        <td>false</td>
+        <td>Allows you to specifically set the database table collation for a model. <br>
+          <span class="label label-danger">ORM ONLY</span>
+        </td>
+    </tr>
+    <tr>
+        <td>softDeleteable</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Allows you to specifically set the database table collation for a model. <br>
+          <span class="label label-info">Behaviour</span>
+        </td>
+    </tr>
+    <tr>
+        <td>deletedAt</td>
+        <td>string</td>
+        <td>'createdAt'</td>
+        <td>Allows you to set the column name to be used with the softDeleteable behaviour and deletion of models.</td>
+    </tr>
+    <tr>
+        <td>timeStampable</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>Enables timestamping of models on persistence (creating, updating) <br>
+          <span class="label label-info">Behaviour</span>
+        </td>
+    </tr>
+    <tr>
+        <td>createdAt</td>
+        <td>string</td>
+        <td>'createdAt'</td>
+        <td>Allows you to set the column name to be used with the timeStampable behaviour and creation of models.</td>
+    </tr>
+    <tr>
+        <td>updatedAt</td>
+        <td>string</td>
+        <td>'updatedAt'</td>
+        <td>Allows you to set the column name to be used with the timeStampable behaviour and updating models.</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <!-- Finder Methods
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-finder-methods">Finder Methods</h4>
+  <p>Models in CleverStack provide easy to use finders and helpful methods to create, update and delete model instances</p><br>
+
+  <div style="padding-left: 30px;">
+
+    <!-- Common Arguments
+    ================================================== -->
+    <h4 id="backend-models-finder-methods-common-arguments">Common Arguments</h4>
+    <p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p><br>
+
+    <h6>idOrFindOptions</h6>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+          <th style="width: 100px;">Name</th>
+          <th style="width: 70px;">Type/s</th>
+          <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>where<br>
+            <span class="label label-danger">Required</span>
+          </td>
+          <td>Object</td>
+          <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+            Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+{% highlight javascript %}
+{
+where: {
+name: 'example'
+}
+}
+{% endhighlight %}
+          </td>
+      </tr>
+      <tr>
+          <td>include<br>
+            <span class="label label-warning">Optional</span>
+          </td>
+          <td>Object</td>
+          <td>Eager load other models that are associated to the one you are querying.<br>
+            <p>Example</p>
+{% highlight javascript %}
+{
+include: [
+UserModel
+]
+}
+{% endhighlight %}
+          </td>
+      </tr>
+      </tbody>
+    </table><br>
+
+    <h5>queryOptions</h5>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+          <th style="width: 100px;">Name</th>
+          <th style="width: 70px;">Type/s</th>
+          <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>transaction<br>
+            <span class="label label-warning">Optional</span>
+          </td>
+          <td>Object</td>
+          <td>Any current transaction to be used with the database query</td>
+      </tr>
+      </tbody>
+    </table><br><br>
+
+
+    <!-- find
+    ================================================== -->
+    <h4 class="page-header" id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
+    <p class="lead-text">Find a single model either by id or using findOptions (smart where)</p><br>
+
+    <h5>Arguments</h5>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+          <th style="width: 100px;">Name</th>
+          <th style="width: 115px;">Type/s</th>
+          <th style="width: 50px;">Default</th>
+          <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>idOrFindOptions</td>
+          <td>Number | ObjectId | Object</td>
+          <td>{}</td>
+          <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+            Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+            <span class="label label-danger">Required</span>
+          </td>
+      </tr>
+      <tr>
+          <td>queryOptions</td>
+          <td>boolean | string</td>
+          <td>false</td>
+          <td>Optionally define the database table name for a model.<br>
+            <span class="label label-warning">Optional</span>
+          </td>
+      </tr>
+      </tbody>
+    </table><br>
+
+    <h5>Example</h5>
+{% highlight javascript %}
+Model
+.find( 1 )
+.then( function( model ) {
+
+})
+.catch( function( err ) {
+
+});
+
+// Using findOptions and a smart where object
+Model.find({
+where: {
+name: 'example'
+}
+})
+.then( function( model ) {
+
+})
+.catch( function( err ) {
+
+});
+{% endhighlight %}
+
+
+  </div>
+
+
+  <ul>
+    <li>find( idOrFindOptions, queryOptions )</li>
+    <li>Model.Types.BIGINT</li>
+    <li>Model.Types.FLOAT</li>
+    <li>Model.Types.DECIMAL</li>
+    <li>Model.Types.TEXT</li>
+  </ul><br>
+
+  <!-- Data Types
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-types">Data Types</h4>
+  <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
+  <ul>
+    <li>Model.Types.ENUM</li>
+    <li>Model.Types.BIGINT</li>
+    <li>Model.Types.FLOAT</li>
+    <li>Model.Types.DECIMAL</li>
+    <li>Model.Types.TEXT</li>
+  </ul><br>
+
+
+  <!-- Schema Field Definition Structure
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-schema-field-definition">Schema Field Definition</h4>
+  <p>If you choose (or need) to define a Schema Field using the Object Notation the following options and definition structure outline how to do so correctly.</p>
+
+  <p>Options</p>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">Property</th>
+        <th style="width: 115px;">Type/s</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>primaryKey</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Set this field as a primary key</td>
+    </tr>
+    <tr>
+        <td>autoIncrement</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>auto increment this field, only works with Number or Int Model.Types.*</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>Type | Object</td>
+        <td></td>
+        <td>Can be a standard Type like <code>String</code> or an Object provided by Model.Types
+          <span class="label label-danger">Important</span> this field is required when you provide an object
+        </td>
+    </tr>
+    <tr>
+        <td>default</td>
+        <td>Mixed</td>
+        <td>false</td>
+        <td>Specify a default.</td>
+    </tr>
+    <tr>
+        <td>allowNull</td>
+        <td>Boolean</td>
+        <td>true</td>
+        <td>Allow this field to be set as <code>null</code>.</td>
+    </tr>
+    <tr>
+        <td>required</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Make a model field required.</td>
+    </tr>
+    <tr>
+        <td>unique</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Make a model field unique in the database.</td>
+    </tr>
+    <tr>
+        <td>comment</td>
+        <td>Boolean | String</td>
+        <td>false</td>
+        <td>Add a comment to this field in the database.</td>
+    </tr>
+    <tr>
+        <td>validate</td>
+        <td>Object</td>
+        <td>{}</td>
+        <td>Supply an object of validators that will be used to validate the field before saving.</td>
+    </tr>
+  </table>
+
+  <p>Basic definition structure of a Schema Field:</p>
+{% highlight javascript %}
+// ...
+
+/* @Prototype */
+{
+fieldName: {
+  type          : String,
+  required      : true,
+  unique        : true,
+  validate: {
+    email       : true
+  }
+}
+}
+
+// ...
+{% endhighlight %}<br>
+
+  <!-- Definition Example
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-definition-example">Definition Example</h4>
+  <p>A more complete look at defining models</p>
+  <code>backend/modules/example-module/models/ExampleModel.js</code>
+
+{% highlight javascript %}
+module.exports = function( Model ) {
+return Model.extend(
+/* @Class */
+{
+type            :  'ORM',
+timeStampable   :  true,
+softDeletable   :  true
+},
+/* @Prototype */
+{
+id: {
+  type          : Number,
+  primaryKey    : true,
+  autoIncrement : true
+},
+name            : String,
+someDate        : Date,
+someFloat       : Float,
+email: {
+  type          : String,
+  required      : true,
+  unique        : true,
+  validate: {
+    email       : true
+  }
+}
+});
+};
+{% endhighlight %}
+<br>
+
+  <!-- Supported Databases
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-supported-databases">Supported Databases</h4>
+  <p>MySQL, MariaDB, PostgreSQL and SQLite.</p><br>
+
+  <!-- Validation
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-validation">Validation/Validators</h4>
+  <p>CleverStack has powerful validation built into it's core</p><br>
+
+  <!-- Associations
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-associations">Associations</h4>
+  <p>CleverStack has datatypes that can be used with either ORM or ODM (regardless of driver).</p>
+
+  <p>Currently associations are supported by taking advantage of sequelizejs's inbuilt associations, you can do bi directional and uni directional one-to-one (hasOne, belongsTo), one-to-many (hasMany, belongsTo) and many-to-many (hasMany) assoications of models.</p><br>
+
+  <!-- Toolbelt
+  ================================================== -->
+  <h4 class="page-header" id="backend-models-associations">Toolbelt</h4>
+
+  <p><span class="label label-info">Hint</span> Use the grunt db:rebase command to create your database structure</p>
+  {% highlight javascript %}$ grunt db:rebase {% endhighlight %}
+
+  <p><span class="label label-info">Hint</span> Use the grunt db:seed command to insert your seed data into the database</p>
+  {% highlight javascript %}$ grunt db:seed {% endhighlight %}
+
+  <p><span class="label label-info">Hint</span> Both of the above db commands can be run together using one command</p>
+  {% highlight javascript %}$ grunt db {% endhighlight %}
+
+  <br>
+
+  <p><span class="label label-danger">Important</span> You should not load models using require(), they must be loaded using the injector</p>
+  <p><span class="label label-danger">Important</span> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
+  <br>
+</div>
