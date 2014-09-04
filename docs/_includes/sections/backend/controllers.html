@@ -1,24 +1,113 @@
-<h3 class="page-header" id="backend-controllers">Controllers</h3>
-<p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller.</p>
+<h3 class="page-header" id="backend-controllers">
+  Controllers <br>
+  <small>Lightning-fast and flexible controller prototype</small>
+</h3>
+<p class="lead">The main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.</p>
 
-<p>Because of Hidden Classes and the Optimizing Compiler in NodeJS this mean's that this is blisteringly fast and allows you access to this.req (Request) and this.res (Response) rather than passing around req &amp; res variables like other solutions.</p>
+<h5>Features</h5>
+<ul>
+  <li>Lightning fast</li>
+  <li>V8's Hidden Classes & Inline Caches</li>
+  <li>V8's Optimizing Compiler which generates efficient machine code to run in place of your javascript</li>
+  <li>Clean, Efficient and Optimized code</li>
+  <li>Super methods</li>
+  <li>Static inheritance</li>
+  <li>Prototypal inheritance</li>
+  <li>Setup and initialization methods for both Static and Prototype</li>
+  <li>Easy-to-use method proxys with currying ( Static.callback() and Prototype.proxy() )</li>
+  <li>Internet Addressable functions, simply add 'Action' to the end of your controllers method() name and it will be Internet Addressable (as long as a route points to that controller).</li>
+  <li>Private functions, any function without 'Action' on the end of its name is NOT Internet Addressable</li>
+  <li>Easy accessors for Request and Response, available as this.req and this.res.</li>
+</ul>
+<br>
 
-<p>To create an action and expose it to the web all you need to do is add "Action" to the end of your function name, we do this so that NOT all of your methods inside your Controller are exposed to the web, only the ones you intend to!</p><br>
+<!-- Introduction
+================================================== -->
+<h4 id="background-controllers-introduction" class="page-header">Introduction</h4>
+<p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller (Class).</p>
+<p>Avoid callback soup/hell and promise slowdown by using this.proxy() or this.callback() in the Static section of the Controller, this keeps code nesting to a minimum and brings code re-use up. Instead of passing around req and res as arguments like other less organized solutions, in CleverStack they are exposed as this.req and this.res</p>
+<br>
 
-<p>Here is an example that covers all of the many features of Controller</p>
-
-
+<!-- Options
+================================================== -->
 <h4 id="backend-controllers-options" class="page-header">Options</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
+<p>You define any options along with the Prototype section of your Controller.extend() call</p>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Property</th>
+      <th style="width: 150px;">Type/s</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>service</td>
+      <td>boolean | Model</td>
+      <td>false</td>
+      <td>If set to a CleverStack Model it will provide automatic CRUD routing using restfulActions and/or actionRouting</td>
+  </tr>
+  </tbody>
+</table>
+<br>
 
+<!-- Definition
+================================================== -->
 <h4 id="backend-controllers-definition" class="page-header">Definition</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
+{% highlight javascript %}
+module.exports = ExampleController = function() {
+    return Controller.extend(
+    {
+        // example that returns JSON, available from route '/example/hello'
+        helloAction: function() {
+            this.send({
+                message: 'Hi there'
+            })
+        }
+    });
+};
+{% endhighlight %}
+<br>
 
+<!-- Actions
+================================================== -->
 <h4 id="backend-controllers-actions" class="page-header">Actions</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
+<p>
+  When doing a GET /example it will route to either listAction first OR getAction if listAction is not defined.<br>
+  If neither are defined, express's .next() function will be called allowing it to fall through the controller and move onto any other middleware you may have configured.<br>
+  If you want /example/hello as a route, you can simply implement helloAction in your controller and it will be automatically routed to it.
+</p>
+<div class="bs-callout bs-callout-info">
+  <h4>Standard for defining actions</h4>
+  <p>This is the default way to setup a controller to use actions. By default you can also visit /example/12 and it will route to the getAction function in your controller (if it's defined) with this.req.params.id set for you to use (the same applies for all HTTP methods, eg PUT/DELETE/POST/et cetera)</p>
+</div>
+<br>
 
+<!-- Middleware
+================================================== -->
 <h4 id="backend-controllers-middleware" class="page-header">Middleware</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
+{% highlight javascript %}
+module.exports = ExampleController = function() {
+    return Controller.extend(
+    {
+        someMiddleware: function(req, res, next) {
+            res.send({
+                message: 'Hi from middleware!'
+            });
+        }
+    },
+    {
+        // example that returns JSON, available from route '/example/hello'
+        helloAction: function() {
+            this.send({
+                message: 'Hi there'
+            })
+        }
+    });
+};
+{% endhighlight %}
+<br>
 
 <!-- Routing
 ================================================== -->

@@ -42,6 +42,13 @@ lead: "A quick walkthrough to install and start using CleverStack"
     <p class="lead">To create a new project using the CleverStack CLI.</p>
       {% highlight bash %}clever init my-app{% endhighlight %}
 
+    <div class="bs-callout bs-callout-danger">
+      <h4>Database creation</h4>
+      <p>
+        If you are using MySQL then you will need to manually run the <code>CREATE DATABASE</code> command to create your database, the underlying library we use does not support this functionality.
+      </p>
+    </div>
+
     <div class="bs-callout bs-callout-warning">
       <h4>Init running time</h4>
       <p>
