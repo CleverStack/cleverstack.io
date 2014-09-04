@@ -2,9 +2,14 @@
   Controllers <br>
   <small>Lightning-fast and flexible controller prototype</small>
 </h3>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li class="active">Controllers</li>
+</ol>
 <p class="lead">The main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.</p>
 
-<h5>Features</h5>
+<h5 class="page-header">Highlights</h5>
 <ul>
   <li>Lightning fast</li>
   <li>V8's Hidden Classes & Inline Caches</li>
@@ -24,6 +29,12 @@
 <!-- Introduction
 ================================================== -->
 <h4 id="background-controllers-introduction" class="page-header">Introduction</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Introduction</li>
+</ol>
 <p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller (Class).</p>
 <p>Avoid callback soup/hell and promise slowdown by using this.proxy() or this.callback() in the Static section of the Controller, this keeps code nesting to a minimum and brings code re-use up. Instead of passing around req and res as arguments like other less organized solutions, in CleverStack they are exposed as this.req and this.res</p>
 <br>
@@ -31,6 +42,12 @@
 <!-- Options
 ================================================== -->
 <h4 id="backend-controllers-options" class="page-header">Options</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Options</li>
+</ol>
 <p>You define any options along with the Prototype section of your Controller.extend() call</p>
 <table class="table table-bordered table-striped">
   <thead>
@@ -43,6 +60,30 @@
   </thead>
   <tbody>
   <tr>
+      <td>route</td>
+      <td>boolean | string | array</td>
+      <td>Dynamic</td>
+      <td>Sets the route/s for the controllers actions, if this is not set it will be automatically determined based off the Controllers name (usually the filename less "Controller", eg User /user/...)</td>
+  </tr>
+  <tr>
+      <td>autoRouting</td>
+      <td>boolean | array</td>
+      <td>true</td>
+      <td>Turns automatic routing (binding of routes to the router) on or off, additionally you can provide an array of middleware to attach</td>
+  </tr>
+  <tr>
+      <td>restfulRouting</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Turns RESTFul routing to actions on or off.</td>
+  </tr>
+  <tr>
+      <td>actionRouting</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Turns Action Based routing on or off.</td>
+  </tr>
+  <tr>
       <td>service</td>
       <td>boolean | Model</td>
       <td>false</td>
@@ -50,11 +91,21 @@
   </tr>
   </tbody>
 </table>
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
 <br>
 
 <!-- Definition
 ================================================== -->
 <h4 id="backend-controllers-definition" class="page-header">Definition</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Definition</li>
+</ol>
 {% highlight javascript %}
 module.exports = ExampleController = function() {
     return Controller.extend(
@@ -73,6 +124,12 @@ module.exports = ExampleController = function() {
 <!-- Actions
 ================================================== -->
 <h4 id="backend-controllers-actions" class="page-header">Actions</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Actions</li>
+</ol>
 <p>
   When doing a GET /example it will route to either listAction first OR getAction if listAction is not defined.<br>
   If neither are defined, express's .next() function will be called allowing it to fall through the controller and move onto any other middleware you may have configured.<br>
@@ -87,6 +144,12 @@ module.exports = ExampleController = function() {
 <!-- Middleware
 ================================================== -->
 <h4 id="backend-controllers-middleware" class="page-header">Middleware</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Middleware</li>
+</ol>
 {% highlight javascript %}
 module.exports = ExampleController = function() {
     return Controller.extend(
@@ -112,6 +175,12 @@ module.exports = ExampleController = function() {
 <!-- Routing
 ================================================== -->
 <h4 id="backend-controllers-routing" class="page-header">Routing</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Routing</li>
+</ol>
 <p>Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you can attach your controller. (Except for Controllers which have autoRoute enabled, those controllers have these routes automatically attached)</p>
 {% highlight javascript %}
 // modules/backend-example-module/routes.js
@@ -168,7 +237,19 @@ Examples:
 <br>
 
 <h4 id="backend-controllers-examples" class="page-header">Examples</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Examples</li>
+</ol>
 <p>Coming soon, we are working hard on this section.</p><br>
 
 <h4 id="backend-controllers-testing" class="page-header">Testing</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-controllers">Controllers</a></li>
+  <li class="active">Testing</li>
+</ol>
 <p>Coming soon, we are working hard on this section.</p><br>

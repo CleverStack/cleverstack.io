@@ -1,7 +1,14 @@
-<h3 class="page-header" id="backend-di">Dependency Injection<br>
-<small>Asynchronous and fully Non-blocking dependency injection for Node (based on AngularJS)</small></h3>
+<h3 class="page-header" id="backend-di">
+	Dependency Injection<br>
+	<small>Asynchronous and fully Non-blocking dependency injection for Node (based on AngularJS)</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li class="active">Dependency Injection</li>
+</ol>
 
-<h4>Features</h4>
+<h5 class="page-header">Features</h5>
 <ul>
   <li>Non-blocking and fully async</li>
   <li>Load's resources based upon name for you and injects dependencies</li>
@@ -12,6 +19,8 @@
 <p>CleverStack Controllers, Services, Routes, Models and Tests are loaded and all of their dependencies are loaded and injected automatically using the <a href="https://github.com/cleverstack/clever-injector">CleverStack Dependency Injection</a> module.</p>
 
 <p>When resources/files are loaded using the injector it will automatically load and inject any of it's dependencies in a recursive manner.</p>
+
+<h5 class="page-header">Example Usage</h5>
 
 <p>Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.</p>
 

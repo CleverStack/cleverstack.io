@@ -1,13 +1,20 @@
 <h3 class="page-header" id="backend-classes">
   Classes <br/>
-  <small>Lightning-fast and flexible Class, with prototypal inheritance, static methods and much more!</small>
+  <small>Lightning-fast and flexible Class prototype</small>
 </h3>
-<p class="lead">Prototypal inheritance that makes writing performant, maintainable and tested code a breeze.</p>
-
-<h5>Features</h5>
 
 <!-- Introduction
 ================================================== -->
+<h4 id="backend-classes-introduction" class="page-header">Introduction</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Introduction</li>
+</ol>
+<p>Each Module, Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this for many reasons but none as important as taking advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes, Inline Caches &amp; Optimizing Compiler</a> to allow V8 to generate efficient and performant machine code so your application is as fast as humanly possible and then some.</p>
+
+<h5 class="page-header">Highlights</h5>
 <ul>
   <li>Prototypal inheritance</li>
   <li>Static inheritance</li>
@@ -22,9 +29,7 @@ Clean, Efficient and Optimized code</li>
   </li>
   <li>All Classes can emit and listen to events using EventEmitter</li>
 </ul>
-<br>
-<h4 id="backend-classes-introduction" class="page-header">Introduction</h4>
-<p>Each Module, Controller, Service or Model is extended from a <a href="https://github.com/daffl/uberclass">Class</a>, we do this for many reasons but none as important as taking advantage of <a href="https://developers.google.com/v8/design">V8's Hidden Classes, Inline Caches &amp; Optimizing Compiler</a> to allow V8 to generate efficient and performant machine code so your application is as fast as humanly possible and then some.</p>
+<br/>
 
 <div class="bs-callout bs-callout-danger">
   <h4>Proxy Functions</h4>
@@ -48,6 +53,12 @@ Clean, Efficient and Optimized code</li>
 <!-- Definition
 ================================================== -->
 <h4 id="backend-classes-definition" class="page-header">Definition</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Definition</li>
+</ol>
 {% highlight javascript %}
 // This example file exports a function that will have "Class" injected into it via the clever-injector
 module.exports = function( Class ) {
@@ -72,6 +83,12 @@ module.exports = function( Class ) {
 <!-- Extending
 ================================================== -->
 <h4 id="backend-classes-extending" class="page-header">Extending</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Extending</li>
+</ol>
 <p>Every Class will provide an extend function that can be used to extend the functionality of a Class with some new functionality as provided in the Static and Prototype of the extend call.</p>
 
 <p>A good example of class extension is the Controller class (in lib folder), it extends from Class and every module/s controller/s extend from Controller.</p>
@@ -138,9 +155,21 @@ console.log("Loch Ness fought. Health: " + lochNess.health); // -> 11
 <br>
 
 <h4 id="backend-classes-events" class="page-header">Events</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Events</li>
+</ol>
 <p>Every class by default extends Node's EventEmitter, currently there are no events defined. (but that's for your Classes to do)</p><br>
 
 <h4 id="backend-classes-examples" class="page-header">Examples</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Examples</li>
+</ol>
 <p>Here is an example of creating a class and using the proxy function as well as emitting events.</p>
 {% highlight javascript %}
 var Class = require( 'classes' ).Class;
@@ -170,6 +199,12 @@ module.exports = Class.extend({
 {% endhighlight %}
 
 <h4 id="backend-classes-proxy" class="page-header">Proxy</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-classes">Classes</a></li>
+  <li class="active">Proxy</li>
+</ol>
 <p>Proxies are a helpful way of flattening your code, you don't need to nest or repeat yourself - structure it out into something more modular and re-usable.</p><br>
 
 {% highlight javascript %}

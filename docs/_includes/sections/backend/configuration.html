@@ -2,9 +2,19 @@
   Configuration<br/>
   <small>Sophisticated deep-merged configuration allows ultimate flexibility between environments</small>
 </h3>
-<p class="lead">To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p>
-<br/>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li class="active">Configuration</li>
+</ol>
+<p class="lead sub">To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p>
 
+<p>Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them</p>
+{% highlight javascript %}
+config = require( 'config' )
+{% endhighlight %}
+
+<h5 class="page-header">Loading Order</h5>
 <p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
 <ol>
   <li><a href="https://github.com/CleverStack/Node-Seed/tree/master/config/global.json">/config/global.json</a>
@@ -13,7 +23,7 @@
         Define the global configuration for your application here.
         <div class="bs-callout bs-callout-danger">
           <h4>Required for configuration</h4>
-          <p>This file is required and must exist, as this is the place for any default (or GLOBAL) configuration</p>
+          <p>This file is required and must exist, as this is the place for any default (or GLOBAL) configuration. Don't Delete!</p>
         </div>
       </li>
     </ul>

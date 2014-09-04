@@ -1,9 +1,50 @@
-<h3 class="page-header" id="backend-services">Services</h3>
-<p>CleverStack's Architecture has been designed to use a Service Layer, we do this so that your Controllers use Services allowing you to swap out the model that is being used behind the service without having to change your Controller code.</p>
+<h3 class="page-header" id="backend-services">
+  Services<br/>
+  <small>Robust service layer for ultimate flexibility</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li class="active">Services</li>
+</ol>
 
-<p>This is also important to being able to test effectively, unit tests are carried out by using the Service directly and integration (e2e) tests are carried out by using HTTP Requests to your controller. This gives you the ability to test at different levels and make finding bugs or errors easier.</p>
+<p class="lead sub">CleverStack's Service Layer makes a clear distiction between web (controller) activity that is best handled in the controller and general business related logic that is not web related - this separation also gives us the ability to do testing on the business logic of the Service either on it's own (unit test) or with the web related logic from the Controller/s (e2e test)</p>
 
-<p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Class of the Service Class you are able to enable the Controller to automatically give you CRUD.</p>
+<div class="bs-callout bs-callout-danger">
+  <h4>Service nesting</h4>
+  <p>When defining methods in services that require other models the correct way of working with those other models is to use their Service, this mean's that services business logic can still be run (transactions, their own transactions, etc)</p>
+</div>
+
+<div class="bs-callout bs-callout-info">
+  <h4>Flexible persistence</h4>
+  <p>Using a Service Layer also mean's that you can store data in whatever you want not just the ORM or ODM models that CleverStack provides, and you can even easily change the underlying storage of an existing Service because of this Pattern.</p>
+</div>
+
+<h5 id="backend-services-introduction" class="page-header">Introduction</h5>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Introduction</li>
+</ol>
+<p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Class of the Service you are able to enable the Controller to automatically give you CRUD routing and actions.</p>
+
+<h4 id="backend-services-options" class="page-header">Options</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Options</li>
+</ol>
+<p>Coming soon, we are working hard on this section.</p><br>
+
+<h4 id="backend-services-definition" class="page-header">Definition</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Definition</li>
+</ol>
 {% highlight javascript %}
 module.exports = function ( Service, ExampleModel ) {
     return Service.extend({
@@ -11,18 +52,31 @@ module.exports = function ( Service, ExampleModel ) {
     });
 };
 {% endhighlight %}
-
-<h4 id="backend-services-options" class="page-header">Options</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
-
-<h4 id="backend-services-definition" class="page-header">Definition</h4>
-<p>Coming soon, we are working hard on this section.</p><br>
+<br/>
 
 <h4 id="backend-services-events" class="page-header">Events</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Events</li>
+</ol>
 <p>Coming soon, we are working hard on this section.</p><br>
 
-<h4 id="backend-services-class-methods" class="page-header">Class methods</h4>
+<h4 id="backend-services-class-methods" class="page-header">Class Methods</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Class Methods</li>
+</ol>
 <p>Coming soon, we are working hard on this section.</p><br>
 
 <h4 id="backend-services-testing" class="page-header">Testing</h4>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#backend">Backend</a></li>
+  <li><a href="#backend-services">Services</a></li>
+  <li class="active">Testing</li>
+</ol>
 <p>Coming soon, we are working hard on this section.</p><br>
