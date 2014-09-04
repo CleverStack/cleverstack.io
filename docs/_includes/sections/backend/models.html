@@ -186,30 +186,29 @@ module.exports = function( Model ) {
 <p>Models in CleverStack provide easy to use finders and helpful methods to create, update and delete model instances</p>
 <br/>
 
-<div class="padding-left: 30px;">
-  <!-- Common Arguments
-  ================================================== -->
-  <h5 id="backend-models-class-methods-common-arguments">Common Arguments</h5>
-  <p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p>
-  <br/>
+<!-- Common Arguments
+================================================== -->
+<h5 id="backend-models-class-methods-common-arguments">Common Arguments</h5>
+<p>There are some common arguments that are used in the majority of these finder methods, the structure of which are as follows</p>
+<br/>
 
-  <h6>idOrFindOptions</h6>
-  <table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 70px;">Type/s</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>where<br>
-          <span class="label label-danger">Required</span>
-        </td>
-        <td>Object</td>
-        <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
-          Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+<h6>idOrFindOptions</h6>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 70px;">Type/s</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>where<br>
+        <span class="label label-danger">Required</span>
+      </td>
+      <td>Object</td>
+      <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+        Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
   {% highlight javascript %}
     {
     where: {
@@ -217,37 +216,37 @@ module.exports = function( Model ) {
     }
   }
   {% endhighlight %}
-        </td>
-    </tr>
-    <tr>
-        <td>limit<br/><span class="label label-warning">Optional</span></td>
-        <td>Number</td>
-        <td>Specify an Object (findOptions) containing a limit for the query<br>
+      </td>
+  </tr>
+  <tr>
+      <td>limit<br/><span class="label label-warning">Optional</span></td>
+      <td>Number</td>
+      <td>Specify an Object (findOptions) containing a limit for the query<br>
 {% highlight javascript %}
 {
   limit: 10
 }
 {% endhighlight %}
-        </td>
-    </tr>
-    <tr>
-        <td>offset<br/><span class="label label-warning">Optional</span></td>
-        <td>Number</td>
-        <td>Specify an Object (findOptions) containing an offset for the query, usually used in conjuction with limit<br>
+      </td>
+  </tr>
+  <tr>
+      <td>offset<br/><span class="label label-warning">Optional</span></td>
+      <td>Number</td>
+      <td>Specify an Object (findOptions) containing an offset for the query, usually used in conjuction with limit<br>
 {% highlight javascript %}
 {
   offset: 10
 }
 {% endhighlight %}
-        </td>
-    </tr>
-    <tr>
-        <td>include<br>
-          <span class="label label-warning">Optional</span>
-        </td>
-        <td>Object</td>
-        <td>Eager load other models that are associated to the one you are querying.<br>
-          <p>Example</p>
+      </td>
+  </tr>
+  <tr>
+      <td>include<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>Object</td>
+      <td>Eager load other models that are associated to the one you are querying.<br>
+        <p>Example</p>
 {% highlight javascript %}
 {
   include: [
@@ -255,73 +254,74 @@ module.exports = function( Model ) {
   ]
 }
 {% endhighlight %}
-          <div class="bs-callout bs-callout-warning">
-            <h4>Nested includes</h4>
-            <p>It is possible to include nested modules associations for Eager Loading</p>
-          </div>
-        </td>
-    </tr>
-    </tbody>
-  </table>
-  <br/>
+      <div class="bs-callout bs-callout-warning">
+        <h4>Nested includes</h4>
+        <p>It is possible to include nested modules associations for Eager Loading</p>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
 
-  <h5>queryOptions</h5>
-  <table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 70px;">Type/s</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>transaction<br>
-          <span class="label label-warning">Optional</span>
-        </td>
-        <td>Object</td>
-        <td>Any current transaction to be used with the database query</td>
-    </tr>
-    </tbody>
-  </table>
+<h5>queryOptions</h5>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 70px;">Type/s</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>transaction<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>Object</td>
+      <td>Any current transaction to be used with the database query</td>
+  </tr>
+  </tbody>
+</table>
 
-  <!-- find
-  ================================================== -->
-  <h4 class="page-header" id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
-  <p class="lead-text">Find a single model either by id or using findOptions (smart where)</p><br>
+<!-- find
+================================================== -->
+<h4 class="page-header" id="backend-models-finder-methods-find">find( idOrFindOptions, queryOptions )</h4>
+<p class="lead-text">Find a single model either by id or using findOptions (smart where)</p><br>
 
-  <h5>Arguments</h5>
-  <table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 115px;">Type/s</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>idOrFindOptions</td>
-        <td>Number | ObjectId | Object</td>
-        <td>{}</td>
-        <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
-          Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
-          <span class="label label-danger">Required</span>
-        </td>
-    </tr>
-    <tr>
-        <td>queryOptions</td>
-        <td>boolean | string</td>
-        <td>false</td>
-        <td>Optionally define the database table name for a model.<br>
-          <span class="label label-warning">Optional</span>
-        </td>
-    </tr>
-    </tbody>
-  </table><br>
+<h5>Arguments</h5>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 115px;">Type/s</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>idOrFindOptions</td>
+      <td>Number | ObjectId | Object</td>
+      <td>{}</td>
+      <td>Specify either the id to find by (supports Number's and ObjectId's) or<br>
+        Specify an Object (findOptions) containing the fields (keys) and their values you want to find by<br>
+        <span class="label label-danger">Required</span>
+      </td>
+  </tr>
+  <tr>
+      <td>queryOptions</td>
+      <td>boolean | string</td>
+      <td>false</td>
+      <td>Optionally define the database table name for a model.<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
 
-  <h5>Example</h5>
+<h5>Example</h5>
 {% highlight javascript %}
   Model
   .find( 1 )
@@ -346,15 +346,13 @@ module.exports = function( Model ) {
   });
 {% endhighlight %}
 
-  <ul>
-    <li>find( idOrFindOptions, queryOptions )</li>
-    <li>Model.Types.BIGINT</li>
-    <li>Model.Types.FLOAT</li>
-    <li>Model.Types.DECIMAL</li>
-    <li>Model.Types.TEXT</li>
-  </ul>
-
-</div>
+<ul>
+  <li>find( idOrFindOptions, queryOptions )</li>
+  <li>Model.Types.BIGINT</li>
+  <li>Model.Types.FLOAT</li>
+  <li>Model.Types.DECIMAL</li>
+  <li>Model.Types.TEXT</li>
+</ul>
 
 
 <!-- Data Types
@@ -578,4 +576,3 @@ module.exports = function( Model ) {
 <p><span class="label label-danger">Important</span> You should not load models using require(), they must be loaded using the injector</p>
 <p><span class="label label-danger">Important</span> Use the SequelizeJS migrations tool to create or run ORM Migrations.</p>
 <br>
-</div>
