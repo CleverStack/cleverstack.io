@@ -35,6 +35,10 @@
                 {% include nav-getting-started.html %}
               {% elsif page.slug == "why-cleverstack" %}
                 {% include nav-why-cleverstack.html %}
+              {% elsif page.slug == "documentation-backend" %}
+                {% include nav-docs-backend-guide.html %}
+              {% elsif page.slug == "documentation-backend-models" %}
+                {% include sections/backend/models/_nav.html %}
               {% elsif page.slug == "documentation" %}
                 {% include nav-documentation.html %}
               {% elsif page.slug == "about" %}
@@ -50,37 +54,8 @@
 
     </div>
 
-    <!-- Footer
-    ================================================== -->
-<!--     <footer class="bs-footer" role="contentinfo">
-      <div class="container">
-        {% include social-buttons.html %}
-
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Maintained by the <a href="https://github.com/twbs?tab=members">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-        <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li>Currently v{{ site.current_version }}</li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.baseurl }}2.3.2/">Bootstrap 2.3.2 docs</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.repo }}">GitHub project</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.baseurl }}getting-started/#examples">Examples</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.expo }}">Expo</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.blog }}">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.repo }}/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="{{ site.repo }}/releases">Releases</a></li>
-        </ul>
-      </div>
-    </footer> -->
-
     <footer class="container text-center padtop" role="contentinfo">
-      <p>Cleverstack.io is developed by our <a href="/about/#team">Core Developer Team</a>. 2013-2014 Cleverstack.io All Rights Reserved.</p>
+      <p class="legal">Cleverstack.io is developed and maintained by <a href="http://au.linkedin.com/in/richardgustin" target="_blank">Richard Gustin</a> (<a href="https://github.com/pilsy" target="_blank">@pilsy</a>),<br/>our core developers, our open source community and <a href="http://www.clevertech.biz/" target="_blank">Clevertech</a>.<br/>2015 Cleverstack.io All Rights Reserved.</p>
     </footer>
 
     <!-- JS and analytics only. -->

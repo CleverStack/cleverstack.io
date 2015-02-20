@@ -1,0 +1,117 @@
+<h3 id="definition" class="page-header">
+  Definition <a class="permalink" href="#definition" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/models">Models</a></li>
+  <li class="active">Definition</li>
+</ol>
+<br/>
+
+<p class="sub">To define mappings between a model and a table/collection, you use the <code>Model.extend()</code> method. There are 3 arguments that you can supply when calling extend.</p>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 80px;">Name</th>
+      <th style="width: 95px;">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>tableName<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>{% highlight javascript %}String{% endhighlight %}</td>
+      <td>Optionally as the <strong><i>First Argument</i></strong> , Set the tableName of the Model (table/collection name), <br/>
+        If you do not call extend with this argument the name of the file (less "Model") will be used, for example if the filename is <code>UserModel.js</code>, then the name will be set to <code>User</code>.</td>
+  </tr>
+  <tr>
+      <td>Class<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>{% highlight javascript %}Object{% endhighlight %}</td>
+      <td>Optionally as the <strong><i>Second Argument</i></strong>, Define <b><i><a href="#options">Options</a></i></b>, <b><i><a href="#finders">Methods/Finders</a></i></b> and <b><i><a href="#events-templated-handlers">Templated Event Handlers</a></i></b> in this Object.</td>
+  </tr>
+  <tr>
+      <td>Prototype<br>
+        <span class="label label-danger">Required</span>
+      </td>
+      <td>{% highlight javascript %}Object{% endhighlight %}</td>
+      <td>After all other optional arguments, the third (or first if you don't provide any optional arguments), <br/>
+        Define <b><i><a href="#field-definition">Field Definition</a></i></b>, <b><i><a href="#instance-methods">Instance Methods</a></i></b>, <b><i><a href="#getters-and-setters">Getters/Setters</a></i></b> and <b><i><a href="#events-templated-handlers">Templated Event Handlers</a></i></b> in this Object.</td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+
+<h5 class="sub" id="definition-example">Let's take a look at a quick example of how to define a Model</h5>
+{% highlight javascript linenos %}
+Model.extend('User',
+/* @Class */
+{
+  timeStampable : true,
+  createdAt     : 'signUpDate',
+},
+/* @Instance */
+{
+  firstName       : String,
+  lastName        : String,
+  password: {
+    type          : String,
+    required      : true
+  },
+  email: {
+    type          : String,
+    required      : true,
+    unique        : true,
+    validate: {
+      email       : true
+    }
+  },
+  setPassword: function(password) {
+    this.password = hashPassword(password);
+  },
+  getFullName: function() {
+    return [this.firstname, this.lastname].join(' ')
+  },
+  isSuperAdmin: function() {
+    if (this.firstName === 'Richard') {
+      return true;
+    }
+    return false;
+  }
+});
+{% endhighlight %}
+<br/>
+
+<p class="sub">In this example we defined a model called <code>User</code>, that has a <code>firstName</code> and <code>lastName</code>, a <code>password</code> that is <strong><i>required</i></strong>, and an <code>email</code> that is <b><i>required</i></b> and must <i><b>validate as an email</b></i>, and because we did not specify any field's as the primary key, it will also have an <code>id</code> as the <i>primary key</i> that is <i>automatically incrementing</i>. Additionally because we provided the <a href="#options-timeStampable"><strong><i>timeStampable</i></strong></a> and <a href="#options-createdAt"><strong><i>createdAt</i></strong></a> options in the model definition, it will have two additional read-only field's that automatically set their values when you create or update the model, <code>signUpDate</code> and <code>updatedAt</code>.</p>
+
+<p class="sub">Because we want to hash the users <code>password</code> before saving it in the database, we provided a custom <strong><i><a href="#getters-and-setters">Setter</a></i></strong> called <code>setPassword</code>, that will be used to set any users password. Additionally because we want our model it output a virtual field (named <code>fullName</code>, we added a <strong><i><a href="#getters-and-setters">Getter</a></i></strong> called <code>getFullName</code> - this will be used whenever you get <code>user.fullName</code> and will also be in the JSON when you serialize the object using <code>JSON.stringify()</code></p>
+
+<p class="sub">To demonstrate how to define and use <a href="#instance-methods">Instance Methods</a> we have added a function called <code>isSuperAdmin()</code>, and in the next example we will show an example of how to use this function.</p>
+
+<div class="bs-callout bs-callout-info">
+  <h4>Automatic <code>id</code> Field's</h4>
+  <p>If no primary key is specified in your model definition (like the above example), then an auto incrementing id field is added automatically.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Options</h4>
+  <p>For help defining options like <code>timeStampable</code> or to find a list of all the options available, please see <a href="#options">Options</a>.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Model Field's</h4>
+  <p>For help defining Model Field's like <b><i>firstName</i></b>, <b><i>lastName</i></b> or <b><i>email</i></b> please see <a href="#field-definition">Field Definition</a>.<br/>
+  Additionally please see <a href="#field-types">Field Types</a> for help with any Field's <code>type</code> Option.</p>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Known Issue: Using the underscored and freezeDbName Option's together</h4>
+  <p>If you use <code>underscored: true</code> and <code>freezeDbName: true</code> as options, either globally or for a single extend call, you will need to set the option <code>dbName</code> to the underscored_table_name.</p>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Known Issue: Field's named <code>name</code></h4>
+  <p>Because our Classes export a constructor Function which has a name of <code>Class</code>, and JavaScript function's automatically get a non-configurable name that is read-only, you <i>may</i> experience some strange behaviour. We plan to fix this in a coming release. </p>
+</div>

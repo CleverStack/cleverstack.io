@@ -1,84 +1,30 @@
-<h1 id="backend" class="page-header">CleverStack Backend</h1>
+<h1 id="backend" class="page-header">
+  CleverStack NodeJS Backend <a class="permalink" href="/documentation/backend" title="Permalink"><small>¶</small></a>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li class="active">Backend</li>
+</ol>
+
+<!-- Goals
+================================================== -->
+{% include sections/goals.html %}<br/><br/>
 
 <!-- Introduction
 ================================================== -->
 {% include sections/backend/introduction.html %}<br/><br/>
 
-<!-- Structure
+<!-- Installation
 ================================================== -->
-{% include sections/backend/structure.html %}<br/><br/>
+{% include sections/backend/installation.html %}<br/><br/>
 
 <!-- Configuration
 ================================================== -->
 {% include sections/backend/configuration.html %}<br/><br/>
 
-<!-- Dependency Injection
+<!-- Structure
 ================================================== -->
-{% include sections/backend/dependency-injection.html %}<br/><br/>
-
-<!-- Classes
-================================================== -->
-{% include sections/backend/classes.html %}<br/><br/>
-
-<!-- Controllers
-================================================== -->
-{% include sections/backend/controllers.html %}<br/><br/>
-
-<!-- Services
-================================================== -->
-{% include sections/backend/services.html %}<br/><br/>
-
-<!-- Models
-================================================== -->
-{% include sections/backend/models.html %}<br/><br/>
-
-<!-- Modules
-================================================== -->
-{% include sections/backend/modules.html %}<br/><br/>
-
-    
-
-<!-- Modules Dependency Injection
-================================================== -->
-<h4 class="page-header" id="backend-di">Dependency Injection</h4>
-<p>CleverStack Controllers, Services, Routes, Models and Tests are loaded and all of their dependencies are loaded and injected automatically using the <a href="https://github.com/cleverstack/clever-injector">CleverStack Dependency Injection</a> module.</p>
-
-<p>When resources/files are loaded using the injector it will automatically load and inject any of it's dependencies in a recursive manner.</p>
-
-<p>Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.</p>
-{% highlight javascript %}
-module.exports = function( SomeDependency ) {
-// SomeDependency is loaded and injected into this function for you
-}
-{% endhighlight %}
-<br/>
-
-<!-- Testing
-================================================== -->
-<h4 class="page-header" id="backend-modules-testing">Testing</h4>
-<p>Modules contain their testing resources, here are the two types you can use</p>
-<br/>
-
-<h5>Unit Tests</h5>
-
-<p>Here is an in-depth example of how to write a unit test</p>
-{% highlight javascript %}
-// Coming soon
-{% endhighlight %}<br/>
-
-<h5 class="page-header">Integration / e2e Tests</h5>
-
-<p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
-{% highlight javascript %}
-// Coming soon
-{% endhighlight %}
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
-<br/>
-
+{% include sections/backend/project-structure.html %}<br/><br/>
 
 <!-- Magic Modules
 ================================================== -->
@@ -104,6 +50,11 @@ module.exports = function( SomeDependency ) {
 <li>tasks</li>
 <li>utils</li>
 </ul><br/>
+
+<!-- Dependency Injection
+================================================== -->
+{% include sections/backend/dependency-injection.html %}<br/><br/>
+
 
 <!-- Troubleshooting
 ================================================== -->
@@ -145,7 +96,49 @@ Starting server on port 8080 in LOCAL mode
   <li>If your still having problems, please <a href="https://github.com/CleverStack/Node-Seed/issues/new">raise an issue</a>.</li>
 </ul>
 
+<!-- Testing
+================================================== -->
+<h4 class="page-header" id="testing">Testing</h4>
+<p>Modules contain their testing resources, here are the two types you can use</p>
+<br/>
+
+<h5>Unit Tests</h5>
+
+<p>Here is an in-depth example of how to write a unit test</p>
+{% highlight javascript %}
+// Coming soon
+{% endhighlight %}<br/>
+
+<h5 class="page-header">Integration / e2e Tests</h5>
+
+<p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
+{% highlight javascript %}
+// Coming soon
+{% endhighlight %}
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+<br/>
+
 <!-- Contributing
 ================================================== -->
 <h3 class="page-header" id="backend-contributing">Contributing</h3>
 <p>Firstly please read our <a href="https://github.com/CleverStack/Node-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Node-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
+
+<!-- Modules
+================================================== -->
+{% include sections/backend/modules.html %}<br/><br/>
+
+<!-- Classes
+================================================== -->
+{% include sections/backend/classes.html %}<br/><br/>
+
+<!-- Controllers
+================================================== -->
+{% include sections/backend/controllers.html %}<br/><br/>
+
+<!-- Services
+================================================== -->
+{% include sections/backend/services.html %}<br/><br/>

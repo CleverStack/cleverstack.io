@@ -18,10 +18,10 @@
 -------------------------------------------------- */
 .github-ribbon {
   /*background-color: #1F1F1F;*/
-  position: fixed;
+  position: absolute;
   top: 50px;
   right: 0;
-  z-index: 9999;
+  z-index: 1;
   display: block;
   padding: 0.2em 3.5em;
   letter-spacing: 0.03em;

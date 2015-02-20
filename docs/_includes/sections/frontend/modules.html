@@ -1,0 +1,88 @@
+<!-- Modules
+================================================== -->
+<h3 id="frontend-modules">Modules</h3>
+<p>These are the most important part of your application, where all your functionality and testing is defined.</p><br>
+
+<div style="padding-left: 20px;">
+
+  <!-- Modules structure
+  ================================================== -->
+  <h4 id="frontend-modules-structure">Structure</h4>
+        <p>This is a typical front-end (angular) module structure.</p>
+{% highlight bash %}
+example-module/
+├── scripts/                          # module angular scripts
+│   ├── controllers/
+│   ├── directives/
+│   ├── services/
+│   └── resources/
+├── styles/                           # module styles (optional)
+├── img/                              # module images (optional)
+├── fonts/                            # module fonts (optional)
+├── views/                            # module ngTemplates
+├── tests/                            # module tests
+│   ├── unit/
+│   └── e2e/
+├── main.js                           # module requirejs scripts
+├── module.js                         # angular main module
+├── bower.json                        # module js dependencies
+├── Gruntfile.js                      # module grunt tasks
+└── package.json                      # module npm dependencies
+{% endhighlight %}<br>
+
+  <div style="padding-left: 30px;">
+    <h4>Important files and folders</h5>
+
+    <h5>scripts/</h5>
+    <ul>
+        <li>This folder contains all the scripts required for the module. ie - all the modules angular controllers, directives, services and resources.</li>
+    </ul>
+
+    <h5>views/</h5>
+    <ul>
+        <li>This allows each module to define it's own views for the ngtemplates provided within each module.</li>
+    </ul>
+
+    <h5>tests/</h5>
+    <ul>
+        <li>Two folders for testing, unit/ and e2e/</li>
+        <li>This allows each module to define it's own tests for the functionality (code) that is provided within each module.</li>
+    </ul>
+
+    <h5>main.js</h5>
+    <ul>
+        <li>This is the requirejs main file, use it to specify all the javascript files you need for your module..</li>
+    </ul>
+
+    <h5>module.js</h5>
+    <ul>
+        <li>Instantiates and configures angular modules for your module.</li>
+    </ul>
+
+    <h5>bower.json</h5>
+    <ul>
+        <li>Defines the modules JavaScript dependencies.</li>
+    </ul>
+
+    <h5>package.json</h5>
+    <ul>
+        <li>Defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</li><br>
+        <li><span class="label label-danger">Important</span> This is where you define which Modules are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array.</li>
+        <li><span class="label label-info">Note</span> By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</li>
+        <li><span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.</li>
+    </ul>
+
+    <h5>Gruntfile.js</h5>
+    <ul>
+        <li>Defines the Applications global (main) gruntConfig.</li>
+        <li>Registers the Applications included Grunt tasks.</li><br>
+        <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.</li>
+    </ul>
+  </div><br>
+
+  <!-- <h4>Creating Modules</h4>
+  <p></p><br>
+
+  <h4>Publishing Modules</h4>
+  <p></p><br> -->
+</div>

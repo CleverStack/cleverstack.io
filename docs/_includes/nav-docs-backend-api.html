@@ -1,0 +1,164 @@
+<li><a href="#backend-introduction">Introduction</a></li>
+<li><a href="#backend-introduction">Core Concepts</a></li>
+<li><a href="#backend-structure">File/Folder Structure</a></li>
+<li><a href="#backend-configuration">Configuration</a></li>
+<li><a href="#backend-di">Dependency Injection</a></li>
+<li><a href="#backend-classes">Classes</a>
+  <ul class="nav nav-nest">
+    <li><a href="#backend-classes-introduction">Introduction</a></li>
+    <li><a href="#backend-classes-definition">Definition</a></li>
+    <li><a href="#backend-classes-extending">Extending</a></li>
+    <li><a href="#backend-classes-events">Events</a></li>
+    <li><a href="#backend-classes-examples">Examples</a></li>
+    <li><a href="#backend-classes-proxy">Proxy</a></li>
+  </ul>
+</li>
+<li><a href="#backend-controllers">Controllers</a>
+  <ul class="nav nav-nest">
+    <li><a href="#backend-controllers-introduction">Introduction</a></li>
+    <li><a href="#backend-controllers-options">Options</a></li>
+    <li><a href="#backend-controllers-definition">Definition</a></li>
+    <li><a href="#backend-controllers-actions">Actions</a></li>
+    <li><a href="#backend-controllers-middleware">Middleware</a></li>
+    <li><a href="#backend-controllers-routing">Routing</a></li>
+    <li><a href="#backend-controllers-examples">Examples</a></li>
+    <li><a href="#backend-controllers-testing">Testing</a></li>
+  </ul>
+</li>
+<li><a href="#backend-services">Services</a>
+  <ul class="nav nav-nest">
+    <li><a href="#backend-services-introduction">Introduction</a></li>
+    <li><a href="#backend-services-options">Options</a></li>
+    <li><a href="#backend-services-definition">Definition</a></li>
+    <li><a href="#backend-services-events">Events</a></li>
+    <li><a href="#backend-services-class-methods">Class Methods</a></li>
+    <li><a href="#backend-services-testing">Testing</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#backend-models">Models</a>
+  <ul class="nav nav-nest">
+    <li><a href="/backend/models#intro">Intro</a></li>
+    <li><a href="/backend/models#overview">Overview</a></li>
+    <li><a href="/backend/models#installation">Installation</a></li>
+    <li><a href="/backend/models#configuration">Configuration</a></li>
+    <li><a href="/backend/models#setup-and-tools">Setup &amp; Tools</a></li>
+    <li><a href="/backend/models#model-datatypes">Model DataTypes</a></li>
+    <li><a href="/backend/models#model-datatypes">Model DataTypes</a></li>
+    
+
+
+    <li><a href="#backend-models-options">Model Options</a></li>
+    <li><a href="#backend-models-types">Data Types</a>
+      <ul class="nav nav-nest">
+        <li><a href="#backend-models-types-string">String</a></li>
+        <li><a href="#backend-models-types-number">Number</a></li>
+        <li><a href="#backend-models-types-boolean">Boolean</a></li>
+        <li><a href="#backend-models-types-buffer">Buffer</a></li>
+        <li><a href="#backend-models-types-date">Date</a></li>
+        <li><a href="#backend-models-types-array">Array</a></li>
+        <li><a href="#backend-models-types-enum">Model.Types.ENUM</a></li>
+        <li><a href="#backend-models-types-bigint">Model.Types.BIGINT</a></li>
+        <li><a href="#backend-models-types-float">Model.Types.FLOAT</a></li>
+        <li><a href="#backend-models-types-decimal">Model.Types.DECIMAL</a></li>
+        <li><a href="#backend-models-types-text">Model.Types.TEXT</a></li>
+        <li><a href="#backend-models-types-text">Model.Types.TINYINT</a></li>
+      </ul>
+    </li>
+
+    
+    <li><a href="#backend-models-methods">Model Methods</a>
+      <ul class="nav nav-nest">
+        <li><a href="#backend-models-class-methods-common-arguments">Common Arguments</a></li>
+        <li><a href="#backend-models-class-methods-find">find</a></li>
+        <li><a href="#backend-models-class-methods-findAll">findAll</a></li>
+        <li><a href="#backend-models-class-methods-create">create</a></li>
+        <li><a href="#backend-models-class-methods-findOrCreate">findOrCreate</a></li>
+        <li><a href="#backend-models-class-methods-findAndUpdate">findAndUpdate</a></li>
+        <li><a href="#backend-models-class-methods-findAndDestroy">findAndDestroy</a></li>
+      </ul>
+    <li><a href="#backend-models-instance-methods">Instance Methods</a>
+    </li>
+    <li><a href="#backend-models-class-hooks">Class Events (Hooks)</a>
+      <ul class="nav nav-nest">
+        <li><a href="#backend-models-class-hooks-beforeAllFindersOptions">beforeAllFindersOptions</a></li>
+        <li><a href="#backend-models-class-hooks-beforeFindOptions">beforeFindOptions</a></li>
+        <li><a href="#backend-models-class-hooks-beforeFindAllOptions">beforeFindAllOptions</a></li>
+        <li><a href="#backend-models-class-hooks-beforeFind">beforeFind</a></li>
+        <li><a href="#backend-models-class-hooks-afterFind">afterFind</a></li>
+        <li><a href="#backend-models-class-hooks-beforeFindAll">beforeFindAll</a></li>
+        <li><a href="#backend-models-class-hooks-afterFindAll">afterFindAll</a></li>
+        <li><a href="#backend-models-class-hooks-beforeCreate">beforeCreate</a></li>
+        <li><a href="#backend-models-class-hooks-afterCreate">afterCreate</a></li>
+        <li><a href="#backend-models-class-hooks-beforeDestroy">beforeDestroy</a></li>
+        <li><a href="#backend-models-class-hooks-afterDestroy">afterDestroy</a></li>
+      </ul>
+    <!-- <li><a href="#backend-models-instance-methods">Instance Methods</a> -->
+    </li>
+
+    <li><a href="#backend-models-schema-field-definition">Schema Field Definition</a></li>
+    <li><a href="#backend-models-definition-example">Definition Example</a></li>
+    <li><a href="#backend-models-supported-databases">Supported Databases</a></li>
+    <li><a href="#backend-models-validation">Validation</a></li>
+    <li><a href="#backend-models-associations">Relations/Associations</a>
+      <ul class="nav nav-nest">
+        <li><a href="#backend-models-associations-one-to-one">One to One</a></li>
+        <li><a href="#backend-models-associations-one-to-many">One to Many</a></li>
+        <li><a href="#backend-models-associations-many-to-many">Many to Many</a></li>
+        <li><a href="#backend-models-associations-bi-directional">Bi Directional</a></li>
+        <li><a href="#backend-models-associations-uni-directional">Uni Directional</a></li>
+      </ul>
+    </li>
+    <li><a href="#backend-models-eager-loading">Eager Loading</a></li>
+    <li><a href="#backend-models-eager-loading">Transactions</a></li>
+    <li><a href="#backend-models-eager-loading">Errors</a></li>
+    <li><a href="#backend-models-toolbelt">Toolbelt</a></li>
+  </ul>
+</li>
+<li><a href="#backend-modules">Modules</a>
+  <ul class="nav nav-nest">
+    <li><a href="#backend-modules-structure">Structure</a></li>
+    <li><a href="#backend-modules-configuration">Configuration</a></li>
+    <li><a href="#backend-modules-options">Options</a></li>
+    <li><a href="#backend-modules-definition">Definition</a></li>
+    <li><a href="#backend-modules-hooks">Hooks</a>
+      <ul class="nav nav-nest">
+        <li><a href="#backend-modules-hooks-presetup">preSetup</a></li>
+        <li><a href="#backend-modules-hooks-preinit">preInit</a></li>
+        <li><a href="#backend-modules-hooks-init">init</a></li>
+        <li><a href="#backend-modules-hooks-configure-app">configureApp</a></li>
+        <li><a href="#backend-modules-hooks-preresources">preResources</a></li>
+        <li><a href="#backend-modules-hooks-modulesloaded">modulesLoaded</a></li>
+        <li><a href="#backend-modules-hooks-preroute">preRoute</a></li>
+        <li><a href="#backend-modules-hooks-preshutdown">preShutdown</a></li>
+      </ul>
+    </li>
+    <li><a href="#backend-modules-usage">Usage</a></li>
+    <li><a href="#backend-modules-testing">Testing</a></li>
+  </ul>
+</li>
+<li><a href="#backend-magic-modules">Magic Modules</a></li>
+<li><a href="#backend-troubleshooting">Troubleshooting</a></li>
+<li><a href="#backend-contributing">Contributing</a></li>
+<li>
+  <a href="#testing">Running Tests</a>
+  <ul class="nav">
+    <li><a href="#testing-unit">Running Unit Tests</a></li>
+    <li><a href="#testing-e2e">Running E2E Tests</a></li>
+    <li><a href="#testing-coverage">Code Coverage Reports</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#deployment">Build &amp; Deployment</a>
+  <ul class="nav">
+    <li><a href="#deployment-build">Production Builds</a></li>
+    <li><a href="#deployment-strategies">Deployment Strategies</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#troubleshooting">Troubleshooting</a>
+</li>
+<!-- <li>
+  <a href="#faq">FAQ</a>
+</li>
+ -->

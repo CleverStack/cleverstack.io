@@ -1,0 +1,69 @@
+<h3 id="frontend-structure" class="page-header">
+  Structure <a class="permalink" href="#frontend-structure" title="Permalink"><small>¶</small></a><br/>
+  <small>Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.</small><br/>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="#overview">Documentation</a></li>
+  <li><a href="#frontend">Frontend</a></li>
+  <li class="active">Structure</li>
+</ol>
+<!-- <p class="lead sub">Cleverstack provides a clear and simple structure that will make writing even the most (seemingly) complex applications trivial.</p> -->
+
+<blockquote>
+  <h6>Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build and test, it introduces security challenges and it causes end-user and administrator frustration.</h6>
+  <footer style="font-size: 12px;">Ray Ozzie</footer>
+</blockquote>
+
+{% highlight bash %}
+front-end/
+├── app/              # angular app specific source files
+│   └── modules/      # cleverstack front-end modules
+├── scripts/          # app scripts and binaries
+├── tests/            # app tests, both unit &amp; integration
+├── Gruntfile.js      # app grunt file for modifying configuration and adding tasks
+├── bower.json        # app js dependencies
+└── package.json      # app npm dependencies
+{% endhighlight %}<br>
+
+<!-- Important files and folders
+================================================== -->
+<div style="padding-left: 20px;">
+  <h4>Important files and folders</h4>
+  <p>Here is a list of things you need to know about the structure of the CleverStack AngularJS Frontend</p><br>
+
+  <h5>app/</h5>
+  <ul>
+    <li>This folder contains the core of the Cleverstack Angular Seed.</li>
+  </ul>
+
+  <h5>app/modules/</h5>
+  <ul>
+    <li>This is where all of the Cleverstack modules will be installed into your application by our CLI.</li>
+    <li>NPM Modules that have been made to work with Cleverstack will also be placed here.</li>
+    <li>You also add custom modules inside this folder, either by creating it manually (See https://github.com/CleverStack/frontend-example-module for an example of how to create your own modules) or using the CleverStack CLI's install, generate or scaffold commands.</li>
+  </ul>
+
+  <h5>scripts/</h5>
+  <ul>
+    <li>This is where you can store your front-end scripts and binaries such as executables, JAR files or such. Examples of these might be browserstack-tunnel.sh, selenum-server.jar, chromedriver.exe, phantomjs.exe etc...</li>
+    <li>Scripts can be defined in package.json and then run with `npm run-script [name]`.</li>
+  </ul>
+
+  <h5>Gruntfile.js</h5>
+  <ul>
+    <li>Defines the Applications global (main) gruntConfig.</li>
+    <li>Registers the Applications included Grunt tasks.</li>
+    <li><span class="label label-info">Note</span> Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt.</li>
+  </ul>
+
+  <h5>bower.json</h5>
+  <ul>
+    <li>Stores the apps main bower dependencies install during setup with the CLI.</li>
+  </ul>
+
+  <h5>package.json</h5>
+  <ul>
+    <li>Defines the Application information, scripts and it's NPM dependencies like any normal NPM Module.</li>
+    <li>Defines the modules that are enabled, using the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array. (This also let's NPM know that these dependencies are local and not on the NPM Registry)</li>
+  </ul>
+</div>

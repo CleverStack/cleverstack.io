@@ -1,0 +1,229 @@
+<h3 class="page-header" id="finders">Finders</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/models">Models</a></li>
+  <li class="active">Finders</li>
+</ol>
+<p class="lead sub">Models in CleverStack provide easy to use finders as well as methods to find, create, update and delete model instances.</p>
+<br/>
+
+<!-- find
+================================================== -->
+<h3 class="page-header" id="finders-find" style="color: #2980b9; font-size: 125%; font-weight: 500;">find - Search for one specific element in the database<br/></h3>
+<h5>Basic example with AND</h5>
+{% highlight javascript %}
+Model.find({
+  where: {
+    attr1: 'Richard',
+    attr2: 28
+  }
+});
+{% endhighlight %}
+<h6>SQL Generated</h6>
+{% highlight sql %}
+WHERE attr1 = 'Richard' AND attr2 = 28
+{% endhighlight %}
+
+
+{% highlight javascript %}
+Model.find({
+  where: {
+    attr1: {
+      gt: 50
+    },
+    attr2: {
+      lte: 45
+    },
+    attr3: {
+      in: [1,2,3]
+    },
+    attr4: {
+      ne: 5
+    }
+  }
+})
+{% endhighlight %}
+
+
+<!-- findAll
+================================================== -->
+<h4 class="page-header" id="finders-findAll" style="color: #2980b9; font-size: 125%; font-weight: 500;">findAll - Search for multiple elements in the database<br/></h4>
+
+
+<!-- create
+================================================== -->
+<h4 class="page-header" id="methods-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">create( modelData, queryOptions )<br/>
+<small>Create a new Model Instance using the provided <code>modelData</code></small></h4>
+
+
+<!-- findOrCreate
+================================================== -->
+<h4 class="page-header" id="methods-find-or-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">findOrCreate - Search for a specific element or create it if not available<br/></h4>
+
+<!-- rawQuery
+================================================== -->
+<h4 class="page-header" id="methods-raw-query" style="color: #2980b9; font-size: 125%; font-weight: 500;">rawQuery( sql, queryOptions )<br/>
+<small>Run a RAW Query using native methods for the database of the model</small></h4>
+
+
+<!-- Dynamic Finders
+================================================== -->
+<div class="section-page">
+  <h4 id="dynamic-finders">Dynamic Finders</h4>
+  <p class="sub">To make finding model instances as simple as possible, every Field will have two Dynamic Finders automatically generated, <code>Model.findByFieldName()</code> which can be used to find multiple Model Instances, and <code>Model.findAllByFieldName()</code> to find a single Model Instance. Behind the scenes Dynamic Finders simply create the <code>where</code> object to find by any fields name, and calls the find() and findAll() methods.</p>
+
+  <p>For a Field called Username, these will be the default Dynamic Finders Generated for <strong><i>findBy, findAllBy</i></strong> and <strong><i>countBy</i></strong></p>
+{% highlight javascript %}
+findByName
+findByNameIn
+findByNameLike
+findByNameNotLike
+findByNameILike
+findByNameNotILike
+findByNameStartsWith
+findByNameEndsWith
+findByNameNot
+findByNameNotEqual
+findByNameBetween
+findByNameNotBetween
+findByNameGreaterThan
+findByNameLessThan
+findByNameGreaterThanOrEqualTo
+findByNameLessThanOrEqualTo
+findByNameContains
+findByNameDoesNotContain
+findByNameContained
+findByNameOverlap
+
+// You will also have the same style of finders for, findAllBy* and countAllBy*.
+findAllByUsername('richard')
+countAllByUsername('richard')
+{% endhighlight %}
+</div>
+
+<!-- FindOptions
+================================================== -->
+<h4 id="finders-find-options">findOptions Definition and usage</h4>
+<p class="sub">Used in finders or methods that retrieve/select data.</p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Property</th>
+      <th style="width: 95px;">Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td id="finders-find-options-where">where<br>
+        <span class="label label-danger">Required</span>
+      </td>
+      <td>{% highlight javascript %}Object{% endhighlight %}</td>
+      <td>Define the <i>Field</i>'s and their values that you want to filter results by. For a detail look at using the <code>where</code> criteria
+      </td>
+  </tr>
+  <tr>
+      <td id="finders-find-options-limit">limit<br/><span class="label label-warning">Optional</span></td>
+      <td>{% highlight javascript %}Number{% endhighlight %}</td>
+      <td>Specify the <i>Maximum</i> number of records you want to retrieve from the database.<br>
+{% highlight javascript %}
+{ limit: 10 }
+{% endhighlight %}
+      </td>
+  </tr>
+  <tr>
+      <td id="finders-find-options-offset">offset<br/><span class="label label-warning">Optional</span></td>
+      <td>{% highlight javascript %}Number{% endhighlight %}</td>
+      <td>Specify the <i>Page Number</i> (offset) that you want to retrieve from the database, this is used with the <code>limit</code> findOption to provide Pagination for your Query Results.<br>
+{% highlight javascript %}
+{ offset: 10 }
+{% endhighlight %}
+      </td>
+  </tr>
+  <tr>
+      <td id="finders-find-options-order">order<br/><span class="label label-warning">Optional</span></td>
+      <td>{% highlight javascript %}Array{% endhighlight %}</td>
+      <td></h4>
+{% highlight javascript %}
+order: [
+  'name',
+  // will return `name`
+  'username DESC',
+  // will return `username DESC` -- i.e. don't do it!
+  ['username', 'DESC'],
+  // will return `username` DESC
+  Model.fn('max', Model.col('age')),
+  // will return max(`age`)
+  [Model.fn('max', Model.col('age')), 'DESC'],
+  // will return max(`age`) DESC
+  [Model.fn('otherfunction', Model.col('col1'), 12, 'lalala'), 'DESC'],
+  // will return otherfunction(`col1`, 12, 'lalala') DESC
+  [Model.fn('otherfunction', Model.fn('awesomefunction', Model.col('col'))), 'DESC']
+  // will return otherfunction(awesomefunction(`col`)) DESC, This nesting is potentially infinite!
+  [{ raw: 'otherfunction(awesomefunction(`col`))' }, 'DESC']
+  // This won't be quoted, but direction will be added
+]
+{% endhighlight %}
+      </td>
+  </tr>
+  <tr>
+      <td id="finders-find-options-include">include<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>{% highlight javascript %}Array{% endhighlight %}</td>
+      <td>Eager Load (nested infinitely) Assocations/Relations.<br>
+{% highlight javascript %}
+include: [
+  {
+    // Required, the model you want to eager load
+    model: UserModel, 
+
+    // Required if the assocation is aliased 'as'
+    as: 'users', 
+
+    // Optional, smart where for the query
+    where: {},
+
+    // Optional, require assocation in results
+    required: true,
+
+    // Optional, set the foreignKey's name
+    foreignKey: 'UserId',
+
+    // Optional, eager load nested assocations
+    include: [ 
+    // Recursive structure for include[]
+    ]
+  }
+]
+{% endhighlight %}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- QueryOptions
+================================================== -->
+<h4 id="finders-query-options">queryOptions Definition and usage</h4>
+<p class="sub">Used for every query that is executed on the database, this is where transaction information is held.</p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 70px;">Type/s</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>transaction<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>Object</td>
+      <td>Any current transaction to be used with the database query</td>
+  </tr>
+  </tbody>
+</table>

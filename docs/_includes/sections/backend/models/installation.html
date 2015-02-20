@@ -1,0 +1,43 @@
+<h3 id="installation" class="page-header">
+  Installation <a class="permalink" href="#installation" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/models">Models</a></li>
+  <li class="active">Installation</li>
+</ol>
+
+<p class="lead sub">Installation is made simple by using the CleverStack CLI's install command with the name of the module you want to install, clever-orm for the Object Relational Mapper, or clever-odm for the Object Document Mapper.</p>
+
+<h5>Object Relational Mapper (ORM)</h5>
+{% highlight bash %}clever install clever-orm{% endhighlight %}
+
+<h5>Object Document Mapper (ODM)</h5>
+{% highlight bash %}clever install clever-odm{% endhighlight %}
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Before installing the ORM or ODM</h4>
+  <p>
+    <ol>
+        <li>
+            You must have a <i>valid backend</i> project and <i>change directory</i> to inside the <i>backend folder</i>, assuming that your project is called <b><i>my-project</i></b>, the command you need to run should look something like this
+            {% highlight bash %}cd my-project/backend/{% endhighlight %}
+        </li>
+        <li>
+            You also need to <b><i>Create the database</i></b> you want to use before installing clever-orm, clever-odm, assuming that you want to name your database <b><i>nodeseed</i></b>, then the command you need to run should look something like this
+            {% highlight sql %}CREATE DATABASE `nodeseed`{% endhighlight %}
+        </li>
+</p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Command Failed Errors</h4>
+  <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
+  See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
+</div>
+<br/>
+
+<p class="sub">After running this command you may be prompted to configure the module/s your installing, see <a href="#configuration">Configuration</a> for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see <a href="#seed-data">Seed Data</a> for more information.</p>
+
+<img src="/assets/img/screenshots/clever-orm-installation.png" width="100%">

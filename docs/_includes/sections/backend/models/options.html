@@ -1,0 +1,140 @@
+<h3 id="options" class="page-header">
+  Options <a class="permalink" href="#options" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/models">Models</a></li>
+  <li class="active">Options</li>
+</ol>
+<p>Model options can be defined inside the Models Static object when using Model.extend( StaticObject, PrototypeObject ) to create a model.</p>
+<br/>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Property</th>
+      <th style="width: 115px;">Type/s</th>
+      <th style="width: 135px;">Default</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr id="options-type">
+      <td>type</td>
+      <td>{%highlight javascript%}String{%endhighlight%}</td>
+      <td>{%highlight javascript%}'ORM'{%endhighlight%}</td>
+      <td><code>'ORM'</code> or <code>'ODM'</code>, for data persistence with clever-orm and clever-odm modules respectively.</td>
+  </tr>
+  <tr id="options-dbName">
+      <td>dbName</td>
+      <td>
+{%highlight javascript%}
+Boolean
+String
+{%endhighlight%}
+      </td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Optionally define the database table name for a model.</td>
+  </tr>
+  <tr id="options-freezeDbName">
+      <td>freezeDbName</td>
+      <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>By default table (ORM) and collection (ODM) names are pluralized, if you don't want this behaviour set freezeDbName to <code>true</code></td>
+  </tr>
+  <tr id="options-underscored">
+      <td>underscored</td>
+      <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>By default column names are camelCasedLikeThis, if you prefer underscores set this to <code>true</code></td>
+  </tr>
+  <tr id="options-engine">
+      <td>engine</td>
+      <td>
+{%highlight javascript%}
+Boolean
+String
+{%endhighlight%}
+      </td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Allows you to specifically override the database storage engine for a model. <br>
+        <span class="label label-danger">ORM ONLY</span>
+      </td>
+  </tr>
+  <tr id="options-charset">
+      <td>charset</td>
+      <td>
+{%highlight javascript%}
+Boolean
+String
+{%endhighlight%}
+      </td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Allows you to specifically override the database storage charset for a model. <br>
+        <span class="label label-danger">ORM ONLY</span>
+      </td>
+  </tr>
+  <tr id="options-comment">
+      <td>comment</td>
+      <td>
+{%highlight javascript%}
+Boolean
+String
+{%endhighlight%}
+      </td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Allows you to specifically override the database table comment for a model. <br>
+        <span class="label label-danger">ORM ONLY</span>
+      </td>
+  </tr>
+  <tr id="options-collate">
+      <td>collate</td>
+      <td>
+{%highlight javascript%}
+Boolean
+String
+{%endhighlight%}
+      </td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Allows you to specifically set the database table collation for a model. <br>
+        <span class="label label-danger">ORM ONLY</span>
+      </td>
+  </tr>
+  <tr id="options-softDeleteable">
+      <td>softDeleteable</td>
+      <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Allows you to specifically set the database table collation for a model. <br>
+        <span class="label label-info">Behaviour</span>
+      </td>
+  </tr>
+  <tr id="options-deletedAt">
+      <td>deletedAt</td>
+      <td>{%highlight javascript%}String{%endhighlight%}</td>
+      <td>{%highlight javascript%}'createdAt'{%endhighlight%}</td>
+      <td>Allows you to set the column name to be used with the softDeleteable behaviour and deletion of models.</td>
+  </tr>
+  <tr id="options-timeStampable">
+      <td>timeStampable</td>
+      <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
+      <td>{%highlight javascript%}true{%endhighlight%}</td>
+      <td>Enables timestamping of models on persistence (creating, updating) <br>
+        <span class="label label-info">Behaviour</span>
+      </td>
+  </tr>
+  <tr id="options-createdAt">
+      <td>createdAt</td>
+      <td>{%highlight javascript%}String{%endhighlight%}</td>
+      <td>{%highlight javascript%}'createdAt'{%endhighlight%}</td>
+      <td>Allows you to set the column name to be used with the timeStampable behaviour and creation of models.</td>
+  </tr>
+  <tr id="options-updatedAt">
+      <td>updatedAt</td>
+      <td>{%highlight javascript%}String{%endhighlight%}</td>
+      <td>{%highlight javascript%}'updatedAt'{%endhighlight%}</td>
+      <td>Allows you to set the column name to be used with the timeStampable behaviour and updating models.</td>
+  </tr>
+  </tbody>
+</table>
+<br/>

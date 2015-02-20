@@ -8,12 +8,19 @@
   $(function () {
 
     var offset = 80;
-    $('.bs-sidenav li a').click(function(event) {
-        event.preventDefault();
-        $($(this).attr('href'))[0].scrollIntoView();
-        scrollBy(0, -offset);
-    });
+    $('.bs-sidenav li a, .permalink').click(function(event) {
+      var hash    = $(this).attr('href')
+        , isLocal = /^[^\/]/.test(hash);
 
+      if (isLocal && (sidenav = $(hash)) && sidenav.length) {
+        // event.preventDefault();
+        setTimeout(function() {
+          $('html body').animate({
+            scrollTop: $(sidenav[0]).position().top + 245
+          });
+        }, 10);
+      }
+    });
   });
 
   // Code snippet for showing technologies for seeds
@@ -95,7 +102,8 @@
     })
 
     $window.on('load', function () {
-      $body.scrollspy('refresh')
+      $body.scrollspy('refresh');
+      // $('body').append('<style> .section-page { min-height: ' + ($(window).height() - 180 )+ 'px !important} </style>');
     })
 
     $('.bs-docs-container [href=#]').click(function (e) {
