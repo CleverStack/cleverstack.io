@@ -37,6 +37,14 @@
                 {% include nav-why-cleverstack.html %}
               {% elsif page.slug == "documentation-backend" %}
                 {% include nav-docs-backend-guide.html %}
+              {% elsif page.slug == "documentation-backend-services" %}
+                {% include sections/backend/services/_nav.html %}
+              {% elsif page.slug == "documentation-backend-controllers" %}
+                {% include sections/backend/controllers/_nav.html %}
+              {% elsif page.slug == "documentation-backend-classes" %}
+                {% include sections/backend/classes/_nav.html %}
+              {% elsif page.slug == "documentation-backend-modules" %}
+                {% include sections/backend/modules/_nav.html %}
               {% elsif page.slug == "documentation-backend-models" %}
                 {% include sections/backend/models/_nav.html %}
               {% elsif page.slug == "documentation" %}

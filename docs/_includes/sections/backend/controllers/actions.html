@@ -1,0 +1,24 @@
+<h3 id="actions" class="page-header">
+  Actions <a class="permalink" href="#actions" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/controllers">Controllers</a></li>
+  <li class="active">Actions</li>
+</ol>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+
+<p>
+  When doing a GET /example it will route to either listAction first OR getAction if listAction is not defined.<br>
+  If neither are defined, express's .next() function will be called allowing it to fall through the controller and move onto any other middleware you may have configured.<br>
+  If you want /example/hello as a route, you can simply implement helloAction in your controller and it will be automatically routed to it.
+</p>
+<div class="bs-callout bs-callout-info">
+  <h4>Standard for defining actions</h4>
+  <p>This is the default way to setup a controller to use actions. By default you can also visit /example/12 and it will route to the getAction function in your controller (if it's defined) with this.req.params.id set for you to use (the same applies for all HTTP methods, eg PUT/DELETE/POST/et cetera)</p>
+</div>

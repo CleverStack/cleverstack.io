@@ -1,0 +1,29 @@
+<h1 id="overview" class="page-header">
+  Services<br/>
+  <small>Robust service layer for ultimate flexibility.</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li class="active">Services</li>
+</ol>
+
+<p class="lead sub">CleverStack's Service Layer makes a clear distiction between web (controller) activity that is best handled in the controller and general business related logic that is not web related - this separation also gives us the ability to do testing on the business logic of the Service either on it's own (unit test) or with the web related logic from the Controller/s (e2e test)</p>
+
+<blockquote>
+  <h6>Good code is short, simple, and symmetrical – the challenge is figuring out how to get there.</h6>
+  <footer>Sean Parent</footer>
+</blockquote>
+<br/>
+
+<p>A Service should take advantage of our Dependency Injection and load whatever Model is used to actually store the data, by defining the Model in the Class of the Service you are able to enable the Controller to automatically give you CRUD routing and actions.</p>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Service nesting</h4>
+  <p>When defining methods in services that require other models the correct way of working with those other models is to use their Service, this mean's that services business logic can still be run (transactions, their own transactions, etc)</p>
+</div>
+
+<div class="bs-callout bs-callout-info">
+  <h4>Flexible persistence</h4>
+  <p>Using a Service Layer also mean's that you can store data in whatever you want not just the ORM or ODM models that CleverStack provides, and you can even easily change the underlying storage of an existing Service because of this Pattern.</p>
+</div>

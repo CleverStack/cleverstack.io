@@ -1,0 +1,28 @@
+<h3 id="definition" class="page-header">
+  Definition <a class="permalink" href="#definition" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/controllers">Controllers</a></li>
+  <li class="active">Definition</li>
+</ol>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+
+{% highlight javascript %}
+module.exports = ExampleController = function() {
+    return Controller.extend(
+    {
+        // example that returns JSON, available from route '/example/hello'
+        helloAction: function() {
+            this.send({
+                message: 'Hi there'
+            })
+        }
+    });
+};
+{% endhighlight %}
