@@ -1,14 +1,293 @@
-<h3 id="events" class="page-header">
-  Events <a class="permalink" href="#events" title="Permalink"><small>¶</small></a>
+<h3 id="lifecycle-events" class="page-header">
+  Lifecycle Events <a class="permalink" href="#lifecycle-events" title="Permalink"><small>¶</small></a>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
   <li><a href="/documentation/backend">Backend</a></li>
   <li><a href="/documentation/backend/models">Models</a></li>
-  <li class="active">Events</li>
+  <li class="active">Lifecycle Events</li>
 </ol>
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Needs more information</h4>
-  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
-</div>
+<p class="lead">To allow you to easily extend functionality without modifying the core you are able to subscribe to Events that are emitted throughout the lifecycle of a Model.</p>
+
+
+<!-- Example Usage
+================================================== -->
+<h5 id="lifecycle-events-usage" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Example Usage<br/>
+  <small>How to "hook" into Events</small>
+</h5>
+
+<p>Hook into event via <strong>EventEmitter.on()</strong></p>
+{% highlight javascript %}
+UserModel.on('beforeCreate', function(values, queryOptions, callback) {
+  // fire callback(err) when your done
+});
+{% endhighlight %}
+
+<p>Hook into an event on an individual model by putting a named function in the <strong>Class/Static</strong> section of its definition.</p>
+{% highlight javascript %}
+Model.extend('User',
+{
+  beforeCreate: function(values, queryOptions, callback) {
+    // fire callback(err) when your done
+  }
+},
+{
+  // ...
+})
+{% endhighlight %}
+
+<!-- Templated Event Handlers
+================================================== -->
+<h5 id="lifecycle-events-templated" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Templated Event Handlers<br/>
+  <small>Easy to use events for Controllers, Services or Models.</small>
+</h5>
+{% highlight javascript %}
+// You can also do the same thing for Controllers and Services (in the Class/Static section)
+Model.extend('Location',
+/* @Class */
+{
+  'UserModel beforeCreate': function(modelData, queryOptions, callback) {
+    // Templated Event Handler for the UserModel "beforeCreate", this will be set to UserModel
+  }
+},
+/* @Prototype */
+{
+  // ...
+})
+{% endhighlight %}
+
+
+<!-- Order of Operations
+================================================== -->
+<h5 id="lifecycle-events-order" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Order of Operations<br/>
+  <small>The order that lifecycle events are emitted in.</small>
+</h5>
+
+<p><strong>Finding instances</strong></p>
+<ol>
+  <li>beforeAllFindersOptions</li>
+  <li>beforeAllFindOptions</li>
+  <li>beforeFindOptions</li>
+  <li>beforeFindAll</li>
+  <li>beforeFind</li>
+  <li><i><strong>find</strong></i> or <i><strong>findAll</strong></i></li>
+  <li>afterFind</li>
+  <li>afterFindAll</li>
+</ol>
+
+<p><strong>Creating/updating instances</strong></p>
+<ol>
+  <li>beforeValidate</li>
+  <li>afterValidate</li>
+  <li>beforeCreate</li>
+  <li>beforeUpdate</li>
+  <li><i><strong>create</strong></i> or <i><strong>update</strong></i></li>
+  <li>afterUpdate</li>
+  <li>afterCreate</li>
+</ol>
+
+<p><strong>Destroying instances</strong></p>
+<ol>
+  <li>beforeDestroy</li>
+  <li><i><strong>destroy</strong></i></li>
+  <li>afterDestroy</li>
+</ol>
+
+
+<!-- beforeAllFindersOptions
+================================================== -->
+<h5 id="lifecycle-events-beforeAllFindersOptions" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeAllFindersOptions<br/>
+  <small>Emitted before building findOptions for both <code>find()</code> and <code>findAll()</code>.</small>
+</h5>
+{% highlight javascript %}
+Model.extend('User',
+/* @Class */
+{
+  type: 'ORM',
+
+  // Or as a templated event handler in any Controller, Service or Model.
+  // 'UserModel beforeCreate':
+  beforeCreate: function(values, queryOptions, callback) {
+    // fire callback(err) when your done
+  }
+},
+/* @Instance */
+{
+  id        : Number,
+  firstName : String,
+  lastName  : String
+});
+{% endhighlight %}
+
+<!-- beforeFindAllOptions
+================================================== -->
+<h5 id="lifecycle-events-beforeFindAllOptions" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeFindAllOptions<br/>
+  <small>Emitted before building findOptions for <code>findAll()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeFindAllOptions: function(findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeFindAll
+================================================== -->
+<h5 id="lifecycle-events-beforeFindAll" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeFindAll<br/>
+  <small>Emitted after building findOptions but before <code>findAll()</code> is called.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeFindAll: function(findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeFindOptions
+================================================== -->
+<h5 id="lifecycle-events-beforeFindOptions" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeFindOptions<br/>
+  <small>Emitted before building findOptions for <code>find()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeFindOptions: function(findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeFind
+================================================== -->
+<h5 id="lifecycle-events-beforeFind" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeFind<br/>
+  <small>Emitted after building findOptions but before <code>find()</code> is called.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeFind: function(findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- afterFindAll
+================================================== -->
+<h5 id="lifecycle-events-afterFindAll" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  afterFindAll<br/>
+  <small>Emitted after <code>findAll()</code> is called, with the result from the database.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  afterFindAll: function(instances, findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- afterFind
+================================================== -->
+<h5 id="lifecycle-events-afterFind" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  afterFind<br/>
+  <small>Emitted after <code>find()</code> is called, with the result from the database.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  afterFind: function(instance, findOptions, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeValidate
+================================================== -->
+<h5 id="lifecycle-events-beforeValidate" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeValidate<br/>
+  <small>Emitted before validating instances for <code>create()</code> or <code>update()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeValidate: function(values, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- afterValidate
+================================================== -->
+<h5 id="lifecycle-events-afterValidate" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  afterValidate<br/>
+  <small>Emitted after validating instances for <code>create()</code> or <code>update()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  afterValidate: function(values, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeCreate
+================================================== -->
+<h5 id="lifecycle-events-beforeCreate" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeCreate<br/>
+  <small>Emitted after validation but before calling <code>create()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeCreate: function(values, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- afterCreate
+================================================== -->
+<h5 id="lifecycle-events-afterCreate" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  afterCreate<br/>
+  <small>Emitted after calling <code>create()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeValidate: function(instance, values, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- beforeDestroy
+================================================== -->
+<h5 id="lifecycle-events-beforeDestroy" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  beforeDestroy<br/>
+  <small>Emitted before calling <code>destroy()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  beforeDestroy: function(instance, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}
+
+<!-- afterDestroy
+================================================== -->
+<h5 id="lifecycle-events-afterDestroy" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  afterDestroy<br/>
+  <small>Emitted after calling <code>destroy()</code>.</small>
+</h5>
+{% highlight javascript %}
+// ...
+  afterDestroy: function(instance, queryOptions, callback) {
+    callback(null);
+  }
+// ...
+{% endhighlight %}

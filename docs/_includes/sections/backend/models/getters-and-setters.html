@@ -8,7 +8,24 @@
   <li class="active">Getters &amp; Setters</li>
 </ol>
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Needs more information</h4>
-  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
-</div>
+<p class="lead">Defining Getters and/or Setters for Models in CleverStack is easy, simply create a function prefixed with either <code>get</code> or <code>set</code>, for Example <code>getFirstName</code> will be used as the getter for any field named <code>firstName</code>.</p>
+
+<p>Example:</p>
+
+{% highlight javascript %}
+Model.extend('User',
+{
+  type      : 'ORM'
+},
+{
+  firstName : String,
+
+  setFirstName : function(firstName) {
+    this.entity.dataValues.firstName = 'foo' + firstName;
+  },
+
+  getFirstName : function() {
+    return this.firstName.replace('foo', '');
+  }
+}
+{% endhighlight %}
