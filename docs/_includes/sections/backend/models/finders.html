@@ -5,66 +5,207 @@
   <li><a href="/documentation/backend/models">Models</a></li>
   <li class="active">Finders</li>
 </ol>
-<p class="lead sub">Models in CleverStack provide easy to use finders as well as methods to find, create, update and delete model instances.</p>
+<p class="lead sub">Models in Finder/Methods are designed to get data from the database. The returned data isn't just a plain object, but instances of one of the defined classes, CleverStack provides easy to use finders as well as methods to find, create, update and delete model instances. 
+</p>
 <br/>
 
-<!-- find
+<!-- Where Criteria
 ================================================== -->
-<h3 class="page-header" id="finders-find" style="color: #2980b9; font-size: 125%; font-weight: 500;">find - Search for one specific element in the database<br/></h3>
-<h5>Basic example with AND</h5>
+<div class="section-page">
+  <h4 id="finders-where-criteria" class="page-header">
+    Where Criteria (DQL)<a class="permalink" href="#finders-where-criteria" title="Permalink"><small>¶</small></a>
+  </h4>
+  <ol class="breadcrumb">
+    <li><a href="/documentation">Documentation</a></li>
+    <li><a href="/documentation/backend">Backend</a></li>
+    <li><a href="/documentation/backend/models">Models</a></li>
+    <li class="active">Where Criteria</li>
+  </ol>
+
+  <p class="lead sub">CleverStack provides a powerful query interface for finding your model instances quick and painfree, from simple queries to complex queries with multiple nested AND and OR conditions CleverStack is here to do the heavy lifting.</p>
+
+
+
+ <h5 class="page-header" id="finders-where-criteria-complex" style="color: #2980b9; font-size: 125%; font-weight: 500;">Simple filtering of fields<br/>
+  <small>The most basic usage of finding instances by the models fields</small></h5>
 {% highlight javascript %}
-Model.find({
+UserModel.findAll({
   where: {
-    attr1: 'Richard',
-    attr2: 28
+    status: 'Active'
   }
 });
 {% endhighlight %}
-<h6>SQL Generated</h6>
-{% highlight sql %}
-WHERE attr1 = 'Richard' AND attr2 = 28
-{% endhighlight %}
 
-
+  <h5 class="page-header" id="finders-where-criteria-complex" style="color: #2980b9; font-size: 125%; font-weight: 500;">Complex filtering of fields<br/>
+  <small>It's possible to write complex where queries very simply, with helpers like $in, $like, $iLike and many more!</small></h5>
 {% highlight javascript %}
-Model.find({
+UserModel.findAll({
   where: {
-    attr1: {
-      gt: 50
-    },
-    attr2: {
-      lte: 45
-    },
-    attr3: {
-      in: [1,2,3]
-    },
-    attr4: {
-      ne: 5
+    id: {
+      $gt: 6,                // id > 6
+      $gte: 6,               // id >= 6
+      $lt: 10,               // id < 10
+      $lte: 10,              // id
+      $ne: 20,               // id != 20
+      $not: 3,               // id NOT 3
+      $between: [6, 10],     // BETWEEN 6 AND 10
+      $notBetween: [11, 15], // NOT BETWEEN 11 AND 15
+      $in: [1, 2],           // IN [1, 2]
+      $like: '%hat',         // LIKE '%hat'
+      $notLike: '%hat'       // NOT LIKE '%hat'
+      $iLike: '%hat'         // ILIKE '%hat' (case insensitive)
+      $notILike: '%hat'      // NOT ILIKE '%hat'
+      $overlap: [1, 2]       // && [1, 2] (PG array overlap operator)
+      $contains: [1, 2]      // @> [1, 2] (PG array contains operator)
+      $contained: [1, 2]     // <@ [1, 2] (PG array contained by operator)
     }
   }
-})
+});
 {% endhighlight %}
 
+
+  <h5 class="page-header" id="finders-where-criteria-complex-or-and" style="color: #2980b9; font-size: 125%; font-weight: 500;">Complex filtering / OR queries<br/>
+  <small>It's possible to do complex where queries with multiple levels of nested AND and OR conditions. In order to do that you can use $or and $and</small></h5>
+
+{% highlight javascript %}
+Project.find({
+  where: {
+    name: 'a project',
+    $or: [
+      { id: [1,2,3] },
+      { id: { $gt: 10 } }
+    ]
+  }
+});
+{% endhighlight %}
+</div>
+
+
+<!-- find
+================================================== -->
+<div class="section-page">
+<h3 class="page-header" id="finders-find" style="color: #2980b9; font-size: 125%; font-weight: 500;">find - Search for one specific element in the database<br/></h3>
+{% highlight javascript %}
+// search for known ids
+UserModel.find(123).then(function(user) {
+  // user will be an instance of UserModel and stores the content of the table entry
+  // with id 123. if such an entry is not defined you will get null
+})
+
+// search for attributes
+UserModel.find({ where: {title: 'aUserModel'} }).then(function(user) {
+  // user will be the first entry of the UserModels table with the title 'aUserModel' || null
+})
+
+UserModel.find({
+  where: {title: 'aUserModel'},
+  attributes: ['id', ['name', 'title']]
+}).then(function(user) {
+  // user will be the first entry of the UserModels table with the title 'aUserModel' || null
+  // user.title will contain the name of the user
+})
+{% endhighlight %}
+</div>
 
 <!-- findAll
 ================================================== -->
+<div class="section-page">
 <h4 class="page-header" id="finders-findAll" style="color: #2980b9; font-size: 125%; font-weight: 500;">findAll - Search for multiple elements in the database<br/></h4>
+{% highlight javascript %}
+// find multiple entries
+Project.findAll().then(function(projects) {
+  // projects will be an array of all Project instances
+})
 
+// also possible:
+Project.all().then(function(projects) {
+  // projects will be an array of all Project instances
+})
+
+// search for specific attributes - hash usage
+Project.findAll({ where: { name: 'A Project' } }).then(function(projects) {
+  // projects will be an array of Project instances with the specified name
+})
+
+// Complex filtering of fields
+UserModel.findAll({
+  where: {
+    id: {
+      $gt: 6,                // id > 6
+      $gte: 6,               // id >= 6
+      $lt: 10,               // id < 10
+      $lte: 10,              // id
+      $ne: 20,               // id != 20
+      $not: 3,               // id NOT 3
+      $between: [6, 10],     // BETWEEN 6 AND 10
+      $notBetween: [11, 15], // NOT BETWEEN 11 AND 15
+      $in: [1, 2],           // IN [1, 2]
+      $like: '%hat',         // LIKE '%hat'
+      $notLike: '%hat'       // NOT LIKE '%hat'
+      $iLike: '%hat'         // ILIKE '%hat' (case insensitive)
+      $notILike: '%hat'      // NOT ILIKE '%hat'
+      $overlap: [1, 2]       // && [1, 2] (PG array overlap operator)
+      $contains: [1, 2]      // @> [1, 2] (PG array contains operator)
+      $contained: [1, 2]     // <@ [1, 2] (PG array contained by operator)
+    }
+  }
+});
+{% endhighlight %}
+</div>
+
+<!-- findOrCreate
+================================================== -->
+<div class="section-page">
+<h4 class="page-header" id="methods-find-or-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">findOrCreate - Search for a specific element or create it if not available<br/></h4>
+<p class="sub">The method findOrCreate can be used to check if a certain element already exists in the database before creating an instance, if the model already exists in the database the result will be that instance. If the instance does not yet exist, it will be created.</p>
+<p class="sub">Let's assume we have an empty database with a User model which has a username and a location.</p>
+{% highlight javascript %}
+UserModel
+  .findOrCreate({where: {username: 'pilsy'}, defaults: {location: 'Brisbane, Australia'}})
+  .spread(function(user, created) {
+    console.log(user.values)
+    console.log(created)
+
+    /*
+      {
+        username: 'pilsy',
+        location: 'Brisbane, Australia',
+        id: 1,
+        createdAt: Tue Feb 24 2013 01: 36: 21 GMT + 01000(AEST),
+        updatedAt: Tue Feb 24 2013 01: 36: 21 GMT + 01000(AEST)
+      }
+      created: true
+    */
+  });
+{% endhighlight %}
+
+<p class="sub">The code created a new instance. So when we already have an instance ...</p>
+
+{% highlight javascript %}
+UserModel
+  .findOrCreate({where: {username: 'pilsy'}, defaults: {location: 'Brisbane, Australia'}})
+  .spread(function(user, created) {
+    console.log(user.values)
+    console.log(created)
+
+    /*
+      {
+        username: 'pilsy',
+        location: 'Brisbane, Australia',
+        id: 1,
+        createdAt: Tue Feb 24 2013 01: 36: 21 GMT + 01000(AEST),
+        updatedAt: Tue Feb 24 2013 01: 36: 21 GMT + 01000(AEST)
+      }
+      created: false
+    */
+  })
+{% endhighlight %}
+</div>
 
 <!-- create
 ================================================== -->
 <h4 class="page-header" id="methods-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">create( modelData, queryOptions )<br/>
 <small>Create a new Model Instance using the provided <code>modelData</code></small></h4>
-
-
-<!-- findOrCreate
-================================================== -->
-<h4 class="page-header" id="methods-find-or-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">findOrCreate - Search for a specific element or create it if not available<br/></h4>
-
-<!-- rawQuery
-================================================== -->
-<h4 class="page-header" id="methods-raw-query" style="color: #2980b9; font-size: 125%; font-weight: 500;">rawQuery( sql, queryOptions )<br/>
-<small>Run a RAW Query using native methods for the database of the model</small></h4>
 
 
 <!-- Dynamic Finders
@@ -101,6 +242,31 @@ findAllByUsername('richard')
 countAllByUsername('richard')
 {% endhighlight %}
 </div>
+
+
+<!-- QueryOptions
+================================================== -->
+<h4 id="finders-query-options">queryOptions Definition and usage</h4>
+<p class="sub">Used for every query that is executed on the database, this is where transaction information is held.</p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 70px;">Type/s</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td>transaction<br>
+        <span class="label label-warning">Optional</span>
+      </td>
+      <td>Object</td>
+      <td>Any current transaction to be used with the database query</td>
+  </tr>
+  </tbody>
+</table>
 
 <!-- FindOptions
 ================================================== -->
@@ -204,26 +370,8 @@ include: [
   </tbody>
 </table>
 
-<!-- QueryOptions
-================================================== -->
-<h4 id="finders-query-options">queryOptions Definition and usage</h4>
-<p class="sub">Used for every query that is executed on the database, this is where transaction information is held.</p>
 
-<table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 70px;">Type/s</th>
-      <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-      <td>transaction<br>
-        <span class="label label-warning">Optional</span>
-      </td>
-      <td>Object</td>
-      <td>Any current transaction to be used with the database query</td>
-  </tr>
-  </tbody>
-</table>
+<!-- rawQuery
+================================================== -->
+<h4 class="page-header" id="methods-raw-query" style="color: #2980b9; font-size: 125%; font-weight: 500;">rawQuery( sql, queryOptions )<br/>
+<small>Run a RAW Query using native methods for the database of the model</small></h4>
