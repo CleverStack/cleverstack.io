@@ -7,8 +7,18 @@
   <li><a href="/documentation/backend/models">Models</a></li>
   <li class="active">Instance Methods</li>
 </ol>
+<p class="lead">For when you need helper methods for an individual instance of a model, define instance methods easily in your Models Prototype/Instance section.</p>
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Needs more information</h4>
-  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
-</div>
+<p>In this example we provide an instance method <code>hashPassword</code> which we will use to hash a users password before setting it.</p>
+{% highlight javascript %}
+Model.extend('User',
+{
+  type: 'ORM'
+},
+{
+  hashPassword: function(password) {
+    this.debug('Hashing users password');
+    this.password = crypto.createHash('sha1').update(password).digest('hex');
+  }
+});
+{% endhighlight %}
