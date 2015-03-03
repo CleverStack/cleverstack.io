@@ -46,12 +46,12 @@
     }
 
     //on hover
-    $seedEls.on('click', function(e) {
-      // clearInterval(window.tsInv);
-      e.preventDefault();
-      var id = $(this).attr('id');
-      showSeedTechs(id.replace('seed',''));
-    });
+    // $seedEls.on('click', function(e) {
+    //   // clearInterval(window.tsInv);
+    //   e.preventDefault();
+    //   var id = $(this).attr('id');
+    //   showSeedTechs(id.replace('seed',''));
+    // });
 
   });
 
