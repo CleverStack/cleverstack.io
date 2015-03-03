@@ -1,5 +1,6 @@
 <h3 id="field-definition" class="page-header">
-  Field Definition <a class="permalink" href="#field-definition" title="Permalink"><small>¶</small></a>
+  Field Definition <a class="permalink" href="#field-definition" title="Permalink"><small>¶</small></a><br/>
+  <small>We believe that keeping things simple not only speeds up development time, but makes maintaining models much easier</small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
@@ -7,31 +8,34 @@
   <li><a href="/documentation/backend/models">Models</a></li>
   <li class="active">Field Definition</li>
 </ol>
+<p class="lead">There are two main ways you can define <i>fields</i> in your Application, let's take a look at those ways</p>
 
-<p class="sub">There are two different ways of defining a <i>Field</i> for a <i>Model</i>, firstly, to help make <i>field definition</i> quick and easy to define, or for when you only need to define the <code>type</code> of the <i>Field</i>, You can use the <strong><i>Field Type</i></strong>, for example <code>String</code>.</p>
-
+<h5>Field Type Definition Style,</h5>
 {% highlight javascript %}
 Model.extend({
   // ...
-  firstName: String,
+  firstName : String
   // ...
 });
 {% endhighlight %}
+<p >This helps make <i>field definition</i> quick and easy, especially when you only need to define the <code>type</code> of the <i>field</i>.</p>
+<br/>
 
-<p class="sub">Additionally, you can set the value to an <code>Object</code> containing the Option's for the Field, this is useful for when you need to supply other options, like <code>required</code></p>
+<h5>Field Options Definition Style,</h5>
 {% highlight javascript %}
 
 Model.extend({
   // ...
   firstName: {
-    type: String,
-    required: true
+    type     : String,
+    required : true
   },
   // ...
 });
 {% endhighlight %}
+<br/>
 
-<h5 id="field-definition-options">Field Definition Properties</h5>
+<h5 id="field-definition-options">Field Options</h5>
 <table class="table table-bordered table-striped">
   <thead>
   <tr>

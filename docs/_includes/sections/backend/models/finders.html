@@ -5,7 +5,7 @@
   <li><a href="/documentation/backend/models">Models</a></li>
   <li class="active">Finders</li>
 </ol>
-<p class="lead sub">Models in Finder/Methods are designed to get data from the database. The returned data isn't just a plain object, but instances of one of the defined classes, CleverStack provides easy to use finders as well as methods to find, create, update and delete model instances. 
+<p class="lead sub">Models in Finder/Methods are designed to get data from the database. The returned data isn't just a plain object, but instances of one of the defined classes, CleverStack provides easy to use finders as well as methods to find, create, update and delete model instances.
 </p>
 <br/>
 
@@ -157,8 +157,8 @@ UserModel.findAll({
 ================================================== -->
 <div class="section-page">
 <h4 class="page-header" id="methods-find-or-create" style="color: #2980b9; font-size: 125%; font-weight: 500;">findOrCreate - Search for a specific element or create it if not available<br/></h4>
-<p class="sub">The method findOrCreate can be used to check if a certain element already exists in the database before creating an instance, if the model already exists in the database the result will be that instance. If the instance does not yet exist, it will be created.</p>
-<p class="sub">Let's assume we have an empty database with a User model which has a username and a location.</p>
+<p >The method findOrCreate can be used to check if a certain element already exists in the database before creating an instance, if the model already exists in the database the result will be that instance. If the instance does not yet exist, it will be created.</p>
+<p >Let's assume we have an empty database with a User model which has a username and a location.</p>
 {% highlight javascript %}
 UserModel
   .findOrCreate({where: {username: 'pilsy'}, defaults: {location: 'Brisbane, Australia'}})
@@ -179,7 +179,7 @@ UserModel
   });
 {% endhighlight %}
 
-<p class="sub">The code created a new instance. So when we already have an instance ...</p>
+<p >The code created a new instance. So when we already have an instance ...</p>
 
 {% highlight javascript %}
 UserModel
@@ -212,7 +212,7 @@ UserModel
 ================================================== -->
 <div class="section-page">
   <h4 id="dynamic-finders">Dynamic Finders</h4>
-  <p class="sub">To make finding model instances as simple as possible, every Field will have two Dynamic Finders automatically generated, <code>Model.findByFieldName()</code> which can be used to find multiple Model Instances, and <code>Model.findAllByFieldName()</code> to find a single Model Instance. Behind the scenes Dynamic Finders simply create the <code>where</code> object to find by any fields name, and calls the find() and findAll() methods.</p>
+  <p >To make finding model instances as simple as possible, every Field will have two Dynamic Finders automatically generated, <code>Model.findByFieldName()</code> which can be used to find multiple Model Instances, and <code>Model.findAllByFieldName()</code> to find a single Model Instance. Behind the scenes Dynamic Finders simply create the <code>where</code> object to find by any fields name, and calls the find() and findAll() methods.</p>
 
   <p>For a Field called Username, these will be the default Dynamic Finders Generated for <strong><i>findBy, findAllBy</i></strong> and <strong><i>countBy</i></strong></p>
 {% highlight javascript %}
@@ -247,7 +247,7 @@ countAllByUsername('richard')
 <!-- QueryOptions
 ================================================== -->
 <h4 id="finders-query-options">queryOptions Definition and usage</h4>
-<p class="sub">Used for every query that is executed on the database, this is where transaction information is held.</p>
+<p >Used for every query that is executed on the database, this is where transaction information is held.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -271,7 +271,7 @@ countAllByUsername('richard')
 <!-- FindOptions
 ================================================== -->
 <h4 id="finders-find-options">findOptions Definition and usage</h4>
-<p class="sub">Used in finders or methods that retrieve/select data.</p>
+<p >Used in finders or methods that retrieve/select data.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -344,10 +344,10 @@ order: [
 include: [
   {
     // Required, the model you want to eager load
-    model: UserModel, 
+    model: UserModel,
 
     // Required if the assocation is aliased 'as'
-    as: 'users', 
+    as: 'users',
 
     // Optional, smart where for the query
     where: {},
@@ -359,7 +359,7 @@ include: [
     foreignKey: 'UserId',
 
     // Optional, eager load nested assocations
-    include: [ 
+    include: [
     // Recursive structure for include[]
     ]
   }

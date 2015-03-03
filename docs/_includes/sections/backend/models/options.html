@@ -30,12 +30,11 @@
       <td>dbName</td>
       <td>
 {%highlight javascript%}
-Boolean
 String
 {%endhighlight%}
       </td>
-      <td>{%highlight javascript%}false{%endhighlight%}</td>
-      <td>Optionally define the database table name for a model.</td>
+      <td>{%highlight javascript%}'fileName'{%endhighlight%}</td>
+      <td>Optionally define the database table name for a model, if not defined it will be based on the name of the file containing the model... ie, if the filename is <code>UserModel.js</code>, the dbName will be set to <code>Users</code>. (or <code>User</code> if you have enabled <code>freezeDbName</code>)</td>
   </tr>
   <tr id="options-freezeDbName">
       <td>freezeDbName</td>
@@ -47,7 +46,7 @@ String
       <td>underscored</td>
       <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
       <td>{%highlight javascript%}false{%endhighlight%}</td>
-      <td>By default column names are camelCasedLikeThis, if you prefer underscores set this to <code>true</code></td>
+      <td>By default column names are camelCasedLikeThis, if you want to use underscores like_this in your database, set this to <code>true</code></td>
   </tr>
   <tr id="options-engine">
       <td>engine</td>
@@ -105,8 +104,8 @@ String
       <td>softDeleteable</td>
       <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
       <td>{%highlight javascript%}false{%endhighlight%}</td>
-      <td>Allows you to specifically set the database table collation for a model. <br>
-        <span class="label label-info">Behaviour</span>
+      <td>Allows you to specifically set the database table collation for a model.
+        <br><span class="label label-info">Behaviour</span>
       </td>
   </tr>
   <tr id="options-deletedAt">
@@ -134,6 +133,14 @@ String
       <td>{%highlight javascript%}String{%endhighlight%}</td>
       <td>{%highlight javascript%}'updatedAt'{%endhighlight%}</td>
       <td>Allows you to set the column name to be used with the timeStampable behaviour and updating models.</td>
+  </tr>
+  <tr id="options-versionable">
+      <td>versionable</td>
+      <td>{%highlight javascript%}Boolean{%endhighlight%}</td>
+      <td>{%highlight javascript%}false{%endhighlight%}</td>
+      <td>Enables versioning of models <br>
+        <span class="label label-info">Behaviour</span>
+      </td>
   </tr>
   </tbody>
 </table>
