@@ -6,65 +6,14 @@
   <li class="active">Backend</li>
 </ol>
 
-<!-- Goals
-================================================== -->
-{% include sections/goals.html %}<br/><br/>
-
-<!-- Introduction
-================================================== -->
-{% include sections/backend/introduction.html %}<br/><br/>
-
-<!-- Installation
-================================================== -->
-{% include sections/backend/installation.html %}<br/><br/>
-
-<!-- Configuration
-================================================== -->
-{% include sections/backend/configuration.html %}<br/><br/>
-
-<!-- Structure
-================================================== -->
-{% include sections/backend/project-structure.html %}<br/><br/>
-
-<!-- Core Components
-================================================== -->
-{% include sections/backend/core-components.html %}<br/><br/>
-
-<!-- Magic Modules
-================================================== -->
-<h3 class="page-header" id="backend-magic-modules">Magic Modules</h3>
-<p>Our NodeJS Backend takes advantage of an NPM feature called the Node Path, by using the environment variable NODE_PATH.</p>
-{% highlight bash %}$ export NODE_PATH=./lib/:./modules/{% endhighlight %}
-
-<p><span class="label label-danger">Important</span> You only need to set your NODE_PATH when you are running index.js, not the main servers or commands.</p><br/>
-
-<p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
-{% highlight javascript %}$ require( 'controllers' ).ExampleController {% endhighlight %}
-
-<h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
-<ul>
-<li>injector</li>
-<li>classes</li>
-<li>config</li>
-<li>controllers</li>
-<li>exceptions</li>
-<li>models</li>
-<li>seedData</li>
-<li>services</li>
-<li>tasks</li>
-<li>utils</li>
-</ul><br/>
-
-<!-- Dependency Injection
-================================================== -->
-{% include sections/backend/dependency-injection.html %}<br/><br/>
-
-<h3 class="page-header" id="backend-modules">Classes</h3><br/><br/>
-<h3 class="page-header" id="backend-modules">Modules</h3><br/><br/>
-<h3 class="page-header" id="backend-modules">Controllers</h3><br/><br/>
-<h3 class="page-header" id="backend-modules">Services</h3><br/><br/>
-<h3 class="page-header" id="backend-modules">Models</h3><br/><br/>
-
+<div class="section-page">{% include sections/goals.html %}</div>
+<div class="section-page">{% include sections/backend/introduction.html %}</div>
+<div class="section-page">{% include sections/backend/installation.html %}</div>
+<div class="section-page">{% include sections/backend/configuration.html %}</div>
+<div class="section-page">{% include sections/backend/project-structure.html %}</div>
+<div class="section-page">{% include sections/backend/core-components.html %}</div>
+<div class="section-page">{% include sections/backend/magic-modules.html %}</div>
+<div class="section-page">{% include sections/backend/dependency-injection.html %}</div>
 
 <!-- Troubleshooting
 ================================================== -->

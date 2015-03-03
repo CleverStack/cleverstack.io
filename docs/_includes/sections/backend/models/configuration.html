@@ -1,5 +1,6 @@
 <h3 id="configuration" class="page-header">
-  Configuration <a class="permalink" href="#configuration" title="Permalink"><small>¶</small></a>
+  Configuration <a class="permalink" href="#configuration" title="Permalink"><small>¶</small></a><br/>
+  <small>Sophisticated deep-merged configuration allows ultimate flexibility between environments</small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
@@ -8,10 +9,10 @@
   <li class="active">Configuration</li>
 </ol>
 
-<p class="sub">Following the CleverStack Backend Configuration convention/system, you define your configuration for the ORM and ODM inside of the <code>backend/config/global.json</code> (for global defaults), and environment name based <code>backend/config/local.json</code> (local is for use on your development machine, then <code>dev.json</code>, <code>stag.json</code> and <code>prod.json</code> are used for their respective environments.)</p>
+<p >Following the CleverStack Backend Configuration convention/system, you define your configuration for the ORM and ODM inside of the <code>backend/config/global.json</code> (for global defaults), and environment name based <code>backend/config/local.json</code> (local is for use on your development machine, then <code>dev.json</code>, <code>stag.json</code> and <code>prod.json</code> are used for their respective environments.)</p>
 <br/>
 
-<h5 class="sub">Let's take a look at the structure of the json structure of the configuration,</h5>
+<h5 >Let's take a look at the structure of the json used to configure clever-orm and clever-odm,</h5>
 {% highlight json linenos %}
 {
   "clever-orm": {
@@ -37,8 +38,8 @@
 {% endhighlight %}
 <br/>
 
-<h5 class="sub">Grunt Tasks</h5>
-<p class="sub">We wanted configuration to be as simple as possible to define, so in addition to manually editing JSON configuration files we provided some helpful and handy grunt tasks using prompts for information. These prompts will be run automatically upon installation of any CleverStack Module, but can be run at any time to help manage your configuration.</p>
+<h5 >Grunt Tasks</h5>
+<p >We wanted configuration to be as simple as possible to define, so in addition to manually editing JSON configuration files we provided some helpful and handy grunt tasks using prompts for information. These prompts will be run automatically upon installation of any CleverStack Module, but can be run at any time to help manage your configuration.</p>
 
 {%highlight javascript%}
 grunt prompt:cleverOrmConfig
