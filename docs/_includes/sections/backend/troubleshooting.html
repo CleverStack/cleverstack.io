@@ -1,0 +1,20 @@
+<h3 id="troubleshooting" class="page-header">
+  Troubleshooting <a class="permalink" href="/documentation/backend/#troubleshooting" title="Permalink"><small>¶</small></a><br/>
+  <small>What to do when your stuck on some issue</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li class="active">Troubleshooting</li>
+</ol>
+<p class="lead">There are currently a few resources available to reach out to us</p>
+
+<h6><a href="https://github.com/CleverStack/node-seed/issues">Search GitHub issues, if you found a bug but don't see a ticket for it, please <a href="https://github.com/CleverStack/node-seed/issues">open an issue</a>. </a></h6>
+<h6><a href="https://groups.google.com/forum/#!forum/clever-stack">Get some help from the Google Group</a></h6>
+<h6><a href="http://stackoverflow.com/questions/tagged/cleverstack">Get some help from Stack Overflow</a></h6>
+<h6><a href="http://webchat.freenode.net/?randomnick=1&channels=%23cleverstack&uio=d4">Get some help from IRC</a></h6><br>
+
+<p class="sub lead">We will document any "gotchas" here along with any important open GitHub issues. Please <a href="https://github.com/CleverStack/node-seed/issues">open an issue</a> if you see a bug.</p></p>
+<ul>
+  <li>Frontend: EMFILE error on Mac: By default some macs have a ulimit of 256 which limits the number of open files each process can have, when using "clever init my-app" you will need to raise your ulimit by running "ulimit -n 1024" in your console. You will need to run that in your console before running the init command unless you define that setting globally in your mac.</li>
+</ul>

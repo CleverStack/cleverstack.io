@@ -1,4 +1,4 @@
-<h3 id="backend-project-structure" class="page-header">
+<h3 id="project-structure" class="page-header">
   Structure <a class="permalink" href="#backend-structure" title="Permalink"><small>¶</small></a><br/>
   <small>Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.</small><br/>
 </h3>
@@ -20,6 +20,11 @@ node-seed/
 ├── config/           # configuration files
 ├── lib/              # cleverstack core
 ├── modules/          # backend modules
+├── schema/           # backend schema
+│   └── seedData.json # application seed data in JSON format
+├── tasks/            # build/dev tasks
+│   ├── grunt/        # grunt tasks
+│   └── gulp/         # gulp tasks
 ├── tests/            # global app and cleverstack core tests
 │   ├── e2e/          # end to end tests
 │   └── unit/         # unit tests
@@ -63,6 +68,26 @@ node-seed/
     </div>
   </dd>
 
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/schema">schema/</a></dt>
+  <dd>
+    <p>This is where all your application/project wide/specific seed data should go, stored in the schema/seedData.json.</p>
+    <p>Also the default location for any sql scripts/dumps/triggers etc...</p>
+
+    <div class="bs-callout bs-callout-info">
+      <h4>Schema SQL &amp; Seed Data</h4>
+      <p>See <a href="/documentation/backend/models/#seed-data">Seed Data</a> for more information regarding seedData.</p>
+    </div>
+  </dd>
+
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/tasks">tasks/</a></dt>
+  <dd>
+    <p>This provides you with two easy to use folders, one for grunt tasks and the other for gulp tasks.</p>
+    <div class="bs-callout bs-callout-info">
+      <h4>Grunt/Gulp Tasks</h4>
+      <p>See <a href="/documentation/backend/#build-tasks">Build Tasks</a> for more information on how to use Grunt and/or Gulp in your application.</p>
+    </div>
+  </dd>
+
   <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/cluster.js">cluster.js</a></dt>
   <dd>
     <p>This is the main entry point of a normal CleverStack "Clustered" Application, in most cases you will not need to modify this file.</p>
@@ -87,7 +112,7 @@ node-seed/
     </div>
   </dd>
 
-  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/index.js">index.js</a></dt>
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/app.js">app.js</a></dt>
   <dd>
     <p>This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.</p>
 

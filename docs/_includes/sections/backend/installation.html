@@ -1,11 +1,40 @@
-<h3 id="backend-installation" class="page-header">
-  Installation <a class="permalink" href="/documentation/backend/#backend-installation" title="Permalink"><small>¶</small></a>
+<h3 id="installation" class="page-header">
+  Installation <a class="permalink" href="/documentation/backend/#backend-installation" title="Permalink"><small>¶</small></a><br/>
+  <small>By using the CleverStack CLI's install command, installation is easy and straight forward.</small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
   <li><a href="/documentation/backend">Backend</a></li>
   <li class="active">Installation</li>
 </ol>
+<p class="lead">To create a new project using the CleverStack CLI.</p>
+{% highlight bash %}
+# for frontend & backend
+clever init my-app
 
-<p>Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller (Class).</p>
-<p>Avoid callback soup/hell and promise slowdown by using this.proxy() or this.callback() in the Static section of the Controller, this keeps code nesting to a minimum and brings code re-use up. Instead of passing around req and res as arguments like other less organized solutions, in CleverStack they are exposed as this.req and this.res</p>
+# backend only
+clever init my-app backend
+{% endhighlight %}
+
+<img src="/assets/img/screenshots/clever-init-backend.png" width="100%">
+<br/>
+<br/>
+<p><span class="label label-info">Note</span> After running this command you may be prompted to configure the module/s your installing, see <a href="#configuration">Configuration</a> for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see <a href="/documentation/backend/models/#seed-data">Seed Data</a> for more information.</p>
+<br/>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Database creation</h4>
+  <p>If you are using SQL/ORM (aka MySQL, Postgre etc) then you will need to manually run the <code>CREATE DATABASE</code> command to create your database, the underlying library we use does not support this functionality.
+  </p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Init running time</h4>
+  <p>This command may take awhile depending on your internet connection and computer specifications.</p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Command Failed Errors</h4>
+  <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
+  See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
+</div>

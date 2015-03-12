@@ -1,4 +1,4 @@
-<h3 class="page-header" id="backend-magic-modules">
+<h3 class="page-header" id="magic-modules">
   Magic Modules <a class="permalink" href="#backend-magic-modules" title="Permalink"><small>¶</small></a><br/>
   <small>The Magic that enables CleverStack to do things like require('injector'), require('config') etc</small>
 </h3>
@@ -15,18 +15,18 @@
 <p><span class="label label-danger">Important</span> You will not need to set your <code>NODE_PATH</code> if you are using  only need to set your NODE_PATH when you are running <code>node/nodemon app.js</code>, not the main servers or commands (like <code>clever serve</code>.</p><br/>
 
 <p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
-{% highlight javascript %}require( 'controllers' ).ExampleController {% endhighlight %}
+{% highlight javascript %}require('controllers').ExampleController {% endhighlight %}
 
 <h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
 <ul>
-<li>injector</li>
-<li>classes</li>
-<li>config</li>
-<li>controllers</li>
-<li>exceptions</li>
-<li>models</li>
-<li>seedData</li>
-<li>services</li>
-<li>tasks</li>
-<li>utils</li>
-</ul><br/>
+  <li>injector</li>
+  <li>classes</li>
+  <li>config</li>
+  <li>controllers</li>
+  <li>exceptions</li>
+  <li>models</li>
+  <li>seedData</li>
+  <li>services</li>
+  <li>tasks</li>
+  <li>utils</li>
+</ul>

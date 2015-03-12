@@ -25,23 +25,23 @@ preInit: function( ) {
   <p>Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p>
 </div>
 
-<h5 id="backend-modules-hooks-presetup">preSetup</h5>
+<h5 id="modules-hooks-presetup">preSetup</h5>
 <ul>
   <li>This hook is fired inside the main constructor function setup() how it is called before any setup has actually taken place.</li>
 </ul>
 
-<h5 id="backend-modules-hooks-preinit">preInit</h5>
+<h5 id="modules-hooks-preinit">preInit</h5>
 <ul>
   <li>This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().</li>
   <li><span class="label label-danger">Important</span> This is the last place to hook into until after init.</li>
 </ul>
 
-<h5 id="backend-modules-hooks-init">init</h5>
+<h5 id="modules-hooks-init">init</h5>
 <ul>
   <li>While this is not a hook, you are able to implement this function which forms the final step in the constructor, meaning it can take advantage of the Optimizing Compiler.</li>
 </ul>
 
-<h5 id="backend-modules-hooks-configure-app">configureApp</h5>
+<h5 id="modules-hooks-configure-app">configureApp</h5>
 <ul>
   <li>This hook allows you to modify the express app from within a module, without the need to make those changes in the index.js file located at backend/index.js</li><br>
   <li><span class="label label-danger">Important</span> you must emit "appConfigured", until you do the moduleLoader will wait.</li>
@@ -58,24 +58,24 @@ configureApp: function ( app, express ) {
 });
 {% endhighlight %}
 
-<h5 id="backend-modules-hooks-preresources">preResources</h5>
+<h5 id="modules-hooks-preresources">preResources</h5>
 <ul>
   <li>This hook is fired just before the main setup() constructor function calls loadResources().</li>
   <li><span class="label label-danger">Important</span> you must emit "resourcesReady", until you do the moduleLoader will wait.</li>
 </ul>
 
-<h5 id="backend-modules-hooks-modulesloaded">modulesLoaded</h5>
+<h5 id="modules-hooks-modulesloaded">modulesLoaded</h5>
 <ul>
   <li>This hook is fired after all modules are loaded (for each module).</li>
   <li><span class="label label-danger">Important</span> you must emit "ready", until you do the moduleLoader will wait.</li>
   </ul>
 
-  <h5 id="backend-modules-hooks-preroute">preRoute</h5>
+  <h5 id="modules-hooks-preroute">preRoute</h5>
   <ul>
     <li>This hook is fired just before your routes are attached.</li>
   </ul>
 
-  <h5 id="backend-modules-hooks-preshutdown">preShutdown</h5>
+  <h5 id="modules-hooks-preshutdown">preShutdown</h5>
   <ul>
     <li>This hook is fired just before the application shuts down, allowing you to perform any cleanup related tasks.</li>
   </ul>

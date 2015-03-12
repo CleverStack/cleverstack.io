@@ -1,87 +1,17 @@
-<h1 id="backend" class="page-header">
-  CleverStack NodeJS Backend <a class="permalink" href="/documentation/backend" title="Permalink"><small>¶</small></a>
-</h1>
-<ol class="breadcrumb">
-  <li><a href="/documentation">Documentation</a></li>
-  <li class="active">Backend</li>
-</ol>
-
-<div class="section-page">{% include sections/goals.html %}</div>
 <div class="section-page">{% include sections/backend/introduction.html %}</div>
 <div class="section-page">{% include sections/backend/installation.html %}</div>
 <div class="section-page">{% include sections/backend/configuration.html %}</div>
 <div class="section-page">{% include sections/backend/project-structure.html %}</div>
-<div class="section-page">{% include sections/backend/core-components.html %}</div>
+<div class="section-page">{% include sections/backend/grunt-tasks.html %}</div>
+<div class="section-page">{% include sections/backend/gulp-tasks.html %}</div>
 <div class="section-page">{% include sections/backend/magic-modules.html %}</div>
 <div class="section-page">{% include sections/backend/dependency-injection.html %}</div>
-
-<!-- Troubleshooting
-================================================== -->
-<h3 class="page-header" id="backend-troubleshooting">Troubleshooting</h3>
-<p>If you have any problems (including errors, exceptions and even general usage) with the NodeJS Backend which is called the Node Seed.</p>
-<ul>
-  <li>Because we use the <a href="https://www.npmjs.org/package/debug">debug</a> npm module, set an environment variable called DEBUG.</li>
-{% highlight bash %}
-// There are more, if you want to debug a file look for its debug definition and add it in here
-$ export DEBUG=moduleLoader,ModuleClass,ORM
-
-// Run the server
-$ clever serve
-Running "nodemon:web" (nodemon) task
-[nodemon] v1.0.20
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching: *.*
-[nodemon] starting `node app.js`
-moduleLoader Loading modules... +0ms
-moduleLoader Loading the clever-orm module +4ms
-MagicModule Creating magic module for classes +0ms
-MagicModule Loading ModuleClass into classes magic module... +1ms
-ORM Opening connection to database +0ms
-moduleLoader Loading the backend-example-module module +271ms
-ORM Loading model ExampleModel from backend-example-module/models/orm/ExampleModel.js +25ms
-MagicModule Creating magic module for services +306ms
-MagicModule Loading BaseService into services magic module... +1ms
-MagicModule Loading Controller into classes magic module... +14ms
-moduleLoader modulesLoaded (hook) for module clever-orm +68ms
-ORM Defining model assocations +58ms
-moduleLoader Initializing the clever-orm modules routes. +116ms
-moduleLoader Initializing the backend-example-module modules routes. +0ms
-Starting server on port 8080 in LOCAL mode
-{% endhighlight %}
-
-  <li>Check the Github <a href="https://github.com/CleverStack/Node-Seed/issues">issues page</a>.</li>
-  <li>Log into the public access <a href="https://www.hipchat.com/gwM43u4Mw">HipChat Room</a> and ask for help.</li>
-  <li>Get some help from the Cleverstack <a href="https://groups.google.com/forum/#!forum/clever-stack">Google Group</a></li>
-  <li>If your still having problems, please <a href="https://github.com/CleverStack/Node-Seed/issues/new">raise an issue</a>.</li>
-</ul>
-
-<!-- Testing
-================================================== -->
-<h4 class="page-header" id="testing">Testing</h4>
-<p>Modules contain their testing resources, here are the two types you can use</p>
-<br/>
-
-<h5>Unit Tests</h5>
-
-<p>Here is an in-depth example of how to write a unit test</p>
-{% highlight javascript %}
-// Coming soon
-{% endhighlight %}<br/>
-
-<h5 class="page-header">Integration / e2e Tests</h5>
-
-<p>There is no required code, all you need to do is use request to make http requests to your controllers. Here is an example</p>
-{% highlight javascript %}
-// Coming soon
-{% endhighlight %}
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
-<br/>
-
-<!-- Contributing
-================================================== -->
-<h3 class="page-header" id="backend-contributing">Contributing</h3>
-<p>Firstly please read our <a href="https://github.com/CleverStack/Node-Seed/blob/master/CONTRIBUTING.md">guidelines for contributing</a>, Then fork the <a href="https://github.com/CleverStack/Node-Seed">CleverStack Node Seed</a> github repo, once you are ready please submit a "Pull Request" for review.</p>
+<div class="section-page">{% include sections/backend/classes.html %}</div>
+<div class="section-page">{% include sections/backend/modules.html %}</div>
+<div class="section-page">{% include sections/backend/controllers.html %}</div>
+<div class="section-page">{% include sections/backend/services.html %}</div>
+<div class="section-page">{% include sections/backend/models.html %}</div>
+<div class="section-page">{% include sections/backend/testing.html %}</div>
+<div class="section-page">{% include sections/backend/deployment.html %}</div>
+<div class="section-page">{% include sections/backend/troubleshooting.html %}</div>
+<div class="section-page">{% include sections/backend/contributing.html %}</div>
