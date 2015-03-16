@@ -83,8 +83,8 @@ node-seed/
   <dd>
     <p>This provides you with two easy to use folders, one for grunt tasks and the other for gulp tasks.</p>
     <div class="bs-callout bs-callout-info">
-      <h4>Grunt/Gulp Tasks</h4>
-      <p>See <a href="/documentation/backend/#build-tasks">Build Tasks</a> for more information on how to use Grunt and/or Gulp in your application.</p>
+      <h4>Development/Build Tasks</h4>
+      <p>See <a href="/documentation/backend/#grunt-tasks">Grunt Tasks</a> and <a href="/documentation/backend/#gulp-tasks">Gulp Tasks</a> for more information.</p>
     </div>
   </dd>
 
@@ -126,12 +126,5 @@ node-seed/
   <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/package.json">package.json</a></dt>
   <dd>
     <p>This file defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.</p>
-
-    <div class="bs-callout bs-callout-info">
-      <h4>Enabling Modules ( bundledDependencies[] )</h4>
-      <p>This is where you define which CleverStack Modules are Enabled, and what order they are loaded in by the Module Loader.</p>
-      <p>By adding modules into the <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array in the projects package.json file, you are also letting NPM know that these dependencies are local and not on the NPM Registry, meaning NPM will never search or download those modules from the internet.</p>
-      <span class="label label-info">Note</span> The order in which you place modules inside your <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a> array will be the loading order of the modules.
-    </div>
   </dd>
 </dl>
