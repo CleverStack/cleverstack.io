@@ -1,0 +1,82 @@
+<h3 id="what-powers-modules" class="page-header">
+  What Powers Modules? <a class="permalink" href="#what-powers-modules" title="Permalink"><small>¶</small></a><br/>
+  <small>What CleverStack leverages and extends to comprise the Module System.</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/modules">Modules</a></li>
+  <li class="active">What Powers Modules?</li>
+</ol>
+<p class="lead">
+  CleverStack's <strong><i>Module System</i></strong> provides a very thin abstraction layer ontop of NPM, which because of its very small core codebase is easy to maintain, has a very low risk of severe bugs, has community support for speedy bug fixes to reported or common issues, that fascilitates creating the most modular code possible when developing on the <strong>NodeJS</strong> runtime, without sacrificing code quality or developer sanity.
+</p>
+
+<!-- Core Components
+================================================== -->
+<h5  class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Core Components</a>
+</h5>
+<dl class="dl-horizontal" id="core-components">
+  <dt><a href="https://github.com/CleverStack/Node-Seed/tree/master/lib/classes/ModuleLoader.js">ModuleLoader</a></dt>
+  <dd>
+    <p>Is an extended <code>Class</code>, that inherits from <code>EventEmitter</code>, and is responsible for iterating over the modules inside the modules folder to load and trigger a sequence of events for each of the modules in an asynchronous fashion.</p>
+  </dd>
+
+  <dt><a href="#class">Module</a></dt>
+  <dd>
+    <p>
+      Is an extended <code>Class</code>, that inherits from <code>EventEmitter</code>, and must be exported by all CleverStack modules - See the <a href="#class">Module Class</a> Documentation for more information, additionally you can <a href="https://github.com/CleverStack/Node-Seed/tree/master/lib/classes/Module.js">view the code on github</a>.
+    </p>
+  </dd>
+</dl>
+<br/>
+<div class="bs-callout bs-callout-info">
+  <h4>Module Loading Order</h4>
+  <p>Because CleverStack points your <code>NODE_PATH</code> to the <code>backend/lib</code> and <code>backend/modules</code> folders, this means the loading order of the modules does not matter, as each module can be loaded using <code>require('module-name')</code> in any js file from any module in the application.<br/>
+  </p>
+</div>
+<div class="bs-callout bs-callout-danger">
+  <h4>Module Naming Convensions</h4>
+  <p>Inline with NPM standards, the names of modules should be lowercase and seperated by dashes (dasherized) - and the names should not conflict with published npm packages unless you don't want to use the published npm package in your application.</p><br/>
+
+  <p>For example imagine you wanted to build a cleverstack module that integrates stripe that you wanted to publish or re-use, you wouldn't name your cleverstack module <code>stripe</code>, if you did name your cleverstack module stripe, and tried to use the <a href="https://www.npmjs.com/package/stripe">stripe</a> api library from npm, because <code>require('stripe')</code> would include your module not the npm package you expected, in this case the best practice for naming the cleverstack module would be <code>clever-stripe</code>.</p>
+</div>
+<br/>
+
+<!-- Leveraged Components
+================================================== -->
+<h5 id="leveraged-components" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Leveraged Components <a class="permalink" href="#leveraged-components" title="Permalink"><small>¶</small></a><br/>
+  <small>A list of Components we leverage for Modules in the CleverStack Module System.</small>
+</h5>
+<dl class="dl-horizontal">
+  <dt>
+    <a href="/documentation/backend/#di">Dependency Injector</a><br/>
+    <small>(<a href="https://www.npmjs.com/package/clever-injector">clever-injector</a>)</small>
+  </dt>
+  <dd>
+    <p>
+      This module provides Dependency Injection for CleverStack, it is non blocking, Lightning-fast, easy to use, flexible, and makes using DI <strong><i>exactly the same</i></strong> for the Node Backend and the Angular Frontend, with the exception of <strong><i>optional dependencies</i></strong> - See the <a href="/documentation/backend/#di">Dependency Injection</a> Documentation for more information.
+    </p>
+  </dd>
+  <dt><a href="/documentation/backend/#magic-modules">Magic Modules</a></dt>
+  <dd>
+    <p>The Magic that enables CleverStack to do things like <code>require('injector')</code>, <code>require('config')</code> and <code>require('module-name')</code> as well as many others - See the <a href="/documentation/backend/#magic-modules">Magic Modules</a> Documentation for more information.</p>
+  </dd>
+  <dt>
+    <a href="/documentation/backend/classes/">Class</a>
+  </dt>
+  <dd>
+    <p>
+      Each Module is extended from a Class, we do this for many reasons but none as important as taking advantage of V8's Hidden Classes, Inline Caches &amp; Optimizing Compiler to allow V8 to generate efficient and performant machine code automatically, so your application is as Lightning-fast to execute as well as write and maintain. - See the <a href="/documentation/backend/classes/">Class</a> Documentation for more information.
+    </p>
+  </dd>
+  <dt><a href="http://npmjs.org">NPM</a></dt>
+  <dd>
+    <p>
+      NPM is the package manager for Node.js. It was created in 2009 as an open source project to help JavaScript developers easily share packaged modules of code and is dedicated to the long term success of the JavaScript community - It is responsible for our dependency management and is used by commands like <code>clever init</code>, <code>clever install</code> and <code>clever-setup</code>.
+    </p>
+  </dd>
+</dl>
+<br/>

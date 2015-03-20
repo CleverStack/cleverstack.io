@@ -1,28 +1,38 @@
-<h3 id="events" class="page-header">
-  Events <a class="permalink" href="#events" title="Permalink"><small>¶</small></a>
+<h3 id="hooks-and-events" class="page-header">
+  Module Hooks &amp; Events <a class="permalink" href="#hooks-and-events" title="Permalink"><small>¶</small></a>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
   <li><a href="/documentation/backend">Backend</a></li>
   <li><a href="/documentation/backend/modules">Modules</a></li>
-  <li class="active">Events</li>
+  <li class="active">Module Hooks &amp; Events</li>
 </ol>
 
 <p>Your 'module.js' file has some lifecycle hooks that you can use to perform operations at certain times during the applications lifecycle, the hooks are fired in the order they are listed here on each module.</p><br>
 
 <p>Example of using a hook:<p>
-{% highlight javascript %}
-var Module = require( 'classes' ).Module;
+{% highlight javascript linenos %}
+var Classes      = require('classes')
+  , Module       = Classes.Module;
 
-module.exports = Module.extend({
-preInit: function( ) {
-  console.log( 'preInit hook, init is about to be called' );
-}
+var CleverModule = Module.extend({
+  preInit: function() {
+    console.log('preInit hook, init is about to be called');
+  }
 });
-{% endhighlight %}<br>
+
+module.exports   = CleverModule;
+{% endhighlight %}
+<br/>
+
 <div class="bs-callout bs-callout-danger">
   <h4>Hook firing order</h4>
-  <p>Modules hooks are applied to each module in the order you have them listed in your package.json <a href="https://www.npmjs.org/doc/json.html">bundledDependencies[]</a>.</p>
+  <p>Modules hooks are applied to each module in the order they are loaded.</p>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
 </div>
 
 <h5 id="modules-hooks-presetup">preSetup</h5>
@@ -47,15 +57,18 @@ preInit: function( ) {
   <li><span class="label label-danger">Important</span> you must emit "appConfigured", until you do the moduleLoader will wait.</li>
   <li><span class="label label-danger">Important</span> this function is injected with app &amp; express as arguments in the constructors setup() function.</li>
 </ul>
-{% highlight javascript %}
-var Module = require( 'classes' ).Module;
+{% highlight javascript linenos %}
+var Classes      = require('classes')
+  , Module       = Classes.Module;
 
-module.exports = Module.extend({
-configureApp: function ( app, express ) {
-  app.use( express.cookieParser() );
-  this.emit( 'appConfigured' );
-}
+var CleverModule = Module.extend({
+  configureApp: function (app, express) {
+    app.use(express.cookieParser());
+    this.emit('appConfigured');
+  }
 });
+
+module.exports   = CleverModule;
 {% endhighlight %}
 
 <h5 id="modules-hooks-preresources">preResources</h5>
@@ -68,14 +81,14 @@ configureApp: function ( app, express ) {
 <ul>
   <li>This hook is fired after all modules are loaded (for each module).</li>
   <li><span class="label label-danger">Important</span> you must emit "ready", until you do the moduleLoader will wait.</li>
-  </ul>
+</ul>
 
-  <h5 id="modules-hooks-preroute">preRoute</h5>
-  <ul>
-    <li>This hook is fired just before your routes are attached.</li>
-  </ul>
+<h5 id="modules-hooks-preroute">preRoute</h5>
+<ul>
+  <li>This hook is fired just before your routes are attached.</li>
+</ul>
 
-  <h5 id="modules-hooks-preshutdown">preShutdown</h5>
-  <ul>
-    <li>This hook is fired just before the application shuts down, allowing you to perform any cleanup related tasks.</li>
-  </ul>
+<h5 id="modules-hooks-preshutdown">preShutdown</h5>
+<ul>
+  <li>This hook is fired just before the application shuts down, allowing you to perform any cleanup related tasks.</li>
+</ul>

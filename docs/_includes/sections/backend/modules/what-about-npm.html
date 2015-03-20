@@ -1,0 +1,40 @@
+<h3 id="what-about-npm" class="page-header">
+  What about NPM? <a class="permalink" href="#what-about-npm" title="Permalink"><small>¶</small></a><br/>
+  <small>The Node Package Manager, which is CleverStack leverages for it's dependency management system.</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/modules">Modules</a></li>
+  <li class="active">What about NPM?</li>
+</ol>
+
+<p class="lead">
+  NPM is the package manager for Node.js. It was created in 2009 as an open source project to help JavaScript developers easily share packaged modules of code and is dedicated to the long term success of the JavaScript community.
+</p>
+<br/>
+
+<p class="lead sub">
+  But packages on node are often libraries/api's, are hard to install, or require complex setup and <i>configuration of the package</i> and it's dependencies <strong>after npm has</strong> finished installing the package <i><strong>before they are ready for use.</strong></i>
+</p>
+
+<p class="lead sub">
+  But that is not a bad thing, this is exactly how NPM should work, and why it's so good at what it does, it's designed to be used to manage all dependencies <i>written in <strong>JavaScript</strong></i> and does not complicate things by trying to do too much or out of scope custom implementations for any given platform/browser and because of that it is extremely reliable.
+</p>
+
+<p class="lead sub">
+  NPM was designed to be flexible enough to provide an abstraction layer that developers can use to build upon - for example it could greatly reduce the codebase of <a href="http://bower.io/">Bower</a>, improve its dependency management, increase collaboration, and allow bower to focus on new features instead of duplicating already solved software problems. This is only one example use case of using NPM like we have, the possibilities of other projects using NPM are endless when you look on github.
+</p>
+<br/>
+
+<p class="sub">
+  We take advantage of NPM as much as possible, and without NPM CleverStack would be impossible, because we would have to write a large and complex dependency management system. <small>(Which would be a terrible idea considering npm is available now)</small>.
+</p>
+
+<p class="sub">
+  <p>CleverStack's approach extends NPM <small>(but doesn't change or interfere with NPM)</small>, so that when CleverStack is used to develop NodeJS powered Applications and Modules, that those Applications/Modules are <strong><i>flexible</i></strong>, <strong><i>simple</i></strong>, <strong><i>modular</i></strong>, and meets our vertical and horizontal goals.</p>
+</p>
+
+<p class="sub">
+  Before CleverStack implements custom code/features we always carefully always consider the options available. <strong><i>before writing something custom code/solutions</i></strong>. Additionally, if a feature implemented in CleverStack becomes available in a new version of NPM that is a viable replacement for CleverStacks Solution, we will always change over to use NPM implementation - it reduces our code base (DRY) and makes ensures CleverStack is collaborative as possible.
+</p>

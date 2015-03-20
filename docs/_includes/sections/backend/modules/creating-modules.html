@@ -1,0 +1,48 @@
+<h3 id="creating-modules" class="page-header">
+  Module Class <a class="permalink" href="#class" title="Permalink"><small>¶</small></a>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/modules">Modules</a></li>
+  <li class="active">Class</li>
+</ol>
+
+<p class="lead sub">Every Module in CleverStack is extended from the <code>Module</code> Class, which was extended from the base CleverStack <code>Class</code> and inherits from <code>EventEmitter</code>, every <code>Module</code> will automatically listen to events coming from the <code>ModuleLoader</code> as well as emitting events that the <code>ModuleLoader</code> and other <code>Module</code>'s can listen to.</p>
+
+<div class="section-page">
+  <h4 class="page-header" id="class-definition" style="color: #2980b9; font-size: 125%; font-weight: 500;">Class Definition<br/></h4>
+  <p>Imagine you had a module called <code>example-module</code>, then <code>backend/modules/example-module/module.js</code> should at the very least contain the following basic extended <code>Module</code> Class.</p>
+  {% highlight javascript linenos %}
+  var Classes      = require('classes')
+    , Module       = Classes.Module;
+
+  var CleverModule = Module.extend({
+    // Methods, Module Hooks and Templated Event Handlers go here.
+  });
+
+  module.exports   = CleverModule;
+  {% endhighlight %}
+  <p><span class="label label-danger">IMPORTANT</span> This example assumes that you had added <code>"main": "module"</code> to <code>example-module/package.json</code> file.</p>
+
+  {% highlight json %}
+  {
+    "name"        : "example-module",
+    "description" : "Example CleverStack Module",
+    "version"     : "1.0.0",
+    "main"        : "module"
+  }
+  {% endhighlight %}
+  <p>Otherwise it would expect to find the above code in the <code>backend/modules/example-module/index.js</code> file.</p>
+</div>
+
+<!-- Class Options
+================================================== -->
+<div class="section-page">
+  <h4 class="page-header" id="class-options" style="color: #2980b9; font-size: 125%; font-weight: 500;">Class Options<br/></h4>
+
+  <div class="bs-callout bs-callout-danger">
+    <h4>Needs more information</h4>
+    <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
+  </div>
+</div>
