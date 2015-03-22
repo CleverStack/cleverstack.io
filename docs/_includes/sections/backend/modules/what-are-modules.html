@@ -1,6 +1,6 @@
 <h3 id="what-are-modules" class="page-header">
   What Are Modules? <a class="permalink" href="#what-are-modules" title="Permalink"><small>¶</small></a><br/>
-  <small>Developers all over the world for years have been striving to be able to create smarter, smaller, easier to manage, faster to develop, re-usable chunks of code that are as modular as possible without sacrificing code quality or developer sanity.</small>
+  <small>Robust &amp; Flexible Modules that are completely independent of other modules in the application.</small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
@@ -9,32 +9,23 @@
   <li class="active">What Are Modules?</li>
 </ol>
 <p class="lead">
-  A Module is similar to a plugin in other software, or an npm package, but even better. The key difference is that Modules are first-class citizens, and everything is a Module in CleverStack, including both the core framework functionality and the code written for your application. <br/>
-  <br/>
-  <small><i>Which makes it easy to pick and choose which features to enable in your application and the freedom optimize them the way you want.</i></small>
+  A Module is similar to a plugin in other software, or an npm package, but even better. The key difference is that Modules are first-class citizens, and everything is a Module in CleverStack, including both the core framework functionality and the code written for your application.
 </p>
 
-<p class="sub">
-  A Module is simply a structured set of files within a directory that implement a single feature. You might create a blog-module, a forum-module or a users-module for user management. (many of these exist already as open source modules). Each directory contains everything related to that feature, including all utils, classes, controllers, services, tasks, models, configuration, seed data (etc), as well as the it's dependencies and testing. Every aspect of a feature exists in a module and every feature lives in a module.
+<p class="sub lead">
+  A Module is simply a structured set of files within a directory that implement a single feature. You might create a blog-module, a forum-module or a users-module for user management. (many of these exist already as <a href="http://cleverstack.io/modules/">open source modules</a>).
 </p>
 
-<p class="sub">
-  Each CleverStack Module is completely independent of all other modules, they contain everything they need to function including its tests (amoung other things), and their own package.json so that they define all of their own dependencies.
+<p class="sub lead">
+  Each directory contains everything related to that feature, including all utils, classes, controllers, services, tasks, models, configuration, seed data (etc), as well as the it's dependencies (in their own package.json) and testing. Every aspect of a feature exists in a module and every feature lives in a module.
 </p>
 
-<br/>
-<p class="sub">
-  <i>
-    CleverStack removes the complexity of installing &amp; configuring modules, and makes developing modules easier (vertical scale), and allows you to be able to re-use modules with little or no code change between projects. (horizontal scale).
-  </i>
+<p class="sub lead">
+  CleverStack makes it easy to pick and choose which features to enable in your application and gives you the freedom to optimize them the way you want.
 </p>
+
 <br/>
 <blockquote>
   <h6>There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies.</h6>
   <footer style="font-size: 12px;">C.A.R. Hoare</footer>
 </blockquote>
-<br/>
-
-<p class="sub">
-  CleverStack encourages developers to shift their thinking and minset towards not only viewing the modularization principles <strong><i>on a vertical scale</i></strong>, (e.g. reducing developing time), but also <strong><i>on a horizontal scale</i></strong>. (e.g. not needing to focus on every single detail, but still being able to take a step back and look at your environment across the horizon).
-</p>

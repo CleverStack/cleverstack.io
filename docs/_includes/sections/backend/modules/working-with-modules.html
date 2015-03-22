@@ -5,25 +5,15 @@
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
   <li><a href="/documentation/backend">Backend</a></li>
-  <li><a href="/documentation/backend/models">Models</a></li>
+  <li><a href="/documentation/backend/modules">Modules</a></li>
   <li class="active">Working With Modules</li>
 </ol>
 <p class="lead">
   Installing, Removing, Upgrading or Downgrading modules is as simple as running <code>clever</code> with the name of the command you want to run, like <code>clever install</code> with the name of the module you want to install. <small>(for example, <code>clever install backend-example-module</code>)</small>
 </p>
 
-<div class="bs-callout bs-callout-info">
-  <h4>Install, Remove, Upgrade or Downgrade multiple modules at a time</h4>
-  <p>You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p>
-</div>
-
-<div class="bs-callout bs-callout-warning">
-  <h4>Command Failed Errors</h4>
-  <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
-  See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
-</div>
-
-<div class="bs-callout bs-callout-warning">
+<br/>
+<div class="bs-callout bs-callout-danger">
   <h4>
     Common Issue, running commands without the CLI <small>(ie <code>grunt server</code> or <code>node app</code>)</small>
   </h4>
@@ -35,6 +25,27 @@
     <img src="/assets/img/screenshots/node-path-not-set-error.png" width="100%">
   </p>
 </div>
+<div class="bs-callout bs-callout-danger">
+  <h4>Module Name Clashes with NPM</h4>
+  <p>Module names should not conflict with published npm packages, unless you don't want to use the published npm package in your application.</p><br/>
+
+  <p>For example imagine you wanted to build a cleverstack module that integrates stripe, you wouldn't name your cleverstack module <code>stripe</code>, because if you and tried to use the <a href="https://www.npmjs.com/package/stripe">stripe</a> api library from npm, and tried to <code>require('stripe')</code> it would include your module not the npm package you expected, in this case the best practice for naming the cleverstack module would be <code>clever-stripe</code>.</p>
+</div>
+<div class="bs-callout bs-callout-warning">
+  <h4>Command Failed Errors</h4>
+  <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
+  See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Module Loading Order</h4>
+  <p>Because CleverStack points your <code>NODE_PATH</code> to the <code>backend/lib</code> and <code>backend/modules</code> folders, this means the <strong>loading order of modules does not matter</strong>, as each module can be loaded using <code>require('module-name')</code> in any js file from any module in the application - That mean's your application's will always resolve and load modules in the best possible way automatically.<br/>
+  </p>
+</div>
+<div class="bs-callout bs-callout-info">
+  <h4>Install, Remove, Upgrade or Downgrade multiple modules at a time</h4>
+  <p>You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.</p>
+</div>
+<br/>
 
 <!-- Installing Modules
 ================================================== -->
@@ -53,16 +64,17 @@
   <div class="bs-callout bs-callout-info">
     <h4>Installation Prompts</h4>
     <p>
-      After running this command you may be prompted to configure the module/s your installing, see <a href="#configuration">Configuration</a> for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see <a href="#seed-data">Seed Data</a> for more information.<br/>
+      After running this command you may be prompted to configure the module/s your installing, see <a href="#configuration">Configuration</a> for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see <a href="/documentation/backend/models/#seed-data">Seed Data</a> for more information.<br/>
     </p>
   </div>
 
   <div class="bs-callout bs-callout-warning">
     <h4>Command Failed Errors</h4>
     <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
-    See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
+    See <a href="#configuration">Configuration</a> and <a href="/documentation/backend/models/#seed-data">Seed Data</a> for information.</p>
   </div>
 </div>
+<br/>
 
 <!-- Removing Modules
 ================================================== -->
@@ -77,6 +89,7 @@
   <h5>If the module is already the same version, or older - then you will see something like this</h5>
   <img src="/assets/img/screenshots/clever-remove-invalid-module.png" width="100%">
 </div>
+<br/>
 
 <!-- Upgrading Modules
 ================================================== -->
@@ -88,6 +101,7 @@
   {% highlight bash %}$ clever upgrade backend-example-module{% endhighlight %}
   <img src="/assets/img/screenshots/clever-upgrade.png" width="100%">
 </div>
+<br/>
 
 <!-- Downgrading Modules
 ================================================== -->
@@ -99,6 +113,6 @@
   {% highlight bash %}$ clever downgrade backend-example-module@1.0.3{% endhighlight %}
   <img src="/assets/img/screenshots/clever-downgrade.png" width="100%"><br/><br/>
 
-  <h5>If the module is not installed you will see something like this</h5>
+  <h5>If the module is not installed you will see something like this in your terminal/console.</h5>
   <img src="/assets/img/screenshots/clever-downgrade-same-version-error.png" width="100%">
 </div>

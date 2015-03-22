@@ -30,25 +30,11 @@
     </p>
   </dd>
 </dl>
-<br/>
-<div class="bs-callout bs-callout-info">
-  <h4>Module Loading Order</h4>
-  <p>Because CleverStack points your <code>NODE_PATH</code> to the <code>backend/lib</code> and <code>backend/modules</code> folders, this means the loading order of the modules does not matter, as each module can be loaded using <code>require('module-name')</code> in any js file from any module in the application.<br/>
-  </p>
-</div>
-<div class="bs-callout bs-callout-danger">
-  <h4>Module Naming Convensions</h4>
-  <p>Inline with NPM standards, the names of modules should be lowercase and seperated by dashes (dasherized) - and the names should not conflict with published npm packages unless you don't want to use the published npm package in your application.</p><br/>
-
-  <p>For example imagine you wanted to build a cleverstack module that integrates stripe that you wanted to publish or re-use, you wouldn't name your cleverstack module <code>stripe</code>, if you did name your cleverstack module stripe, and tried to use the <a href="https://www.npmjs.com/package/stripe">stripe</a> api library from npm, because <code>require('stripe')</code> would include your module not the npm package you expected, in this case the best practice for naming the cleverstack module would be <code>clever-stripe</code>.</p>
-</div>
-<br/>
 
 <!-- Leveraged Components
 ================================================== -->
 <h5 id="leveraged-components" class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
-  Leveraged Components <a class="permalink" href="#leveraged-components" title="Permalink"><small>¶</small></a><br/>
-  <small>A list of Components we leverage for Modules in the CleverStack Module System.</small>
+  Leveraged Components <a class="permalink" href="#leveraged-components" title="Permalink"><small>¶</small></a>
 </h5>
 <dl class="dl-horizontal">
   <dt>
