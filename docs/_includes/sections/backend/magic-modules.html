@@ -7,17 +7,36 @@
   <li><a href="#backend">Backend</a></li>
   <li class="active">Magic Modules</li>
 </ol>
-<p class="lead sub">Our NodeJS Backend takes advantage of an NPM feature called the <i>Node Path</i>, by using the environment variable <code>NODE_PATH</code> we are able to take advantage of require's hidden power.</p>
+<p class="lead">Our NodeJS Backend takes advantage of an NPM feature called the <i>Node Path</i>, by using the environment variable <code>NODE_PATH</code> we are able to take advantage of require's hidden power - to load folders as if they were an NPM Module.</p>
 
-<p></p>
-{% highlight bash %}export NODE_PATH=./lib/:./modules/{% endhighlight %}
 
-<p><span class="label label-danger">Important</span> You will not need to set your <code>NODE_PATH</code> if you are using  only need to set your NODE_PATH when you are running <code>node/nodemon app.js</code>, not the main servers or commands (like <code>clever serve</code>.</p><br/>
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="magic-modules-usage">Usage</h4>
+<p class="lead sub">Using our Magic Module utility, gives you the ability to load things, like this: <small>(in any module/file)</small></p>
+{% highlight javascript %}
+require('utils').bootstrapEnv
+require('models').ExampleModel
+require('services').ExampleService
+require('controllers').ExampleController
+{% endhighlight %}
 
-<p>Using the Node Path and our magic module utility it gives you the ability to load things, like this</p>
-{% highlight javascript %}require('controllers').ExampleController {% endhighlight %}
+<p>You can use this loading syntax in any file inside your project (including files inside of modules), And you can use this utility yourself to create custom folders/modules, by simply doing <code>require('utils').magicModule('folderName')</code>.</p>
+<br/>
 
-<h5>Here is the complete list of Magic Modules, you can require() any of these anywhere in your application.</h5>
+<div class="bs-callout bs-callout-danger">
+  <h4>
+    Common Issue, running commands without the CLI <small>(ie <code>grunt server</code> or <code>node app</code>)</small>
+  </h4>
+  <p>
+    If you want to run, or are trying to run commands without the CLI (<code>clever</code> command) - Remember to set your <code>NODE_PATH</code>, see <a href="#setting-your-node-path">setting your node path</a> below.
+
+    <br/><br/>
+    <img src="/assets/img/screenshots/node-path-not-set-error.png" width="100%">
+  </p>
+</div>
+
+<br/>
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="magic-modules-list">Magic Module List <small>(you can <code>require</code> any of these anywhere in your application).</small></h4>
+
 <ul>
   <li>injector</li>
   <li>classes</li>
@@ -30,3 +49,17 @@
   <li>tasks</li>
   <li>utils</li>
 </ul>
+
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="setting-your-node-path">Setting your <code>NODE_PATH</code></h4>
+<p class="lead sub">In most cases you will not need to set your <code>NODE_PATH</code>, however if you are running commands without <code>clever</code>, (like <code>node cluster</code>, or <code>nodemon app</code> for example), or see an error like the following image, then you will need to set your <code>NODE_PATH</code>.</p>
+
+<br/>
+<img src="/assets/img/screenshots/node-path-not-set-error.png" width="100%">
+<br/>
+<br/>
+
+<h5>On Mac/Linux:</h5>
+{% highlight bash %}export NODE_PATH=./lib/:./modules/{% endhighlight %}
+<h5>On Windows:</h5>
+{% highlight bash %}set NODE_PATH=./lib/;./modules/{% endhighlight %}

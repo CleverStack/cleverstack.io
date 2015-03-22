@@ -1,0 +1,85 @@
+<h3 id="using-the-cli" class="page-header">
+  Using the CLI <a class="permalink" href="#using-the-cli" title="Permalink"><small>¶</small></a><br/>
+  <small>Using the CleverStack Command Line Interface</small>
+</h3>
+<ol class="breadcrumb">
+  <li><a href="/documentation">Documentation</a></li>
+  <li><a href="/documentation/backend">Backend</a></li>
+  <li><a href="/documentation/backend/models">Models</a></li>
+  <li class="active">Using the CLI</li>
+</ol>
+<p class="lead">Our Command Line Interface (CLI) was designed to be as modular as possible, so that applications could take advantage of modules that are created and published to our Open Source EcoSystem by anyone, as well as our Official Modules.</p>
+
+<p class="lead sub">See the <a href="/documentation/cli">CLI Documentation</a> for more information on our Command Line Interface.</p>
+
+<br/>
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="creating-projects">Creating Projects <small>(using the CLI)</small></h4>
+<p class="lead">By using the CleverStack CLI's <code>clever init</code> command, creating new projects is easy and straight forward.</p>
+{% highlight bash %}
+# for frontend & backend
+clever init my-app
+
+# backend only
+clever init my-app backend
+{% endhighlight %}
+
+<img src="/assets/img/screenshots/clever-init-backend.png" width="100%">
+<br/>
+<br/>
+<p><span class="label label-info">Note</span> After running this command you may be prompted to configure the module/s your installing, see <a href="#configuration">Configuration</a> for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see <a href="/documentation/backend/models/#seed-data">Seed Data</a> for more information.</p>
+<br/>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>Database creation</h4>
+  <p>If you are using SQL/ORM (aka MySQL, Postgre etc) then you will need to manually run the <code>CREATE DATABASE</code> command to create your database, the underlying library we use does not support this functionality.
+  </p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Init running time</h4>
+  <p>This command may take awhile depending on your internet connection and computer specifications.</p>
+</div>
+
+<div class="bs-callout bs-callout-warning">
+  <h4>Command Failed Errors</h4>
+  <p>If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.<br/>
+  See <a href="#configuration">Configuration</a> and <a href="#seed-data">Seed Data</a> for information.</p>
+</div>
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="starting-the-server">Starting the Server <small>(using the CLI)</small></h4>
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="repl-console">REPL Console</h4>
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="code-generators">Code Generators <small>(using the CLI)</small></h4>
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="running-unit-tests">Running Unit Tests <small>(using the CLI)</small></h4>
+{% highlight bash %}clever test unit{% endhighlight %}
+<p>Or simply use the alias</p>
+{% highlight bash %}clever test{% endhighlight %}
+<span class="label label-info">Note</span> This will run unit &amp; e2e tests.
+<br/>
+<br/>
+
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="running-e2e-tests">Running E2E/Integration Tests <small>(using the CLI)</small></h4>
+{% highlight bash %}clever test e2e{% endhighlight %}
+<p>Or simply use the alias</p>
+{% highlight bash %}clever test{% endhighlight %}
+<span class="label label-info">Note</span> This will run unit &amp; e2e tests.
+<br/>

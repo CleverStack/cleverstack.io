@@ -1,26 +1,20 @@
 <h3 class="page-header" id="configuration">
-  Configuration <a class="permalink" href="#backend-configuration" title="Permalink"><small>¶</small></a><br/>
+  Project Configuration <a class="permalink" href="#configuration" title="Permalink"><small>¶</small></a><br/>
   <small>Sophisticated deep-merged configuration allows ultimate flexibility between environments</small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="#overview">Documentation</a></li>
   <li><a href="#backend">Backend</a></li>
-  <li class="active">Configuration</li>
+  <li class="active">Project Configuration</li>
 </ol>
-<p class="lead sub">To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p>
+<p class="lead">To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.</p>
 
 <blockquote>
   <h6>If you’re willing to restrict the flexibility of your approach, you can almost always do something better.</h6>
   <footer style="font-size: 12px;">John Carmack</footer>
 </blockquote>
-<br/>
 
-<p>Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them</p>
-{% highlight javascript %}
-config = require('config');
-{% endhighlight %}
-
-<h5 class="page-header">Loading Order</h5>
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="configuration-files">Configuration Files: <small>(loaded in the order they are listed)</small></h4>
 <p>Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.</p>
 <ol>
   <li><a href="https://github.com/CleverStack/Node-Seed/tree/master/config/global.json">/config/global.json</a>
@@ -40,7 +34,7 @@ config = require('config');
         Every modules /config/default.json file will be loaded
         <div class="bs-callout bs-callout-info">
           <h4>Module's default.json</h4>
-          <p>See <a href="#backend-modules-config-default">&lt;module&gt;/config/default.json</a> for more information</p>
+          <p>See <a href="/documentation/backend/modules/#configuration">Module Configuration</a> Documentation for more information</p>
         </div>
       </li>
     </ul>
@@ -51,7 +45,7 @@ config = require('config');
         Every modules /config/global.json file will be loaded
         <div class="bs-callout bs-callout-info">
           <h4>Module's global.json</h4>
-          <p>See <a href="#backend-modules-config-global">&lt;module&gt;/config/global.json</a> for more information</p>
+          <p>See <a href="/documentation/backend/modules/#configuration">Module Configuration</a> Documentation for more information</p>
         </div>
       </li>
     </ul>
@@ -71,3 +65,18 @@ config = require('config');
     </ul>
   </li>
 </ol>
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="loading-configuration">Loading the Config <small>(anywhere inside your application)</small></h4>
+<p>Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them</p>
+{% highlight javascript %}
+config = require('config');
+{% endhighlight %}
+<br/>
+
+<h4 class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;" id="cli-configuration-prompts">CLI Configuration Prompts</h4>
+<div class="bs-callout bs-callout-danger">
+  <h4>Needs more information</h4>
+  <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
+</div>
+
