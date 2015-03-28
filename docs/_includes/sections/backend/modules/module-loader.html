@@ -1,14 +1,80 @@
 <h3 id="module-loader" class="page-header">
-  Module Loader <a class="permalink" href="#module-loader" title="Permalink"><small>¶</small></a>
+  The Module Loader <a class="permalink" href="#module-loader" title="Permalink"><small>¶</small></a><br/>
+  <small>Is an extended <code>Class</code> that inherits from <code>EventEmitter</code></small>
 </h3>
 <ol class="breadcrumb">
   <li><a href="/documentation">Documentation</a></li>
   <li><a href="/documentation/backend">Backend</a></li>
   <li><a href="/documentation/backend/modules">Modules</a></li>
-  <li class="active">Module Loader</li>
+  <li class="active">The Module Loader</li>
 </ol>
 
-<div class="bs-callout bs-callout-danger">
+<p class="lead" id="module-loader-overview">
+  The Module Loader is responsible for iterating over the modules inside the modules folder to load and trigger a sequence of events for each of the modules in an asynchronous fashion.
+</p>
+
+<p class="lead">
+  For an in-depth example of how the Module Loader is used in Cleverstack please see <a href="https://github.com/CleverStack/node-seed/blob/master/app.js">node-seed/app.js</a>.
+</p>
+
+<br/>
+<div class="bs-callout bs-callout-warning">
   <h4>Needs more information</h4>
   <p>This section of the documentation is either out-dated or incomplete, please ask for help in github or hipchat if you need more information.</p>
 </div>
+<br/>
+
+<!-- Hooks
+================================================== -->
+<h5  class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Module Hooks</a>
+</h5>
+<dl class="dl-horizontal" id="module-loader-hooks">
+  <dt>preResources</dt>
+  <dd><p>Is triggered directly before resources (files) are loaded for all modules using the ModuleLoader.</p></dd>
+
+  <dt>configureApp</dt>
+  <dd><p>Is triggered after all resources (files) have loaded but before any routes have been attached.</p></dd>
+
+  <dt>preRoute</dt>
+  <dd><p>Is triggered directly before routes are initialized for all modules being loaded.</p></dd>
+</dl>
+
+<!-- Events
+================================================== -->
+<h5  class="page-header" style="color: #2980b9; font-size: 125%; font-weight: 500;">
+  Module Events</a>
+</h5>
+<dl class="dl-horizontal" id="module-loader-events">
+  <dt>beforeLoad</dt>
+  <dd>
+    <p>
+      Is triggered before loading modules.
+{% highlight javascript linenos %}
+moduleLoader.on('beforeLoad', function() {
+  // ...
+});
+{% endhighlight %}
+    </p>
+  </dd>
+
+  <dt>modulesLoaded</dt>
+  <dd>
+    <p>
+      Is triggered after all modules have been loaded, please see <a href="https://github.com/CleverStack/node-seed/blob/master/app.js#L10">backend/app.js</a> for example usage.
+    </p>
+  </dd>
+
+
+  <dt>routesInitialized</dt>
+  <dd>
+    <p>
+      Is triggered after all modules have had their routes initialized.
+{% highlight javascript linenos %}
+moduleLoader.on('routesInitialized', function() {
+  // ...
+});
+{% endhighlight %}
+    </p>
+  </dd>
+</dl>
