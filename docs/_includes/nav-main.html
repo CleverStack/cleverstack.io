@@ -11,11 +11,11 @@
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
-          <a href="{{ site.baseurl }}getting-started">Getting started</a>
-        </li>
         <li{% if page.slug == "why-cleverstack" %} class="active"{% endif %}>
           <a href="{{ site.baseurl }}why-cleverstack">Why cleverstack?</a>
+        </li>
+        <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+          <a href="{{ site.baseurl }}getting-started">Getting started</a>
         </li>
         <li{% if page.slug == "modules" %} class="active"{% endif %}>
           <a href="{{ site.baseurl }}modules">Modules</a>
@@ -23,6 +23,10 @@
         <li{% if page.slug == "documentation" %} class="active"{% endif %}>
           <a href="{{ site.baseurl }}documentation">Documentation</a>
         </li>
+        <li{% if page.slug == "forum" %} class="active"{% endif %}>
+          <a href="{{ site.baseurl }}forum">Forum</a>
+        </li>
+
 <!--         <li{% if page.slug == "css" %} class="active"{% endif %}>
           <a href="{{ site.baseurl }}css">CSS</a>
         </li>
