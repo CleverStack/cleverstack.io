@@ -27,6 +27,7 @@
 
     <div class="container bs-docs-container">
 
+      {% if page.slug != 'blog' %}
       <div class="row">
         <div class="col-md-3">
           <div class="bs-sidebar hidden-print" role="complementary">
@@ -59,7 +60,8 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-9" role="main">
+        {% endif %}
+        <div class="col-md-{% if page.slug == 'blog' %}12{% else %}9{% endif %}" role="main">
           {{ content }}
         </div>
       </div>
