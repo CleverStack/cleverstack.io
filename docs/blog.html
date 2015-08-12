@@ -13,12 +13,10 @@ lead: "The Official CleverStack Blog"
     <div class="col-sm-8 blog-main">
 
       <div class="blog-post">
-        <h2 class="blog-post-title">Getting started with CleverStack</h2>
-        <p class="blog-post-meta">August 12, 2015 by <a href="http://twitter.com/pilsy">@pilsy</a></p>
+        <h2 class="blog-post-title"><a href="/blog/guides/getting-started-with-cleverstack">Getting started with CleverStack</a></h2>
+        <p class="blog-post-meta">August 12, 2015 by <a href="http://twitter.com/pilsy">@pilsy</a> (Richard Gustin)</p>
         <hr>
 
-        <p>This blog and video post shows you how to use the cleverstack CLI to create (init) a new project in under 10 minutes!</p>
-        <br/>
         <div class="video">
           <div id="player"></div>
           <script>
@@ -39,35 +37,8 @@ lead: "The Official CleverStack Blog"
         </div>
         <br/>
 
-        <h2>Prerequisite — Install the CLI, grunt-cli and bower:</h2>
-{% highlight javascript linenos %}
-npm i -g cleverstack-cli grunt-cli bower
-{% endhighlight %}
-        <br/>
+        <p>This blog and video post shows you how to use the cleverstack CLI to create (init) a new project in under 10 minutes! <a href="/blog/guides/getting-started-with-cleverstack">Read more...</a></p>
 
-        <h2>Step 1— Use the CLI's init command:</h2>
-{% highlight javascript linenos %}
-clever init my-first-app
-{% endhighlight %}
-        <br/>
-
-        <h2>Step 2— Install backend modules for ORM, Auth, Accounts, Users &amp; Roles:</h2>
-{% highlight javascript linenos %}
-cd my-first-app
-clever install clever-orm clever-auth clever-accounts clever-users clever-roles
-{% endhighlight %}
-<blockquote>Note: In this demo i chose to install our SQL Based, Object Relational Mapper or ORM module, `clever-orm` — alternatively you could install our NoSQL Based, Object Document Mapper or ODM, `clever-odm` without any other code changes (only config) and have your app running off MongoDB!</blockquote>
-        <br/>
-
-        <h2>Step 3— Start serving our app and go checkout it out in your browser!:</h2>
-{% highlight javascript linenos %}
-clever serve
-{% endhighlight %}
-        <br/>
-
-        <p>Now you have a fully functioning Full Stack JavaScript Application using AngularJS &amp; NodeJS built with the CleverStack framework.</p>
-        <br/>
-        <br/>
       </div><!-- /.blog-post -->
 
      <!--  <ul class="pager">
@@ -85,7 +56,7 @@ clever serve
       <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
-          <li><a href="#">August 2015</a></li>
+          <li><a href="/blog/guides/getting-started-with-cleverstack">Guide: Getting started with CleverStack</a></li>
         </ol>
       </div>
       <div class="sidebar-module">
