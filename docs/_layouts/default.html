@@ -27,34 +27,34 @@
 
     <div class="container bs-docs-container">
 
-      {% if page.slug != 'blog' %}
+      {% if page.slug != '/blog' %}
       <div class="row">
         <div class="col-md-3">
           <div class="bs-sidebar hidden-print" role="complementary">
             <ul class="nav bs-sidenav">
-              {% if page.slug == "getting-started" %}
+              {% if page.slug == "/getting-started" %}
                 {% include nav-getting-started.html %}
-              {% elsif page.slug == "why-cleverstack" %}
+              {% elsif page.slug == "/why-cleverstack" %}
                 {% include nav-why-cleverstack.html %}
-              {% elsif page.slug == "documentation-cli" %}
+              {% elsif page.slug == "/documentation-cli" %}
                 {% include nav-docs-cli-guide.html %}
-              {% elsif page.slug == "documentation-frontend" %}
+              {% elsif page.slug == "/documentation-frontend" %}
                 {% include nav-docs-frontend-guide.html %}
-              {% elsif page.slug == "documentation-backend" %}
+              {% elsif page.slug == "/documentation-backend" %}
                 {% include nav-docs-backend-guide.html %}
-              {% elsif page.slug == "documentation-backend-services" %}
+              {% elsif page.slug == "/documentation-backend-services" %}
                 {% include sections/backend/services/_nav.html %}
-              {% elsif page.slug == "documentation-backend-controllers" %}
+              {% elsif page.slug == "/documentation-backend-controllers" %}
                 {% include sections/backend/controllers/_nav.html %}
-              {% elsif page.slug == "documentation-backend-classes" %}
+              {% elsif page.slug == "/documentation-backend-classes" %}
                 {% include sections/backend/classes/_nav.html %}
-              {% elsif page.slug == "documentation-backend-modules" %}
+              {% elsif page.slug == "/documentation-backend-modules" %}
                 {% include sections/backend/modules/_nav.html %}
-              {% elsif page.slug == "documentation-backend-models" %}
+              {% elsif page.slug == "/documentation-backend-models" %}
                 {% include sections/backend/models/_nav.html %}
-              {% elsif page.slug == "documentation" %}
+              {% elsif page.slug == "/documentation" %}
                 {% include nav-documentation.html %}
-              {% elsif page.slug == "about" %}
+              {% elsif page.slug == "/about" %}
                 {% include nav-about.html %}
               {% endif %}
             </ul>

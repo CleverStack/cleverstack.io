@@ -10,7 +10,6 @@ source:           ./docs
 destination:      ./_gh_pages
 host:             0.0.0.0
 port:             9001
-baseurl:          /
 url:              http://localhost:9001
 
 # Custom vars
@@ -29,3 +28,6 @@ cdn:
   css:            //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css
   css_theme:      //netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css
   js:             //netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js
+
+gems:
+  - jekyll-sitemap
