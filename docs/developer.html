@@ -22,9 +22,16 @@ title: A modular way to create your Angular &amp; Node web apps
       <div class="video">
         <div id="player"></div>
 <script>
-var player;  function onYouTubePlayerAPIReady() {  player = new YT.Player('player', {  height: '420',  width: '640',  videoId: '5V4HgOFD3AE',  events: {  'onReady': onPlayerReady,  'onStateChange': onPlayerStateChange  }  });  }
+var player;  function onYouTubePlayerAPIReady() {  player = new YT.Player('player', {  height: '420',  width: '640',  videoId: 'M1cUtt7aYRg',  events: {  'onReady': onPlayerReady,  'onStateChange': onPlayerStateChange  }  });  }
 function onPlayerReady(event) {
-// event.target.playVideo();
+  try {
+    if (!localStorage.CleverStackIntroPlayed || (localStorage.CleverStackIntroPlayed + (1000 * 60 * 60 * 24)) < Date.now() ) {
+      setTimeout(function() {
+        event.target.playVideo();
+        localStorage.CleverStackIntroPlayed = Date.now();
+      }, 3000);
+    }
+  } catch(e) {}
 }
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING)  {

@@ -42,6 +42,25 @@ lead: "A quick walkthrough to install and start using CleverStack"
     <p class="lead">To create a new project using the CleverStack CLI.</p>
       {% highlight bash %}clever init my-app{% endhighlight %}
 
+    <div class="video" style="text-align: center">
+      <div id="player"></div>
+      <script>
+      var player;  function onYouTubePlayerAPIReady() {  player = new YT.Player('player', {  height: '420',  width: '640',  videoId: '-4ArURHExhQ',  events: {  'onReady': onPlayerReady,  'onStateChange': onPlayerStateChange  }  });  }
+      function onPlayerReady(event) {
+        //
+      }
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING)  {
+          ga('send', 'event', 'Getting started Video - Getting Started', 'click', 'Play');
+        }
+
+        if (event.data == YT.PlayerState.ENDED)  {
+          ga('send', 'event', 'Getting started Video - Getting Started', 'click', 'Watch to End');
+        }
+      }
+      </script>
+    </div>
+
     <div class="bs-callout bs-callout-danger">
       <h4>Database creation</h4>
       <p>
@@ -84,5 +103,5 @@ lead: "A quick walkthrough to install and start using CleverStack"
     <p>You are now <strong>serving</strong> http requests, open your web browser:</p>
       {% highlight bash %}http://localhost:9000{% endhighlight %}
 
-    <p>From here we recommend visiting our <a href="/documentation">Documentation</a></p>
+    <p>From here we recommend visiting the <a href="/blog/guides/getting-started-with-cleverstack">Getting Started with CleverStack</a> guide on our <a href="/blog/">Blog</a> and then our <a href="/documentation">Documentation</a></p>
   </div>

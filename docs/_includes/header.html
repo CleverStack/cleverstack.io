@@ -5,13 +5,11 @@
 <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development, node.js, express, mongoose, mongodb, angularjs, swig, sequelize, sequelizejs, orm, odm, cli">
 <meta name="author" content="Richard Gustin and contributors to the CleverStack Repositories">
 
-<title>
-  {% if page.title == "CleverStack.io" %}
-    {{ page.title }}
-  {% else %}
-    {{ page.title }} &middot; CleverStack.io
-  {% endif %}
-</title>
+{% if page.title == "CleverStack.io" %}
+  <title>{{ page.title }}</title>
+{% else %}
+  <title>{{ page.title }} &middot; CleverStack.io</title>
+{% endif %}
 
 <!-- Bootstrap core CSS -->
 <link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
