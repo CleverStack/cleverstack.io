@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block head
+  title Getting started &middot; CleverStack.io
+
+block docsheader
+  h1 Getting started
+  p A quick walkthrough to install and start using CleverStack
+
+block sidenav
+  include ../layouts/includes/nav-getting-started
+
+block content
+  include ../includes/section/getting-started/install-cleverstack.jade
+  include ../includes/section/getting-started/create-a-new-project.jade
+  include ../includes/section/getting-started/start-serving.jade

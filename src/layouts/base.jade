@@ -1,0 +1,31 @@
+//- Mixin for post, used on homepage and post page
+mixin postHead(post)
+  .post-head.group
+    a(href="#{data.baseUrl}#{post.url}")
+      h1.post-title= post.title
+    span.post-date!= 'Published ' + post.date.toLocaleDateString().split(',').slice(1).join(',')
+
+mixin post(post)
+  mixin postHead(post)
+  .post-body.markdown!= post.content
+
+doctype 5
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="icon", type="image/png", href="#{data.baseUrl}images/cabin.png")
+    link(href="#{data.baseUrl}styles/main.css", rel="stylesheet")
+    block head
+      title= "Personal Blog of Richard Gustin"
+  body
+    .center
+      nav.group
+        h1.name
+          a(href="#{data.baseUrl}") Richard Gustin
+        ul.nav-links
+          li.text-link
+            a(href="#{data.baseUrl}about.html") about
+          li.text-link
+            a(href="#{data.baseUrl}archives.html") archives
+      block content

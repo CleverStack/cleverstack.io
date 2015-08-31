@@ -1,0 +1,35 @@
+nav {
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: 1.2em;
+
+  a {
+    color: $offBlack;
+    text-decoration: none;
+
+    &:hover {
+      color: $offBlack;
+      text-decoration: underline;
+    }
+  }
+}
+
+.name {
+  float: left;
+  font-weight: normal;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.nav-links {
+  margin: 0;
+  list-style: none;
+  float: right;
+  font-size: 1.2em;
+  padding: 12px 0 0;
+
+  li {
+    float: left;
+    padding-right: 1.7em;
+  }
+}

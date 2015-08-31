@@ -1,0 +1,26 @@
+//- Step 2
+.bs-docs-section
+  .page-header
+    h1(id="create-a-new-project") Create a new project
+
+  p.lead To create a new project using the CleverStack CLI.
+  pre.highlight
+    code(class="language-bash" data-lang="bash") clever init my-app
+
+  .video(style="text-align: center")
+    div(id="player")
+
+  div(class="bs-callout bs-callout-danger")
+    h4 Database creation
+    p If you are using MySQL then you will need to manually run the <code>CREATE DATABASE</code> command to create your database, the underlying library we use does not support this functionality.
+
+  div(class="bs-callout bs-callout-danger")
+    h4 Common Issue, running commands without the CLI <small>(ie <code>grunt server</code> or <code>node app</code>)</small>.
+    p If you want to run, or are trying to run commands without the CLI (<code>clever</code> command) - Remember to set your <code>NODE_PATH</code>,
+      checkout <a href="/documentation/backend/#magic-modules">Magic Modules</a> for more information.
+      <br/><br/>
+      img(src="/images/screenshots/node-path-not-set-error.png" width="100%")
+  
+  div(class="bs-callout bs-callout-warning")
+    h4 Init running time
+    p This command may take awhile depending on your internet connection and computer specifications.

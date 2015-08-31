@@ -1,0 +1,9 @@
+extends base
+
+block head
+  title= post.title
+  if post.description
+    meta(name="description", content="#{post.description}")
+
+block content
+  mixin post(post)

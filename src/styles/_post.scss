@@ -1,0 +1,31 @@
+.post-head {
+  padding-bottom: 5px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.post-title {
+  margin: 15px 0;
+  font-weight: normal;
+  font-size: 2em;
+}
+
+.post-date {
+  font-size: 1.3em;
+  color: $lightTextColor;
+}
+
+.post-body {
+  margin-bottom: 1.2em;
+  line-height: 1.65em;
+
+  p a:hover {
+    color: #4183c4;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,59 @@
+doctype 5
+html(lang='en')
+  head
+    include ./includes/header.jade
+    
+  body
+    a(href="#content", class="sr-only") Skip to main content
+
+    .github-ribbon
+      a(href="https://github.com/cleverstack/")
+        img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub")
+
+    header(class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner" style="z-index:1000 !important;")
+      .container
+        .navbar-header
+          button(class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          
+          a(href="#{data.baseUrl}" class="navbar-brand") CleverStack.io
+        
+        block navigation
+          nav(class="collapse navbar-collapse bs-navbar-collapse" role="navigation")
+            ul(class="nav navbar-nav")
+              li(ng-class="'active': '{{window.location.pathname}}' == '/why-cleverstack.html'")
+                a(href="#{data.baseUrl}why-cleverstack/") Why CleverStack?
+              li(ng-class="'active': '#{window.location.pathname}' == '/getting-started.html'")
+                a(href="#{data.baseUrl}getting-started/") Getting Started
+              li
+                a(href="#{data.baseUrl}modules/") Modules
+              li
+                a(href="#{data.baseUrl}documentation/") Documentation
+              li
+                a(href="#{data.baseUrl}forum/") Forum
+              li
+                a(href="#{data.baseUrl}blog/") Blog
+
+            ul(class="nav navbar-nav navbar-right")
+              li
+                a(href="#{data.baseUrl}about.html") About
+
+    
+    div(class="bs-header" id="content")
+      .container
+        block docsheader
+
+    div(class="container bs-docs-container")
+      .row
+        .col-md-3
+          div(class="bs-sidebar hidden-print" role="complementary")
+            ul(class="nav bs-sidenav")
+              block sidenav
+
+        div(class="col-md-9" role="main")
+          block content
+
+    include ./includes/footer.jade

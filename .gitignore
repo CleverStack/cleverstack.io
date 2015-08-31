@@ -1,42 +1,21 @@
-# Ignore everthing except docs files
-_gh_pages
-_site
-.ruby-version
-
-# Numerous always-ignore extensions
-*.diff
-*.err
-*.orig
+lib-cov
+*.seed
 *.log
-*.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
 
-# OS or Editor folders
-.DS_Store
-._*
-Thumbs.db
-.cache
-.project
-.settings
-.tmproj
-*.esproj
-nbproject
-*.sublime-project
-*.sublime-workspace
-.idea
+pids
+logs
+results
 
-# Komodo
-*.komodoproject
-.komodotools
-
-# grunt-html-validation
-validation-status.json
-validation-report.json
-
-# Folders to ignore
+npm-debug.log
 node_modules
-bower_components
+
+.sass-cache
+
+# Cabin-specific ignored files
+dist
+.grunt

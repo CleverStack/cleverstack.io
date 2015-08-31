@@ -1,0 +1,20 @@
+extends ../layouts/default
+
+block head
+  title About &middot; CleverStack.io
+
+block docsheader
+  h1 About
+  p Learn about the history of CleverStack, meet the core team, contribute and check out our Roadmap.
+
+block sidenav
+  include ../layouts/includes/nav-about.jade
+
+block content
+  include ../includes/section/history.jade
+  include ../includes/section/team.jade
+  include ../includes/section/community.jade
+  include ../includes/section/roadmap.jade
+  include ../includes/section/goals.jade
+  include ../includes/section/license.jade
+

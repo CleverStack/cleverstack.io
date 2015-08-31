@@ -1,1 +1,0 @@
-This documentation is auto generated, if you wish to change it please see instructions [here](https://github.com/CleverStack/cleverstack.io).
