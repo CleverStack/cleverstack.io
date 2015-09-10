@@ -1,0 +1,171 @@
+extends ../../layouts/homepage
+
+block head
+  title="A modular way to create your Angluar & Node web apps &middot; CleverStack.io"
+  link(href="http://cleverstack.io/dist/css/main_developer.min.css", media="screen, projection", rel="stylesheet")
+
+block docsheader
+  h1 Getting started
+  p A quick walkthrough to install and start using CleverStack
+
+block navigation
+  .navbar-wrapper
+    .container
+      .navbar.navbar-inverse.navbar-static-top(role='navigation')
+        .container
+          .navbar-header
+            button.navbar-toggle(data-target='.navbar-collapse', data-toggle='collapse', type='button')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a#logo.navbar-brand(href='/') cleverstack.io
+          .navbar-collapse.collapse
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='/getting-started/') Getting started
+              li
+                a#why-video.scroll(href='#video-container') Why cleverstack?
+              li
+                a(href='/documentation') Documentation
+              li
+                a(href='/modules') Modules
+              li
+                a(href='/about') About
+
+block content
+  .dev-header
+    .container
+      .row
+        header.projectname Cleverstack.io 
+        .description
+          | A modular way to create your 
+          b Angular
+          |  & 
+          b Node
+          |  web apps
+        a#fork-github.big-btn(href='https://github.com/CleverStack/cleverstack-cli') Fork it on GitHub
+
+  .container.who-wrapper
+    #video-container.row
+      .question.who An introduction to Cleverstack
+      .video
+        #player
+        script.
+          var player;  function onYouTubePlayerAPIReady() {  player = new YT.Player('player', {  height: '420',  width: '640',  videoId: 'M1cUtt7aYRg',  events: {  'onReady': onPlayerReady,  'onStateChange': onPlayerStateChange  }  });  }
+          function onPlayerReady(event) {
+          try {
+          if (!localStorage.CleverStackIntroPlayed || (localStorage.CleverStackIntroPlayed + (1000 * 60 * 60 * 24)) < Date.now() ) {
+          setTimeout(function() {
+          event.target.playVideo();
+          localStorage.CleverStackIntroPlayed = Date.now();
+          }, 3000);
+          }
+          } catch(e) {}
+          }
+          function onPlayerStateChange(event) {
+          if (event.data == YT.PlayerState.PLAYING)  {
+          ga('send', 'event', 'Introduction Video', 'click', 'Play');
+          }
+          if (event.data == YT.PlayerState.ENDED)  {
+          ga('send', 'event', 'Introduction Video', 'click', 'Watch to End');
+          }
+          }
+
+  .red.highlights
+    .red-bg
+      .container
+        .row
+          .col-xs-12.col-sm-7
+            h2#angular Angular
+            p
+              b CleverStack
+              |  provides a fully featured 
+              b AngularJS
+              |  development workflow. 
+              b AngularJS
+              |  is an awesome open source JavaScript framework maintained by Google that runs right out of the box without any library dependencies and has become a go-to tool for building dynamic web apps.
+            ul
+              li
+                a.icon1(href='http://angularjs.org/') angular.js
+              li
+                a.icon2(href='http://npmjs.org/') npm
+              li
+                a.icon3(href='http://gruntjs.com/') grunt
+              li
+                a.icon4(href='http://bower.io/') bower
+              li
+                a.icon5(href='http://requirejs.org/') requires
+            a.get-started.big-btn(href='/getting-started', data-name='Angular') Get Started
+
+  .orange.highlights
+    .orange-bg
+      .container
+        .row
+          .col-xs-12.col-sm-7.col-sm-offset-5
+            h2#angular Cleverstack
+            p
+              | In an effort to make rapid prototyping of web apps smarter, easier and faster, the team at CleverTech decided to produce a tool for easy front-end and backend development.  
+              b CleverStack
+              |  is not another framework, but an entire ecosystem that runs off of Node.JS and AngularJS. It makes rapid prototyping of your next project easy.
+            p
+              | Frameworks focus on: ease of use, maintainability, and DRY (Don’t Repeat Yourself) principles,
+              | but how often do you find yourself copying and pasting a segment
+              | from one project onto another?
+            p
+              | Frameworks are designed to quickly start off your project, but often fail to maintain that speed once your project becomes bigger than a “Hello world,” application. Not 
+              b CleverStack
+              | .
+            p
+              | The 
+              b CleverStack
+              |  ecosystem focuses on the same principles as frameworks, but it is designed to
+              |                 maintain the fast prototyping throughout the entire project. No more copying and pasting, no more trying to figure out where you left that one library, and no more trying to fit a square peg in a round hole.
+            ul
+              li
+                a.icon6(href='https://github.com/CleverStack/cleverstack-cli') CLI
+              li
+                a.icon7(href='http://angularjs.org/') Angular
+              li
+                a.icon8(href='https://github.com/clevertech/clever-controller') Controller
+            a.get-started.big-btn(href='/getting-started', data-name='Cleverstack') Get Started
+
+  .green.highlights
+    .green-bg
+      .container
+        .row
+          .col-xs-12.col-sm-7
+            h2#angular Node
+            p
+              | Building a high performance web app? Need it to be scalable? Want to run JavaScript on the server?
+            p
+              | If you want all three, 
+              b Node.JS
+              |  is your tool. 
+              b Node.JS
+              |  is an amazing open source server side tool that will help you make sure that your next big idea is as scalable as it needs to be.
+            ul
+              li
+                a.icon9(href='http://nodejs.org/') node.js
+              li
+                a.icon2(href='http://nodejs.org/') npm
+              li
+                a.icon3(href='http://gruntjs.com/') grunt
+            a.get-started.big-btn(href='/getting-started', data-name='Node') Get Started
+
+  .container.footer
+    .row
+      | {% include social-buttons.html %}
+      // code was taken ftom the browser ...
+      p.legal
+        | Cleverstack.io is developed and maintained by 
+        a(href='http://au.linkedin.com/in/richardgustin', target='_blank') Richard Gustin
+        |  (
+        a(href='https://github.com/pilsy', target='_blank') @pilsy
+        | ),
+        br
+        | our core developers, our open source community and 
+        a(href='http://www.clevertech.biz/', target='_blank') Clevertech
+        | .
+        br
+        | 2015 Cleverstack.io All Rights Reserved.

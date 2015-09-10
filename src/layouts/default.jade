@@ -1,7 +1,7 @@
 doctype 5
 html(lang='en')
   head
-    include ./includes/header.jade
+    include ./includes/header
     
   body
     a(href="#content", class="sr-only") Skip to main content
@@ -24,9 +24,9 @@ html(lang='en')
         block navigation
           nav(class="collapse navbar-collapse bs-navbar-collapse" role="navigation")
             ul(class="nav navbar-nav")
-              li(ng-class="'active': '{{window.location.pathname}}' == '/why-cleverstack.html'")
+              li
                 a(href="#{data.baseUrl}why-cleverstack/") Why CleverStack?
-              li(ng-class="'active': '#{window.location.pathname}' == '/getting-started.html'")
+              li
                 a(href="#{data.baseUrl}getting-started/") Getting Started
               li
                 a(href="#{data.baseUrl}modules/") Modules
@@ -56,4 +56,4 @@ html(lang='en')
         div(class="col-md-9" role="main")
           block content
 
-    include ./includes/footer.jade
+  include ./includes/footer.jade

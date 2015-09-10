@@ -1,18 +1,32 @@
-extends ../layouts/base
+extends ../layouts/homepage
 
 block head
-  title= "My Blog"
+  title="A modular way to create your Angluar & Node web apps &middot; CleverStack.io"
+  link(href="http://cleverstack.io/dist/css/main_theme.min.css", media="screen, projection", rel="stylesheet")
 
 block content
-  each post in posts
-    mixin post(post)
+  .site-wrapper(id="frontpage")
+    .site-wrapper-inner
+      .cover-container
+        div(class="masthead clearfix")
+          a(href="#" id="logo") cleverstack.io
 
-  .pagination.group
-    - for (var i = 0; i < pages.length; i++) {
-      - var page = pages[i];
-      - if (i === currentIndex - 1) {
-        a.newer(href="#{data.baseUrl}#{page.url}") Newer &#8594;
-      - } else if (i === currentIndex + 1) {
-        a.older(href="#{data.baseUrl}#{page.url}") &#8592; Older
-      - }
-    - }
+        div(class="inner cover")
+          header.projectname CleverStack.io - Clever Web Apps
+          .description A modular way to create your <b>Angular</b> &amp; <b>Node</b> web apps
+          
+          .question npm install -g cleverstack-cli<br><span>Does this mean anything to you?</span>
+          a(href="/developer" id="knows-npm" class="big-btn") Yes
+          a(href="/business" id="knows-business" class="big-btn") No
+        .mastfoot
+          .inner
+            <!-- code was taken ftom the browser ... -->
+            {% include social-buttons.html %}
+
+            // <script>//<!--
+            //   (function() { window.CharmUX = {}; CharmUX.AccountId = 56; var clientcharms = document.createElement('script'); clientcharms.type = 'text/javascript'; clientcharms.async = false; clientcharms.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'd25lwi78skvze0.cloudfront.net'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(clientcharms, s); })();//-->
+            // </script>
+
+            p.legal Cleverstack.io is developed and maintained by <a href="http://au.linkedin.com/in/richardgustin" target="_blank">Richard Gustin</a> (<a href="https://github.com/pilsy" target="_blank">@pilsy</a>),<br/>our core developers, our open source community and <a href="http://www.clevertech.biz/" target="_blank">Clevertech</a>.<br/>2015 Cleverstack.io All Rights Reserved.
+
+  include ../includes/bithub
