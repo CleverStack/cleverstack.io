@@ -2,6 +2,11 @@ doctype 5
 html(lang='en')
   head
     include ./includes/header
+    link(href="http://cleverstack.io/dist/css/bootstrap.min.css", rel="stylesheet")
+    link(href="http://cleverstack.io/dist/css/bootstrap-theme.min.css", rel="stylesheet")
+    link(href="http://cleverstack.io/dist/css/application.min.css", rel="stylesheet")
+    link(href="http://cleverstack.io/assets/css/docs.css", rel="stylesheet")
+    link(href="http://cleverstack.io/assets/css/pygments-manni.css", rel="stylesheet")
     
   body
     a(href="#content", class="sr-only") Skip to main content
@@ -56,4 +61,4 @@ html(lang='en')
         div(class="col-md-9" role="main")
           block content
 
-  include ./includes/footer.jade
+  include ./includes/footer
