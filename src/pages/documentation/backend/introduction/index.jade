@@ -4,14 +4,17 @@ block head
   title Documentation &middot; CleverStack.io
 
 block docsheader
-  h1 Documentation
+  h1 Backend Documentation
   p Introduction to the CleverStack Node.js Framework
 
 block content
   include ../../../../includes/section/backend/introduction
 
-  ul.pager
+  ul.pager(style="margin-top: 50px;")
     li.previous
-      a.btn(href="/documentation/backend/") Backend Docs
+      a.btn(href="/documentation/backend/", title="Backend Documentation")
+        i.fa.fa-backward
+        |  Back 
     li.next
-      a.btn(href="/documentation/backend/magic-modules/") Magic Modules
+      a.btn(href="/documentation/backend/magic-modules/", title="Magic Modules") Next 
+        i.fa.fa-forward

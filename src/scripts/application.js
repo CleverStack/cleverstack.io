@@ -101,8 +101,14 @@
       offset: navHeight
     });
 
+    var pageViews=[];
     $window.on('activate.bs.scrollspy', function(event) {
-      ga('send', 'pageview', $(event.target).find('a').attr('href'));
+      var permalink = $(event.target).find('a').data('permalink');
+      if (!!permalink && pageViews.indexOf(permalink) === -1) {
+        pageViews.push(permalink);
+        ga('send', 'pageview', permalink);
+        console.log('PAGEVIEW: ' + permalink);
+      }
     });
 
     $window.on('load', function () {

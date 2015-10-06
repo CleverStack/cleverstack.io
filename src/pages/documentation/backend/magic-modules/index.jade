@@ -4,14 +4,17 @@ block head
   title Documentation &middot; CleverStack.io
 
 block docsheader
-  h1 Documentation
-  p Magic Modules &amp; the NODE_PATH
+  h1 Backend Documentation
+  p Magic Modules: the easiest, cleanest and fastest way to load your node js code!
 
 block content
   include ../../../../includes/section/backend/magic-modules
 
-  ul.pager
+  ul.pager(style="margin-top: 50px;")
     li.previous
-      a.btn(href="/documentation/backend/introduction/") Introduction
+      a.btn(href="/documentation/backend/introduction/", title="Introduction")
+        i.fa.fa-backward
+        |  Back 
     li.next
-      a.btn(href="/documentation/backend/official-modules/") Official Modules
+      a.btn(href="/documentation/backend/official-modules/", title="Official Modules") Next 
+        i.fa.fa-forward

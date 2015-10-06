@@ -1,11 +1,11 @@
-extends ../../layouts/default
+extends ../../layouts/subdocs
 
 block head
   title Documentation &middot; CleverStack.io
 
 block docsheader
   h1 Documentation
-  p Indepth guides to CleverStack covering installation, configuration, usage and extending.
+  p Indepth guides covering installation, configuration, usage and extending.
 
 block sidenav
   li
@@ -30,7 +30,7 @@ block content
       | What this mean's for you is, you are able to create smaller, more specific modules that are extremely powerful, completely self contained and can be used between many projects. If you believe your module is useful you can publish your module to the CleverStack EcoSystem through NPM (Backend) or Bower (Frontend).
     p
       | We have broken the documentation down into three major sections, please choose one of the following to view specific documentation. (Or choose from the navigation on the left.
-    div(style='text-align: center; max-width: 645px')
+    div(style='text-align: center; max-width: 645px;margin-left:auto;margin-right:auto')
       p.seeds-list
         a#frontend(href='/documentation/frontend', style='text-align: center')
           img(src='/images/logos/angular-seed-logo-clean.png', alt='angular seed')

@@ -1,7 +1,7 @@
 .bs-docs-section
   h3#di.page-header
     | Dependency Injection 
-    a.permalink(href='#backend-di', title='Permalink')
+    a.permalink(href='/documentation/backend/dependency-injection/', title='Permalink')
       small ¶
     br
     small
@@ -35,11 +35,7 @@
   h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Example Usage
   p
     | Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.
-  | {% highlight javascript %}
-  | module.exports = function(config) {
-  |   // config is loaded and injected into this function for you
-  | }
-  | {% endhighlight %}
+    script(src="https://gist.github.com/pilsy/dd0f701a6ab2b70488df.js")
   br
   br
   p.lead

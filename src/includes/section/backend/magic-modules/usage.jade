@@ -1,0 +1,32 @@
+h4#magic-modules-usage.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Usage 
+  a.permalink(href='/documentation/backend/magic-modules/#magic-modules-usage', title='Permalink')
+    small ¶
+  small Using our Magic Module utility, gives you the ability to load things, like this: (in any module/file)
+
+script(src="https://gist.github.com/pilsy/8680a3889d91547b7ec9.js")
+p
+  | You can use this loading syntax in any file inside your project (including files inside of modules), And you can use this utility yourself to create custom folders/modules, by simply doing 
+  code require('utils').magicModule('folderName')
+  | .
+br
+.bs-callout.bs-callout-danger
+  h4
+    | Common Issue, running commands without the CLI 
+    small
+      | (ie 
+      code grunt server
+      |  or 
+      code node app
+      | )
+  p
+    | If you want to run, or are trying to run commands without the CLI (
+    code clever
+    |  command) - Remember to set your 
+    code NODE_PATH
+    | , see 
+    a(href='#setting-your-node-path') setting your node path
+    |  below.
+    br
+    br
+    img(src='/images/screenshots/node-path-not-set-error.png', width='100%')
+br

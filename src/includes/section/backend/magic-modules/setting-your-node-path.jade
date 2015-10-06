@@ -1,0 +1,31 @@
+h4#setting-your-node-path.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+  | Setting your 
+  code NODE_PATH
+  a.permalink(href='/documentation/backend/magic-modules/#setting-your-node-path', title='Permalink')
+    small ¶
+p.lead.sub
+  | In most cases you will not need to set your 
+  code NODE_PATH
+  | , however if you are running commands without 
+  code clever
+  | , (like 
+  code node cluster
+  | , or 
+  code nodemon app
+  |  for example), or see an error like the following image, then you will need to set your 
+  code NODE_PATH
+  | .
+br
+img(src='/images/screenshots/node-path-not-set-error.png', width='100%')
+br
+br
+
+h5 On Mac/Linux:
+  br
+  br
+  script(src="https://gist.github.com/pilsy/53011a9f8a6568a6350c.js")
+
+h5 On Windows:
+  br
+  br
+  script(src="https://gist.github.com/pilsy/03772fe1f41919ea6293.js")

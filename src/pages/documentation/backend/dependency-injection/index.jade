@@ -1,0 +1,20 @@
+extends ../../../../layouts/subdocs
+
+block head
+  title Documentation &middot; CleverStack.io
+
+block docsheader
+  h1 Backend Documentation
+  p Dependency Injection inspired by Angular, but in Node.js
+
+block content
+  include ../../../../includes/section/backend/dependency-injection
+
+  ul.pager(style="margin-top: 50px;")
+    li.previous
+      a.btn(href="/documentation/backend/official-modules/", title="Official Modules")
+        i.fa.fa-backward
+        |  Back 
+    li.next
+      a.btn(href="/documentation/backend/dependency-injection/", title="Dependency Injection") Next 
+        i.fa.fa-forward

@@ -1,0 +1,22 @@
+h3#magic-modules.page-header Magic Modules 
+  a.permalink(href='/documentation/backend/magic-modules/', title='Permalink')
+    small ¶
+  br
+  small The Magic that enables CleverStack to do things like require('injector'), require('config') etc
+ol.breadcrumb
+  li
+    a(href='/documentation/') Documentation
+  li
+    a(href='/documentation/backend/') Backend
+  li.active Magic Modules
+p.lead
+  | Our NodeJS Backend takes advantage of an NPM feature called the 
+  i Node Path
+  | , by using the environment variable 
+  code NODE_PATH
+  |  we are able to take advantage of require's hidden power - to load folders as if they were an NPM Module.
+p.lead.sub
+  | Our magic module utility makes loading thing's in the wrong order impossible, because we fully set all keys on all objects (in all folders including nested) but do not actually LOAD the code, 
+  | by using a Getter function that caches the loading we are able to dynamically load anything, in any order, in any file!
+p.lead.sub
+  | Gone are the days of require('../../../../../some/code/') and all the problems that come with using that style (aka it's relative to what directory you were in when you ran node)
