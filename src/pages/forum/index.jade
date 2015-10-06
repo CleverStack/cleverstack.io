@@ -1,0 +1,15 @@
+extends ../../layouts/default
+
+block head
+  title About &middot; CleverStack.io
+
+block content
+  #module-page-wrapper.container
+    h1 CleverStack Forum
+    p Search or ask our google group below for help using CleverStack.
+    iframe#forum_embed(src='javascript:void(0)', scrolling='no', frameborder='0', width='100%', height='700')
+    script.
+      document.getElementById("forum_embed").src =
+      "https://groups.google.com/forum/embed/?place=forum/clever-stack" +
+      "&showsearch=true&showpopout=true&hideforumtitle=true&parenturl=" +
+      encodeURIComponent(window.location.href);
