@@ -1,158 +1,159 @@
-h3#project-structure.page-header
-  | Project Structure 
-  a.permalink(href='#project-structure', title='Permalink')
-    small ¶
-  br
-  small
-    | Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.
-  br
-ol.breadcrumb
-  li
-    a(href='#overview') Documentation
-  li
-    a(href='#backend') Backend
-  li.active Project Structure
-p.lead.sub
-  | Cleverstack provides a clear and simple structure that will make writing even the most (seemingly) complex applications trivial.
-blockquote
-  h6
-    | Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build and test, it introduces security challenges and it causes end-user and administrator frustration.
-  footer(style='font-size: 12px;') Ray Ozzie
-h4#directory-structure.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Directory Structure
-| {% highlight bash %}
-| node-seed/
-| ├── config/           # configuration files
-| ├── lib/              # cleverstack core
-| ├── modules/          # backend modules
-| ├── schema/           # backend schema
-| │   └── seedData.json # application seed data in JSON format
-| ├── tasks/            # build/dev tasks
-| │   ├── grunt/        # grunt tasks
-| │   └── gulp/         # gulp tasks
-| ├── tests/            # global app and cleverstack core tests
-| │   ├── e2e/          # end to end tests
-| │   └── unit/         # unit tests
-| ├── Gruntfile.js      # app grunt config & tasks
-| ├── cluster.js        # runs a clustered server with multiple app.js workers
-| ├── app.js            # runs a single node http server
-| └── package.json      # npm dependencies and package information
-| {% endhighlight %}
-h4#important-folders.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Important Folders
-dl.dl-horizontal
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/config') config/
-  dd
-    | This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see 
-    a(href='#backend-configuration') Configuration
-    |  for more information.
-  br
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/lib') lib/
-  dd
-    p
-      | This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.
-    .bs-callout.bs-callout-info
-      h4 Magic Modules
+.bs-docs-section
+  h3#project-structure.page-header
+    | Project Structure 
+    a.permalink(href='#project-structure', title='Permalink')
+      small ¶
+    br
+    small
+      | Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.
+    br
+  ol.breadcrumb
+    li
+      a(href='#overview') Documentation
+    li
+      a(href='#backend') Backend
+    li.active Project Structure
+  p.lead.sub
+    | Cleverstack provides a clear and simple structure that will make writing even the most (seemingly) complex applications trivial.
+  blockquote
+    h6
+      | Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build and test, it introduces security challenges and it causes end-user and administrator frustration.
+    footer(style='font-size: 12px;') Ray Ozzie
+  h4#directory-structure.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Directory Structure
+  | {% highlight bash %}
+  | node-seed/
+  | ├── config/           # configuration files
+  | ├── lib/              # cleverstack core
+  | ├── modules/          # backend modules
+  | ├── schema/           # backend schema
+  | │   └── seedData.json # application seed data in JSON format
+  | ├── tasks/            # build/dev tasks
+  | │   ├── grunt/        # grunt tasks
+  | │   └── gulp/         # gulp tasks
+  | ├── tests/            # global app and cleverstack core tests
+  | │   ├── e2e/          # end to end tests
+  | │   └── unit/         # unit tests
+  | ├── Gruntfile.js      # app grunt config & tasks
+  | ├── cluster.js        # runs a clustered server with multiple app.js workers
+  | ├── app.js            # runs a single node http server
+  | └── package.json      # npm dependencies and package information
+  | {% endhighlight %}
+  h4#important-folders.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Important Folders
+  dl.dl-horizontal
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/config') config/
+    dd
+      | This is where you define all of your configuration files like your global.json and for each of your environments (default is local, dev, stag, prod), see 
+      a(href='#backend-configuration') Configuration
+      |  for more information.
+    br
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/lib') lib/
+    dd
       p
-        | Certain folders are magic modules and can be required in like 
-        code require('models')
-        | , this is made possible by the use of the NODE_PATH variable.
-    .bs-callout.bs-callout-danger
-      h4 Modification warning
+        | This is where the Cleverstack Core is kept, we recommended not modifying anything in this this folder unless you know what you are doing.
+      .bs-callout.bs-callout-info
+        h4 Magic Modules
+        p
+          | Certain folders are magic modules and can be required in like 
+          code require('models')
+          | , this is made possible by the use of the NODE_PATH variable.
+      .bs-callout.bs-callout-danger
+        h4 Modification warning
+        p
+          | If you modify files in this folder, then it is highly likely things may not work if you do not know what you are doing. It is also important to remember that making changes in here makes it hard to upgrade or downgrade your backend without loosing your changes.
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/modules') modules/
+    dd
       p
-        | If you modify files in this folder, then it is highly likely things may not work if you do not know what you are doing. It is also important to remember that making changes in here makes it hard to upgrade or downgrade your backend without loosing your changes.
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/modules') modules/
-  dd
-    p
-      | This is where all of the Cleverstack modules will be installed into your application.
-    p
-      | You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.
-    .bs-callout.bs-callout-info
-      h4 NPM Modules/Packages
+        | This is where all of the Cleverstack modules will be installed into your application.
       p
-        | You can place any NPM module inside this directory, however to take advantage of the true power & flexibility of CleverStack you will need to add and change some key (but easy) points.
+        | You also add custom modules inside this folder, either by creating it manually or using the CleverStack CLI's install, generate or scaffold commands.
+      .bs-callout.bs-callout-info
+        h4 NPM Modules/Packages
+        p
+          | You can place any NPM module inside this directory, however to take advantage of the true power & flexibility of CleverStack you will need to add and change some key (but easy) points.
+        p
+          span.label.label-warning Example
+          |  See the 
+          a(href='https://github.com/CleverStack/backend-example-module') Backend Example Module
+          |  for an example of how to create a cleverstack enhanced module.
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/schema') schema/
+    dd
       p
-        span.label.label-warning Example
-        |  See the 
-        a(href='https://github.com/CleverStack/backend-example-module') Backend Example Module
-        |  for an example of how to create a cleverstack enhanced module.
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/schema') schema/
-  dd
-    p
-      | This is where all your application/project wide/specific seed data should go, stored in the schema/seedData.json.
-    p Also the default location for any sql scripts/dumps/triggers etc...
-    .bs-callout.bs-callout-info
-      h4 Schema SQL & Seed Data
+        | This is where all your application/project wide/specific seed data should go, stored in the schema/seedData.json.
+      p Also the default location for any sql scripts/dumps/triggers etc...
+      .bs-callout.bs-callout-info
+        h4 Schema SQL & Seed Data
+        p
+          | See 
+          a(href='/documentation/backend/models/#seed-data') Seed Data
+          |  for more information regarding seedData.
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/tasks') tasks/
+    dd
       p
-        | See 
-        a(href='/documentation/backend/models/#seed-data') Seed Data
-        |  for more information regarding seedData.
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/tasks') tasks/
-  dd
-    p
-      | This provides you with two easy to use folders, one for grunt tasks and the other for gulp tasks.
-    .bs-callout.bs-callout-info
-      h4 Development/Build Tasks
+        | This provides you with two easy to use folders, one for grunt tasks and the other for gulp tasks.
+      .bs-callout.bs-callout-info
+        h4 Development/Build Tasks
+        p
+          | See 
+          a(href='/documentation/backend/#grunt-tasks') Grunt Tasks
+          |  and 
+          a(href='/documentation/backend/#gulp-tasks') Gulp Tasks
+          |  for more information.
+  h4#important-files.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Important Files
+  dl.dl-horizontal
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/cluster.js') cluster.js
+    dd
       p
-        | See 
-        a(href='/documentation/backend/#grunt-tasks') Grunt Tasks
-        |  and 
-        a(href='/documentation/backend/#gulp-tasks') Gulp Tasks
-        |  for more information.
-h4#important-files.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Important Files
-dl.dl-horizontal
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/cluster.js') cluster.js
-  dd
-    p
-      | This is the main entry point of a normal CleverStack "Clustered" Application, in most cases you will not need to modify this file.
-    .bs-callout.bs-callout-info
-      h4
-        | Module 
-        code bin/cluster.js
-        |  Hook
+        | This is the main entry point of a normal CleverStack "Clustered" Application, in most cases you will not need to modify this file.
+      .bs-callout.bs-callout-info
+        h4
+          | Module 
+          code bin/cluster.js
+          |  Hook
+        p
+          | By placing a file in any modules 
+          code /modules/:moduleName/bin/
+          |  folder called 
+          code cluster.js
+          |  you are able to "hook into" when your cluster starts, it will be loaded and run before the cluster.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)
+        p
+          span.label.label-warning Example
+          |  See the 
+          a(href='https://github.com/CleverStack/clever-background-tasks/blob/master/bin/cluster.js') Clever Background Tasks cluster.js hook
+          |  for an example of how you can use this feature.
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js') Gruntfile.js
+    dd
+      ul
+        li Defines the Applications global (main) gruntConfig.
+        li Registers the Applications included Grunt tasks.
+        li
+          | Provides an easy mechanism for modules to extend the gruntConfig and register/modify grunt tasks.
+      .bs-callout.bs-callout-warning
+        h4 Module Gruntfile's
+        p
+          | Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/app.js') app.js
+    dd
       p
-        | By placing a file in any modules 
-        code /modules/:moduleName/bin/
-        |  folder called 
-        code cluster.js
-        |  you are able to "hook into" when your cluster starts, it will be loaded and run before the cluster.js file is executed, (Example: If the background-tasks module is installed and enabled, this type of hook will setup the background task process.)
+        | This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.
+      .bs-callout.bs-callout-danger
+        h4 Debugging
+        p
+          | You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attach to the process by using --debug-brk.
+        p
+          span.label.label-danger Important
+          |  To run this file on its own you will need to manually 
+          a(href='#setting-your-node-path') set your NODE_PATH
+          | .
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/package.json') package.json
+    dd
       p
-        span.label.label-warning Example
-        |  See the 
-        a(href='https://github.com/CleverStack/clever-background-tasks/blob/master/bin/cluster.js') Clever Background Tasks cluster.js hook
-        |  for an example of how you can use this feature.
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/Gruntfile.js') Gruntfile.js
-  dd
-    ul
-      li Defines the Applications global (main) gruntConfig.
-      li Registers the Applications included Grunt tasks.
-      li
-        | Provides an easy mechanism for modules to extend the gruntConfig and register/modify grunt tasks.
-    .bs-callout.bs-callout-warning
-      h4 Module Gruntfile's
-      p
-        | Each module's Gruntfile.js config is deep merged into this files main grunt config before registering any tasks with grunt, which gives you the power to both add grunt tasks and modify the gruntConfig inside each module.
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/app.js') app.js
-  dd
-    p
-      | This files main use is the entry point of each HTTP Web Serving child process within the "Clustered" environment that app.js provides.
-    .bs-callout.bs-callout-danger
-      h4 Debugging
-      p
-        | You can use this script to spawn a single processed Application, useful for debugging with node-inspector so it will attach to the process by using --debug-brk.
-      p
-        span.label.label-danger Important
-        |  To run this file on its own you will need to manually 
-        a(href='#setting-your-node-path') set your NODE_PATH
-        | .
-  dt
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/package.json') package.json
-  dd
-    p
-      | This file defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.
+        | This file defines the Application and it's information, scripts and NPM dependencies just like every other NPM Module.

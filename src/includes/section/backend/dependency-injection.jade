@@ -1,48 +1,49 @@
-h3#di.page-header
-  | Dependency Injection 
-  a.permalink(href='#backend-di', title='Permalink')
-    small ¶
+.bs-docs-section
+  h3#di.page-header
+    | Dependency Injection 
+    a.permalink(href='#backend-di', title='Permalink')
+      small ¶
+    br
+    small
+      | Asynchronous and fully Non-blocking dependency injection for Node (based on AngularJS)
+  ol.breadcrumb
+    li
+      a(href='#overview') Documentation
+    li
+      a(href='#backend') Backend
+    li.active Dependency Injection
+  p.lead
+    | Dependency Injection in CleverStack is provided by our 
+    a(href='https://www.npmjs.com/package/clever-injector') clever-injector
+    |  NPM Package, (that is based on the popular AngularJS), the code is open source and available on 
+    a(href='http://git.com/CleverStack/clever-injector') Github
+    | .
+  p.lead.sub
+    | All Modules, Controllers, Services, Models, Tasks, Routes, Tests (and more) are loaded (including all of their dependencies in a recursive manner), and injected automatically using the 
+    a(href='https://github.com/cleverstack/clever-injector') clever-injector
+    |  NPM Package.
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Features
+  ul
+    li Simple, declarative dependency injection.
+    li Lightning-fast and fully asynchronous. (non-blocking).
+    li Will never load the same resource more than once.
+    li
+      | Load's resources (from multiple directories) based upon filename for you, then resolves & injects dependencies automatically. (even if your depedencies have dependencies of their own).
+    li Ability to create Child Containers. (Container Hierarchy, child/sub injectors).
+    li Optional Dependencies. (with the $ suffix).
+    li Supports Factories for automatic Service creation. (with the Factory suffix)
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Example Usage
+  p
+    | Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.
+  | {% highlight javascript %}
+  | module.exports = function(config) {
+  |   // config is loaded and injected into this function for you
+  | }
+  | {% endhighlight %}
   br
-  small
-    | Asynchronous and fully Non-blocking dependency injection for Node (based on AngularJS)
-ol.breadcrumb
-  li
-    a(href='#overview') Documentation
-  li
-    a(href='#backend') Backend
-  li.active Dependency Injection
-p.lead
-  | Dependency Injection in CleverStack is provided by our 
-  a(href='https://www.npmjs.com/package/clever-injector') clever-injector
-  |  NPM Package, (that is based on the popular AngularJS), the code is open source and available on 
-  a(href='http://git.com/CleverStack/clever-injector') Github
-  | .
-p.lead.sub
-  | All Modules, Controllers, Services, Models, Tasks, Routes, Tests (and more) are loaded (including all of their dependencies in a recursive manner), and injected automatically using the 
-  a(href='https://github.com/cleverstack/clever-injector') clever-injector
-  |  NPM Package.
-h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Features
-ul
-  li Simple, declarative dependency injection.
-  li Lightning-fast and fully asynchronous. (non-blocking).
-  li Will never load the same resource more than once.
-  li
-    | Load's resources (from multiple directories) based upon filename for you, then resolves & injects dependencies automatically. (even if your depedencies have dependencies of their own).
-  li Ability to create Child Containers. (Container Hierarchy, child/sub injectors).
-  li Optional Dependencies. (with the $ suffix).
-  li Supports Factories for automatic Service creation. (with the Factory suffix)
-h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Example Usage
-p
-  | Simply put the name of the dependency you need in the function exported by the file and it will be loaded and injected for you automatically.
-| {% highlight javascript %}
-| module.exports = function(config) {
-|   // config is loaded and injected into this function for you
-| }
-| {% endhighlight %}
-br
-br
-p.lead
-  i
-    | Please see the 
-    a(href='https://github.com/cleverstack/clever-injector') README on Github
-    |  for more documentation & information about clever-injector.
+  br
+  p.lead
+    i
+      | Please see the 
+      a(href='https://github.com/cleverstack/clever-injector') README on Github
+      |  for more documentation & information about clever-injector.

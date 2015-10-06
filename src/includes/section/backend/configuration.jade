@@ -1,88 +1,89 @@
-h3#configuration.page-header
-  | Project Configuration 
-  a.permalink(href='#configuration', title='Permalink')
-    small ¶
-  br
-  small
-    | Sophisticated deep-merged configuration allows ultimate flexibility between environments
-ol.breadcrumb
-  li
-    a(href='#overview') Documentation
-  li
-    a(href='#backend') Backend
-  li.active Project Configuration
-p.lead
-  | To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.
-blockquote
-  h6
-    | If you’re willing to restrict the flexibility of your approach, you can almost always do something better.
-  footer(style='font-size: 12px;') John Carmack
-h4#configuration-files.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
-  | Configuration Files: 
-  small (loaded in the order they are listed)
-p
-  | Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.
-ol
-  li
-    a(href='https://github.com/CleverStack/Node-Seed/tree/master/config/global.json') /config/global.json
-    ul
-      li
-        | Define the global configuration for your application here.
-        .bs-callout.bs-callout-danger
-          h4 Required for configuration
-          p
-            | This file is required and must exist, as this is the place for any default (or GLOBAL) configuration. Don't Delete!
-  li
-    | /modules/<module>/config/default.json
-    ul
-      li
-        | Every modules /config/default.json file will be loaded
-        .bs-callout.bs-callout-info
-          h4 Module's default.json
-          p
-            | See 
-            a(href='/documentation/backend/modules/#configuration') Module Configuration
-            |  Documentation for more information
-  li
-    | /modules/<module>/config/global.json
-    ul
-      li
-        | Every modules /config/global.json file will be loaded
-        .bs-callout.bs-callout-info
-          h4 Module's global.json
-          p
-            | See 
-            a(href='/documentation/backend/modules/#configuration') Module Configuration
-            |  Documentation for more information
-  li
-    | /config/<NODE_ENV>.json 
-    strong (environment specific configuration)
-    ul
-      li
-        | This allows you to modify or extend the configuration for each environment, regardless of what name you give an environment.
-      .bs-callout.bs-callout-info
-        h4 Default Environment Names
-        p The default environment names are, LOCAL, DEV, STAG and PROD.
-      .bs-callout.bs-callout-danger
-        h4 Environment Specific Configuration
-        p
-          | To take advantage of an environment based configuration file, you need to set an Environment Variable called 
-          code NODE_ENV
-          |  to the name you called your environment. (We use 
-          code NODE_ENV=LOCAL
-          |  for local development).
-br
-h4#loading-configuration.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
-  | Loading the Config 
-  small (anywhere inside your application)
-p
-  | Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them
-| {% highlight javascript %}
-| config = require('config');
-| {% endhighlight %}
-br
-h4#cli-configuration-prompts.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') CLI Configuration Prompts
-.bs-callout.bs-callout-danger
-  h4 Needs more information
+.bs-docs-section
+  h3#configuration.page-header
+    | Project Configuration 
+    a.permalink(href='#configuration', title='Permalink')
+      small ¶
+    br
+    small
+      | Sophisticated deep-merged configuration allows ultimate flexibility between environments
+  ol.breadcrumb
+    li
+      a(href='#overview') Documentation
+    li
+      a(href='#backend') Backend
+    li.active Project Configuration
+  p.lead
+    | To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.
+  blockquote
+    h6
+      | If you’re willing to restrict the flexibility of your approach, you can almost always do something better.
+    footer(style='font-size: 12px;') John Carmack
+  h4#configuration-files.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Configuration Files: 
+    small (loaded in the order they are listed)
   p
-    | This section of the documentation is either out-dated or incomplete, please ask for help in github or gitter if you need more information.
+    | Each of the following files are loaded and then deep merged into one application config object, in the exact order listed here.
+  ol
+    li
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/config/global.json') /config/global.json
+      ul
+        li
+          | Define the global configuration for your application here.
+          .bs-callout.bs-callout-danger
+            h4 Required for configuration
+            p
+              | This file is required and must exist, as this is the place for any default (or GLOBAL) configuration. Don't Delete!
+    li
+      | /modules/<module>/config/default.json
+      ul
+        li
+          | Every modules /config/default.json file will be loaded
+          .bs-callout.bs-callout-info
+            h4 Module's default.json
+            p
+              | See 
+              a(href='/documentation/backend/modules/#configuration') Module Configuration
+              |  Documentation for more information
+    li
+      | /modules/<module>/config/global.json
+      ul
+        li
+          | Every modules /config/global.json file will be loaded
+          .bs-callout.bs-callout-info
+            h4 Module's global.json
+            p
+              | See 
+              a(href='/documentation/backend/modules/#configuration') Module Configuration
+              |  Documentation for more information
+    li
+      | /config/<NODE_ENV>.json 
+      strong (environment specific configuration)
+      ul
+        li
+          | This allows you to modify or extend the configuration for each environment, regardless of what name you give an environment.
+        .bs-callout.bs-callout-info
+          h4 Default Environment Names
+          p The default environment names are, LOCAL, DEV, STAG and PROD.
+        .bs-callout.bs-callout-danger
+          h4 Environment Specific Configuration
+          p
+            | To take advantage of an environment based configuration file, you need to set an Environment Variable called 
+            code NODE_ENV
+            |  to the name you called your environment. (We use 
+            code NODE_ENV=LOCAL
+            |  for local development).
+  br
+  h4#loading-configuration.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Loading the Config 
+    small (anywhere inside your application)
+  p
+    | Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them
+  | {% highlight javascript %}
+  | config = require('config');
+  | {% endhighlight %}
+  br
+  h4#cli-configuration-prompts.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') CLI Configuration Prompts
+  .bs-callout.bs-callout-danger
+    h4 Needs more information
+    p
+      | This section of the documentation is either out-dated or incomplete, please ask for help in github or gitter if you need more information.
