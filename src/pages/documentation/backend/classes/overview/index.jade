@@ -1,14 +1,14 @@
-extends ../../../../layouts/subdocs
+extends ../../../../../layouts/subdocs
 
 block head
   title Documentation &middot; CleverStack.io
 
 block docsheader
   h1 Backend Documentation
-  p A guide on how to Debug CleverStack Node.js Applications
+  p Classes in the CleverStack Node.js Framework and how to use them.
 
 block content
-  include ../../../../includes/section/backend/debugging
+  include ../../../../../includes/section/backend/classes/overview
 
   .google-ads(style='margin-bottom: 25px;')
     ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
@@ -17,9 +17,9 @@ block content
 
   ul.pager(style="margin-top: 50px;")
     li.previous
-      a.btn(href="/documentation/backend/using-the-cli/", title="Using the CLI")
+      a.btn(href="/documentation/backend/debugging/", title="Debugging")
         i.fa.fa-backward
         |  Back 
     li.next
-      a.btn(href="/documentation/backend/classes/overview/", title="Classes Overview") Next 
+      a.btn(href="/documentation/backend/classes/definition/", title="Definition") Next 
         i.fa.fa-forward

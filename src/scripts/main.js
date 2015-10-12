@@ -60,6 +60,7 @@ function onPlayerStateChange(event) {
   });
   $('#why-video').bind('click', function() {
     ga('send', 'event', 'Developer Page', 'click', 'Why Cleverstack Video Link');
+    player.playVideo();
   });
  });
 

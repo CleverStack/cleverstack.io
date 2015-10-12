@@ -1,49 +1,50 @@
-h3#debugging.page-header
-  | Debugging 
-  a.permalink(href='/documentation/backend/#debugging', title='Permalink')
-    small ¶
+.bs-docs-section
+  h3#debugging.page-header
+    | Debugging 
+    a.permalink(href='/documentation/backend/debugging/', title='Permalink')
+      small ¶
+    br
+    small What to do when your stuck on some issue
+  ol.breadcrumb
+    li
+      a(href='/documentation/') Documentation
+    li
+      a(href='/documentation/backend/#debugging') Backend
+    li.active Debugging
+  p.lead
+    | Debugging a CleverStack Application is made easy by using the 
+    a(href='') debug
+    |  NPM Module, and by setting the 
+    code DEBUG
+    |  environment variable with the names of the debuggers you want enabled.
+  p.lead.sub
+    | All debuggers in CleverStack have the 
+    code cleverstack:
+    |  suffix, to enable logging for all CleverStack features & modules simply set your 
+    code DEBUG
+    |  environment to 
+    code cleverstack:*
+    | .
+  img(src='/images/screenshots/debugging-node-seed.png', width='100%')
   br
-  small What to do when your stuck on some issue
-ol.breadcrumb
-  li
-    a(href='/documentation') Documentation
-  li
-    a(href='/documentation/backend') Backend
-  li.active Debugging
-p.lead
-  | Debugging a CleverStack Application is made easy by using the 
-  a(href='') debug
-  |  NPM Module, and by setting the 
-  code DEBUG
-  |  environment variable with the names of the debuggers you want enabled.
-p.lead.sub
-  | All debuggers in CleverStack have the 
-  code cleverstack:
-  |  suffix, to enable logging for all CleverStack features & modules simply set your 
-  code DEBUG
-  |  environment to 
-  code cleverstack:*
-  | .
-img(src='/assets/img/screenshots/debugging-node-seed.png', width='100%')
-br
-br
-br
-p.lead.sub
-  | To enable all CleverStack debuggers, simply run 
-  code export DEBUG=cleverstack:*
-  |  on your Terminal if you're running Mac or Linux, or if you're on Windows simply run 
-  code set DEBUG=cleverstack*
-  |  in your command line. (CMD).
-h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
-  | List of Debugger Names 
-  small (there are many more, please check the code to find more)
-ul
-  li
-    | Each module automatically get's a debugger based on it's name, ie cleverstack:clever-orm
-  li cleverstack:app
-  li cleverstack:cluster
-  li cleverstack:models
-  li cleverstack:modules
-  li cleverstack:ModuleLoader
-  li cleverstack:config
-  li cleverstack:utils
+  br
+  br
+  p.lead.sub
+    | To enable all CleverStack debuggers, simply run 
+    code export DEBUG=cleverstack:*
+    |  on your Terminal if you're running Mac or Linux, or if you're on Windows simply run 
+    code set DEBUG=cleverstack*
+    |  in your command line. (CMD).
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | List of Debugger Names 
+    small (there are many more, please check the code to find more)
+  ul
+    li
+      | Each module automatically get's a debugger based on it's name, ie cleverstack:clever-orm
+    li cleverstack:app
+    li cleverstack:cluster
+    li cleverstack:models
+    li cleverstack:modules
+    li cleverstack:ModuleLoader
+    li cleverstack:config
+    li cleverstack:utils

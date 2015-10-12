@@ -8,9 +8,9 @@
       | Sophisticated deep-merged configuration allows ultimate flexibility between environments
   ol.breadcrumb
     li
-      a(href='#overview') Documentation
+      a(href='/documentation/') Documentation
     li
-      a(href='#backend') Backend
+      a(href='/documentation/backend/#configuration') Backend
     li.active Project Configuration
   p.lead
     | To make configuration as easy and comprehensive as possible, you are not only able to define a global.json configuration file, you can also define configuration files for each environment regardless of what you call them.
@@ -29,7 +29,7 @@
       ul
         li
           | Define the global configuration for your application here.
-          .bs-callout.bs-callout-danger
+          .bs-callout.bs-callout-warning
             h4 Required for configuration
             p
               | This file is required and must exist, as this is the place for any default (or GLOBAL) configuration. Don't Delete!
@@ -64,7 +64,7 @@
         .bs-callout.bs-callout-info
           h4 Default Environment Names
           p The default environment names are, LOCAL, DEV, STAG and PROD.
-        .bs-callout.bs-callout-danger
+        .bs-callout.bs-callout-info
           h4 Environment Specific Configuration
           p
             | To take advantage of an environment based configuration file, you need to set an Environment Variable called 
@@ -78,9 +78,12 @@
     small (anywhere inside your application)
   p
     | Consider the following code, which uses a "Magic Module" to load the json configuration files and deeep merge them
-  | {% highlight javascript %}
-  | config = require('config');
-  | {% endhighlight %}
+  script(src="https://gist.github.com/pilsy/6a09d19b403c9a25f54d.js")
+
+  br
+  p Or you could just load it using our Dependency Injection system in any file like so:
+  script(src="https://gist.github.com/pilsy/dd0f701a6ab2b70488df.js")
+
   br
   h4#cli-configuration-prompts.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') CLI Configuration Prompts
   .bs-callout.bs-callout-danger

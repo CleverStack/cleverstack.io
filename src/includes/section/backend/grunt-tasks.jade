@@ -1,15 +1,18 @@
-h3#grunt-tasks.page-header
-  | Grunt Tasks 
-  a.permalink(href='/documentation/backend/#grunt-tasks', title='Permalink')
-    small ¶
-  br
-  small Modular configuration and registration of grunt task's with ease.
-ol.breadcrumb
-  li
-    a(href='/documentation') Documentation
-  li
-    a(href='/documentation/backend') Backend
-  li.active Grunt Tasks
+.bs-docs-section
+  h3#grunt-tasks.page-header
+    | Grunt Tasks 
+    a.permalink(href='/documentation/backend/grunt-tasks/', title='Permalink')
+      small ¶
+    br
+    small
+      | Modular configuration and registration of grunt task's with ease.
+  ol.breadcrumb
+    li
+      a(href='/documentation/') Documentation
+    li
+      a(href='/documentation/backend/#grunt-tasks') Backend
+    li.active Grunt Tasks
+
 p.lead
   | Simply by placing a javascript file in the 
   code backend/tasks/grunt
@@ -18,26 +21,10 @@ p.lead
   |  and 
   code register
   |  keys, unless the task does not need to register, in that case you can just export the config on the root level of the object.
-| {% highlight javascript linenos %}
-| // Config with register
-| module.exports = {
-|   config: {
-|     dist: {
-|       // ...
-|     }
-|   },
-|   register: function(grunt) {
-|     // grunt.registerTask('build', ['build:dist']);
-|   }
-| };
-| // Config on the root level
-| module.exports = {
-|   dist: {
-|     // ...
-|   }
-| }
-| {% endhighlight %}
-.bs-callout.bs-callout-warning
+
+  script(src="https://gist.github.com/pilsy/781c3fa8b0a3775d3504.js")
+
+.bs-callout.bs-callout-info
   h4 Important information about naming grunt task files
   p
     | The name of the file will be used as the key inside the gruntConfig, as an example, for the grunt task concurrent.js, the gruntConfig would be gruntConfig[concurrent]
