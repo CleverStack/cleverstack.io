@@ -10,11 +10,16 @@ block docsheader
 block content
   include ../../../../includes/section/backend/dependency-injection
 
+  .google-ads(style='margin-bottom: 25px;')
+    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({});
+
   ul.pager(style="margin-top: 50px;")
     li.previous
       a.btn(href="/documentation/backend/official-modules/", title="Official Modules")
         i.fa.fa-backward
         |  Back 
     li.next
-      a.btn(href="/documentation/backend/dependency-injection/", title="Dependency Injection") Next 
+      a.btn(href="/documentation/backend/project-structure/", title='Project Structure') Next 
         i.fa.fa-forward

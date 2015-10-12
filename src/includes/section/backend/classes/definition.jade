@@ -1,0 +1,31 @@
+h3#definition.page-header
+  | Definition 
+  a.permalink(href='#definition', title='Permalink')
+    small ¶
+ol.breadcrumb
+  li
+    a(href='/documentation') Documentation
+  li
+    a(href='/documentation/backend') Backend
+  li
+    a(href='/documentation/backend/classes') Classes
+  li.active Definition
+br
+| {% highlight javascript %}
+| // This example file exports a function that will have "Class" injected into it via the clever-injector
+| module.exports = function( Class ) {
+|   return Class.extend(
+|   /* @Class */
+|   {
+|     // Static attributes or methods
+|   },
+|   /* @Prototype */
+|   {
+|     // Instance attributes or methods
+|   });
+| };
+| {% endhighlight %}
+.bs-callout.bs-callout-info
+  h4 Extend's arguments
+  p
+    | You can call .extend() with only the Static/Class object instead of defining both

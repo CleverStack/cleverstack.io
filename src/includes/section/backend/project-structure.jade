@@ -1,7 +1,7 @@
 .bs-docs-section
   h3#project-structure.page-header
     | Project Structure 
-    a.permalink(href='#project-structure', title='Permalink')
+    a.permalink(href='/documentation/backend/project-structure/', title='Permalink')
       small ¶
     br
     small
@@ -20,24 +20,8 @@
       | Complexity kills. It sucks the life out of developers, it makes products difficult to plan, build and test, it introduces security challenges and it causes end-user and administrator frustration.
     footer(style='font-size: 12px;') Ray Ozzie
   h4#directory-structure.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Directory Structure
-  | {% highlight bash %}
-  | node-seed/
-  | ├── config/           # configuration files
-  | ├── lib/              # cleverstack core
-  | ├── modules/          # backend modules
-  | ├── schema/           # backend schema
-  | │   └── seedData.json # application seed data in JSON format
-  | ├── tasks/            # build/dev tasks
-  | │   ├── grunt/        # grunt tasks
-  | │   └── gulp/         # gulp tasks
-  | ├── tests/            # global app and cleverstack core tests
-  | │   ├── e2e/          # end to end tests
-  | │   └── unit/         # unit tests
-  | ├── Gruntfile.js      # app grunt config & tasks
-  | ├── cluster.js        # runs a clustered server with multiple app.js workers
-  | ├── app.js            # runs a single node http server
-  | └── package.json      # npm dependencies and package information
-  | {% endhighlight %}
+  script(src="https://gist.github.com/pilsy/2ccda6de165a00e568a8.js")
+
   h4#important-folders.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Important Folders
   dl.dl-horizontal
     dt

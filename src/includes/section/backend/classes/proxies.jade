@@ -1,0 +1,37 @@
+h3#proxy-methods.page-header
+  | Proxy Methods 
+  a.permalink(href='#proxy-methods', title='Permalink')
+    small ¶
+ol.breadcrumb
+  li
+    a(href='/documentation') Documentation
+  li
+    a(href='/documentation/backend') Backend
+  li
+    a(href='/documentation/backend/classes') Classes
+  li.active Proxy Methods
+p
+  | Proxies are a helpful way of flattening your code, you don't need to nest or repeat yourself - structure it out into something more modular and re-usable.
+br
+| {% highlight javascript %}
+| var Handler = Class.extend({
+|     init : function(content, headers)
+|     {
+|         this._headers = headers;
+|         this._content = content;
+|     },
+|     /* Prototype */
+|     writeHead : function(response)
+|     {
+|         response.writeHead(200, this._headers);
+|     },
+|     handle : function(request, response)
+|     {
+|         this.writeHead(response);
+|         response.end(this._content);
+|     }
+| });
+| var handler = new Handler('Hello World from ResponseHandler\n', { 'Content-Type': 'text/plain' });
+| var http = require('http');
+| http.createServer(handler.proxy('handle')).listen(1337, "127.0.0.1");
+| {% endhighlight %}
