@@ -32,24 +32,25 @@
     p
       span.label.label-info Note
       |  After running this command you may be prompted to configure the module/s your installing, see 
-      a(href='#configuration') Configuration
+      a(href='/documentation/backend/configuration/') Configuration
       |  for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see 
       a(href='/documentation/backend/models/#seed-data') Seed Data
       |  for more information.
+
     br
     img(src='/images/screenshots/clever-init-backend.png', width='100%')
+    
     br
+    .bs-callout.bs-callout-info
+      h4 Init running time
+      p
+        | This command may take awhile depending on your internet connection and computer specifications.
     .bs-callout.bs-callout-warning
       h4 Database creation
       p
         | If you are using SQL/ORM (aka MySQL, Postgre etc) then you will need to manually run the 
         code CREATE DATABASE
         |  command to create your database, the underlying library we use does not support this functionality.
-
-    .bs-callout.bs-callout-info
-      h4 Init running time
-      p
-        | This command may take awhile depending on your internet connection and computer specifications.
     .bs-callout.bs-callout-warning
       h4 Command Failed Errors
       p
@@ -64,16 +65,15 @@
   h4#starting-the-server.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
     | Starting the Server 
     small (using the CLI)
-  .bs-callout.bs-callout-danger
-    h4 Needs more information
-    p
-      | This section of the documentation is either incomplete, please ask for help in github or gitter if you need more information.
+
+  script(src="https://gist.github.com/pilsy/55c2d79ffcd2255ba4cd.js")
   br
+
   h4#repl-console.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') REPL Console
   p.lead To use the CleverStack REPL, simply run
-  | {% highlight bash %}
-  | $ clever repl
-  | {% endhighlight %}
+  script(src="https://gist.github.com/pilsy/ddd8215f55b7246b50a0.js")
+  br
+
   img(src='/images/screenshots/clever-repl-commands.png', width='100%')
   br
   br
@@ -94,19 +94,12 @@
   h4#running-unit-tests.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
     | Running Unit Tests 
     small (using the CLI)
-  | {% highlight bash %}clever test unit{% endhighlight %}
-  p Or simply use the alias
-  | {% highlight bash %}clever test{% endhighlight %}
-  span.label.label-info Note
-  |  This will run unit & e2e tests.
+  script(src="https://gist.github.com/pilsy/31d418b1a69865cb3f92.js")
   br
+
   br
   h4#running-e2e-tests.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
     | Running E2E/Integration Tests 
     small (using the CLI)
-  | {% highlight bash %}clever test e2e{% endhighlight %}
-  p Or simply use the alias
-  | {% highlight bash %}clever test{% endhighlight %}
-  span.label.label-info Note
-  |  This will run unit & e2e tests.
+  script(src="https://gist.github.com/pilsy/1ba2701579e6e619ccae.js")
   br

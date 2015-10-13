@@ -1,31 +1,22 @@
-h3#definition.page-header
-  | Definition 
-  a.permalink(href='#definition', title='Permalink')
-    small ¶
-ol.breadcrumb
-  li
-    a(href='/documentation') Documentation
-  li
-    a(href='/documentation/backend') Backend
-  li
-    a(href='/documentation/backend/classes') Classes
-  li.active Definition
-br
-| {% highlight javascript %}
-| // This example file exports a function that will have "Class" injected into it via the clever-injector
-| module.exports = function( Class ) {
-|   return Class.extend(
-|   /* @Class */
-|   {
-|     // Static attributes or methods
-|   },
-|   /* @Prototype */
-|   {
-|     // Instance attributes or methods
-|   });
-| };
-| {% endhighlight %}
-.bs-callout.bs-callout-info
-  h4 Extend's arguments
-  p
-    | You can call .extend() with only the Static/Class object instead of defining both
+.bs-docs-section
+  h3#definition.page-header
+    | Class Definition 
+    a.permalink(href='/documentation/backend/classes/definition/', title='Permalink')
+      small ¶
+  ol.breadcrumb
+    li
+      a(href='/documentation/') Documentation
+    li
+      a(href='/documentation/backend/#classes') Backend
+    li
+      a(href='/documentation/backend/classes/#definition') Classes
+    li.active Definition
+
+  br
+  p.sub.lead Defining Classes in the CleverStack Node.js Framework is easy, take a look at the following example,
+  script(src="https://gist.github.com/pilsy/3234add7e0f0bb2bb2da.js")
+
+  .bs-callout.bs-callout-info
+    h4 Extend's arguments
+    p
+      | You can call .extend() with only the Prototype object instead of defining both

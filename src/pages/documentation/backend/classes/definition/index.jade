@@ -1,0 +1,25 @@
+extends ../../../../../layouts/subdocs
+
+block head
+  title Documentation &middot; CleverStack.io
+
+block docsheader
+  h1 Backend Documentation
+  p Defining  in the CleverStack Node.js Framework and how to use them.
+
+block content
+  include ../../../../../includes/section/backend/classes/definition
+
+  .google-ads(style='margin-bottom: 25px;')
+    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({});
+
+  ul.pager(style="margin-top: 50px;")
+    li.previous
+      a.btn(href="/documentation/backend/classes/overview/", title="Classes Overview")
+        i.fa.fa-backward
+        |  Back 
+    li.next
+      a.btn(href="/documentation/backend/classes/extending/", title="Extending Classes") Next 
+        i.fa.fa-forward

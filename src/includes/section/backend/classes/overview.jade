@@ -1,59 +1,62 @@
-h1#overview.page-header
-  | Classes
+.bs-docs-section
+  h1#overview.page-header
+    | Classes
+    a.permalink(href='/documentation/backend/classes/overview/', title='Permalink')
+      small ¶
+    br
+    small Lightning-fast and flexible OOP Style Classes
+  ol.breadcrumb
+    li
+      a(href='/documentation/') Documentation
+    li
+      a(href='/documentation/backend/') Backend
+    li.active Classes
+  p.lead.sub
+    | Each Module, Controller, Service or Model is extended from a 
+    a(href='https://github.com/daffl/uberclass') Class
+    | , we do this for many reasons but none as important as taking advantage of 
+    a(href='https://developers.google.com/v8/design') V8's Hidden Classes, Inline Caches & Optimizing Compiler
+    |  to allow V8 to generate efficient and performant machine code so your application is as fast as humanly possible and then some.
+  blockquote
+    h6
+      | Beauty is more important in computing than anywhere else in technology because software is so complicated. Beauty is the ultimate defence against complexity.
+    footer(style='font-size: 12px;') David Gelernter
+  h5.page-header Highlights
+  ul
+    li Prototypal inheritance
+    li Static inheritance
+    li Setup and initialization methods
+    li Easy callback (proxying/currying) creation
+    li
+      | Lightning fast performance
+      ol
+        li Takes advantage of V8's Hidden Classes & Inline Caches
+        li
+          | Takes advantage of V8's Optimizing Compiler which generates efficient machine code to run in place of your javascript
+          | Clean, Efficient and Optimized code
+    li All Classes can emit and listen to events using EventEmitter
   br
-  small Lightning-fast and flexible OOP Style Classes
-ol.breadcrumb
-  li
-    a(href='/documentation') Documentation
-  li
-    a(href='/documentation/backend') Backend
-  li.active Classes
-p.lead.sub
-  | Each Module, Controller, Service or Model is extended from a 
-  a(href='https://github.com/daffl/uberclass') Class
-  | , we do this for many reasons but none as important as taking advantage of 
-  a(href='https://developers.google.com/v8/design') V8's Hidden Classes, Inline Caches & Optimizing Compiler
-  |  to allow V8 to generate efficient and performant machine code so your application is as fast as humanly possible and then some.
-blockquote
-  h6
-    | Beauty is more important in computing than anywhere else in technology because software is so complicated. Beauty is the ultimate defence against complexity.
-  footer(style='font-size: 12px;') David Gelernter
-h5.page-header Highlights
-ul
-  li Prototypal inheritance
-  li Static inheritance
-  li Setup and initialization methods
-  li Easy callback (proxying/currying) creation
-  li
-    | Lightning fast performance
-    ol
-      li Takes advantage of V8's Hidden Classes & Inline Caches
-      li
-        | Takes advantage of V8's Optimizing Compiler which generates efficient machine code to run in place of your javascript
-        | Clean, Efficient and Optimized code
-  li All Classes can emit and listen to events using EventEmitter
-br
-.bs-callout.bs-callout-danger
-  h4 Proxy Functions
-  p
-    | We strongly encourage the use of curried proxy functions, by doing so you are able to keep your code easy to read and maintain by using as little nesting as possible, this also means your code (function/s) is/are re-usable.
-.bs-callout.bs-callout-warning
-  h4 Example Usage
-  p
-    | Take a look at our 
-    a(href='https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js') Module Loader Class
-    |  for an in-depth look at how to use currying to your advantage.
-.bs-callout.bs-callout-info
-  h4 Currying (proxy methods)
-  p
-    | Read 
-    a(href='http://en.wikipedia.org/wiki/Currying') Currying
-    |  on Wikipedia for an in-depth explaination of currying.
-.bs-callout.bs-callout-info
-  h4 Hidden Classes
-  p
-    | Read 
-    a(href='http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb') Understanding Hidden Classes in V8
-    |  and 
-    a(href='http://www.youtube.com/watch?v=hWhMKalEicY') View this Video
-    |  for an indepth look at what Hidden Classes are and how they work in V8.
+  .bs-callout.bs-callout-danger
+    h4 Proxy Functions
+    p
+      | We strongly encourage the use of curried proxy functions, by doing so you are able to keep your code easy to read and maintain by using as little nesting as possible, this also means your code (function/s) is/are re-usable.
+  .bs-callout.bs-callout-warning
+    h4 Example Usage
+    p
+      | Take a look at our 
+      a(href='https://github.com/CleverStack/Node-Seed/blob/master/lib/utils/moduleLoader.js') Module Loader Class
+      |  for an in-depth look at how to use currying to your advantage.
+  .bs-callout.bs-callout-info
+    h4 Currying (proxy methods)
+    p
+      | Read 
+      a(href='http://en.wikipedia.org/wiki/Currying') Currying
+      |  on Wikipedia for an in-depth explaination of currying.
+  .bs-callout.bs-callout-info
+    h4 Hidden Classes
+    p
+      | Read 
+      a(href='http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb') Understanding Hidden Classes in V8
+      |  and 
+      a(href='http://www.youtube.com/watch?v=hWhMKalEicY') View this Video
+      |  for an indepth look at what Hidden Classes are and how they work in V8.
