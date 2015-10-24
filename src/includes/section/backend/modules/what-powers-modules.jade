@@ -1,0 +1,103 @@
+.bs-docs-section
+  h3#what-powers-modules.page-header What Powers Modules? 
+    a.permalink(href='/documentation/backend/modules/what-powers-modules/', title='Permalink')
+      small ¶
+    br
+    small What CleverStack leverages and extends to comprise the Module System.
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#what-powers-modules') Modules
+    li.active What Powers Modules?
+  p.lead.sub CleverStack's 
+    strong
+      i Module System
+    |  provides a very thin abstraction layer ontop of NPM, which because of its very small core codebase is easy to maintain, has a very low risk of severe bugs, has community support for speedy bug fixes to reported or common issues, that fascilitates creating the most modular code possible when developing on the 
+    strong NodeJS
+    |  runtime, without sacrificing code quality or developer sanity.
+  
+  //- Core Components
+  h5.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Core Components
+  dl#core-components.dl-horizontal
+    dt
+      a(href='https://github.com/CleverStack/Node-Seed/tree/master/lib/classes/ModuleLoader.js') ModuleLoader
+    dd
+      p
+        | Is an extended 
+        code Class
+        | , that inherits from 
+        code EventEmitter
+        | , and is responsible for iterating over the modules inside the modules folder to load and trigger a sequence of events for each of the modules in an asynchronous fashion.
+    dt
+      a(href='#class') Module
+    dd
+      p
+        | Is an extended 
+        code Class
+        | , that inherits from 
+        code EventEmitter
+        | , and must be exported by all CleverStack modules - See the 
+        a(href='#class') Module Class
+        |  Documentation for more information, additionally you can 
+        a(href='https://github.com/CleverStack/Node-Seed/tree/master/lib/classes/Module.js') view the code on github
+        | .
+  //- Leveraged Components
+  h5#leveraged-components.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Leveraged Components 
+    a.permalink(href='#leveraged-components', title='Permalink')
+      small ¶
+  dl.dl-horizontal
+    dt
+      a(href='/documentation/backend/#di') Dependency Injector
+      br
+      small
+        | (
+        a(href='https://www.npmjs.com/package/clever-injector') clever-injector
+        | )
+    dd
+      p
+        | This module provides Dependency Injection for CleverStack, it is non blocking, Lightning-fast, easy to use, flexible, and makes using DI 
+        strong
+          i exactly the same
+        |  for the Node Backend and the Angular Frontend, with the exception of 
+        strong
+          i optional dependencies
+        |  - See the 
+        a(href='/documentation/backend/#di') Dependency Injection
+        |  Documentation for more information.
+    dt
+      a(href='/documentation/backend/#magic-modules') Magic Modules
+    dd
+      p
+        | The Magic that enables CleverStack to do things like 
+        code require('injector')
+        | , 
+        code require('config')
+        |  and 
+        code require('module-name')
+        |  as well as many others - See the 
+        a(href='/documentation/backend/#magic-modules') Magic Modules
+        |  Documentation for more information.
+    dt
+      a(href='/documentation/backend/classes/') Class
+    dd
+      p
+        | Each Module is extended from a Class, we do this for many reasons but none as important as taking advantage of V8's Hidden Classes, Inline Caches & Optimizing Compiler to allow V8 to generate efficient and performant machine code automatically, so your application is as Lightning-fast to execute as well as write and maintain. - See the 
+        a(href='/documentation/backend/classes/') Class
+        |  Documentation for more information.
+    dt
+      a(href='http://npmjs.org') NPM
+    dd
+      p
+        | NPM is the package manager for Node.js. It was created in 2009 as an open source project to help JavaScript developers easily share packaged modules of code and is dedicated to the long term success of the JavaScript community - It is responsible for our dependency management and is used by commands like 
+        code clever init
+        | , 
+        code clever install
+        |  and 
+        code clever-setup
+        | .
+  br

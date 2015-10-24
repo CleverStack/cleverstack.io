@@ -1,0 +1,25 @@
+extends ../../../../../layouts/subdocs
+
+block head
+  title Node.js Example Module &middot; Documentation &middot; CleverStack.io
+
+block docsheader
+  h1 Backend Documentation
+  p CleverStack Node.js Backend Example Module
+
+block content
+  .google-ads(style='margin-bottom: 25px;')
+    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  
+  include ../../../../../includes/section/backend/modules/example-module
+
+  ul.pager(style="margin-top: 50px;")
+    li.previous
+      a.btn(href="/documentation/backend/modules/what-powers-modules/", title="What powers modules?")
+        i.fa.fa-backward
+        |  Back 
+    li.next
+      a.btn(href="/documentation/backend/modules/working-with-modules/", title="Working with modules") Next 
+        i.fa.fa-forward

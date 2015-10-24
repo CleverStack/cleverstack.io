@@ -1,0 +1,176 @@
+.bs-docs-section
+  h3#working-with-modules.page-header
+    | Working With Modules 
+    a.permalink(href='/documentation/backend/modules/working-with-modules/', title='Permalink')
+      small ¶
+    br
+    small
+      | By using the CleverStack CLI, installing, upgrading, downgrading and removing modules is easy and straight forward.
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#working-with-modules') Modules
+    li.active Working With Modules
+  p.lead
+    | Installing, Removing, Upgrading or Downgrading modules is as simple as running 
+    code clever
+    |  with the name of the command you want to run, like 
+    code clever install
+    |  with the name of the module you want to install. 
+    small
+      | (for example, 
+      code clever install backend-example-module
+      | )
+  br
+  .bs-callout.bs-callout-danger
+    h4
+      | Common Issue, running commands without the CLI 
+      small
+        | (ie 
+        code grunt server
+        |  or 
+        code node app
+        | )
+    p
+      | If you want to run, or are trying to run commands without the CLI (
+      code clever
+      |  command) - Remember to set your 
+      code NODE_PATH
+      | ,
+      |     checkout 
+      a(href='/documentation/backend/#magic-modules') Magic Modules
+      |  for more information.
+      br
+      br
+      img(src='/images/screenshots/node-path-not-set-error.png', width='100%')
+  .bs-callout.bs-callout-danger
+    h4 Module Name Clashes with NPM
+    p
+      | Module names should not conflict with published npm packages, unless you don't want to use the published npm package in your application.
+    br
+    p
+      | For example imagine you wanted to build a cleverstack module that integrates stripe, you wouldn't name your cleverstack module 
+      code stripe
+      | , because if you and tried to use the 
+      a(href='https://www.npmjs.com/package/stripe') stripe
+      |  api library from npm, and tried to 
+      code require('stripe')
+      |  it would include your module not the npm package you expected, in this case the best practice for naming the cleverstack module would be 
+      code clever-stripe
+      | .
+  .bs-callout.bs-callout-warning
+    h4 Command Failed Errors
+    p
+      | If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.
+      br
+      |   See 
+      a(href='/documentation/backend/configuration/') Configuration
+      |  and 
+      a(href='/documentation/backend/models/seed-data/') Seed Data
+      |  for information.
+  .bs-callout.bs-callout-info
+    h4 Module Loading Order
+    p
+      | Because CleverStack points your 
+      code NODE_PATH
+      |  to the 
+      code backend/lib
+      |  and 
+      code backend/modules
+      |  folders, this means the 
+      strong loading order of modules does not matter
+      | , as each module can be loaded using 
+      code require('module-name')
+      |  in any js file from any module in the application - That mean's your application's will always resolve and load modules in the best possible way automatically.
+      br
+  .bs-callout.bs-callout-info
+    h4 Install, Remove, Upgrade or Downgrade multiple modules at a time
+    p
+      | You can specify multiple modules in each install, remove, upgrade or downgrade command separated by spaces.
+  br
+  
+  //- Installing Modules
+  .section-page
+    h5#installing-modules.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+      | Installing Modules 
+      a.permalink(href='#installing-modules', title='Permalink')
+        small ¶
+      br
+      small How to add functionality to your Application by installing a CleverStack Module.
+    |   {% highlight bash %}$ clever install backend-example-module{% endhighlight %}
+    img(src='/images/screenshots/clever-install.png', width='100%')
+    br
+    br
+    br
+    h5 You can also specify a specific version to install
+    |   {% highlight bash %}$ clever install backend-example-module@1.0.3{% endhighlight %}
+    img(src='/images/screenshots/clever-install-specific-version.png', width='100%')
+    .bs-callout.bs-callout-info
+      h4 Installation Prompts
+      p
+        | After running this command you may be prompted to configure the module/s your installing, see 
+        a(href='/documentation/backend/configuration/') Configuration
+        |  for more information. Additionally you may be prompted to setup the seed data for the module/s your installing, see 
+        a(href='/documentation/backend/models/seed-data/') Seed Data
+        |  for more information.
+        br
+    .bs-callout.bs-callout-warning
+      h4 Command Failed Errors
+      p
+        | If you see a command failed error in your terminal/console after installing a module and seeing a message that states it's about to rebase or seed your database, it is highly likely that something is wrong with your configuration that you need to fix.
+        br
+        |     See 
+        a(href='/documentation/backend/configuration/') Configuration
+        |  and 
+        a(href='/documentation/backend/models/seed-data/') Seed Data
+        |  for information.
+  br
+  
+  //- Removing Modules
+  .section-page
+    h5#removing-modules.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+      | Removing Modules 
+      a.permalink(href='#removing-modules', title='Permalink')
+        small ¶
+      br
+      small
+        | How to remove functionality from your Application by removing a CleverStack Module.
+    |   {% highlight bash %}$ clever remove backend-example-module{% endhighlight %}
+    img(src='/images/screenshots/clever-remove.png', width='100%')
+    br
+    br
+    h5
+      | If the module is already the same version, or older - then you will see something like this
+    img(src='/images/screenshots/clever-remove-invalid-module.png', width='100%')
+  br
+  
+  //- Upgrading Modules
+  .section-page
+    h5#upgrading-modules.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+      | Upgrading Modules 
+      a.permalink(href='#upgrading-modules', title='Permalink')
+        small ¶
+      br
+      small How to use a newer version of a module by upgrading a CleverStack Module.
+    |   {% highlight bash %}$ clever upgrade backend-example-module{% endhighlight %}
+    img(src='/images/screenshots/clever-upgrade.png', width='100%')
+  br
+  
+  //- Downgrading Modules
+  .section-page
+    h5#downgrading-modules.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+      | Downgrading Modules 
+      a.permalink(href='#downgrading-modules', title='Permalink')
+        small ¶
+      br
+      small How to use an older version of a module by downgrading a CleverStack Module.
+    |   {% highlight bash %}$ clever downgrade backend-example-module@1.0.3{% endhighlight %}
+    img(src='/images/screenshots/clever-downgrade.png', width='100%')
+    br
+    br
+    h5
+      | If the module is not installed you will see something like this in your terminal/console.
+    img(src='/images/screenshots/clever-downgrade-same-version-error.png', width='100%')
