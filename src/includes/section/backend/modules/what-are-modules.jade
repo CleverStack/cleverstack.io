@@ -1,0 +1,29 @@
+.bs-docs-section
+  h3#what-are-modules.page-header What Are Modules? 
+    a.permalink(href='#what-are-modules', title='Permalink')
+      small ¶
+    br
+    small
+      | Robust &amp; Flexible Modules that are completely independent of other modules in the application.
+  
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#what-are-modules') Modules
+    li.active What Are Modules?
+
+  p.lead A Module is similar to a plugin in other software, or an npm package, but even better. The key difference is that Modules are first-class citizens, and everything is a Module in CleverStack, including both the core framework functionality and the code written for your application.
+  p.sub.lead
+    | A Module is simply a structured set of files within a directory that implement a single feature. You might create a blog-module, a forum-module or a users-module for user management. (many of these exist already as 
+    a(href='http://cleverstack.io/modules/') open source modules
+    | ).
+  p.sub.lead Each directory contains everything related to that feature, including all of it's classes, controllers, services, models, tasks, configuration, utils (both lib and grunt/gulp), seed data, e2e & unit testing, and defines all dependencies in it's own package.json file. Every aspect of a feature exists in a module and every feature lives in a module.
+  p.sub.lead CleverStack makes it easy to pick and choose which features to enable in your application and gives you the freedom to optimize them the way you want!
+  
+  br
+  blockquote
+    h6 There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies.
+    footer(style='font-size: 12px;') C.A.R. Hoare
