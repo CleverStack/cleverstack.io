@@ -1,37 +1,16 @@
 .bs-docs-section
   h3#examples.page-header
     | Examples 
-    a.permalink(href='#examples', title='Permalink')
+    a.permalink(href='/documentation/backend/classes/examples/', title='Permalink')
       small ¶
   ol.breadcrumb
     li
-      a(href='/documentation') Documentation
+      a(href='/documentation/#backend') Documentation
     li
-      a(href='/documentation/backend') Backend
+      a(href='/documentation/backend/#classes') Backend
     li
-      a(href='/documentation/backend/classes') Classes
+      a(href='/documentation/backend/classes/#examples') Classes
     li.active Examples
-  p
-    | Here is an example of creating a class and using the proxy function as well as emitting events.
-  | {% highlight javascript %}
-  | var Class = require( 'classes' ).Class;
-  | module.exports = Class.extend({
-  |   files: null,
-  |   init: function() {
-  |     this.files = [];
-  |     this.getFiles( __dirname );
-  |     this.emit( 'init' );
-  |   },
-  |   getFiles: function( dir ) {
-  |     fs.readdir( dir, this.proxy( 'handleGetFiles', dir ) );
-  |   },
-  |   // The dir variable has been curried into this function by getFiles()
-  |   handleGetFiles: function( dir, err, files ) {
-  |     if ( !err ) {
-  |       this.files = files;
-  |     } else {
-  |       console.error( err );
-  |     }
-  |   }
-  | });
-  | {% endhighlight %}
+
+  p Here is an example of creating a class and using the proxy function as well as emitting events.
+  script(src="https://gist.github.com/pilsy/103174838b5a2cbd26d3.js")

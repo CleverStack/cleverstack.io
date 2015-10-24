@@ -51,10 +51,18 @@ html(lang='en')
       .container
         block docsheader
 
-    script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+    //- script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
 
     div(class="container bs-docs-container")
         div(class="col-md-12" role="main")
           block content
+          div(style='width:953px;height:85px;margin-left:auto;margin-right:auto;')
+            div(style='width:468px;height:60px;float:left;')
+              iframe(data-aa='90288', ,='', src='https://ad.a-ads.com/90288?size=468x60&background_color=fcfabd', scrolling='no', style='width:468px; height:60px; border:0px; padding:0;overflow:hidden', allowtransparency='true', frameborder='0')
+            .col-lg-5(style='margin-bottom: 0;height: 85px;float:left;')
+              div(style='width:468px;height:60px;float:left; text-align:center;')
+                iframe(scrolling='no', frameborder='0', src='//mellowads.com/view/C3567B05255A', style='overflow:hidden;width:468px;height:60px;')
+                div
+                  a(href='//mellowads.com/networkspace/C3567B05255A', target='_blank') Advertise here
 
   include ./includes/footer

@@ -1,16 +1,17 @@
 .bs-docs-section
   h3#extending.page-header
     | Extending 
-    a.permalink(href='#extending', title='Permalink')
+    a.permalink(href='/documentation/backend/classes/extending/', title='Permalink')
       small ¶
   ol.breadcrumb
     li
-      a(href='/documentation') Documentation
+      a(href='/documentation/#backend') Documentation
     li
-      a(href='/documentation/backend') Backend
+      a(href='/documentation/backend/#classes') Backend
     li
-      a(href='/documentation/backend/classes') Classes
+      a(href='/documentation/backend/classes/#extending') Classes
     li.active Extending
+
   br
   p
     | Every Class will provide an extend function that can be used to extend the functionality of a Class with some new functionality as provided in the Static and Prototype of the extend call.
@@ -19,50 +20,5 @@
   p
     | When you overload a method from a parent class, you can call the parents method by using 
     code this._super()
-  | {%highlight javascript %}
-  | var Monster = Class.extend(
-  | /* @Class */
-  | {
-  |   count: 0
-  | },
-  | /* @Prototype */
-  | {
-  |   init: function( name ) {
-  |     // saves name on the monster instance
-  |     this.name = name;
-  |     // sets the health
-  |     this.health = 10;
-  |     // increments count
-  |     this.Class.count++;
-  |   },
-  |   eat: function( smallChildren ){
-  |     this.health += smallChildren;
-  |   },
-  |   fight: function() {
-  |     this.health -= 2;
-  |   }
-  | });
-  | hydra = new Monster('hydra');
-  | dragon = new Monster('dragon');
-  | console.log(hydra.name)     // -> hydra
-  | console.log(Monster.count)  // -> 2
-  | hydra.eat(2);
-  | console.log(hydra.health);  // health = 12
-  | dragon.fight();
-  | console.log(dragon.health); // health = 8
-  | var SeaMonster = Monster.extend({
-  |     eat : function(smallChildren)
-  |     {
-  |         this._super(smallChildren / 2);
-  |     },
-  |     fight : function()
-  |     {
-  |         this.health -= 1;
-  |     }
-  | });
-  | var lochNess = new SeaMonster('Loch Ness');
-  | lochNess.eat(4);
-  | console.log("Loch Ness ate. Health: " + lochNess.health); // -> 12
-  | lochNess.fight();
-  | console.log("Loch Ness fought. Health: " + lochNess.health); // -> 11
-  | {% endhighlight %}
+
+  script(src="https://gist.github.com/pilsy/103174838b5a2cbd26d3.js")

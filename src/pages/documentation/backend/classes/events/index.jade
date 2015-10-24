@@ -1,25 +1,25 @@
 extends ../../../../../layouts/subdocs
 
 block head
-  title Documentation &middot; CleverStack.io
+  title Class Events &middot; Documentation &middot; CleverStack.io
 
 block docsheader
   h1 Backend Documentation
-  p Defining Classes in the CleverStack Node.js Framework.
+  p Class Events in the CleverStack Node js Framework.
 
 block content
   .google-ads(style='margin-bottom: 25px;')
     ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
     script.
       (adsbygoogle = window.adsbygoogle || []).push({});
-
-  include ../../../../../includes/section/backend/classes/definition
+  
+  include ../../../../../includes/section/backend/classes/events
 
   ul.pager(style="margin-top: 50px;")
     li.previous
-      a.btn(href="/documentation/backend/classes/overview/", title="Classes Overview")
+      a.btn(href="/documentation/backend/classes/inheritance/", title="Class Inheritance")
         i.fa.fa-backward
         |  Back 
     li.next
-      a.btn(href="/documentation/backend/classes/extending/", title="Extending Classes") Next 
+      a.btn(href="/documentation/backend/classes/proxy-methods/", title="Class Proxy Methods") Next 
         i.fa.fa-forward
