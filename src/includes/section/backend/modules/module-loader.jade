@@ -1,0 +1,67 @@
+.bs-docs-section
+  h3#module-loader.page-header
+    | The Module Loader 
+    a.permalink(href='/documentation/backend/modules/module-loader/', title='Permalink')
+      small ¶
+    br
+    small
+      | Is an extended 
+      code Class
+      |  that inherits from 
+      code EventEmitter
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#module-loader') Modules
+    li.active The Module Loader
+  p#module-loader-overview.lead
+    | The Module Loader is responsible for iterating over the modules inside the modules folder to load and trigger a sequence of events for each of the modules in an asynchronous fashion.
+  p.lead.sub
+    | For an in-depth example of how the Module Loader is used in Cleverstack please see 
+    a(href='https://github.com/CleverStack/node-seed/blob/master/app.js') node-seed/app.js
+    | .
+  br
+ 
+  // Hooks
+  h5.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Module Hooks
+  dl#module-loader-hooks.dl-horizontal
+    dt preResources
+    dd
+      p
+        | Is triggered directly before resources (files) are loaded for all modules using the ModuleLoader.
+    dt configureApp
+    dd
+      p
+        | Is triggered after all resources (files) have loaded but before any routes have been attached.
+    dt preRoute
+    dd
+      p
+        | Is triggered directly before routes are initialized for all modules being loaded.
+  // Events
+  h5.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Module Events
+  dl#module-loader-events.dl-horizontal
+    dt beforeLoad
+    dd
+      p Is triggered before loading modules.
+        script(src='https://gist.github.com/pilsy/e5c0c11972d52c121da8.js')
+
+    dt modulesLoaded
+    dd
+      p
+        | Is triggered after all modules have been loaded, please see 
+        a(href='https://github.com/CleverStack/node-seed/blob/master/app.js#L10') backend/app.js
+        |  for example usage.
+    dt routesInitialized
+    dd
+      p
+        | Is triggered after all modules have had their routes initialized.
+        | {% highlight javascript linenos %}
+        | moduleLoader.on('routesInitialized', function() {
+        | // ...
+        | });
+        | {% endhighlight %}
