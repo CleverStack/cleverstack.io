@@ -1,0 +1,25 @@
+extends ../../../../../layouts/subdocs
+
+block head
+  title Testing Modules &middot; Documentation &middot; CleverStack.io
+
+block docsheader
+  h1 Backend Documentation
+  p Testing Modules in the CleverStack Node &amp; Angular Framework.
+
+block content
+  .google-ads(style='margin-bottom: 25px;')
+    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-5940583402028078', data-ad-slot='1974927947', data-ad-format='auto')
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  
+  include ../../../../../includes/section/backend/modules/testing-modules
+
+  ul.pager(style="margin-top: 50px;")
+    li.previous
+      a.btn(href="/documentation/backend/modules/creating-modules/", title="Creating Modules")
+        i.fa.fa-backward
+        |  Back 
+    li.next
+      a.btn(href="/documentation/backend/modules/getting-help/", title="Getting Help") Next 
+        i.fa.fa-forward

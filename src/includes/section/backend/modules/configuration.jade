@@ -1,0 +1,39 @@
+.bs-docs-section
+  h3#configuration.page-header Module Configuration 
+    a.permalink(href='/documentation/backend/modules/configuration/', title='Permalink')
+      small ¶
+    br
+    small Sophisticated deep-merged configuration allows ultimate flexibility between environments
+
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#configuration') Modules
+    li.active Module Configuration
+
+  p.lead To make configuration as easy and comprehensive as possible, you are able to define two configuration files, default.json and global.json, these files are automatically deep merged with your projects other configuration files. See 
+    a(href='/documentation/backend/configuration/') Backend Configuration
+    |  Documentation for more information.
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Configuration files: 
+    small (loaded in the order they are listed)
+  ol
+    li
+      | module/config/default.json
+      ul
+        li
+          | This file is used mainly to define the basic structure of configuration for each module, primarily used to provide sane configuration defaults.
+    li
+      | module/config/global.json
+      ul
+        li
+          | This file is used to define the GLOBAL settings for this module, primarily used to "prevent cannot access variable of undefined" errors where code relies on the structure of the configuration object.
+  br
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') What is the structure of these JSON configuration files?
+  p
+    | Each of these JSON config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your module.
+
+  script(src='https://gist.github.com/pilsy/ffe947981be57f232ae6.js')

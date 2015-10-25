@@ -1,0 +1,68 @@
+.bs-docs-section
+  h3#structure.page-header Module Structure 
+    a.permalink(href='/documentation/backend/modules/structure/', title='Permalink')
+      small ¶
+    br
+    small Cleverstacks's Architecture has been designed to be simple and intiutive to use and extend.
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#structure') Modules
+    li.active Module Structure
+  
+  script(src='https://gist.github.com/pilsy/4c443363c09cd0a40bd8.js')
+  br
+  h4.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Important files and folders
+    h5#modules-config-default config/
+    ul
+      li
+        | Like the applications config folder this module config folder allows you to provide configuration on a per module basis.
+      li
+        a(href='#backend-modules-config-default') <module>/config/default.json
+      li
+        a(href='#backend-modules-config-global') <module>/config/global.json
+      br
+      li
+        span.label.label-danger Important
+        | Every module's json config files must contain (if they exist on disk) an object that has all configuration objects nested in an object under one key which needs to be named the same as your module.
+        script(src='https://gist.github.com/pilsy/ffe947981be57f232ae6.js')
+    h5 tests/
+    ul
+      li Two folders for testing, e2e/ and unit/
+      li
+        | This allows each module to define it's own tests for the functionality (code) that is provided within each module.
+    h5 package.json
+    ul
+      li Defines the modules basic information including name, version and scripts.
+      li Defines the modules NPM dependencies.
+    h5 Gruntfile.js
+    ul
+      li
+        | A specially formatted Gruntfile which can be used to modify the applications gruntConfig and register grunt tasks.
+    h5 module.js
+    ul
+      li Must export a Module Class which will be imported by the moduleLoader.
+      p Here is an example of a module.js file
+      script(src='https://gist.github.com/pilsy/29d8df5e0a61d47252c6.js')
+
+    h5 routes.js
+    ul
+      li This is where you define what routes your module will handle.
+
+    br
+    .bs-callout.bs-callout-info
+      h4 Lifecycle Hooks
+      p
+        | Modules have lifecycle 
+        a(href='/documentation/backend/modules/hooks-and-events/') Hooks &amp; Events
+        |  for every situation, like loading, routing, shutdown etc.
+    .bs-callout.bs-callout-danger
+      h4 File name may change per module
+      p
+        | This presumes you have { "main": "module.js" } in your modules 
+        a(href='https://github.com/CleverStack/backend-example-module/blob/master/package.json#L22') package.json
+        | , otherwise it is named what you want OR if not set at all this file will be called index.js. (As per standard NPM Modules)

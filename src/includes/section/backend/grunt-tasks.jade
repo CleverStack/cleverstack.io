@@ -13,41 +13,46 @@
       a(href='/documentation/backend/#grunt-tasks') Backend
     li.active Grunt Tasks
 
-p.lead
-  | Simply by placing a javascript file in the 
-  code backend/tasks/grunt
-  |  folder and exporting an Object Literal containing the 
-  code config
-  |  and 
-  code register
-  |  keys, unless the task does not need to register, in that case you can just export the config on the root level of the object.
+  p.lead
+    | Simply by placing a javascript file in the 
+    code backend/tasks/grunt
+    |  folder and exporting an Object Literal containing the 
+    code config
+    |  and 
+    code register
+    |  keys, unless the task does not need to register, in that case you can just export the config on the root level of the object.
 
-  script(src="https://gist.github.com/pilsy/781c3fa8b0a3775d3504.js")
+    script(src="https://gist.github.com/pilsy/781c3fa8b0a3775d3504.js")
 
-.bs-callout.bs-callout-info
-  h4 Important information about naming grunt task files
-  p
-    | The name of the file will be used as the key inside the gruntConfig, as an example, for the grunt task concurrent.js, the gruntConfig would be gruntConfig[concurrent]
-h5#grunt-tasks-included.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
-  | Available Grunt Tasks
+  .bs-callout.bs-callout-info
+    h4 Important information about naming grunt task files
+    p
+      | The name of the file will be used as the key inside the gruntConfig, as an example, for the grunt task concurrent.js, the gruntConfig would be gruntConfig[concurrent]
+  h5#grunt-tasks-included.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+    | Available Grunt Tasks
+    br
+    small In the node-seed 1.2.x
+  ul
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/exec.js') exec
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/watch.js') watch
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/nodemon.js') nodemon
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/mochaTest.js') mochaTest
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/concurrent.js') concurrent
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jshint.js') jshint
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jsonlint.js') jsonlint
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jsdoc2md.js') jsdoc2md
+    li
+      a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/node-inspector.js') node-inspector
+
   br
-  small In the node-seed 1.2.x
-ul
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/exec.js') exec
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/watch.js') watch
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/nodemon.js') nodemon
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/mochaTest.js') mochaTest
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/concurrent.js') concurrent
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jshint.js') jshint
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jsonlint.js') jsonlint
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/jsdoc2md.js') jsdoc2md
-  li
-    a(href='https://github.com/CleverStack/node-seed/blob/master/tasks/grunt/node-inspector.js') node-inspector
+  h5.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') How do i add grunt/gulp tasks?
+  p.sub.lead Here is an example of adding jade rendering via grunt tasks, to add jade you need to make changes to your concurrent.js and watch.js files as well as adding the new jade.js file.
+  script(src='https://gist.github.com/pilsy/d3d64676c47f4287113c.js')

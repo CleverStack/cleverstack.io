@@ -1,0 +1,37 @@
+.bs-docs-section
+  h3#testing-modules.page-header Testing Modules
+    a.permalink(href='/documentation/backend/modules/testing-modules/', title='Permalink')
+      small ¶
+    br
+    small Modules contain their testing resources, there are two test types you can use, unit or e2e.
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#testing-modules') Modules
+    li.active Testing Modules
+  p.lead
+    | We believe in testing our code as we develop, then if something breaks we know exactly where to start looking. Spending more time on developing the features we love.
+  br
+  h4#testing-unit Running Unit Tests
+  p
+    | To run the unit tests for your app and modules, from the backend root directory run:
+  code clever test unit
+  p Or simply use the alias:
+  code clever test
+  br
+  h4#testing-e2e Running E2E Tests
+  p
+    | To setup your environment for e2e testing with Protractor run the following command. This will install Selenium Server (WebDriver), ChromeDriver & PhantomJS based on your OS. If you wish to run selenium server in a separate terminal then use Webdriver Manager (see below).
+  code
+    | clever test e2e
+  br
+  h4#testing-coverage Code Coverage Reports
+  p
+    | To generate a code coverage report for your tests, from the backend directory run:
+  code $ clever test coverage
+  p Your browser should open the following URL:
+  code $ http://localhost:5555
+  p Then select your report from the list.

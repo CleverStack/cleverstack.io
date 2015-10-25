@@ -1,0 +1,70 @@
+.bs-docs-section
+  h3#hooks-and-events.page-header
+    | Module Hooks &amp; Events 
+    a.permalink(href='#hooks-and-events', title='Permalink')
+      small ¶
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#hooks-and-events') Modules
+    li.active Module Hooks &amp; Events
+  p
+    | Your 'module.js' file has some lifecycle hooks that you can use to perform operations at certain times during the applications lifecycle, the hooks are fired in the order they are listed here on each module.
+  br
+  p Example of using a hook:
+  p
+    script(src='https://gist.github.com/pilsy/7ea9dbbdc69082b37810.js')
+    br
+    .bs-callout.bs-callout-danger
+      h4 Hook firing order
+      p Modules hooks are applied to each module in the order they are loaded.
+  h5#modules-hooks-presetup preSetup
+  ul
+    li
+      | This hook is fired inside the main constructor function setup() how it is called before any setup has actually taken place.
+  h5#modules-hooks-preinit preInit
+  ul
+    li
+      | This hook is fired just before init() is called, while init() is not a hook but a method you can override without having to call this._super().
+    li
+      span.label.label-danger Important
+      |  This is the last place to hook into until after init.
+  h5#modules-hooks-init init
+  ul
+    li
+      | While this is not a hook, you are able to implement this function which forms the final step in the constructor, meaning it can take advantage of the Optimizing Compiler.
+  h5#modules-hooks-configure-app configureApp
+  ul
+    li
+      | This hook allows you to modify the express app from within a module, without the need to make those changes in the index.js file located at backend/index.js
+    br
+    li
+      span.label.label-danger Important
+      |  you must emit "appConfigured", until you do the moduleLoader will wait.
+    li
+      span.label.label-danger Important
+      |  this function is injected with app & express as arguments in the constructors setup() function.
+  script(src='https://gist.github.com/pilsy/d046942527428ec3cb20.js')
+  h5#modules-hooks-preresources preResources
+  ul
+    li
+      | This hook is fired just before the main setup() constructor function calls loadResources().
+    li
+      span.label.label-danger Important
+      |  you must emit "resourcesReady", until you do the moduleLoader will wait.
+  h5#modules-hooks-modulesloaded modulesLoaded
+  ul
+    li This hook is fired after all modules are loaded (for each module).
+    li
+      span.label.label-danger Important
+      |  you must emit "ready", until you do the moduleLoader will wait.
+  h5#modules-hooks-preroute preRoute
+  ul
+    li This hook is fired just before your routes are attached.
+  h5#modules-hooks-preshutdown preShutdown
+  ul
+    li
+      | This hook is fired just before the application shuts down, allowing you to perform any cleanup related tasks.

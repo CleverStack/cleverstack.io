@@ -1,20 +1,26 @@
 extends ../../../../layouts/default
 
 block head
-  title Documentation &middot; CleverStack.io
+  title Modules &middot; Documentation &middot; CleverStack.io
 
 block docsheader
   h1 Backend Documentation
-  p Indepth guides covering Classes in the CleverStack Node js framework.
+  p Indepth guides covering Modules in the CleverStack Node js framework.
 
 block sidenav
-  include ../../../../includes/section/backend/classes/nav
+  include ../../../../includes/section/backend/modules/nav
 
 block content
-  include ../../../../includes/section/backend/classes/overview
-  include ../../../../includes/section/backend/classes/definition
-  include ../../../../includes/section/backend/classes/extending
-  include ../../../../includes/section/backend/classes/examples
-  include ../../../../includes/section/backend/classes/inheritance
-  include ../../../../includes/section/backend/classes/events
-  include ../../../../includes/section/backend/classes/proxies
+  include ../../../../includes/section/backend/modules/introduction
+  include ../../../../includes/section/backend/modules/what-are-modules
+  include ../../../../includes/section/backend/modules/what-about-npm
+  include ../../../../includes/section/backend/modules/what-powers-modules
+  include ../../../../includes/section/backend/modules/example-module
+  include ../../../../includes/section/backend/modules/working-with-modules
+  include ../../../../includes/section/backend/modules/module-loader
+  include ../../../../includes/section/backend/modules/configuration
+  include ../../../../includes/section/backend/modules/structure
+  include ../../../../includes/section/backend/modules/hooks-and-events
+  include ../../../../includes/section/backend/modules/creating-modules
+  include ../../../../includes/section/backend/modules/testing-modules
+  include ../../../../includes/section/backend/modules/getting-help

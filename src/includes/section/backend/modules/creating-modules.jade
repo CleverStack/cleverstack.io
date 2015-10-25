@@ -1,0 +1,65 @@
+.bs-docs-section
+  h3#creating-modules.page-header
+    | Creating Modules 
+    a.permalink(href='/documentation/backend/modules/creating-modules/', title='Permalink')
+      small ¶
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#modules') Backend
+    li
+      a(href='/documentation/backend/modules/#creating-modules') Modules
+    li.active Creating Modules
+  p.lead.sub
+    | Every Module in CleverStack is extended from the 
+    code Module
+    |  Class, which was extended from the base CleverStack 
+    code Class
+    |  and inherits from 
+    code EventEmitter
+    | , every 
+    code Module
+    |  will automatically listen to events coming from the 
+    code ModuleLoader
+    |  as well as emitting events that the 
+    code ModuleLoader
+    |  and other 
+    code Module
+    | 's can listen to.
+  .section-page
+    h4#generating-modules.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;')
+      | Using the CLI
+      br
+      small How to generate a new module using the CLI
+    script(src='https://gist.github.com/pilsy/28d51bdc047ab6973e88.js')
+    img(src='/images/screenshots/clever-new-example-module.png', width='100%')
+    h5 This will generate the following structure:
+    img(src='/images/screenshots/clever-new-example-module-generated-files.png', height='450px;')
+    br
+    h4#class-definition.page-header(style='color: #2980b9; font-size: 125%; font-weight: 500;') Class Definition
+    p
+      | Imagine you had a module called 
+      code example-module
+      | , then 
+      code backend/modules/example-module/module.js
+      |  should at the very least contain the following basic extended 
+      code Module
+      |  Class.
+    script(src='https://gist.github.com/pilsy/29d8df5e0a61d47252c6.js')
+    p
+      span.label.label-danger IMPORTANT
+      |  This example assumes that you had added 
+      code "main": "module"
+      |  to 
+      code example-module/package.json
+      |  file.
+    script(src='https://gist.github.com/pilsy/010f074f48996fd62d94.js')
+    p
+      | Otherwise it would expect to find the above code in the 
+      code backend/modules/example-module/index.js
+      |  file.
+    .bs-callout.bs-callout-info
+      h4 Module Naming Convensions
+      p
+        | Inline with NPM standards, the names of modules should be lowercase and seperated by dashes (dasherized) - and the names should not conflict with published npm packages unless you don't want to use the published npm package in your application.
