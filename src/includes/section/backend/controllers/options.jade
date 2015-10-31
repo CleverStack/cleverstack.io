@@ -1,0 +1,66 @@
+.bs-docs-section
+  h3#options.page-header
+    | Options 
+    a.permalink(href='/documentation/backend/controllers/options/', title='Permalink')
+      small ¶
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#controllers') Backend
+    li
+      a(href='/documentation/backend/controllers/#options') Controllers
+    li.active Options
+  .bs-callout.bs-callout-danger
+    h4 Needs more information
+    p
+      | This section of the documentation is either out-dated or incomplete, please ask for help in github or gitter if you need more information.
+  p
+    | You define any options along with the Class/Static section of your Controller.extend() call
+  | {% highlight javascript %}
+  | Controller.extend(
+  | /* @Class */
+  | {
+  |   // Options & Middleware are defined here
+  | },
+  | /* @Prototype */
+  | {
+  |   // Actions here
+  | })
+  | {% endhighlight %}
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th(style='width: 100px;') Property
+        th(style='width: 150px;') Type/s
+        th(style='width: 50px;') Default
+        th Description
+    tbody
+      tr
+        td route
+        td boolean | string | array
+        td Dynamic
+        td
+          | Sets the route/s for the controllers actions, if this is not set it will be automatically determined based off the Controllers name (usually the filename less "Controller", eg User /user/...)
+      tr
+        td autoRouting
+        td boolean | array
+        td true
+        td
+          | Turns automatic routing (binding of routes to the router) on or off, additionally you can provide an array of middleware to attach
+      tr
+        td restfulRouting
+        td boolean
+        td true
+        td Turns RESTFul routing to actions on or off.
+      tr
+        td actionRouting
+        td boolean
+        td true
+        td Turns Action Based routing on or off.
+      tr
+        td service
+        td boolean | Model
+        td false
+        td
+          | If set to a CleverStack Model it will provide automatic CRUD routing using restfulActions and/or actionRouting

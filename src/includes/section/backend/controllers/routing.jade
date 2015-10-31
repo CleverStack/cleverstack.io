@@ -1,0 +1,33 @@
+.bs-docs-section
+  h3#routing.page-header
+    | Routing 
+    a.permalink(href='/documentation/backend/controllers/routing/', title='Permalink')
+      small ¶
+  ol.breadcrumb
+    li
+      a(href='/documentation') Documentation
+    li
+      a(href='/documentation/backend') Backend
+    li
+      a(href='/documentation/backend/controllers') Controllers
+    li.active Routing
+  p
+    | Your modules routes.js file is what defines which Controllers are loaded and added into routes, this example shows the default way you can attach your controller. (Except for Controllers which have autoRoute enabled, those controllers have these routes automatically attached)
+  script(src='https://gist.github.com/pilsy/c53750b64f49bcc3e39a.js')
+  p
+    span.label.label-info Note
+    |  This will automatically load the ExampleController's dependencies including Services, Models and any other resources.
+  p
+    span.label.label-info Note
+    |  We use ExpressJS as our main web service, so be sure to checkout how to use 
+    a(href='http://expressjs.com/api.html#app.VERB') ExpressJS Routes
+  br
+  h5 Automatic Routing ( Class.autoRouting )
+  ul
+    li Ability to turn on or off autoRouting (true or array for ON, false for OFF)
+    li
+      | Array notation allows (Connect or any other) Middleware to be attached to the routes that are autoRouted
+    li
+      | Route naming: Ability to either define your own route (name), or have it automatically generated based on the filename of your controller! (ExampleController would have a route name of /example and /examples in a RESTful fashion )
+  | Examples:
+  script(src='https://gist.github.com/pilsy/26e5bd1630c7c44500ca.js')

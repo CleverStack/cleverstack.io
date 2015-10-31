@@ -1,0 +1,39 @@
+.bs-docs-section
+  h3#overview.page-header
+    | Controllers 
+    a.permalink(href='/documentation/backend/controllers/overview/', title='Permalink') 
+      small ¶
+    br
+    small Lightning-fast and flexible controller prototype
+  ol.breadcrumb
+    li
+      a(href='/documentation/#backend') Documentation
+    li
+      a(href='/documentation/backend/#controllers') Backend
+    li
+      a(href='/documentation/backend/controllers/#overview') Controllers
+    li.active Overview
+  p.lead.sub
+    | The main aim of the controller is to help simplify the most common tasks that you need to do when setting up routes and functions/classes to handle them.
+  p
+    | Controllers are the thing that directly responds to each HTTP Request that comes into your application, as such each web request will result in (if routed) a new instance of a Controller (Class).
+  p
+    | Avoid callback soup/hell and promise slowdown by using this.proxy() or this.callback() in the Static section of the Controller, this keeps code nesting to a minimum and brings code re-use up. Instead of passing around req and res as arguments like other less organized solutions, in CleverStack they are exposed as this.req and this.res
+  h5.page-header Highlights
+  ul
+    li Lightning fast
+    li V8's Hidden Classes & Inline Caches
+    li
+      | V8's Optimizing Compiler which generates efficient machine code to run in place of your javascript
+    li Clean, Efficient and Optimized code
+    li Super methods
+    li Static & Prototypal inheritance
+    li Setup and initialization methods for both Static and Prototype
+    li
+      | Easy-to-use method proxys with currying ( Static.callback() and Prototype.proxy() )
+    li
+      | Internet Addressable functions/methods, simply add 'Action' to the end of your controllers method() name and it will be Internet Addressable (as long as a route points to that controller).
+    li
+      | Private functions, any function without 'Action' on the end of its name is NOT Internet Addressable.
+    li
+      | Easy accessors for Request and Response, available as this.req and this.res (and additionally this.next)
